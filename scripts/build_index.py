@@ -41,6 +41,15 @@ def load_json(path, default):
 
 
 def build():
+    # Cheap change guard: the job runs hourly, but TCGCSV refreshes once a day
+    # (~20:05 UTC). One tiny request tells us whether there's anything new; if
+    # not, exit before the ~220-request price fetch. Fail-open on any doubt.
+    prev_snapshot = load_json(LATEST_PATH, {})
+    stamp = tc.source_stamp()
+    if stamp and prev_snapshot.get("sourceStamp") == stamp:
+        print(f"TCGCSV unchanged since {stamp}; nothing to do.", flush=True)
+        return
+
     print("Fetching catalog + live prices from TCGCSV ...", flush=True)
     catalog = tc.build_catalog()
     prices = tc.live_prices()
@@ -123,6 +132,7 @@ def build():
     latest = {
         "sample": False,
         "generated": now.isoformat(),
+        "sourceStamp": stamp,
         "asOfDate": as_of,
         "index": round(index_value, 2),
         "prevIndex": round(baseline_index, 2) if baseline_index else None,
