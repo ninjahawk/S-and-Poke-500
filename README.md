@@ -13,7 +13,9 @@ scheduled job refreshes those files once a day.
 - **Universe:** the 500 most valuable English, raw (ungraded) card *singles*, by
   TCGplayer market price. Sealed product (booster boxes, ETBs) and thinly-traded
   oddities (jumbo/oversized box toppers, staff promos, error cards, "miscellaneous"
-  listings) are excluded so the ranking reflects the real singles market.
+  listings) are excluded so the ranking reflects the real singles market, as are
+  Japanese-only promos (collector numbers like "227/S-P") that leak into
+  TCGplayer's English promo groups.
 - **Data source:** [TCGCSV](https://tcgcsv.com), a free daily mirror of TCGplayer's
   public catalog and market prices. It also publishes a dated price **archive** back
   to **2024-02-08**, which is what the history is reconstructed from.
@@ -23,9 +25,20 @@ scheduled job refreshes those files once a day.
   Edition cards trade off-TCGplayer, so their TCGplayer market prices are thin to
   outright wrong (e.g. Shadowless 1st Ed Charizard showing a $250 "market" price).
   Regular/Unlimited printings are liquid on TCGplayer, so every card is priced by
-  those — consistent, verifiable numbers (they also line up with PriceCharting's
-  headline "ungraded" prices). Cards that only exist as 1st Edition still rank via
-  their 1st Edition price.
+  those — one consistent, verifiable yardstick. Cards that only exist as 1st
+  Edition still rank via their 1st Edition price. Cards with no fresh sales data
+  keep their last-known price for up to 70 days (flagged † on the site), then drop
+  out rather than squatting on a frozen price.
+- **Prices differ across trackers — by design, not by error.** TCGplayer Market
+  Price averages actual TCGplayer sales (Near Mint, raw). PriceCharting averages
+  eBay *sold* listings (auctions, mixed condition) and often reads lower on
+  high-end cards; eBay search results are mostly *asking* prices and read higher;
+  graded (PSA/BGS/CGC) prices are a different market entirely. On thinly traded
+  vintage cards two trackers can legitimately differ by 2× (e.g. Charizard Gold
+  Star, Dragon Frontiers: ~$4,000 TCGplayer market vs ~$2,100 PriceCharting
+  ungraded, July 2026). The site explains this in its "How these prices work"
+  section, and every card's detail view links the same card on TCGplayer,
+  PriceCharting, and eBay for side-by-side comparison.
 - **Method:** price-weighted. The index tracks the combined market price of the
   basket, divided by an *index divisor* — the same trick the S&P 500 uses so the
   number stays continuous when cards enter or leave the top 500. The index is

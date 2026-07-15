@@ -30,6 +30,7 @@ USER_AGENT = "s-and-poke-500/2.0 (+https://poke500.com)"
 BASE_INDEX_VALUE = 1000.0
 TARGET_SIZE = 500
 ARCHIVE_START = "2024-02-08"  # earliest daily price archive TCGCSV publishes
+STALE_DAYS = 70  # forward-fill a card's last price for at most this long before dropping it
 
 _SET_PREFIX = re.compile(r"^[A-Z0-9]{2,6}:\s+")  # "SWSH07: Evolving Skies" -> "Evolving Skies"
 
@@ -37,14 +38,28 @@ _SET_PREFIX = re.compile(r"^[A-Z0-9]{2,6}:\s+")  # "SWSH07: Evolving Skies" -> "
 # toppers, catch-all "miscellaneous" listings, staff-only promos, and error
 # cards. These are thinly traded with aspirational prices, so they'd whip the
 # index around without representing the real market. Excluded from the universe.
+# TCGplayer tags staff promos as "[Staff]" (brackets) and occasionally
+# "(Staff)" — match both bracket styles, and likewise for error cards.
 _BAD_SET = ("jumbo", "miscellaneous", "oversized")
-_BAD_NAME = ("box topper", "jumbo", "oversized", "(staff", "miscut", "misprint", "error)")
+_BAD_NAME = ("box topper", "jumbo", "oversized", "(staff", "[staff", "miscut",
+             "misprint", "error)", "error]")
+
+# Japanese-only promos leak into TCGplayer's *English* promo groups (e.g.
+# Pikachu "227/S-P" from the Japanese Stamp Box, "98/XY-P" Mega Tokyo
+# Pikachu). Their collector numbers use Japan's promo numbering — a "-P"
+# suffix ("227/S-P", "381/SM-P") — which English cards never do (English
+# promos look like "SWSH066", "SM158", "XY60"). The index is English-only,
+# and sites like PriceCharting file these under "Japanese Promo", so keeping
+# them both breaks the stated universe and invites price-comparison confusion.
+_JP_PROMO_NUMBER = re.compile(r"-P$", re.IGNORECASE)
 
 
-def _excluded(name, set_name):
+def _excluded(name, set_name, number=None):
     low_set = (set_name or "").lower()
     low_name = (name or "").lower()
-    return any(k in low_set for k in _BAD_SET) or any(k in low_name for k in _BAD_NAME)
+    if any(k in low_set for k in _BAD_SET) or any(k in low_name for k in _BAD_NAME):
+        return True
+    return bool(number and _JP_PROMO_NUMBER.search(number.strip()))
 
 
 def _get_json(url):
@@ -128,7 +143,7 @@ def build_catalog(verbose=False):
         for product in products:
             if not _is_single(product):
                 continue
-            if _excluded(product.get("name", ""), set_name):
+            if _excluded(product.get("name", ""), set_name, _extended(product, "Number")):
                 continue
             catalog[str(product["productId"])] = {
                 "id": str(product["productId"]),
@@ -163,32 +178,45 @@ def _rep_from_rows(rows):
     some not). Regular/Unlimited printings are liquid on TCGplayer, so the
     index prices every card by those. If a product has *only* 1st Edition
     rows, they're used as a fallback so the card can still rank.
+
+    Returns (price, subTypeName-of-the-chosen-row).
     """
     best = 0.0
+    best_sub = ""
     fallback = 0.0
+    fallback_sub = ""
     for row in rows:
         val = row.get("marketPrice")
         if not isinstance(val, (int, float)) or val <= 0:
             continue
-        if "1st edition" in (row.get("subTypeName") or "").lower():
-            fallback = max(fallback, float(val))
-        else:
-            best = max(best, float(val))
-    return best or fallback
+        sub = row.get("subTypeName") or ""
+        if "1st edition" in sub.lower():
+            if val > fallback:
+                fallback, fallback_sub = float(val), sub
+        elif val > best:
+            best, best_sub = float(val), sub
+    return (best, best_sub) if best else (fallback, fallback_sub)
 
 
-def _prices_from_group_rows(results, out):
+def _prices_from_group_rows(results, out, subtype_out=None):
     grouped = {}
     for row in results:
         grouped.setdefault(str(row["productId"]), []).append(row)
     for pid, rows in grouped.items():
-        price = _rep_from_rows(rows)
+        price, subtype = _rep_from_rows(rows)
         if price > 0:
             out[pid] = round(price, 2)
+            if subtype_out is not None:
+                subtype_out[pid] = subtype
 
 
-def live_prices(verbose=False):
-    """Today's representative price per product: {productId: price}."""
+def live_prices(verbose=False, subtype_out=None):
+    """Today's representative price per product: {productId: price}.
+
+    If `subtype_out` is a dict, it's filled with {productId: subTypeName} of
+    the printing each representative price came from (e.g. "Holofoil"), so the
+    frontend can say exactly what is being priced.
+    """
     prices = {}
     groups = fetch_groups()
     for i, group in enumerate(groups, 1):
@@ -197,7 +225,7 @@ def live_prices(verbose=False):
             results = _get_json(f"{TCGCSV}/tcgplayer/{CATEGORY}/{gid}/prices")["results"]
         except RuntimeError:
             continue
-        _prices_from_group_rows(results, prices)
+        _prices_from_group_rows(results, prices, subtype_out)
         if verbose and i % 25 == 0:
             print(f"  live prices: {i}/{len(groups)} sets, {len(prices)} priced", flush=True)
         time.sleep(0.1)

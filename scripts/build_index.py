@@ -52,7 +52,8 @@ def build():
 
     print("Fetching catalog + live prices from TCGCSV ...", flush=True)
     catalog = tc.build_catalog()
-    prices = tc.live_prices()
+    subtypes = {}
+    prices = tc.live_prices(subtype_out=subtypes)
     if len(prices) < tc.TARGET_SIZE:
         raise RuntimeError(f"Only {len(prices)} priced cards from TCGCSV")
 
@@ -64,6 +65,15 @@ def build():
     prev_index = prev.get("index")
     prev_prices = {c["id"]: c.get("price") for c in prev.get("constituents", []) if c.get("price")}
     prev_ids = [c["id"] for c in prev.get("constituents", [])] or None
+
+    # When a card was last *actually* priced by TCGplayer (vs carried forward).
+    # Older snapshots didn't record pricedAsOf; treat their prices as fresh as
+    # of that snapshot's date so the staleness clock starts now, not in error.
+    prev_priced_asof = {
+        c["id"]: c.get("pricedAsOf") or prev.get("asOfDate")
+        for c in prev.get("constituents", [])
+    }
+    prev_printing = {c["id"]: c.get("printing") for c in prev.get("constituents", [])}
 
     # Daily change is always measured against the previous *day*, not the
     # previous run. If the committed snapshot is from earlier today (manual
@@ -85,9 +95,23 @@ def build():
     # snapshot are the same string ids, so the chain is continuous. Passing
     # yesterday's prices as `carry` forward-fills any card that has no market
     # print today, so a thin-trading day can't spuriously crash the index.
-    step = tc.step_index(prices, catalog, prev_ids, prev_divisor, carry=prev_prices)
+    # The carry is capped at STALE_DAYS (same rule as the backfill): a card
+    # TCGplayer hasn't priced in that long drops out rather than squatting in
+    # the index on a permanently frozen price.
+    def _age_days(iso):
+        try:
+            return (datetime.now(timezone.utc).date()
+                    - datetime.strptime(iso, "%Y-%m-%d").date()).days
+        except (TypeError, ValueError):
+            return 0
+    carry = {
+        pid: pr for pid, pr in prev_prices.items()
+        if _age_days(prev_priced_asof.get(pid)) <= tc.STALE_DAYS
+    }
+    step = tc.step_index(prices, catalog, prev_ids, prev_divisor, carry=carry)
 
     # Per-card daily change + breadth.
+    today_asof = datetime.now(timezone.utc).date().isoformat()
     constituents = []
     advancing = declining = unchanged = 0
     for rank, (pid, price) in enumerate(step["basket"], start=1):
@@ -102,6 +126,9 @@ def build():
                 declining += 1
             else:
                 unchanged += 1
+        # Provenance: is this a real price from today's snapshot, or one
+        # carried forward from the last day TCGplayer had sales data for it?
+        live_today = pid in prices
         constituents.append({
             "rank": rank,
             "id": meta["id"],
@@ -115,6 +142,8 @@ def build():
             "prevPrice": round(prior, 2) if prior else None,
             "changePct": change_pct,
             "isNew": prior is None and bool(prev_ids),
+            "printing": (subtypes.get(pid) if live_today else prev_printing.get(pid)) or None,
+            "pricedAsOf": today_asof if live_today else prev_priced_asof.get(pid),
         })
 
     movable = [c for c in constituents if c["changePct"] is not None]
@@ -134,6 +163,8 @@ def build():
         "generated": now.isoformat(),
         "sourceStamp": stamp,
         "asOfDate": as_of,
+        "priceSource": "TCGplayer Market Price (via tcgcsv.com daily snapshot)",
+        "staleDays": tc.STALE_DAYS,
         "index": round(index_value, 2),
         "prevIndex": round(baseline_index, 2) if baseline_index else None,
         "change": change_abs,

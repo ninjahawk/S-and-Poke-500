@@ -145,6 +145,39 @@
         </table>
       </div>
       <p id="table-count" class="table-count"></p>
+      <p id="stale-note" class="table-note" hidden>&dagger; No recent TCGplayer sales data — the card's
+        most recent market price is carried forward (up to 70 days). Tap the card for its price date.</p>
+    </section>
+
+    <!-- Methodology -->
+    <section class="methodology" id="methodology" aria-label="How these prices work">
+      <h2 class="section-title">How these prices work</h2>
+      <div class="method-grid">
+        <div class="method-block">
+          <h3>What the number is</h3>
+          <p>Every price on this site is the <strong>TCGplayer Market Price</strong> — TCGplayer's
+          smoothed average of what copies <em>actually sold for</em> on its marketplace (Near&nbsp;Mint,
+          raw/ungraded) — captured once a day (~20:00&nbsp;UTC) via
+          <a href="https://tcgcsv.com" rel="noopener">tcgcsv.com</a>. Each card is priced by its most
+          valuable <em>regular</em> printing (shown in the card view, e.g. Holofoil). 1st&nbsp;Edition
+          printings are excluded: they rarely trade on TCGplayer, so their "market" figures there are
+          unreliable. If a card has no recent sales data, its last-known price is carried forward for up
+          to 70 days (marked &dagger; in the table) rather than showing a false crash to $0.</p>
+        </div>
+        <div class="method-block">
+          <h3>Why other sites show different prices</h3>
+          <p>There is no single "true" price for a trading card — every tracker measures a different
+          market. <strong>PriceCharting</strong> averages eBay <em>sold</em> listings (auctions and all
+          conditions mixed), so it often reads lower than TCGplayer for high-end cards.
+          <strong>eBay search results</strong> are mostly <em>asking</em> prices, which run higher than
+          what sales actually close at. <strong>Graded</strong> (PSA/BGS/CGC) prices are a different
+          market entirely and can be several times the raw price. The gaps are biggest on rare vintage
+          cards that sell only a few times a year — two trackers can legitimately differ by 2&times; on
+          the same card. This index uses one consistent, sales-based yardstick (TCGplayer Market) across
+          all 500 cards, which is what an index needs; use the compare links in each card's detail view
+          to see the same card on TCGplayer, PriceCharting, and eBay.</p>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -156,7 +189,9 @@
         price of the basket — up when cards get pricier, down when the market cools. Prices are TCGplayer
         market data via <a href="https://tcgcsv.com" rel="noopener">tcgcsv.com</a>, refreshed daily.
         Each card is priced by its regular printing (1st Edition printings are out of scope — they trade
-        too thinly on TCGplayer for reliable daily pricing).
+        too thinly on TCGplayer for reliable daily pricing). Other price trackers measure different
+        markets and will show different numbers — see
+        <a href="#methodology">how these prices work</a>.
       </p>
       <p class="muted">
         <strong>Not affiliated.</strong> This is an independent, non-commercial fan project. It is not
@@ -198,8 +233,16 @@
           <div><dt>Rank</dt><dd id="cm-rank"></dd></div>
           <div><dt>Rarity</dt><dd id="cm-rarity"></dd></div>
           <div><dt>Prev close</dt><dd id="cm-prev"></dd></div>
+          <div><dt>Printing priced</dt><dd id="cm-printing"></dd></div>
+          <div><dt>Price as of</dt><dd id="cm-asof"></dd></div>
         </dl>
-        <a id="cm-link" class="cm-link" target="_blank" rel="noopener nofollow">View on TCGplayer &#8599;</a>
+        <p id="cm-stale" class="cm-stale" hidden></p>
+        <div class="cm-links">
+          <a id="cm-link" class="cm-link" target="_blank" rel="noopener nofollow">TCGplayer &#8599;</a>
+          <a id="cm-link-pc" class="cm-link cm-link-alt" target="_blank" rel="noopener nofollow">PriceCharting &#8599;</a>
+          <a id="cm-link-ebay" class="cm-link cm-link-alt" target="_blank" rel="noopener nofollow">eBay solds &#8599;</a>
+        </div>
+        <p class="cm-note">Prices differ across sources — see <a href="#methodology" data-close>how these prices work</a>.</p>
       </div>
     </div>
   </div>
