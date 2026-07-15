@@ -389,6 +389,37 @@
     if (tip) tip.hidden = true;
   }
 
+  // ---- live refresh -------------------------------------------------------- //
+  // The data files change once a day (when TCGCSV drops its snapshot and the
+  // hourly Action commits). Poll cheaply so an open tab ticks over to the new
+  // day on its own; also check immediately whenever the tab regains focus.
+  const REFRESH_MS = 5 * 60 * 1000;
+  async function checkForUpdate() {
+    try {
+      const r = await fetch("data/latest.json", { cache: "no-store" });
+      if (!r.ok) return;
+      const fresh = await r.json();
+      if (state.latest && fresh.generated === state.latest.generated) return;
+      const hist = await fetch("data/history.json", { cache: "no-store" })
+        .then((h) => (h.ok ? h.json() : null))
+        .catch(() => null);
+      state.latest = fresh;
+      if (hist && hist.points) state.history = hist.points;
+      state.constituents = fresh.constituents || [];
+      renderHero(fresh);
+      renderOverview(fresh);
+      renderMovers(fresh);
+      renderTable();
+      drawChart();
+    } catch (err) {
+      // transient network failure -- try again next tick
+    }
+  }
+  setInterval(checkForUpdate, REFRESH_MS);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && state.latest) checkForUpdate();
+  });
+
   // ---- card lightbox ------------------------------------------------------ //
   function setupCardModal() {
     if (setupCardModal.done) return;

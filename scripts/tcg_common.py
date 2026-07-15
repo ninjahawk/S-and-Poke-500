@@ -93,6 +93,22 @@ def fetch_groups():
     return _get_json(f"{TCGCSV}/tcgplayer/{CATEGORY}/groups")["results"]
 
 
+def source_stamp():
+    """TCGCSV's published last-update timestamp (one tiny request).
+
+    Lets the hourly job skip the full ~220-request price fetch when the daily
+    snapshot hasn't changed. Returns None on any failure (fail-open: caller
+    should build rather than silently stall the index).
+    """
+    req = urllib.request.Request(
+        f"{TCGCSV}/last-updated.txt", headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return resp.read().decode("utf-8").strip() or None
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def build_catalog(verbose=False):
     """Return {productId: {name, number, rarity, setName, setId, image}} for
     every English Pokemon single. Sealed product is excluded so the "most

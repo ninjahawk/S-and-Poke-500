@@ -85,9 +85,14 @@ often away — you manage end to end).
   Dynamic top-500 membership per date; S&P-style divisor chaining. Writes
   `docs/data/{latest,history}.json`. Run: `pip install py7zr && python3
   scripts/backfill_history.py` (~8 min: ~127 archive downloads + catalog build).
-- `build_index.py` — daily job (stdlib only, no py7zr, no key). Fetches live
-  TCGCSV prices, continues the series from committed `latest.json`, appends a
-  history point. This is what the Action runs.
+- `build_index.py` — the Action's job (stdlib only, no py7zr, no key). Runs
+  **hourly** (cron :23) but exits in seconds unless TCGCSV's
+  `last-updated.txt` stamp differs from `latest.json`'s stored `sourceStamp`
+  (TCGCSV drops once daily ~20:05 UTC, so real builds happen ~20:23). Fetches
+  live prices, continues the series from committed `latest.json`, appends a
+  history point. Daily change is measured vs the previous *day* (same-day
+  re-runs keep the prior baseline). Frontend polls the JSON every 5 min +
+  on tab focus, so open tabs update without reload.
 - `make_sample.py` — legacy offline sample generator; unused now.
 
 **Gotchas learned the hard way:**
