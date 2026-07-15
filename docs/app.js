@@ -301,6 +301,8 @@
     svg.appendChild(defs);
 
     // vertical time gridlines + x labels (Google Finance style)
+    const spanDays =
+      (new Date(pts[pts.length - 1].date) - new Date(pts[0].date)) / 86400000;
     const xticks = pts.length > 6 ? 4 : 2;
     for (let t = 0; t <= xticks; t++) {
       const i = Math.round(((pts.length - 1) * t) / xticks);
@@ -312,7 +314,7 @@
       const lbl = mk("text", { x: px, y: H - 8,
         "text-anchor": t === 0 ? "start" : t === xticks ? "end" : "middle",
         fill: getCss("--muted"), "font-size": 11.5, "font-family": "inherit" });
-      lbl.textContent = shortDate(pts[i].date);
+      lbl.textContent = axisDate(pts[i].date, spanDays);
       svg.appendChild(lbl);
     }
 
@@ -545,6 +547,17 @@
   }
   function shortDate(iso) {
     return new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  }
+  // Axis tick label. On short ranges (<~10mo) the day matters and the year is
+  // obvious, so show "Jul 15". On longer ranges the ticks fall in different
+  // years, so a day-only label ("Feb 8") is ambiguous — show "Feb '24" instead.
+  function axisDate(iso, spanDays) {
+    const d = new Date(iso + "T00:00:00");
+    if (spanDays > 300) {
+      return d.toLocaleDateString("en-US", { month: "short" }) +
+        " '" + String(d.getFullYear()).slice(-2);
+    }
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
   }
   // A price is "stale" when it was carried forward from an earlier day because
   // TCGplayer had no fresh sales data for the card in the current snapshot.
