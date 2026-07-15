@@ -1,0 +1,46 @@
+name: Update S&Poke 500 index
+
+# Rebuilds the index from live pokemontcg.io prices and commits the refreshed
+# data files. Scheduled runs only fire on the default branch (GitHub rule); use
+# the "Run workflow" button (workflow_dispatch) to run it on any branch.
+on:
+  schedule:
+    - cron: "17 9 * * *" # daily at 09:17 UTC
+  workflow_dispatch: {}
+
+# Prevent overlapping runs from racing on the commit.
+concurrency:
+  group: update-index
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build index (fetch prices, recompute)
+        env:
+          POKEMONTCG_API_KEY: ${{ secrets.POKEMONTCG_API_KEY }}
+        run: python3 scripts/build_index.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "spoke-500-bot"
+          git config user.email "actions@github.com"
+          git add docs/data/latest.json docs/data/history.json
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "chore: update S&Poke 500 index ($(date -u +%Y-%m-%d))"
+            git push
+          fi

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The S&amp;Poké 500 — Pokémon Card Market Index</title>
+  <meta name="description" content="A price-weighted index of the 500 most valuable Pokémon cards — an at-a-glance read on the whole Pokémon card market, like the S&P 500 for stocks." />
+  <link rel="preconnect" href="https://images.pokemontcg.io" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23e34948' stroke='%23111' stroke-width='6'/%3E%3Cpath d='M2 50h96' stroke='%23111' stroke-width='6'/%3E%3Ccircle cx='50' cy='50' r='14' fill='%23fff' stroke='%23111' stroke-width='6'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="sample-banner" class="banner" hidden>
+    <span class="banner-dot"></span>
+    <span id="sample-banner-text">Showing sample preview data. Live market data begins after the first daily update.</span>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div class="brand-text">
+          <h1>The S&amp;Poké&nbsp;500</h1>
+          <p>The Pokémon card market, in one number.</p>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span id="as-of" class="as-of"></span>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light and dark theme">
+          <span class="theme-toggle-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="app" aria-busy="true">
+    <!-- Hero + chart -->
+    <section class="hero card">
+      <div class="hero-top">
+        <div class="hero-value">
+          <span class="hero-label">S&amp;Poké 500 Index</span>
+          <span id="hero-index" class="hero-index">—</span>
+          <span id="hero-change" class="hero-change">&nbsp;</span>
+        </div>
+        <div class="range-toggle" role="group" aria-label="Chart time range">
+          <button class="range-btn" data-range="7">1W</button>
+          <button class="range-btn" data-range="30">1M</button>
+          <button class="range-btn" data-range="90">3M</button>
+          <button class="range-btn" data-range="365">1Y</button>
+          <button class="range-btn is-active" data-range="all">ALL</button>
+        </div>
+      </div>
+
+      <figure class="chart" id="chart">
+        <div id="chart-empty" class="chart-empty" hidden>
+          <strong>The chart starts here.</strong>
+          <span>The index records one point per day. Check back as history builds.</span>
+        </div>
+        <svg id="chart-svg" viewBox="0 0 1000 380" preserveAspectRatio="none" role="img" aria-label="S&Poké 500 index over time"></svg>
+        <div id="chart-tooltip" class="chart-tooltip" hidden></div>
+      </figure>
+      <figcaption id="chart-caption" class="chart-caption"></figcaption>
+    </section>
+
+    <!-- Market stats -->
+    <section class="stats" aria-label="Market summary">
+      <div class="stat card">
+        <span class="stat-label">Total basket value</span>
+        <span id="stat-total" class="stat-value">—</span>
+        <span class="stat-sub">combined price of all 500 cards</span>
+      </div>
+      <div class="stat card">
+        <span class="stat-label">Advancing / Declining</span>
+        <span id="stat-breadth" class="stat-value">—</span>
+        <span class="stat-sub">cards up vs. down today</span>
+      </div>
+      <div class="stat card">
+        <span class="stat-label">Constituents</span>
+        <span id="stat-count" class="stat-value">—</span>
+        <span class="stat-sub">cards tracked in the index</span>
+      </div>
+      <div class="stat card">
+        <span class="stat-label">Market mood</span>
+        <span id="stat-mood" class="stat-value">—</span>
+        <span class="stat-sub">breadth-based read</span>
+      </div>
+    </section>
+
+    <!-- Movers -->
+    <section class="movers" aria-label="Biggest movers">
+      <div class="mover-col card">
+        <h2 class="mover-title up">▲ Top gainers</h2>
+        <ul id="gainers" class="mover-list"></ul>
+      </div>
+      <div class="mover-col card">
+        <h2 class="mover-title down">▼ Top losers</h2>
+        <ul id="losers" class="mover-list"></ul>
+      </div>
+    </section>
+
+    <!-- Constituents -->
+    <section class="constituents card" aria-label="The 500 cards">
+      <div class="constituents-head">
+        <h2>The 500</h2>
+        <input id="search" class="search" type="search" placeholder="Search card or set…" aria-label="Search the 500 cards" />
+      </div>
+      <div class="table-scroll">
+        <table class="table" id="table">
+          <thead>
+            <tr>
+              <th class="col-rank" data-sort="rank">#</th>
+              <th class="col-card">Card</th>
+              <th class="col-set">Set</th>
+              <th class="col-price sortable" data-sort="price">Price</th>
+              <th class="col-change sortable" data-sort="changePct">24h</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+      <p id="table-count" class="table-count"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <p>
+      <strong>The S&amp;Poké 500</strong> is a price-weighted index of the 500 most valuable
+      English, raw (ungraded) Pokémon cards, rebased to 1,000 at launch. It moves with the
+      combined market price of the basket — up when cards get pricier, down when they cool.
+    </p>
+    <p class="muted">
+      Prices from <a href="https://pokemontcg.io" rel="noopener">pokemontcg.io</a> (TCGplayer market data),
+      refreshed daily. Not financial advice — for fun and market curiosity.
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
