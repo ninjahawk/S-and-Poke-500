@@ -11,7 +11,7 @@ definition the index has always used).
   - "Singles" (individual cards) are told apart from sealed product (booster
     boxes, ETBs, tins...) by the presence of a card `Number` in extendedData.
   - A card's representative price is the max TCGplayer market price across its
-    printings/conditions (mid price as a fallback) -- same rule as before.
+    regular printings (1st Edition rows excluded -- see _rep_from_rows).
 
 Standard library only, so it runs on a bare CI runner with no pip install.
 """
@@ -132,18 +132,33 @@ def build_catalog(verbose=False):
 
 
 def _rep_from_rows(rows):
-    """Highest TCGplayer *market* price across a product's printings/conditions.
+    """Highest TCGplayer *market* price across a product's regular printings.
 
     Market price only (no mid/listing fallback): the index tracks real,
     sales-derived value, not aspirational asking prices. A product with no
     market price on a given day simply isn't ranked that day.
+
+    1st Edition printings are excluded from pricing: the truly expensive 1st
+    Edition cards trade off-TCGplayer (auction houses/eBay), so TCGplayer's
+    market price for them is thin to outright broken — e.g. Shadowless Base
+    Set Charizard's 1st Edition row has shown $250 "market" against a real
+    ~$20k+ street value, while Neo Destiny 1st Editions carry real prints.
+    Mixing the two made the ranking incoherent (some cards priced 1st Ed,
+    some not). Regular/Unlimited printings are liquid on TCGplayer, so the
+    index prices every card by those. If a product has *only* 1st Edition
+    rows, they're used as a fallback so the card can still rank.
     """
     best = 0.0
+    fallback = 0.0
     for row in rows:
         val = row.get("marketPrice")
-        if isinstance(val, (int, float)) and val > best:
-            best = float(val)
-    return best
+        if not isinstance(val, (int, float)) or val <= 0:
+            continue
+        if "1st edition" in (row.get("subTypeName") or "").lower():
+            fallback = max(fallback, float(val))
+        else:
+            best = max(best, float(val))
+    return best or fallback
 
 
 def _prices_from_group_rows(results, out):

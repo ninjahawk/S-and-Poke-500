@@ -71,10 +71,15 @@ often away — you manage end to end).
 - `tcg_common.py` — shared source of truth. TCGCSV category 3 = English Pokémon.
   Universe = **singles only** (must have a card `Number`); **excludes** sealed +
   oddities (jumbo/oversized box toppers, staff promos, error cards,
-  "miscellaneous"). Representative price = **max TCGplayer market price** across
-  printings (no mid/listing fallback). **Forward-fills** last-known price across
-  gap days (STALE cap 70d) — critical: without it, thin-trading days fake a crash.
-  Keys are **string** productIds everywhere.
+  "miscellaneous"). Representative price = **max TCGplayer market price across
+  regular printings; 1st Edition rows are EXCLUDED** (fallback: used only if a
+  product has no non-1st-Ed market price). Why (2026-07-15, owner-approved):
+  trophy 1st Eds trade off-TCGplayer, so their market prices are broken —
+  Shadowless 1st Ed Charizard showed $250 vs ~$20k+ real; mixing printings made
+  the top of the list incoherent (1st Ed Tyranitar #1 while 1st Ed Base Zard
+  couldn't rank). No mid/listing fallback ever. **Forward-fills** last-known
+  price across gap days (STALE cap 70d) — critical: without it, thin-trading
+  days fake a crash. Keys are **string** productIds everywhere.
 - `backfill_history.py` — one-time. Weekly reconstruction from the TCGCSV price
   **archive** (`/archive/tcgplayer/prices-YYYY-MM-DD.ppmd.7z`, needs `py7zr`).
   Dynamic top-500 membership per date; S&P-style divisor chaining. Writes
