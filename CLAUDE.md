@@ -23,22 +23,30 @@ often away — you manage end to end).
 
 **Done 2026-07-15 (launch-readiness pass):**
 - **Pages is enabled** (owner did it, ~14:50 UTC): Deploy from a branch,
-  `main` / `/docs`. Deploys succeed.
+  `main` / **`/ (root)`** — NOT `/docs`. Verified by Host-header probe: the
+  domain serves the Jekyll-rendered README at `/` and the app at `/docs/`.
+  Owner must flip the folder to `/docs` (see pending list). There is no
+  API/MCP tool for Pages settings, so this can't be done for them.
 - **Daily Action verified end-to-end**: workflow_dispatch run succeeded and
   committed `chore: update S&Poke 500 index (2026-07-15)` to `main`. A 0.00%
   day right after a same-day refresh is expected (TCGCSV live == latest archive).
-- **CNAME lesson (IMPORTANT — do not repeat):** when the owner typed the custom
-  domain into Settings → Pages, GitHub committed a **root** `CNAME`
-  (`xn--pok500-dva.com`) — that file is what Pages manages/reads for this setup.
-  A session then deleted it as "redundant" (`ba68d3a`), which **deregistered the
-  domain** from GitHub's edge (verified: Host-header probe returned "Site not
-  found" while control domains resolved). Root `CNAME` has been restored;
-  **never delete root `CNAME` or `docs/CNAME`** — keep both, same value.
-  GitHub Pages accepts IDNs in punycode form, per docs and the accepted UI entry.
+- **CNAME lesson (IMPORTANT — do not repeat):** Pages reads `CNAME` from the
+  *publish folder* — with source = root, that's the **root** `CNAME`
+  (`xn--pok500-dva.com`, created when the owner set the domain). A session
+  deleted it as "redundant" (`ba68d3a`), which **deregistered the domain** from
+  GitHub's edge (Host-header probe returned "Site not found"). Restoring it
+  (PR #3, merged) re-registered the domain within seconds of deploy — verified
+  edge now serves 200 for that Host. **Keep root `CNAME` AND `docs/CNAME`, same
+  value** — one covers source=root, the other covers source=/docs.
+  GitHub Pages accepts IDNs in punycode form (docs + the accepted UI entry).
 - Added: `docs/404.html`, `docs/robots.txt`, `docs/sitemap.xml`, JSON-LD
   WebSite schema in `index.html`.
 
 **Pending — OWNER must do (can't be done via tools):**
+0. **Settings → Pages → Build and deployment → Folder: change `/ (root)` to
+   `/docs`**, Save. Until then the domain serves the README at `/` and the app
+   at `/docs/`; after the switch the app is the homepage and `docs/404.html`,
+   `robots.txt`, `sitemap.xml` serve from `/`.
 1. **DNS for poké500.com** at registrar (currently points at parking IPs):
    apex `A` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`,
    `185.199.111.153`; `www` `CNAME` → `ninjahawk.github.io`. Delete any

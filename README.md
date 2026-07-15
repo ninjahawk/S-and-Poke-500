@@ -42,7 +42,8 @@ there rather than fabricating a deeper line.
 The daily job and the code are already here. To go live:
 
 1. **Enable Pages:** Settings → Pages → *Build and deployment* → Deploy from a
-   branch → Branch: `main`, Folder: `/docs`.
+   branch → Branch: `main`, Folder: **`/docs`** (not `/ (root)` — the root
+   serves this README instead of the app).
 2. **Custom domain (`poké500.com`):** the repo ships `CNAME` files (root **and**
    `docs/`) pointing at `xn--pok500-dva.com` (the punycode form of the
    internationalized domain `poké500.com`) — the root one is the file the Pages UI
