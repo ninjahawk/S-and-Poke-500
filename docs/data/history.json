@@ -1,845 +1,779 @@
 {
-  "sample": true,
-  "generated": "2026-07-15T11:32:12.897012+00:00",
+  "sample": false,
+  "generated": "2026-07-15T16:06:35.075068+00:00",
   "points": [
     {
+      "date": "2024-02-08",
+      "index": 1000.0,
+      "totalValue": 102584.09,
+      "count": 500
+    },
+    {
+      "date": "2024-02-15",
+      "index": 996.23,
+      "totalValue": 102518.85,
+      "count": 500
+    },
+    {
+      "date": "2024-02-22",
+      "index": 996.86,
+      "totalValue": 102712.0,
+      "count": 500
+    },
+    {
+      "date": "2024-02-29",
+      "index": 995.7,
+      "totalValue": 102691.45,
+      "count": 500
+    },
+    {
+      "date": "2024-03-07",
+      "index": 997.78,
+      "totalValue": 103383.15,
+      "count": 500
+    },
+    {
+      "date": "2024-03-14",
+      "index": 1000.82,
+      "totalValue": 104259.43,
+      "count": 500
+    },
+    {
+      "date": "2024-03-21",
+      "index": 1001.04,
+      "totalValue": 104960.73,
+      "count": 500
+    },
+    {
+      "date": "2024-03-28",
+      "index": 1000.77,
+      "totalValue": 105033.29,
+      "count": 500
+    },
+    {
+      "date": "2024-04-04",
+      "index": 1003.17,
+      "totalValue": 105355.09,
+      "count": 500
+    },
+    {
+      "date": "2024-04-11",
+      "index": 1016.68,
+      "totalValue": 107345.57,
+      "count": 500
+    },
+    {
+      "date": "2024-04-18",
+      "index": 1002.36,
+      "totalValue": 106110.53,
+      "count": 500
+    },
+    {
+      "date": "2024-04-25",
+      "index": 1006.3,
+      "totalValue": 106734.68,
+      "count": 500
+    },
+    {
+      "date": "2024-05-02",
+      "index": 1014.89,
+      "totalValue": 108124.73,
+      "count": 500
+    },
+    {
+      "date": "2024-05-09",
+      "index": 1032.59,
+      "totalValue": 110235.23,
+      "count": 500
+    },
+    {
+      "date": "2024-05-16",
+      "index": 1047.7,
+      "totalValue": 112273.92,
+      "count": 500
+    },
+    {
+      "date": "2024-05-23",
+      "index": 1024.12,
+      "totalValue": 110284.14,
+      "count": 500
+    },
+    {
+      "date": "2024-05-30",
+      "index": 1014.68,
+      "totalValue": 109479.02,
+      "count": 500
+    },
+    {
+      "date": "2024-06-06",
+      "index": 1008.51,
+      "totalValue": 108963.46,
+      "count": 500
+    },
+    {
+      "date": "2024-06-13",
+      "index": 1020.73,
+      "totalValue": 111356.44,
+      "count": 500
+    },
+    {
+      "date": "2024-06-20",
+      "index": 1007.7,
+      "totalValue": 110159.29,
+      "count": 500
+    },
+    {
+      "date": "2024-06-27",
+      "index": 997.03,
+      "totalValue": 110997.27,
+      "count": 500
+    },
+    {
+      "date": "2024-07-04",
+      "index": 994.9,
+      "totalValue": 111008.7,
+      "count": 500
+    },
+    {
+      "date": "2024-07-11",
+      "index": 1000.62,
+      "totalValue": 111806.82,
+      "count": 500
+    },
+    {
+      "date": "2024-07-18",
+      "index": 985.94,
+      "totalValue": 110434.35,
+      "count": 500
+    },
+    {
+      "date": "2024-07-25",
+      "index": 986.28,
+      "totalValue": 111141.33,
+      "count": 500
+    },
+    {
+      "date": "2024-08-01",
+      "index": 999.58,
+      "totalValue": 112820.04,
+      "count": 500
+    },
+    {
+      "date": "2024-08-08",
+      "index": 995.25,
+      "totalValue": 113672.56,
+      "count": 500
+    },
+    {
+      "date": "2024-08-15",
+      "index": 980.29,
+      "totalValue": 112938.71,
+      "count": 500
+    },
+    {
+      "date": "2024-08-22",
+      "index": 980.52,
+      "totalValue": 113663.79,
+      "count": 500
+    },
+    {
+      "date": "2024-08-29",
+      "index": 977.97,
+      "totalValue": 114514.85,
+      "count": 500
+    },
+    {
+      "date": "2024-09-05",
+      "index": 980.77,
+      "totalValue": 116550.91,
+      "count": 500
+    },
+    {
+      "date": "2024-09-12",
+      "index": 979.33,
+      "totalValue": 116858.41,
+      "count": 500
+    },
+    {
+      "date": "2024-09-19",
+      "index": 975.52,
+      "totalValue": 116988.44,
+      "count": 500
+    },
+    {
+      "date": "2024-09-26",
+      "index": 972.71,
+      "totalValue": 117323.19,
+      "count": 500
+    },
+    {
+      "date": "2024-10-03",
+      "index": 963.56,
+      "totalValue": 116864.33,
+      "count": 500
+    },
+    {
+      "date": "2024-10-10",
+      "index": 957.3,
+      "totalValue": 116236.94,
+      "count": 500
+    },
+    {
+      "date": "2024-10-17",
+      "index": 958.12,
+      "totalValue": 116476.2,
+      "count": 500
+    },
+    {
+      "date": "2024-10-24",
+      "index": 952.87,
+      "totalValue": 116540.92,
+      "count": 500
+    },
+    {
+      "date": "2024-10-31",
+      "index": 965.74,
+      "totalValue": 118528.19,
+      "count": 500
+    },
+    {
+      "date": "2024-11-07",
+      "index": 957.63,
+      "totalValue": 117798.55,
+      "count": 500
+    },
+    {
+      "date": "2024-11-14",
+      "index": 953.97,
+      "totalValue": 118010.64,
+      "count": 500
+    },
+    {
+      "date": "2024-11-21",
+      "index": 950.87,
+      "totalValue": 118149.24,
+      "count": 500
+    },
+    {
+      "date": "2024-11-28",
+      "index": 946.19,
+      "totalValue": 121046.78,
+      "count": 500
+    },
+    {
+      "date": "2024-12-05",
+      "index": 967.8,
+      "totalValue": 124378.02,
+      "count": 500
+    },
+    {
+      "date": "2024-12-12",
+      "index": 962.41,
+      "totalValue": 123969.25,
+      "count": 500
+    },
+    {
+      "date": "2024-12-19",
+      "index": 976.19,
+      "totalValue": 125829.62,
+      "count": 500
+    },
+    {
+      "date": "2024-12-26",
+      "index": 972.59,
+      "totalValue": 126717.5,
+      "count": 500
+    },
+    {
+      "date": "2025-01-02",
+      "index": 971.04,
+      "totalValue": 127394.42,
+      "count": 500
+    },
+    {
+      "date": "2025-01-09",
+      "index": 983.53,
+      "totalValue": 129777.6,
+      "count": 500
+    },
+    {
+      "date": "2025-01-16",
+      "index": 985.61,
+      "totalValue": 131231.86,
+      "count": 500
+    },
+    {
+      "date": "2025-01-23",
+      "index": 982.68,
+      "totalValue": 135324.66,
+      "count": 500
+    },
+    {
+      "date": "2025-01-30",
+      "index": 975.8,
+      "totalValue": 135439.79,
+      "count": 500
+    },
+    {
+      "date": "2025-02-06",
+      "index": 966.47,
+      "totalValue": 134597.54,
+      "count": 500
+    },
+    {
+      "date": "2025-02-13",
+      "index": 983.6,
+      "totalValue": 138256.4,
+      "count": 500
+    },
+    {
+      "date": "2025-02-20",
+      "index": 996.52,
+      "totalValue": 141241.84,
+      "count": 500
+    },
+    {
+      "date": "2025-02-27",
+      "index": 997.71,
+      "totalValue": 141789.79,
+      "count": 500
+    },
+    {
+      "date": "2025-03-06",
+      "index": 1011.61,
+      "totalValue": 145954.98,
+      "count": 500
+    },
+    {
+      "date": "2025-03-13",
+      "index": 1013.6,
+      "totalValue": 147360.73,
+      "count": 500
+    },
+    {
+      "date": "2025-03-20",
+      "index": 1036.02,
+      "totalValue": 150939.35,
+      "count": 500
+    },
+    {
+      "date": "2025-03-27",
+      "index": 1041.98,
+      "totalValue": 152459.44,
+      "count": 500
+    },
+    {
+      "date": "2025-04-03",
+      "index": 1036.51,
+      "totalValue": 152909.34,
+      "count": 500
+    },
+    {
+      "date": "2025-04-10",
+      "index": 1027.42,
+      "totalValue": 154724.27,
+      "count": 500
+    },
+    {
+      "date": "2025-04-17",
+      "index": 1016.52,
+      "totalValue": 153881.88,
+      "count": 500
+    },
+    {
+      "date": "2025-04-24",
+      "index": 1012.7,
+      "totalValue": 153652.31,
+      "count": 500
+    },
+    {
+      "date": "2025-05-01",
+      "index": 1038.08,
+      "totalValue": 157924.59,
+      "count": 500
+    },
+    {
+      "date": "2025-05-08",
+      "index": 1045.54,
+      "totalValue": 159764.59,
+      "count": 500
+    },
+    {
+      "date": "2025-05-15",
+      "index": 1024.5,
+      "totalValue": 156718.5,
+      "count": 500
+    },
+    {
+      "date": "2025-05-22",
+      "index": 1024.83,
+      "totalValue": 157843.78,
+      "count": 500
+    },
+    {
+      "date": "2025-05-29",
+      "index": 1021.28,
+      "totalValue": 158568.11,
+      "count": 500
+    },
+    {
+      "date": "2025-06-05",
+      "index": 1011.37,
+      "totalValue": 158103.17,
+      "count": 500
+    },
+    {
+      "date": "2025-06-12",
+      "index": 1002.53,
+      "totalValue": 158170.16,
+      "count": 500
+    },
+    {
+      "date": "2025-06-19",
+      "index": 1020.16,
+      "totalValue": 161764.59,
+      "count": 500
+    },
+    {
+      "date": "2025-06-26",
+      "index": 994.1,
+      "totalValue": 159096.55,
+      "count": 500
+    },
+    {
+      "date": "2025-07-03",
+      "index": 1005.11,
+      "totalValue": 162135.64,
+      "count": 500
+    },
+    {
+      "date": "2025-07-10",
+      "index": 1015.7,
+      "totalValue": 164424.22,
+      "count": 500
+    },
+    {
+      "date": "2025-07-17",
+      "index": 1010.78,
+      "totalValue": 165512.02,
+      "count": 500
+    },
+    {
+      "date": "2025-07-24",
+      "index": 1035.58,
+      "totalValue": 171762.63,
+      "count": 500
+    },
+    {
+      "date": "2025-07-31",
+      "index": 1032.98,
+      "totalValue": 172208.35,
+      "count": 500
+    },
+    {
+      "date": "2025-08-07",
+      "index": 1047.3,
+      "totalValue": 175371.93,
+      "count": 500
+    },
+    {
+      "date": "2025-08-14",
+      "index": 1053.08,
+      "totalValue": 178059.75,
+      "count": 500
+    },
+    {
+      "date": "2025-08-21",
+      "index": 1040.92,
+      "totalValue": 176903.42,
+      "count": 500
+    },
+    {
+      "date": "2025-08-28",
+      "index": 1036.73,
+      "totalValue": 177296.42,
+      "count": 500
+    },
+    {
+      "date": "2025-09-04",
+      "index": 1039.61,
+      "totalValue": 179392.58,
+      "count": 500
+    },
+    {
+      "date": "2025-09-11",
+      "index": 1048.77,
+      "totalValue": 181542.51,
+      "count": 500
+    },
+    {
+      "date": "2025-09-18",
+      "index": 1051.81,
+      "totalValue": 182563.94,
+      "count": 500
+    },
+    {
+      "date": "2025-09-25",
+      "index": 1062.77,
+      "totalValue": 187410.35,
+      "count": 500
+    },
+    {
+      "date": "2025-10-02",
+      "index": 1058.59,
+      "totalValue": 188438.18,
+      "count": 500
+    },
+    {
+      "date": "2025-10-09",
+      "index": 1069.54,
+      "totalValue": 192086.14,
+      "count": 500
+    },
+    {
+      "date": "2025-10-16",
+      "index": 1066.27,
+      "totalValue": 192348.37,
+      "count": 500
+    },
+    {
+      "date": "2025-10-23",
+      "index": 1057.74,
+      "totalValue": 191719.53,
+      "count": 500
+    },
+    {
+      "date": "2025-10-30",
+      "index": 1058.99,
+      "totalValue": 194688.63,
+      "count": 500
+    },
+    {
+      "date": "2025-11-06",
+      "index": 1032.58,
+      "totalValue": 191855.11,
+      "count": 500
+    },
+    {
+      "date": "2025-11-13",
+      "index": 1048.03,
+      "totalValue": 195986.34,
+      "count": 500
+    },
+    {
+      "date": "2025-11-20",
+      "index": 1042.97,
+      "totalValue": 197287.4,
+      "count": 500
+    },
+    {
+      "date": "2025-11-27",
+      "index": 1041.16,
+      "totalValue": 199245.3,
+      "count": 500
+    },
+    {
+      "date": "2025-12-04",
+      "index": 1057.89,
+      "totalValue": 203306.98,
+      "count": 500
+    },
+    {
+      "date": "2025-12-11",
+      "index": 1066.88,
+      "totalValue": 205857.5,
+      "count": 500
+    },
+    {
+      "date": "2025-12-18",
+      "index": 1055.91,
+      "totalValue": 204527.82,
+      "count": 500
+    },
+    {
+      "date": "2025-12-25",
+      "index": 1038.38,
+      "totalValue": 202264.69,
+      "count": 500
+    },
+    {
+      "date": "2026-01-01",
+      "index": 1046.91,
+      "totalValue": 205783.71,
+      "count": 500
+    },
+    {
+      "date": "2026-01-08",
+      "index": 1051.28,
+      "totalValue": 207776.68,
+      "count": 500
+    },
+    {
+      "date": "2026-01-15",
+      "index": 1034.46,
+      "totalValue": 208108.34,
+      "count": 500
+    },
+    {
+      "date": "2026-01-22",
+      "index": 1038.17,
+      "totalValue": 210755.6,
+      "count": 500
+    },
+    {
+      "date": "2026-01-29",
+      "index": 1024.98,
+      "totalValue": 208889.35,
+      "count": 500
+    },
+    {
+      "date": "2026-02-05",
+      "index": 1033.0,
+      "totalValue": 214674.98,
+      "count": 500
+    },
+    {
+      "date": "2026-02-12",
+      "index": 1006.87,
+      "totalValue": 210161.4,
+      "count": 500
+    },
+    {
+      "date": "2026-02-19",
+      "index": 1007.84,
+      "totalValue": 210837.31,
+      "count": 500
+    },
+    {
       "date": "2026-02-26",
-      "index": 826.6,
-      "totalValue": 155133.19,
-      "count": 500
-    },
-    {
-      "date": "2026-02-27",
-      "index": 832.69,
-      "totalValue": 156275.02,
-      "count": 500
-    },
-    {
-      "date": "2026-02-28",
-      "index": 824.74,
-      "totalValue": 154783.0,
-      "count": 500
-    },
-    {
-      "date": "2026-03-01",
-      "index": 823.09,
-      "totalValue": 154473.5,
-      "count": 500
-    },
-    {
-      "date": "2026-03-02",
-      "index": 831.89,
-      "totalValue": 156125.07,
-      "count": 500
-    },
-    {
-      "date": "2026-03-03",
-      "index": 835.85,
-      "totalValue": 156869.78,
-      "count": 500
-    },
-    {
-      "date": "2026-03-04",
-      "index": 834.89,
-      "totalValue": 156688.34,
+      "index": 1026.0,
+      "totalValue": 216110.88,
       "count": 500
     },
     {
       "date": "2026-03-05",
-      "index": 835.68,
-      "totalValue": 156836.29,
-      "count": 500
-    },
-    {
-      "date": "2026-03-06",
-      "index": 832.87,
-      "totalValue": 156309.83,
-      "count": 500
-    },
-    {
-      "date": "2026-03-07",
-      "index": 840.33,
-      "totalValue": 157709.05,
-      "count": 500
-    },
-    {
-      "date": "2026-03-08",
-      "index": 825.77,
-      "totalValue": 154977.11,
-      "count": 500
-    },
-    {
-      "date": "2026-03-09",
-      "index": 835.54,
-      "totalValue": 156811.59,
-      "count": 500
-    },
-    {
-      "date": "2026-03-10",
-      "index": 834.98,
-      "totalValue": 156705.5,
-      "count": 500
-    },
-    {
-      "date": "2026-03-11",
-      "index": 829.71,
-      "totalValue": 155715.97,
+      "index": 1031.03,
+      "totalValue": 218943.28,
       "count": 500
     },
     {
       "date": "2026-03-12",
-      "index": 835.41,
-      "totalValue": 156785.61,
-      "count": 500
-    },
-    {
-      "date": "2026-03-13",
-      "index": 855.15,
-      "totalValue": 160491.71,
-      "count": 500
-    },
-    {
-      "date": "2026-03-14",
-      "index": 833.95,
-      "totalValue": 156512.96,
-      "count": 500
-    },
-    {
-      "date": "2026-03-15",
-      "index": 849.96,
-      "totalValue": 159516.71,
-      "count": 500
-    },
-    {
-      "date": "2026-03-16",
-      "index": 851.98,
-      "totalValue": 159896.18,
-      "count": 500
-    },
-    {
-      "date": "2026-03-17",
-      "index": 847.02,
-      "totalValue": 158964.65,
-      "count": 500
-    },
-    {
-      "date": "2026-03-18",
-      "index": 846.56,
-      "totalValue": 158879.28,
+      "index": 1026.71,
+      "totalValue": 220214.33,
       "count": 500
     },
     {
       "date": "2026-03-19",
-      "index": 837.28,
-      "totalValue": 157136.53,
-      "count": 500
-    },
-    {
-      "date": "2026-03-20",
-      "index": 834.21,
-      "totalValue": 156561.76,
-      "count": 500
-    },
-    {
-      "date": "2026-03-21",
-      "index": 849.32,
-      "totalValue": 159396.69,
-      "count": 500
-    },
-    {
-      "date": "2026-03-22",
-      "index": 847.33,
-      "totalValue": 159024.0,
-      "count": 500
-    },
-    {
-      "date": "2026-03-23",
-      "index": 853.31,
-      "totalValue": 160145.87,
-      "count": 500
-    },
-    {
-      "date": "2026-03-24",
-      "index": 850.68,
-      "totalValue": 159652.94,
-      "count": 500
-    },
-    {
-      "date": "2026-03-25",
-      "index": 855.78,
-      "totalValue": 160610.23,
+      "index": 1022.67,
+      "totalValue": 221089.47,
       "count": 500
     },
     {
       "date": "2026-03-26",
-      "index": 861.27,
-      "totalValue": 161639.87,
-      "count": 500
-    },
-    {
-      "date": "2026-03-27",
-      "index": 863.2,
-      "totalValue": 162001.7,
-      "count": 500
-    },
-    {
-      "date": "2026-03-28",
-      "index": 863.8,
-      "totalValue": 162114.26,
-      "count": 500
-    },
-    {
-      "date": "2026-03-29",
-      "index": 869.22,
-      "totalValue": 163131.02,
-      "count": 500
-    },
-    {
-      "date": "2026-03-30",
-      "index": 867.96,
-      "totalValue": 162896.04,
-      "count": 500
-    },
-    {
-      "date": "2026-03-31",
-      "index": 860.41,
-      "totalValue": 161478.41,
-      "count": 500
-    },
-    {
-      "date": "2026-04-01",
-      "index": 877.63,
-      "totalValue": 164709.43,
+      "index": 1038.71,
+      "totalValue": 227981.83,
       "count": 500
     },
     {
       "date": "2026-04-02",
-      "index": 884.02,
-      "totalValue": 165909.93,
-      "count": 500
-    },
-    {
-      "date": "2026-04-03",
-      "index": 880.05,
-      "totalValue": 165165.1,
-      "count": 500
-    },
-    {
-      "date": "2026-04-04",
-      "index": 907.97,
-      "totalValue": 170403.57,
-      "count": 500
-    },
-    {
-      "date": "2026-04-05",
-      "index": 899.92,
-      "totalValue": 168893.34,
-      "count": 500
-    },
-    {
-      "date": "2026-04-06",
-      "index": 903.79,
-      "totalValue": 169620.39,
-      "count": 500
-    },
-    {
-      "date": "2026-04-07",
-      "index": 902.0,
-      "totalValue": 169283.08,
-      "count": 500
-    },
-    {
-      "date": "2026-04-08",
-      "index": 905.94,
-      "totalValue": 170023.07,
+      "index": 1035.36,
+      "totalValue": 228943.72,
       "count": 500
     },
     {
       "date": "2026-04-09",
-      "index": 898.21,
-      "totalValue": 168572.73,
-      "count": 500
-    },
-    {
-      "date": "2026-04-10",
-      "index": 909.41,
-      "totalValue": 170675.21,
-      "count": 500
-    },
-    {
-      "date": "2026-04-11",
-      "index": 915.17,
-      "totalValue": 171754.98,
-      "count": 500
-    },
-    {
-      "date": "2026-04-12",
-      "index": 914.41,
-      "totalValue": 171612.55,
-      "count": 500
-    },
-    {
-      "date": "2026-04-13",
-      "index": 908.8,
-      "totalValue": 170559.03,
-      "count": 500
-    },
-    {
-      "date": "2026-04-14",
-      "index": 912.99,
-      "totalValue": 171347.09,
-      "count": 500
-    },
-    {
-      "date": "2026-04-15",
-      "index": 904.16,
-      "totalValue": 169688.35,
+      "index": 1041.42,
+      "totalValue": 231401.74,
       "count": 500
     },
     {
       "date": "2026-04-16",
-      "index": 908.25,
-      "totalValue": 170456.96,
-      "count": 500
-    },
-    {
-      "date": "2026-04-17",
-      "index": 904.44,
-      "totalValue": 169741.79,
-      "count": 500
-    },
-    {
-      "date": "2026-04-18",
-      "index": 907.88,
-      "totalValue": 170387.23,
-      "count": 500
-    },
-    {
-      "date": "2026-04-19",
-      "index": 907.5,
-      "totalValue": 170315.81,
-      "count": 500
-    },
-    {
-      "date": "2026-04-20",
-      "index": 906.03,
-      "totalValue": 170040.58,
-      "count": 500
-    },
-    {
-      "date": "2026-04-21",
-      "index": 905.1,
-      "totalValue": 169865.21,
-      "count": 500
-    },
-    {
-      "date": "2026-04-22",
-      "index": 909.91,
-      "totalValue": 170768.1,
+      "index": 1088.4,
+      "totalValue": 244423.88,
       "count": 500
     },
     {
       "date": "2026-04-23",
-      "index": 919.15,
-      "totalValue": 172501.72,
-      "count": 500
-    },
-    {
-      "date": "2026-04-24",
-      "index": 922.22,
-      "totalValue": 173078.5,
-      "count": 500
-    },
-    {
-      "date": "2026-04-25",
-      "index": 929.83,
-      "totalValue": 174507.58,
-      "count": 500
-    },
-    {
-      "date": "2026-04-26",
-      "index": 923.18,
-      "totalValue": 173258.62,
-      "count": 500
-    },
-    {
-      "date": "2026-04-27",
-      "index": 930.27,
-      "totalValue": 174589.62,
-      "count": 500
-    },
-    {
-      "date": "2026-04-28",
-      "index": 934.23,
-      "totalValue": 175332.95,
-      "count": 500
-    },
-    {
-      "date": "2026-04-29",
-      "index": 925.86,
-      "totalValue": 173761.02,
+      "index": 1105.0,
+      "totalValue": 250123.08,
       "count": 500
     },
     {
       "date": "2026-04-30",
-      "index": 943.6,
-      "totalValue": 177091.02,
-      "count": 500
-    },
-    {
-      "date": "2026-05-01",
-      "index": 952.31,
-      "totalValue": 178726.51,
-      "count": 500
-    },
-    {
-      "date": "2026-05-02",
-      "index": 948.3,
-      "totalValue": 177972.55,
-      "count": 500
-    },
-    {
-      "date": "2026-05-03",
-      "index": 969.39,
-      "totalValue": 181930.24,
-      "count": 500
-    },
-    {
-      "date": "2026-05-04",
-      "index": 967.71,
-      "totalValue": 181615.55,
-      "count": 500
-    },
-    {
-      "date": "2026-05-05",
-      "index": 981.02,
-      "totalValue": 184113.71,
-      "count": 500
-    },
-    {
-      "date": "2026-05-06",
-      "index": 974.56,
-      "totalValue": 182901.57,
+      "index": 1056.25,
+      "totalValue": 244196.78,
       "count": 500
     },
     {
       "date": "2026-05-07",
-      "index": 975.62,
-      "totalValue": 183099.46,
-      "count": 500
-    },
-    {
-      "date": "2026-05-08",
-      "index": 978.9,
-      "totalValue": 183716.02,
-      "count": 500
-    },
-    {
-      "date": "2026-05-09",
-      "index": 985.08,
-      "totalValue": 184875.84,
-      "count": 500
-    },
-    {
-      "date": "2026-05-10",
-      "index": 978.66,
-      "totalValue": 183670.71,
-      "count": 500
-    },
-    {
-      "date": "2026-05-11",
-      "index": 982.08,
-      "totalValue": 184313.18,
-      "count": 500
-    },
-    {
-      "date": "2026-05-12",
-      "index": 975.48,
-      "totalValue": 183073.18,
-      "count": 500
-    },
-    {
-      "date": "2026-05-13",
-      "index": 969.59,
-      "totalValue": 181969.45,
+      "index": 1080.64,
+      "totalValue": 253049.46,
       "count": 500
     },
     {
       "date": "2026-05-14",
-      "index": 974.71,
-      "totalValue": 182929.68,
-      "count": 500
-    },
-    {
-      "date": "2026-05-15",
-      "index": 950.15,
-      "totalValue": 178320.49,
-      "count": 500
-    },
-    {
-      "date": "2026-05-16",
-      "index": 960.22,
-      "totalValue": 180210.56,
-      "count": 500
-    },
-    {
-      "date": "2026-05-17",
-      "index": 971.29,
-      "totalValue": 182288.61,
-      "count": 500
-    },
-    {
-      "date": "2026-05-18",
-      "index": 965.05,
-      "totalValue": 181116.49,
-      "count": 500
-    },
-    {
-      "date": "2026-05-19",
-      "index": 960.48,
-      "totalValue": 180259.07,
-      "count": 500
-    },
-    {
-      "date": "2026-05-20",
-      "index": 960.54,
-      "totalValue": 180269.82,
+      "index": 1017.82,
+      "totalValue": 240916.59,
       "count": 500
     },
     {
       "date": "2026-05-21",
-      "index": 969.27,
-      "totalValue": 181908.88,
-      "count": 500
-    },
-    {
-      "date": "2026-05-22",
-      "index": 984.08,
-      "totalValue": 184688.74,
-      "count": 500
-    },
-    {
-      "date": "2026-05-23",
-      "index": 948.3,
-      "totalValue": 177972.91,
-      "count": 500
-    },
-    {
-      "date": "2026-05-24",
-      "index": 947.35,
-      "totalValue": 177793.89,
-      "count": 500
-    },
-    {
-      "date": "2026-05-25",
-      "index": 938.46,
-      "totalValue": 176125.97,
-      "count": 500
-    },
-    {
-      "date": "2026-05-26",
-      "index": 931.24,
-      "totalValue": 174770.64,
-      "count": 500
-    },
-    {
-      "date": "2026-05-27",
-      "index": 910.54,
-      "totalValue": 170885.94,
+      "index": 1021.6,
+      "totalValue": 244474.84,
       "count": 500
     },
     {
       "date": "2026-05-28",
-      "index": 927.33,
-      "totalValue": 174038.14,
-      "count": 500
-    },
-    {
-      "date": "2026-05-29",
-      "index": 915.97,
-      "totalValue": 171904.8,
-      "count": 500
-    },
-    {
-      "date": "2026-05-30",
-      "index": 924.73,
-      "totalValue": 173548.87,
-      "count": 500
-    },
-    {
-      "date": "2026-05-31",
-      "index": 928.06,
-      "totalValue": 174174.83,
-      "count": 500
-    },
-    {
-      "date": "2026-06-01",
-      "index": 934.84,
-      "totalValue": 175446.65,
-      "count": 500
-    },
-    {
-      "date": "2026-06-02",
-      "index": 936.92,
-      "totalValue": 175836.72,
-      "count": 500
-    },
-    {
-      "date": "2026-06-03",
-      "index": 935.0,
-      "totalValue": 175476.15,
+      "index": 1057.87,
+      "totalValue": 257934.16,
       "count": 500
     },
     {
       "date": "2026-06-04",
-      "index": 941.62,
-      "totalValue": 176719.72,
-      "count": 500
-    },
-    {
-      "date": "2026-06-05",
-      "index": 940.65,
-      "totalValue": 176537.72,
-      "count": 500
-    },
-    {
-      "date": "2026-06-06",
-      "index": 926.15,
-      "totalValue": 173815.4,
-      "count": 500
-    },
-    {
-      "date": "2026-06-07",
-      "index": 920.06,
-      "totalValue": 172672.57,
-      "count": 500
-    },
-    {
-      "date": "2026-06-08",
-      "index": 922.56,
-      "totalValue": 173142.43,
-      "count": 500
-    },
-    {
-      "date": "2026-06-09",
-      "index": 931.2,
-      "totalValue": 174763.56,
-      "count": 500
-    },
-    {
-      "date": "2026-06-10",
-      "index": 936.47,
-      "totalValue": 175752.4,
+      "index": 1053.19,
+      "totalValue": 259802.13,
       "count": 500
     },
     {
       "date": "2026-06-11",
-      "index": 956.15,
-      "totalValue": 179446.49,
-      "count": 500
-    },
-    {
-      "date": "2026-06-12",
-      "index": 954.0,
-      "totalValue": 179043.07,
-      "count": 500
-    },
-    {
-      "date": "2026-06-13",
-      "index": 964.38,
-      "totalValue": 180990.56,
-      "count": 500
-    },
-    {
-      "date": "2026-06-14",
-      "index": 969.5,
-      "totalValue": 181952.31,
-      "count": 500
-    },
-    {
-      "date": "2026-06-15",
-      "index": 969.45,
-      "totalValue": 181942.89,
-      "count": 500
-    },
-    {
-      "date": "2026-06-16",
-      "index": 973.0,
-      "totalValue": 182609.56,
-      "count": 500
-    },
-    {
-      "date": "2026-06-17",
-      "index": 973.81,
-      "totalValue": 182760.72,
+      "index": 1089.81,
+      "totalValue": 270113.56,
       "count": 500
     },
     {
       "date": "2026-06-18",
-      "index": 991.89,
-      "totalValue": 186153.79,
-      "count": 500
-    },
-    {
-      "date": "2026-06-19",
-      "index": 996.79,
-      "totalValue": 187073.52,
-      "count": 500
-    },
-    {
-      "date": "2026-06-20",
-      "index": 1003.63,
-      "totalValue": 188357.54,
-      "count": 500
-    },
-    {
-      "date": "2026-06-21",
-      "index": 998.86,
-      "totalValue": 187462.32,
-      "count": 500
-    },
-    {
-      "date": "2026-06-22",
-      "index": 990.96,
-      "totalValue": 185979.31,
-      "count": 500
-    },
-    {
-      "date": "2026-06-23",
-      "index": 1008.34,
-      "totalValue": 189241.68,
-      "count": 500
-    },
-    {
-      "date": "2026-06-24",
-      "index": 1012.29,
-      "totalValue": 189983.05,
+      "index": 1068.93,
+      "totalValue": 265921.91,
       "count": 500
     },
     {
       "date": "2026-06-25",
-      "index": 1013.51,
-      "totalValue": 190210.51,
-      "count": 500
-    },
-    {
-      "date": "2026-06-26",
-      "index": 1023.33,
-      "totalValue": 192053.98,
-      "count": 500
-    },
-    {
-      "date": "2026-06-27",
-      "index": 1012.4,
-      "totalValue": 190003.68,
-      "count": 500
-    },
-    {
-      "date": "2026-06-28",
-      "index": 1011.32,
-      "totalValue": 189801.29,
-      "count": 500
-    },
-    {
-      "date": "2026-06-29",
-      "index": 1019.7,
-      "totalValue": 191373.53,
-      "count": 500
-    },
-    {
-      "date": "2026-06-30",
-      "index": 1008.05,
-      "totalValue": 189187.63,
-      "count": 500
-    },
-    {
-      "date": "2026-07-01",
-      "index": 1005.83,
-      "totalValue": 188770.79,
+      "index": 1048.7,
+      "totalValue": 262749.07,
       "count": 500
     },
     {
       "date": "2026-07-02",
-      "index": 1023.93,
-      "totalValue": 192167.76,
-      "count": 500
-    },
-    {
-      "date": "2026-07-03",
-      "index": 1023.47,
-      "totalValue": 192080.14,
-      "count": 500
-    },
-    {
-      "date": "2026-07-04",
-      "index": 1019.83,
-      "totalValue": 191398.47,
-      "count": 500
-    },
-    {
-      "date": "2026-07-05",
-      "index": 1026.88,
-      "totalValue": 192720.33,
-      "count": 500
-    },
-    {
-      "date": "2026-07-06",
-      "index": 1021.46,
-      "totalValue": 191703.05,
-      "count": 500
-    },
-    {
-      "date": "2026-07-07",
-      "index": 1009.61,
-      "totalValue": 189479.17,
-      "count": 500
-    },
-    {
-      "date": "2026-07-08",
-      "index": 1002.99,
-      "totalValue": 188237.45,
+      "index": 1078.78,
+      "totalValue": 273094.07,
       "count": 500
     },
     {
       "date": "2026-07-09",
-      "index": 1012.79,
-      "totalValue": 190075.74,
-      "count": 500
-    },
-    {
-      "date": "2026-07-10",
-      "index": 1001.27,
-      "totalValue": 187914.94,
-      "count": 500
-    },
-    {
-      "date": "2026-07-11",
-      "index": 993.07,
-      "totalValue": 186375.95,
-      "count": 500
-    },
-    {
-      "date": "2026-07-12",
-      "index": 993.17,
-      "totalValue": 186393.4,
+      "index": 1076.8,
+      "totalValue": 274488.34,
       "count": 500
     },
     {
       "date": "2026-07-13",
-      "index": 997.31,
-      "totalValue": 187170.85,
+      "index": 1045.3,
+      "totalValue": 267979.6,
       "count": 500
     },
     {
       "date": "2026-07-14",
-      "index": 1006.54,
-      "totalValue": 188902.58,
-      "count": 500
-    },
-    {
-      "date": "2026-07-15",
-      "index": 987.08,
-      "totalValue": 185250.79,
+      "index": 1033.05,
+      "totalValue": 266417.13,
       "count": 500
     }
   ]

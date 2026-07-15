@@ -23,7 +23,7 @@
   <meta name="twitter:description" content="A price-weighted index of the 500 most valuable Pokémon cards, updated daily." />
   <meta name="twitter:image" content="https://poke500.com/og-image.png" />
 
-  <link rel="preconnect" href="https://images.pokemontcg.io" />
+  <link rel="preconnect" href="https://tcgplayer-cdn.tcgplayer.com" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='4' y='4' width='92' height='92' rx='22' fill='%23d93a2b'/%3E%3Cpath d='M20 66 L40 46 L54 58 L80 30' fill='none' stroke='%23fff' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M80 30 l0 16 M80 30 l-16 0' fill='none' stroke='%23fff' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -77,9 +77,9 @@
       <div class="range-toggle" role="group" aria-label="Chart time range">
         <button class="range-btn" data-range="7">1W</button>
         <button class="range-btn" data-range="30">1M</button>
-        <button class="range-btn" data-range="90">3M</button>
+        <button class="range-btn" data-range="180">6M</button>
         <button class="range-btn" data-range="365">1Y</button>
-        <button class="range-btn is-active" data-range="all">MAX</button>
+        <button class="range-btn is-active" data-range="1825">5Y</button>
       </div>
       <figcaption id="chart-caption" class="chart-caption"></figcaption>
     </section>
@@ -142,7 +142,7 @@
         The S&amp;Poké 500 is a price-weighted index of the 500 most valuable English, raw
         (ungraded) Pokémon trading cards, rebased to 1,000 at launch. It moves with the combined market
         price of the basket — up when cards get pricier, down when the market cools. Prices are TCGplayer
-        market data via <a href="https://pokemontcg.io" rel="noopener">pokemontcg.io</a>, refreshed daily.
+        market data via <a href="https://tcgcsv.com" rel="noopener">tcgcsv.com</a>, refreshed daily.
       </p>
       <p class="muted">
         <strong>Not affiliated.</strong> This is an independent, non-commercial fan project. It is not
@@ -153,7 +153,7 @@
         <strong>Trademarks &amp; images.</strong> Pokémon and all related names, characters, and card
         artwork are trademarks and copyright of their respective owners (Nintendo / Creatures Inc. /
         GAME FREAK inc. / The Pokémon Company). Card names and thumbnail images are used here nominatively,
-        solely to identify the cards being priced, and are served by pokemontcg.io. &ldquo;S&amp;P 500&rdquo;
+        solely to identify the cards being priced, and are served via TCGplayer. &ldquo;S&amp;P 500&rdquo;
         is a registered trademark of S&amp;P Dow Jones Indices / S&amp;P Global; &ldquo;S&amp;Poké 500&rdquo;
         is an independent parody name and is not connected with S&amp;P Global.
       </p>

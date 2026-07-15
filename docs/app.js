@@ -10,7 +10,8 @@
   const state = {
     latest: null,
     history: [], // [{date, index, ...}]
-    range: "all",
+    range: "1825", // 5Y — the widest option (effectively "max" until history exceeds it)
+    maxRange: "1825",
     sort: { key: "rank", dir: "asc" },
     search: "",
     constituents: [],
@@ -203,9 +204,8 @@
 
   function visiblePoints() {
     const pts = state.history;
-    if (state.range === "all") return pts;
     const days = parseInt(state.range, 10);
-    if (pts.length <= 2) return pts;
+    if (!days || pts.length <= 2) return pts;
     const cutoff = new Date(pts[pts.length - 1].date + "T00:00:00");
     cutoff.setDate(cutoff.getDate() - days);
     const sliced = pts.filter((p) => new Date(p.date + "T00:00:00") >= cutoff);
@@ -219,7 +219,9 @@
       : 0;
     document.querySelectorAll(".range-btn").forEach((btn) => {
       const r = btn.dataset.range;
-      btn.disabled = r !== "all" && (pts.length < 2 || spanDays < parseInt(r, 10) * 0.5);
+      // The widest button (5Y) always shows everything; narrower ones switch off
+      // until enough history exists to fill roughly half their window.
+      btn.disabled = r !== state.maxRange && (pts.length < 2 || spanDays < parseInt(r, 10) * 0.5);
       btn.classList.toggle("is-active", r === state.range);
       btn.onclick = () => {
         if (btn.disabled) return;
@@ -314,9 +316,10 @@
     svg.appendChild(mk("line", { x1: padL, x2: W - padR, y1: refY, y2: refY,
       stroke: getCss("--faint"), "stroke-width": 1, "stroke-dasharray": "1.5 4",
       "stroke-linecap": "round" }));
+    const coversLaunch = pts[0] === state.history[0];
     const refLbl = mk("text", { x: W - padR, y: refY - 6, "text-anchor": "end",
       fill: getCss("--muted"), "font-size": 11.5, "font-family": "inherit" });
-    refLbl.textContent = (state.range === "all" ? "Launch " : "Prev. ") + fmtIndex(ref);
+    refLbl.textContent = (coversLaunch ? "Launch " : "Prev. ") + fmtIndex(ref);
     svg.appendChild(refLbl);
 
     // area + line
@@ -343,7 +346,9 @@
 
     const first = pts[0].index, last = pts[pts.length - 1].index;
     const chg = ((last / first - 1) * 100);
-    const label = { 7: "past week", 30: "past month", 90: "past 3 months", 365: "past year" }[state.range] || "since launch";
+    const label = coversLaunch
+      ? "since launch"
+      : ({ 7: "past week", 30: "past month", 180: "past 6 months", 365: "past year", 1825: "past 5 years" }[state.range] || "");
     $("#chart-caption").innerHTML =
       `<span class="${chg >= 0 ? "up-ink" : "down-ink"}">${fmtPct(chg)}</span> ${label} · ${pts.length} day${pts.length === 1 ? "" : "s"} of history` +
       (state.latest.sample ? " · sample data" : "");
