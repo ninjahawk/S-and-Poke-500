@@ -11,14 +11,12 @@ often away — you manage end to end).
 
 ## Status (as of 2026-07-15)
 
-> **⚠️ ACTIVE HANDOFF — read `HANDOFF.md` first.** A price-glitch-guard effort is
-> in progress and unfinished. Live site is fine (untouched); new guard code is
-> committed but **not activated** (data not regenerated). One product decision is
-> open (how to present daily Top-Movers, since TCGplayer thin-card data can't
-> support reliable daily moves) plus one ~8-min backfill run to finish. Also
-> shipped & live this session: modal layout-shift fix, chart x-axis year labels,
-> and removal of the "Market mood" row. Full detail + exact finish steps in
-> `HANDOFF.md`.
+> **⚠️ MERGE NEEDED:** the finished price-glitch-guard work (code + regenerated
+> data, index now **1,355.70**) sits on branch **`claude/continue-6bvev4`** and
+> must be merged to `main` to go live (session tooling couldn't push to `main`).
+> Merge before the daily Action's next real build (~20:23 UTC) or
+> `docs/data/*.json` will conflict — if it does, take the branch side; the
+> Action rebuilds on top. Details in `HANDOFF.md` (now a resolution record).
 
 **Done & pushed to `main`:**
 - Google Finance–style UI (`docs/`). Refined off the "candy pill" look → plain
@@ -80,6 +78,26 @@ Prompted by user complaints that prices "look wrong / don't match other sites."
   cards out, divisor rebalanced 235.66→227.68, index continuous (1082.17,
   +0.73%). Old carried cards have `printing: null` until next live pricing —
   self-heals.
+
+**Done 2026-07-15, late session (glitch guard activated + movers gate, branch
+`claude/continue-6bvev4` — needs merge to `main`):**
+- **Movers decision resolved** (the HANDOFF.md open item): per-card daily
+  change exists **only between two guard-confirmed prints**. `guard_prices`
+  reports held prints; `trusted`/`prevTrusted` flags per constituent;
+  unconfirmed endpoints ⇒ `changePct: null` ⇒ card shows "—" and sits out of
+  movers + breadth. Index level itself uses every effective price (honest).
+  Kills the fake +240%/+5,137% movers AND the late-release jumps (Shuckle).
+- **New guard hole fixed**: windows were persisted only for the 500
+  constituents, so any card below the cutoff was trusted unconditionally by
+  the daily build — a one-day spike could enter the basket at a fake price.
+  Now `latest.json` carries a `guardWindows` watch zone (ranks 501–1000).
+- **Frontend**: null `changePct` no longer renders as "New" (uses `isNew`);
+  gated cards show "—" + tooltip; modal says "no confirmed daily change";
+  methodology + movers-panel note explain the confirmed-print rule.
+- **Data regenerated with the guard** (backfill + daily build, all invariants
+  verified): 129 points, base 1,000 @ 2024-02-08 → **1,355.70** (divisor
+  180.3037). Worst surviving mover +28%. The public index number changed
+  materially from 1,082 (old buggy series) — expected and correct.
 
 **Pending — OWNER must do (can't be done via tools):**
 0. **Settings → Pages → Build and deployment → Folder: change `/ (root)` to

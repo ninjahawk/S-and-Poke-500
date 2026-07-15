@@ -179,7 +179,9 @@
         : `<span class="td-thumb thumb-ph">—</span>`;
       const changeCell =
         c.changePct == null
-          ? `<span class="badge-new">New</span>`
+          ? (c.isNew
+              ? `<span class="badge-new">New</span>`
+              : `<span class="delta flat" title="No confirmed day-over-day price for this card — see How these prices work">—</span>`)
           : `<span class="delta ${c.changePct >= 0 ? "up" : "down"}"><span class="tri" aria-hidden="true">${c.changePct >= 0 ? "▲" : "▼"}</span>${Math.abs(c.changePct).toFixed(2)}%</span>`;
       const stale = isStale(c, asOf);
       if (stale) anyStale = true;
@@ -448,7 +450,7 @@
     const delta = $("#cm-delta");
     if (c.changePct == null) {
       delta.className = "delta flat";
-      delta.textContent = "New entry";
+      delta.textContent = c.isNew ? "New entry" : "— no confirmed daily change";
     } else {
       const up = c.changePct >= 0;
       delta.className = "delta " + (up ? "up" : "down");
