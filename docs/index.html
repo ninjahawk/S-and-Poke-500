@@ -178,6 +178,31 @@
     </div>
   </footer>
 
+  <!-- Card lightbox (opened by tapping a row or mover) -->
+  <div id="card-modal" class="card-modal" hidden>
+    <div class="card-modal-backdrop" data-close></div>
+    <div class="card-modal-panel" role="dialog" aria-modal="true" aria-labelledby="cm-name">
+      <button class="card-modal-close" type="button" aria-label="Close" data-close>&#10005;</button>
+      <div class="card-modal-imgwrap">
+        <img id="cm-img" alt="" decoding="async" />
+      </div>
+      <div class="card-modal-body">
+        <h3 id="cm-name" class="cm-name"></h3>
+        <p id="cm-set" class="cm-set"></p>
+        <div class="cm-quote">
+          <span id="cm-price" class="cm-price"></span>
+          <span id="cm-delta" class="delta"></span>
+        </div>
+        <dl class="cm-facts">
+          <div><dt>Rank</dt><dd id="cm-rank"></dd></div>
+          <div><dt>Rarity</dt><dd id="cm-rarity"></dd></div>
+          <div><dt>Prev close</dt><dd id="cm-prev"></dd></div>
+        </dl>
+        <a id="cm-link" class="cm-link" target="_blank" rel="noopener nofollow">View on TCGplayer &#8599;</a>
+      </div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>

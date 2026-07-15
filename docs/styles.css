@@ -308,3 +308,60 @@ main { padding-block: 22px 8px; }
   .col-set { display: none; }
   .brand-chip { display: none; }
 }
+
+/* ---- card lightbox ------------------------------------------------------ */
+.card-modal { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 18px; }
+.card-modal[hidden] { display: none; }
+.card-modal-backdrop {
+  position: absolute; inset: 0; background: rgba(0, 0, 0, 0.55);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  opacity: 0; transition: opacity 0.22s ease;
+}
+.card-modal-panel {
+  position: relative; width: 100%; max-width: 400px; max-height: calc(100vh - 36px);
+  overflow-y: auto; background: var(--bg); border: 1px solid var(--hairline);
+  border-radius: 20px; padding: 18px 18px 20px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+  opacity: 0; transform: translateY(14px) scale(0.97);
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+.card-modal.is-open .card-modal-backdrop { opacity: 1; }
+.card-modal.is-open .card-modal-panel { opacity: 1; transform: none; }
+.card-modal-close {
+  position: absolute; top: 10px; right: 10px; z-index: 2;
+  width: 34px; height: 34px; border: 0; border-radius: 50%;
+  background: var(--chip); color: var(--ink-2); font-size: 15px; line-height: 1;
+  cursor: pointer; display: grid; place-items: center;
+}
+.card-modal-close:hover { background: var(--border); }
+.card-modal-imgwrap { display: grid; place-items: center; padding: 6px 0 2px; }
+#cm-img {
+  max-width: min(78%, 252px); max-height: 44vh; width: auto; height: auto;
+  border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: var(--bg-soft);
+}
+.card-modal-body { padding-top: 14px; text-align: center; }
+.cm-name { font-size: 1.15rem; font-weight: 500; color: var(--ink); margin: 0; }
+.cm-set { margin: 2px 0 10px; color: var(--muted); font-size: 0.85rem; }
+.cm-quote { display: flex; justify-content: center; align-items: baseline; gap: 10px; }
+.cm-price { font-size: 1.7rem; font-weight: 400; color: var(--ink); letter-spacing: -0.5px; }
+.cm-quote .delta { font-size: 0.95rem; }
+.cm-facts {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+  margin: 16px 0 0; padding: 12px 4px 0; border-top: 1px solid var(--hairline);
+}
+.cm-facts div { display: grid; gap: 2px; }
+.cm-facts dt { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--faint); }
+.cm-facts dd { margin: 0; font-size: 0.9rem; color: var(--ink-2); }
+.cm-link {
+  display: inline-block; margin-top: 14px; font-size: 0.85rem;
+  color: var(--blue); text-decoration: none;
+}
+.cm-link:hover { text-decoration: underline; }
+body.modal-open { overflow: hidden; }
+.table tbody tr { cursor: pointer; }
+.mover-item { cursor: pointer; }
+@media (max-width: 480px) {
+  .card-modal { padding: 12px; }
+  .card-modal-panel { padding: 14px 14px 18px; }
+}

@@ -56,6 +56,22 @@ def build():
     prev_prices = {c["id"]: c.get("price") for c in prev.get("constituents", []) if c.get("price")}
     prev_ids = [c["id"] for c in prev.get("constituents", [])] or None
 
+    # Daily change is always measured against the previous *day*, not the
+    # previous run. If the committed snapshot is from earlier today (manual
+    # re-run, workflow retry), its own baseline is yesterday's state -- reuse
+    # that for change/breadth so a same-day refresh can't zero everything out.
+    today_iso = datetime.now(timezone.utc).date().isoformat()
+    if prev.get("asOfDate") == today_iso:
+        baseline_index = prev.get("prevIndex") or prev_index
+        baseline_prices = {
+            c["id"]: c.get("prevPrice")
+            for c in prev.get("constituents", [])
+            if c.get("prevPrice")
+        } or prev_prices
+    else:
+        baseline_index = prev_index
+        baseline_prices = prev_prices
+
     # tc.step_index keys baskets by TCGplayer productId; prev_ids from a stored
     # snapshot are the same string ids, so the chain is continuous. Passing
     # yesterday's prices as `carry` forward-fills any card that has no market
@@ -67,7 +83,7 @@ def build():
     advancing = declining = unchanged = 0
     for rank, (pid, price) in enumerate(step["basket"], start=1):
         meta = catalog[pid]
-        prior = prev_prices.get(pid)
+        prior = baseline_prices.get(pid)
         change_pct = None
         if prior and prior > 0:
             change_pct = round((price / prior - 1) * 100, 2)
@@ -101,15 +117,15 @@ def build():
     now = datetime.now(timezone.utc)
     as_of = now.date().isoformat()
     index_value = step["index"]
-    change_abs = round(index_value - prev_index, 2) if prev_index else None
-    change_pct = round((index_value / prev_index - 1) * 100, 2) if prev_index else None
+    change_abs = round(index_value - baseline_index, 2) if baseline_index else None
+    change_pct = round((index_value / baseline_index - 1) * 100, 2) if baseline_index else None
 
     latest = {
         "sample": False,
         "generated": now.isoformat(),
         "asOfDate": as_of,
         "index": round(index_value, 2),
-        "prevIndex": round(prev_index, 2) if prev_index else None,
+        "prevIndex": round(baseline_index, 2) if baseline_index else None,
         "change": change_abs,
         "changePct": change_pct,
         "divisor": step["divisor"],
