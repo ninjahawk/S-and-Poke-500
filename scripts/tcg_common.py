@@ -299,7 +299,7 @@ def archive_prices(date):
     return prices
 
 
-def guard_prices(raw, windows):
+def guard_prices(raw, windows, held=None):
     """Glitch-filter one day's representative prices against a rolling median.
 
     `raw` is {productId: market price} for the day. `windows` ({pid: [recent
@@ -310,6 +310,13 @@ def guard_prices(raw, windows):
     move). Every raw print still enters the window, so a level that genuinely
     persists eventually dominates the median and is accepted. A card with no
     history yet is trusted.
+
+    If `held` is a set, the productIds whose print was rejected (held at the
+    median) are added to it. Callers use this to tell a *confirmed* print from
+    a held one: per-card daily change is only meaningful between two confirmed
+    prints -- a held card's effective price is a synthetic baseline, and the
+    day the real level is finally accepted would otherwise surface weeks of
+    drift as one giant fake "today" move.
     """
     eff = {}
     for pid, m in raw.items():
@@ -325,6 +332,8 @@ def guard_prices(raw, windows):
             eff[pid] = m            # in-band: trust the real print
         else:
             eff[pid] = round(ref, 2)  # outlier: hold the robust median instead
+            if held is not None:
+                held.add(pid)
         win.append(m)
         if len(win) > _GLITCH_WINDOW:
             win.pop(0)

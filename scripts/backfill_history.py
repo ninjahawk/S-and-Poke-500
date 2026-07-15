@@ -69,11 +69,14 @@ def main():
     carry = {}                # productId -> last-known price (forward-fill)
     carry_dt = {}             # productId -> date last actually priced
     guard_windows = {}        # productId -> [recent prices] (glitch guard state)
+    trusted_cur = set()       # pids whose print the guard accepted on the latest day
+    trusted_prev = set()      # ... and on the day before it (the 1D-change baseline)
 
     for i, d in enumerate(dates):
         ds = d.isoformat()
         # Reject TCGplayer glitch prints before they can fabricate movers/spikes.
-        prices = tc.guard_prices(tc.archive_prices(ds), guard_windows)
+        held = set()
+        prices = tc.guard_prices(tc.archive_prices(ds), guard_windows, held=held)
         if len(prices) < tc.TARGET_SIZE:
             print(f"  {ds}: only {len(prices)} priced -- skipping", flush=True)
             continue
@@ -90,6 +93,8 @@ def main():
         # this is the baseline for the latest day's per-card 1D change. Then fold
         # today's real prices into the forward-fill carry and drop stale entries.
         prev_eff = dict(carry)
+        trusted_prev = trusted_cur
+        trusted_cur = {pid for pid in prices if pid not in held}
         for pid, pr in prices.items():
             carry[pid] = pr
             carry_dt[pid] = d
@@ -116,8 +121,13 @@ def main():
     for rank, (pid, price) in enumerate(last["basket"], start=1):
         meta = catalog[pid]
         prior = (prev_eff or {}).get(pid)
+        # Same rule as the daily builder: a per-card "today %" only exists
+        # between two guard-confirmed prints. A held/carried endpoint would
+        # surface filter drift (e.g. a late-accepted re-rating) as a giant fake
+        # one-day move, so those cards show no daily change instead.
+        pair_ok = pid in trusted_cur and pid in trusted_prev
         change_pct = None
-        if prior and prior > 0:
+        if prior and prior > 0 and pair_ok:
             change_pct = round((price / prior - 1) * 100, 2)
             if change_pct > 0:
                 advancing += 1
@@ -140,6 +150,8 @@ def main():
             "isNew": prior is None and prev_eff is not None,
             # Seed the glitch-guard window so the daily builder continues it.
             "priceWindow": [round(x, 2) for x in guard_windows.get(pid, [])] or None,
+            "trusted": pid in trusted_cur,
+            "prevTrusted": pid in trusted_prev,
         })
 
     movable = [c for c in constituents if c["changePct"] is not None]
@@ -147,6 +159,21 @@ def main():
     fields = ("id", "name", "image", "setName", "price", "prevPrice", "changePct")
     gainers = [{k: c[k] for k in fields} for c in movable[:10] if c["changePct"] > 0]
     losers = [{k: c[k] for k in fields} for c in reversed(movable[-10:]) if c["changePct"] < 0]
+
+    # Guard-window watch zone. The daily builder can only distrust a print if
+    # it has the card's recent history; persisting windows for the basket alone
+    # would leave every card *below* the cutoff "fresh" each day, so a one-day
+    # glitch spike on a near-threshold card would enter the basket at the fake
+    # price. Persist windows for the next 500 cards under the basket too
+    # (ranks 501-1000 by effective price): spikes from the realistic entry zone
+    # get held at their median instead of admitted.
+    basket_ids = set(last["ids"])
+    watch = tc.rank_basket(carry, catalog, size=2 * tc.TARGET_SIZE)
+    guard_out = {
+        pid: [round(x, 2) for x in guard_windows[pid]]
+        for pid, _ in watch
+        if pid not in basket_ids and guard_windows.get(pid)
+    }
 
     change_abs = round(last["index"] - prev_index, 2) if prev_index else None
     change_pct = round((last["index"] / prev_index - 1) * 100, 2) if prev_index else None
@@ -166,6 +193,7 @@ def main():
         "breadth": {"advancing": advancing, "declining": declining, "unchanged": unchanged},
         "gainers": gainers,
         "losers": losers,
+        "guardWindows": guard_out,
         "constituents": constituents,
     }
     history = {"sample": False, "generated": now.isoformat(), "points": points}

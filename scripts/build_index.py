@@ -72,8 +72,14 @@ def build():
         for c in prev.get("constituents", [])
         if c.get("priceWindow")
     }
-    prices = tc.guard_prices(raw_prices, guard_windows)
-    held = {pid for pid in raw_prices if prices.get(pid) != raw_prices.get(pid)}
+    # ... plus the persisted watch zone (ranks 501-1000): without history for
+    # the cards just below the cutoff, a one-day glitch spike on any of them
+    # would be trusted as "new" and enter the basket at the fake price.
+    for pid, win in (prev.get("guardWindows") or {}).items():
+        if win:
+            guard_windows.setdefault(pid, list(win))
+    held = set()
+    prices = tc.guard_prices(raw_prices, guard_windows, held=held)
     prev_divisor = prev.get("divisor")
     prev_index = prev.get("index")
     prev_prices = {c["id"]: c.get("price") for c in prev.get("constituents", []) if c.get("price")}
@@ -100,9 +106,15 @@ def build():
             for c in prev.get("constituents", [])
             if c.get("prevPrice")
         } or prev_prices
+        baseline_trusted = {
+            c["id"]: bool(c.get("prevTrusted")) for c in prev.get("constituents", [])
+        }
     else:
         baseline_index = prev_index
         baseline_prices = prev_prices
+        baseline_trusted = {
+            c["id"]: bool(c.get("trusted")) for c in prev.get("constituents", [])
+        }
 
     # tc.step_index keys baskets by TCGplayer productId; prev_ids from a stored
     # snapshot are the same string ids, so the chain is continuous. Passing
@@ -130,8 +142,20 @@ def build():
     for rank, (pid, price) in enumerate(step["basket"], start=1):
         meta = catalog[pid]
         prior = baseline_prices.get(pid)
+        # Provenance: is this a real price from today's snapshot, or one carried
+        # forward -- either because TCGplayer had no sales data for it, or its
+        # print was held back by the glitch guard as an unconfirmed outlier?
+        live_today = pid in raw_prices and pid not in held
+        # A per-card "today %" is only meaningful between two *confirmed* prints.
+        # If either endpoint was guard-held or carried forward, the difference is
+        # filter drift, not a market move (the worst case: the day a re-rated
+        # level is finally accepted, weeks of climb would print as one fake
+        # +200% "today"). Those cards show no daily change and sit out of the
+        # movers/breadth; TCGplayer's thin-card data can't support day-precision
+        # moves for them, so we don't pretend it does. The index level itself
+        # still reflects every effective price.
         change_pct = None
-        if prior and prior > 0:
+        if prior and prior > 0 and live_today and baseline_trusted.get(pid):
             change_pct = round((price / prior - 1) * 100, 2)
             if change_pct > 0:
                 advancing += 1
@@ -139,10 +163,6 @@ def build():
                 declining += 1
             else:
                 unchanged += 1
-        # Provenance: is this a real price from today's snapshot, or one carried
-        # forward -- either because TCGplayer had no sales data for it, or its
-        # print was held back by the glitch guard as an unconfirmed outlier?
-        live_today = pid in raw_prices and pid not in held
         constituents.append({
             "rank": rank,
             "id": meta["id"],
@@ -159,6 +179,8 @@ def build():
             "printing": (subtypes.get(pid) if live_today else prev_printing.get(pid)) or None,
             "pricedAsOf": today_asof if live_today else prev_priced_asof.get(pid),
             "priceWindow": [round(x, 2) for x in guard_windows.get(pid, [])] or None,
+            "trusted": live_today,
+            "prevTrusted": bool(baseline_trusted.get(pid)),
         })
 
     movable = [c for c in constituents if c["changePct"] is not None]
@@ -166,6 +188,16 @@ def build():
     fields = ("id", "name", "image", "setName", "price", "prevPrice", "changePct")
     gainers = [{k: c[k] for k in fields} for c in movable[:10] if c["changePct"] > 0]
     losers = [{k: c[k] for k in fields} for c in reversed(movable[-10:]) if c["changePct"] < 0]
+
+    # Persist guard windows for the watch zone below the basket (see the
+    # seeding comment above): ranks 501-1000 by today's effective prices.
+    basket_ids = set(step["ids"])
+    watch = tc.rank_basket({**carry, **prices}, catalog, size=2 * tc.TARGET_SIZE)
+    guard_out = {
+        pid: [round(x, 2) for x in guard_windows[pid]]
+        for pid, _ in watch
+        if pid not in basket_ids and guard_windows.get(pid)
+    }
 
     now = datetime.now(timezone.utc)
     as_of = now.date().isoformat()
@@ -191,6 +223,7 @@ def build():
         "breadth": {"advancing": advancing, "declining": declining, "unchanged": unchanged},
         "gainers": gainers,
         "losers": losers,
+        "guardWindows": guard_out,
         "constituents": constituents,
     }
 

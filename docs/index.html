@@ -121,6 +121,8 @@
           <ul id="losers" class="mover-list"></ul>
         </div>
       </div>
+      <p class="table-note">Daily moves are shown only for cards with a confirmed TCGplayer price on
+        both days — see <a href="#methodology">how these prices work</a>.</p>
     </section>
 
     <!-- Constituents -->
@@ -162,6 +164,13 @@
           printings are excluded: they rarely trade on TCGplayer, so their "market" figures there are
           unreliable. If a card has no recent sales data, its last-known price is carried forward for up
           to 70 days (marked &dagger; in the table) rather than showing a false crash to $0.</p>
+          <p>Rarely, TCGplayer prints an obviously wrong market price for a thinly traded card (a
+          $2,000 card flashing $500 for a day). A price far outside a card's own recent range is held
+          at its recent median until later data confirms it, so a source glitch can't move the index.
+          And because a card's <em>daily change</em> is only meaningful between two confirmed prices,
+          cards without one on both days show "—" instead of a percentage and sit out of the movers
+          list — vintage cards that trade a few times a year don't have a reliable day-to-day price,
+          and we'd rather show nothing than a made-up number.</p>
         </div>
         <div class="method-block">
           <h3>Why other sites show different prices</h3>
