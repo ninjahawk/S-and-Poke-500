@@ -1,8 +1,8 @@
 name: Update S&Poke 500 index
 
-# Rebuilds the index from live pokemontcg.io prices and commits the refreshed
-# data files. Scheduled runs only fire on the default branch (GitHub rule); use
-# the "Run workflow" button (workflow_dispatch) to run it on any branch.
+# Rebuilds the index from live TCGCSV (TCGplayer) prices and commits the
+# refreshed data files. Scheduled runs only fire on the default branch (GitHub
+# rule); use the "Run workflow" button (workflow_dispatch) to run it anywhere.
 on:
   schedule:
     - cron: "17 9 * * *" # daily at 09:17 UTC
