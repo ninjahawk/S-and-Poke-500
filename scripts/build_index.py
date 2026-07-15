@@ -96,49 +96,64 @@ def fetch_card_pool():
     """Return {card_id: card_record} for all high-value cards.
 
     Lowers the price threshold until we have a comfortable margin above the
-    target basket size, so the top 500 cut is stable.
+    target basket size, so the top 500 cut is stable. If the price-range query
+    isn't supported or returns too few, falls back to a full scan of priced cards.
     """
     for threshold in (100, 50, 25, 10):
-        pool = {}
-        page = 1
         print(f"Fetching cards with market price >= ${threshold} ...", flush=True)
-        while True:
-            data = api_get(
-                {
-                    "q": price_query(threshold),
-                    "page": page,
-                    "pageSize": PAGE_SIZE,
-                    "select": "id,name,number,rarity,set,images,tcgplayer",
-                }
-            )
-            cards = data.get("data", [])
-            for card in cards:
-                price = representative_price(card)
-                if price <= 0:
-                    continue
-                card_set = card.get("set") or {}
-                pool[card["id"]] = {
-                    "id": card["id"],
-                    "name": card.get("name", "Unknown"),
-                    "number": card.get("number", ""),
-                    "rarity": card.get("rarity", ""),
-                    "setName": card_set.get("name", ""),
-                    "setId": card_set.get("id", ""),
-                    "image": (card.get("images") or {}).get("small", ""),
-                    "price": round(price, 2),
-                }
-            total = data.get("totalCount", 0)
-            if page * PAGE_SIZE >= total or not cards:
-                break
-            page += 1
+        try:
+            pool = paginate({"q": price_query(threshold)})
+        except Exception as err:  # noqa: BLE001 - query may be unsupported; try fallback
+            print(f"  range query failed ({err}); will try a full scan", flush=True)
+            break
         print(f"  collected {len(pool)} priced cards", flush=True)
-        if len(pool) >= TARGET_SIZE + 100:
-            return pool
         if len(pool) >= TARGET_SIZE:
-            # Enough to fill the basket, if not a huge margin. Good enough.
             return pool
+
+    # Fallback: scan every card that carries TCGplayer pricing and filter locally.
+    print("Falling back to full scan of priced cards ...", flush=True)
+    pool = paginate({"q": "tcgplayer.prices.market:*"}, floor=5.0)
+    if len(pool) < TARGET_SIZE:
+        # Last resort: scan all cards, price them ourselves.
+        pool = paginate({}, floor=5.0)
+    print(f"  full scan collected {len(pool)} priced cards", flush=True)
     if not pool:
         raise RuntimeError("No priced cards returned from pokemontcg.io")
+    return pool
+
+
+def paginate(query, floor=0.0):
+    """Page through the cards endpoint, returning {id: card} for priced cards."""
+    pool = {}
+    page = 1
+    while True:
+        params = {
+            "page": page,
+            "pageSize": PAGE_SIZE,
+            "select": "id,name,number,rarity,set,images,tcgplayer",
+        }
+        params.update(query)
+        data = api_get(params)
+        cards = data.get("data", [])
+        for card in cards:
+            price = representative_price(card)
+            if price <= floor:
+                continue
+            card_set = card.get("set") or {}
+            pool[card["id"]] = {
+                "id": card["id"],
+                "name": card.get("name", "Unknown"),
+                "number": card.get("number", ""),
+                "rarity": card.get("rarity", ""),
+                "setName": card_set.get("name", ""),
+                "setId": card_set.get("id", ""),
+                "image": (card.get("images") or {}).get("small", ""),
+                "price": round(price, 2),
+            }
+        total = data.get("totalCount", 0)
+        if not cards or page * PAGE_SIZE >= total or page >= 200:
+            break
+        page += 1
     return pool
 
 
