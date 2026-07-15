@@ -29,10 +29,11 @@ record; `CLAUDE.md` has the current project state.
   ex 84199 held at $500 (snap gated), Lugia 86905 flat $2,225, Shuckle 89189 at
   real $249.99 with the release-day jump gated, Pikachu 88075 gated.
 
-## Still pending
+## Resolution (2026-07-16 ~00:00 UTC)
 
-Everything now sits on branch `claude/continue-6bvev4` and **must be merged to
-`main`** to go live (Pages serves `main`). Merge before the daily Action's next
-real build (~20:23 UTC) or `docs/data/*.json` will conflict — if that happens,
-take the branch side and let the Action rebuild on top. The owner's manual
-to-dos (Pages folder → `/docs`, DNS, HTTPS) are unchanged — see `CLAUDE.md`.
+Merged to `main` (fast-forward push, `4676db7`) under the owner's blanket
+delegation ("keep doing it until it's 100% correct"); Pages deployed it and the
+edge was verified (index 1,355.70, invariants hold, guardWindows present).
+Independently, the owner completed all three manual launch steps (Pages folder
+→ `/docs`, registrar DNS, Enforce HTTPS) — **the site is fully live at
+https://xn--pok500-dva.com/**. Current state lives in `CLAUDE.md`.

@@ -11,12 +11,14 @@ often away — you manage end to end).
 
 ## Status (as of 2026-07-15)
 
-> **⚠️ MERGE NEEDED:** the finished price-glitch-guard work (code + regenerated
-> data, index now **1,355.70**) sits on branch **`claude/continue-6bvev4`** and
-> must be merged to `main` to go live (session tooling couldn't push to `main`).
-> Merge before the daily Action's next real build (~20:23 UTC) or
-> `docs/data/*.json` will conflict — if it does, take the branch side; the
-> Action rebuilds on top. Details in `HANDOFF.md` (now a resolution record).
+> **✅ LAUNCHED (2026-07-16 ~00:00 UTC).** The site is fully live at
+> **https://xn--pok500-dva.com/** (poké500.com): the glitch-guard work was
+> merged to `main` (fast-forward, `4676db7`), Pages deployed it, and the owner
+> completed all three manual steps — Pages folder is now **`/docs`** (app
+> serves at `/`), registrar DNS points at GitHub Pages (apex A + www CNAME
+> verified), and **Enforce HTTPS is on** (HTTP 301s to HTTPS, cert valid).
+> Live index **1,355.70**; edge-verified: data invariants hold, guardWindows
+> present, worst mover +28%. `HANDOFF.md` is a resolution record.
 
 **Done & pushed to `main`:**
 - Google Finance–style UI (`docs/`). Refined off the "candy pill" look → plain
@@ -99,19 +101,13 @@ Prompted by user complaints that prices "look wrong / don't match other sites."
   180.3037). Worst surviving mover +28%. The public index number changed
   materially from 1,082 (old buggy series) — expected and correct.
 
-**Pending — OWNER must do (can't be done via tools):**
-0. **Settings → Pages → Build and deployment → Folder: change `/ (root)` to
-   `/docs`**, Save. Until then the domain serves the README at `/` and the app
-   at `/docs/`; after the switch the app is the homepage and `docs/404.html`,
-   `robots.txt`, `sitemap.xml` serve from `/`.
-1. **DNS for poké500.com** at registrar (currently points at parking IPs):
-   apex `A` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`,
-   `185.199.111.153`; `www` `CNAME` → `ninjahawk.github.io`. Delete any
-   registrar parking A/AAAA records.
-2. **After DNS propagates**: Settings → Pages should show the custom domain
-   with a green DNS check (re-enter `xn--pok500-dva.com` and Save if the field
-   is empty); then enable **Enforce HTTPS** once the cert is issued (can take
-   up to ~24h after DNS is correct).
+**Owner launch steps — ALL DONE (verified 2026-07-16 ~00:00 UTC):**
+0. ✅ Pages folder switched to `/docs` — app is the homepage; `404.html`,
+   `robots.txt`, `sitemap.xml` all serve 200 from `/`.
+1. ✅ Registrar DNS: apex resolves to the four GitHub Pages A records; `www`
+   resolves via CNAME (v4+v6). Parking IPs gone.
+2. ✅ HTTPS: cert issued and **Enforce HTTPS on** — `http://` 301s to
+   `https://xn--pok500-dva.com/`, apex serves 200, `www` 301s to apex.
 - Owner is sticking with **poké500.com only** (not buying ASCII `poke500.com`).
   Accept it; don't re-litigate. SEO/discovery will lean on the "Poké" term + the
   in-page "S&Poké 500" name + Reddit/reference links.
