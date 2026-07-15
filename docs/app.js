@@ -81,7 +81,7 @@
       $("#as-of").innerHTML = esc(
         t.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) +
         ", " + t.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "UTC" }) +
-        " UTC · TCGplayer market prices" + (d.sample ? " · sample data" : "")
+        " UTC" + (d.sample ? " · sample data" : "")
       ) + ' · <a class="asof-link" href="#methodology">How prices work</a>';
     }
   }
@@ -494,19 +494,38 @@
       "https://www.ebay.com/sch/i.html?LH_Complete=1&LH_Sold=1&_nkw=" + encodeURIComponent(q);
 
     // Load the sharpest CDN rendition available, stepping down on error.
+    // The image stays hidden behind a spinner until it has fully loaded, so
+    // the modal never shows a half-rendered card.
     const img = $("#cm-img");
+    const spinner = $("#cm-loading");
     const candidates = c.image
       ? [c.image.replace("_200w", "_in_1000x1000"), c.image.replace("_200w", "_400w"), c.image]
       : [];
     let attempt = 0;
+    img.classList.remove("is-loaded");
+    const reveal = () => {
+      img.classList.add("is-loaded");
+      spinner.hidden = true;
+    };
+    img.onload = reveal;
     img.onerror = () => {
       attempt += 1;
       if (attempt < candidates.length) img.src = candidates[attempt];
-      else img.removeAttribute("src");
+      else {
+        img.removeAttribute("src");
+        spinner.hidden = true;
+      }
     };
     img.alt = c.name;
-    if (candidates.length) img.src = candidates[0];
-    else img.removeAttribute("src");
+    if (candidates.length) {
+      spinner.hidden = false;
+      img.src = candidates[0];
+      // Cached image: some browsers won't refire `load` for a same-URL src.
+      if (img.complete && img.naturalWidth > 0) reveal();
+    } else {
+      img.removeAttribute("src");
+      spinner.hidden = true;
+    }
 
     modal.hidden = false;
     document.body.classList.add("modal-open");
