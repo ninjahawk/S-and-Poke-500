@@ -347,12 +347,22 @@ main { padding-block: 22px 8px; }
   cursor: pointer; display: grid; place-items: center;
 }
 .card-modal-close:hover { background: var(--border); }
-.card-modal-imgwrap { display: grid; place-items: center; padding: 6px 0 2px; }
+.card-modal-imgwrap { display: grid; place-items: center; padding: 6px 0 2px; min-height: 220px; }
+.card-modal-imgwrap > * { grid-area: 1 / 1; }
 #cm-img {
   max-width: min(78%, 252px); max-height: 44vh; width: auto; height: auto;
   border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   background: var(--bg-soft);
+  opacity: 0; transition: opacity 0.25s ease;
 }
+#cm-img.is-loaded { opacity: 1; }
+.cm-spinner {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 3px solid var(--hairline); border-top-color: var(--blue);
+  animation: cm-spin 0.7s linear infinite;
+}
+@keyframes cm-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .cm-spinner { animation-duration: 1.6s; } }
 .card-modal-body { padding-top: 14px; text-align: center; }
 .cm-name { font-size: 1.15rem; font-weight: 500; color: var(--ink); margin: 0; }
 .cm-set { margin: 2px 0 10px; color: var(--muted); font-size: 0.85rem; }
