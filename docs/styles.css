@@ -353,7 +353,11 @@ main { padding-block: 22px 8px; }
   cursor: pointer; display: grid; place-items: center;
 }
 .card-modal-close:hover { background: var(--border); }
-.card-modal-imgwrap { display: grid; place-items: center; padding: 6px 0 2px; min-height: 220px; }
+/* Reserve the image's final display size up front so the panel doesn't jump
+   when the card loads. #cm-img settles at min(78%, 252px) wide; Pokemon cards
+   are 63:88, so its height is min(44vh, 352px). +8px is the wrap's padding
+   (border-box), keeping the image from overflowing the reserved box. */
+.card-modal-imgwrap { display: grid; place-items: center; padding: 6px 0 2px; height: calc(min(44vh, 352px) + 8px); }
 .card-modal-imgwrap > * { grid-area: 1 / 1; }
 #cm-img {
   max-width: min(78%, 252px); max-height: 44vh; width: auto; height: auto;
