@@ -35,7 +35,8 @@
   </script>
 
   <link rel="preconnect" href="https://tcgplayer-cdn.tcgplayer.com" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='4' y='4' width='92' height='92' rx='22' fill='%23d93a2b'/%3E%3Cpath d='M20 66 L40 46 L54 58 L80 30' fill='none' stroke='%23fff' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M80 30 l0 16 M80 30 l-16 0' fill='none' stroke='%23fff' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -48,7 +49,7 @@
     <div class="wrap header-inner">
       <a class="brand" href="./" aria-label="S&Poké 500 home">
         <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 100 100" width="26" height="26"><rect x="4" y="4" width="92" height="92" rx="22" fill="#d93a2b"/><path d="M20 66 L40 46 L54 58 L80 30" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M80 30 l0 16 M80 30 l-16 0" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/></svg>
+          <img src="logo.png" alt="" width="28" height="28" />
         </span>
         <span class="brand-name">S&amp;Poké</span>
         <span class="brand-sub">500</span>
@@ -66,7 +67,7 @@
   <main class="wrap" id="app" aria-busy="true">
     <!-- Quote header -->
     <section class="quote" aria-label="Index quote">
-      <div class="crumb"><span class="crumb-home">Market index</span><span class="crumb-sep">·</span><span class="ticker">.SPK500:TCG</span></div>
+      <div class="crumb"><span class="crumb-home">Market index</span><span class="ticker">SPK500</span></div>
       <h1 class="quote-name">S&amp;Poké 500</h1>
       <div class="quote-line">
         <span id="hero-index" class="quote-price">—</span>
@@ -124,10 +125,10 @@
     </section>
 
     <!-- Constituents -->
-    <section class="constituents" aria-label="The 500 cards">
+    <section class="constituents" aria-label="Top 500 cards">
       <div class="constituents-head">
-        <h2 class="section-title">The 500</h2>
-        <input id="search" class="search" type="search" placeholder="Search cards or sets" aria-label="Search the 500 cards" />
+        <h2 class="section-title">Top 500</h2>
+        <input id="search" class="search" type="search" placeholder="Search cards or sets" aria-label="Search the top 500 cards" />
       </div>
       <div class="table-scroll">
         <table class="table" id="table">
@@ -154,6 +155,8 @@
         (ungraded) Pokémon trading cards, rebased to 1,000 at launch. It moves with the combined market
         price of the basket — up when cards get pricier, down when the market cools. Prices are TCGplayer
         market data via <a href="https://tcgcsv.com" rel="noopener">tcgcsv.com</a>, refreshed daily.
+        Each card is priced by its regular printing (1st Edition printings are out of scope — they trade
+        too thinly on TCGplayer for reliable daily pricing).
       </p>
       <p class="muted">
         <strong>Not affiliated.</strong> This is an independent, non-commercial fan project. It is not
@@ -175,6 +178,31 @@
       </p>
     </div>
   </footer>
+
+  <!-- Card lightbox (opened by tapping a row or mover) -->
+  <div id="card-modal" class="card-modal" hidden>
+    <div class="card-modal-backdrop" data-close></div>
+    <div class="card-modal-panel" role="dialog" aria-modal="true" aria-labelledby="cm-name">
+      <button class="card-modal-close" type="button" aria-label="Close" data-close>&#10005;</button>
+      <div class="card-modal-imgwrap">
+        <img id="cm-img" alt="" decoding="async" />
+      </div>
+      <div class="card-modal-body">
+        <h3 id="cm-name" class="cm-name"></h3>
+        <p id="cm-set" class="cm-set"></p>
+        <div class="cm-quote">
+          <span id="cm-price" class="cm-price"></span>
+          <span id="cm-delta" class="delta"></span>
+        </div>
+        <dl class="cm-facts">
+          <div><dt>Rank</dt><dd id="cm-rank"></dd></div>
+          <div><dt>Rarity</dt><dd id="cm-rarity"></dd></div>
+          <div><dt>Prev close</dt><dd id="cm-prev"></dd></div>
+        </dl>
+        <a id="cm-link" class="cm-link" target="_blank" rel="noopener nofollow">View on TCGplayer &#8599;</a>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>

@@ -57,6 +57,7 @@
     renderMovers(d);
     setupTable(d);
     setupChart();
+    setupCardModal();
     document.getElementById("app").setAttribute("aria-busy", "false");
   }
 
@@ -112,6 +113,7 @@
   function moverItem(c, up) {
     const li = document.createElement("li");
     li.className = "mover-item";
+    li.dataset.id = c.id;
     const thumb = c.image
       ? `<img class="mover-thumb" src="${c.image}" alt="" loading="lazy" />`
       : `<span class="mover-thumb thumb-ph">CARD</span>`;
@@ -177,6 +179,7 @@
     const frag = document.createDocumentFragment();
     for (const c of rows) {
       const tr = document.createElement("tr");
+      tr.dataset.id = c.id;
       const thumb = c.image
         ? `<img class="td-thumb" src="${c.image}" alt="" loading="lazy" />`
         : `<span class="td-thumb thumb-ph">—</span>`;
@@ -255,7 +258,6 @@
 
     if (!pts || pts.length < 2) {
       empty.hidden = false;
-      $("#chart-caption").textContent = "";
       chart.geo = null;
       return;
     }
@@ -348,14 +350,6 @@
     svg.appendChild(chart.crossLine);
     svg.appendChild(chart.dot);
 
-    const first = pts[0].index, last = pts[pts.length - 1].index;
-    const chg = ((last / first - 1) * 100);
-    const label = coversLaunch
-      ? "since launch"
-      : ({ 7: "past week", 30: "past month", 180: "past 6 months", 365: "past year", 1825: "past 5 years" }[state.range] || "");
-    $("#chart-caption").innerHTML =
-      `<span class="${chg >= 0 ? "up-ink" : "down-ink"}">${fmtPct(chg)}</span> ${label} · ${pts.length} day${pts.length === 1 ? "" : "s"} of history` +
-      (state.latest.sample ? " · sample data" : "");
   }
 
   function onScrub(e) {
@@ -393,6 +387,74 @@
     if (chart.dot) chart.dot.setAttribute("opacity", 0);
     const tip = $("#chart-tooltip");
     if (tip) tip.hidden = true;
+  }
+
+  // ---- card lightbox ------------------------------------------------------ //
+  function setupCardModal() {
+    if (setupCardModal.done) return;
+    setupCardModal.done = true;
+    const modal = $("#card-modal");
+    const openFrom = (e) => {
+      const hit = e.target.closest("[data-id]");
+      if (hit) openCard(hit.dataset.id);
+    };
+    $("#table-body").addEventListener("click", openFrom);
+    $("#gainers").addEventListener("click", openFrom);
+    $("#losers").addEventListener("click", openFrom);
+    modal.addEventListener("click", (e) => {
+      if (e.target.closest("[data-close]")) closeCard();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.hidden) closeCard();
+    });
+  }
+
+  function openCard(id) {
+    const c = state.constituents.find((x) => x.id === id);
+    if (!c) return;
+    const modal = $("#card-modal");
+    $("#cm-name").textContent = c.name + (c.number ? ` #${c.number}` : "");
+    $("#cm-set").textContent = c.setName || "";
+    $("#cm-price").textContent = fmtPrice(c.price);
+    const delta = $("#cm-delta");
+    if (c.changePct == null) {
+      delta.className = "delta flat";
+      delta.textContent = "New entry";
+    } else {
+      const up = c.changePct >= 0;
+      delta.className = "delta " + (up ? "up" : "down");
+      delta.innerHTML = `<span class="tri" aria-hidden="true">${up ? "▲" : "▼"}</span>${Math.abs(c.changePct).toFixed(2)}% today`;
+    }
+    $("#cm-rank").textContent = "#" + c.rank + " of 500";
+    $("#cm-rarity").textContent = c.rarity || "—";
+    $("#cm-prev").textContent = fmtPrice(c.prevPrice);
+    $("#cm-link").href = "https://www.tcgplayer.com/product/" + encodeURIComponent(c.id);
+
+    // Load the sharpest CDN rendition available, stepping down on error.
+    const img = $("#cm-img");
+    const candidates = c.image
+      ? [c.image.replace("_200w", "_in_1000x1000"), c.image.replace("_200w", "_400w"), c.image]
+      : [];
+    let attempt = 0;
+    img.onerror = () => {
+      attempt += 1;
+      if (attempt < candidates.length) img.src = candidates[attempt];
+      else img.removeAttribute("src");
+    };
+    img.alt = c.name;
+    if (candidates.length) img.src = candidates[0];
+    else img.removeAttribute("src");
+
+    modal.hidden = false;
+    document.body.classList.add("modal-open");
+    requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add("is-open")));
+  }
+
+  function closeCard() {
+    const modal = $("#card-modal");
+    modal.classList.remove("is-open");
+    document.body.classList.remove("modal-open");
+    setTimeout(() => { modal.hidden = true; }, 220);
   }
 
   // ---- small utils ------------------------------------------------------- //

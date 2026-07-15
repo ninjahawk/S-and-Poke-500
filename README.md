@@ -18,8 +18,14 @@ scheduled job refreshes those files once a day.
   public catalog and market prices. It also publishes a dated price **archive** back
   to **2024-02-08**, which is what the history is reconstructed from.
 - **Price rule:** a card's representative price is the highest TCGplayer *market*
-  price across its printings/conditions (actual sales-derived value — no aspirational
-  listing/mid prices).
+  price across its regular printings (actual sales-derived value — no aspirational
+  listing/mid prices). **1st Edition printings are excluded**: the expensive 1st
+  Edition cards trade off-TCGplayer, so their TCGplayer market prices are thin to
+  outright wrong (e.g. Shadowless 1st Ed Charizard showing a $250 "market" price).
+  Regular/Unlimited printings are liquid on TCGplayer, so every card is priced by
+  those — consistent, verifiable numbers (they also line up with PriceCharting's
+  headline "ungraded" prices). Cards that only exist as 1st Edition still rank via
+  their 1st Edition price.
 - **Method:** price-weighted. The index tracks the combined market price of the
   basket, divided by an *index divisor* — the same trick the S&P 500 uses so the
   number stays continuous when cards enter or leave the top 500. The index is
