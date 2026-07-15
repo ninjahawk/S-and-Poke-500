@@ -223,15 +223,6 @@ main { padding-block: 22px 8px; }
 .delta.down { color: var(--down); }
 .delta.flat { color: var(--muted); }
 
-/* --- Pill (reserved for the single market-mood accent) --- */
-.pill {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-size: 12.5px; font-weight: 500; font-variant-numeric: tabular-nums;
-  border-radius: 8px; padding: 3px 8px; white-space: nowrap;
-}
-.pill.up { background: var(--up-soft); color: var(--up); }
-.pill.down { background: var(--down-soft); color: var(--down); }
-.pill.flat { background: var(--chip); color: var(--muted); }
 .up-ink { color: var(--up); }
 .down-ink { color: var(--down); }
 

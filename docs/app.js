@@ -99,15 +99,6 @@
     const b = d.breadth || { advancing: 0, declining: 0 };
     $("#ov-breadth").innerHTML =
       `<span class="up-ink">${b.advancing}</span> <span style="color:var(--muted)">/</span> <span class="down-ink">${b.declining}</span>`;
-    const net = (b.advancing || 0) - (b.declining || 0);
-    const ratio = b.declining ? b.advancing / b.declining : b.advancing;
-    let mood = "Balanced";
-    if (net > 0 && ratio >= 2) mood = "Bullish";
-    else if (net > 0) mood = "Firm";
-    else if (net < 0 && ratio <= 0.5) mood = "Bearish";
-    else if (net < 0) mood = "Soft";
-    $("#ov-mood").innerHTML =
-      `<span class="pill ${net > 0 ? "up" : net < 0 ? "down" : "flat"}">${mood}</span>`;
   }
 
   // ---- movers ------------------------------------------------------------ //
