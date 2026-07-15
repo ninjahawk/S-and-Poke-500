@@ -155,7 +155,12 @@ main { padding-block: 22px 8px; }
 
 /* --- Chart --- */
 .chart-section { margin-top: 10px; }
-.chart { position: relative; margin: 0; width: 100%; height: 340px; }
+.chart {
+  position: relative; margin: 0; width: 100%; height: 340px;
+  /* Scrubbing = press-and-drag; without these, iOS long-press pops the
+     text-selection / copy callout over the chart labels. */
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+}
 #chart-svg { width: 100%; height: 100%; display: block; touch-action: none; overflow: visible; }
 .chart-empty {
   position: absolute; inset: 0; display: flex; flex-direction: column;
@@ -176,7 +181,8 @@ main { padding-block: 22px 8px; }
 
 /* Range tabs — Google-style pills */
 .range-toggle { display: flex; gap: 4px; margin-top: 12px; border-bottom: 1px solid var(--hairline);
-  padding-bottom: 14px; overflow-x: auto; }
+  padding-bottom: 14px; overflow-x: auto;
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .range-btn {
   border: 0; background: transparent; color: var(--muted); cursor: pointer;
   font: 500 13px var(--font); padding: 7px 14px; border-radius: 18px;
@@ -384,7 +390,6 @@ main { padding-block: 22px 8px; }
   color: var(--blue); text-decoration: none;
 }
 .cm-link:hover { text-decoration: underline; }
-.cm-link-alt { color: var(--muted); }
 .cm-note { margin: 10px 0 0; color: var(--muted); font-size: 0.75rem; }
 .cm-note a { color: var(--muted); text-decoration: underline; }
 body.modal-open { overflow: hidden; }
