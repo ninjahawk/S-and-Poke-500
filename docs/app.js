@@ -70,9 +70,9 @@
       const up = d.changePct >= 0;
       el.className = "quote-change " + (up ? "up" : "down");
       el.innerHTML =
-        `<span class="chg-ic">${up ? "↑" : "↓"}</span>` +
+        `<span class="chg-ic" aria-hidden="true">${up ? "▲" : "▼"}</span>` +
         `<span class="chg-pct">${fmtPct(d.changePct)}</span>` +
-        `<span class="chg-abs">(${(d.change >= 0 ? "+" : "") + fmtIndex(d.change)}) 1D</span>`;
+        `<span class="chg-abs">(${(d.change >= 0 ? "+" : "") + fmtIndex(d.change)}) Today</span>`;
     }
     if (d.generated) {
       const t = new Date(d.generated);
@@ -122,7 +122,7 @@
       </div>
       <div class="mover-meta">
         <span class="mover-price">${fmtPrice(c.price)}</span>
-        <span class="pill ${up ? "up" : "down"}">${up ? "↑" : "↓"} ${Math.abs(c.changePct).toFixed(2)}%</span>
+        <span class="delta ${up ? "up" : "down"}"><span class="tri" aria-hidden="true">${up ? "▲" : "▼"}</span>${Math.abs(c.changePct).toFixed(2)}%</span>
       </div>`;
     return li;
   }
@@ -178,7 +178,7 @@
       const changeCell =
         c.changePct == null
           ? `<span class="badge-new">New</span>`
-          : `<span class="pill ${c.changePct >= 0 ? "up" : "down"}">${c.changePct >= 0 ? "↑" : "↓"} ${Math.abs(c.changePct).toFixed(2)}%</span>`;
+          : `<span class="delta ${c.changePct >= 0 ? "up" : "down"}"><span class="tri" aria-hidden="true">${c.changePct >= 0 ? "▲" : "▼"}</span>${Math.abs(c.changePct).toFixed(2)}%</span>`;
       tr.innerHTML = `
         <td class="td-rank">${c.rank}</td>
         <td><div class="td-card">${thumb}<div><span class="td-name">${esc(c.name)}</span> <span class="td-num">#${esc(c.number || "")}</span></div></div></td>

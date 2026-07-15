@@ -45,6 +45,12 @@ The daily job and the code are already here. To go live:
 4. **Kick off the first real update:** Actions → *Update S&Poké 500 index* → *Run
    workflow*. This replaces the sample data with live prices. After that it runs
    automatically every day.
+5. **(Optional) Custom domain (`poke500.com`):** once the domain is registered and
+   its DNS points at GitHub Pages, add it under Settings → Pages → *Custom domain*.
+   Do this only after DNS is live — GitHub writes a `docs/CNAME` file and starts
+   redirecting the `github.io` URL to the custom domain, so adding it early would
+   break the preview link you're testing on. The page's canonical URL and social
+   card already point at `https://poke500.com/`.
 
 ## Project layout
 
@@ -53,6 +59,7 @@ docs/                     # the website (served by GitHub Pages)
   index.html
   styles.css
   app.js                  # dashboard + interactive S&P-style chart scrubber
+  og-image.png            # social-share card (Open Graph / Twitter preview)
   data/
     latest.json           # today's snapshot: index, movers, all 500 cards
     history.json          # the daily index time series (the chart)
