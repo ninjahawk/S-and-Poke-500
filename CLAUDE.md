@@ -21,19 +21,40 @@ often away — you manage end to end).
 - Range selector capped at **5Y** (1W/1M/6M/1Y/5Y).
 - `docs/CNAME` = `xn--pok500-dva.com`; canonical/OG URLs use it too.
 
+**Done 2026-07-15 (launch-readiness pass):**
+- **Pages is enabled** (owner did it, ~14:50 UTC): Deploy from a branch,
+  `main` / `/docs`. Deploys succeed.
+- **Daily Action verified end-to-end**: workflow_dispatch run succeeded and
+  committed `chore: update S&Poke 500 index (2026-07-15)` to `main`. A 0.00%
+  day right after a same-day refresh is expected (TCGCSV live == latest archive).
+- **CNAME lesson (IMPORTANT — do not repeat):** when the owner typed the custom
+  domain into Settings → Pages, GitHub committed a **root** `CNAME`
+  (`xn--pok500-dva.com`) — that file is what Pages manages/reads for this setup.
+  A session then deleted it as "redundant" (`ba68d3a`), which **deregistered the
+  domain** from GitHub's edge (verified: Host-header probe returned "Site not
+  found" while control domains resolved). Root `CNAME` has been restored;
+  **never delete root `CNAME` or `docs/CNAME`** — keep both, same value.
+  GitHub Pages accepts IDNs in punycode form, per docs and the accepted UI entry.
+- Added: `docs/404.html`, `docs/robots.txt`, `docs/sitemap.xml`, JSON-LD
+  WebSite schema in `index.html`.
+
 **Pending — OWNER must do (can't be done via tools):**
-1. **Enable Pages**: Settings → Pages → Deploy from a branch → `main` / `/docs`.
-   (A stray root `CNAME` they made was removed; ensure source is `/docs`.)
-2. **DNS for poké500.com** at registrar: apex `A` → `185.199.108.153`,
-   `.109.153`, `.110.153`, `.111.153`; `www` `CNAME` → `ninjahawk.github.io`.
-   Then confirm custom domain + enable **Enforce HTTPS**.
+1. **DNS for poké500.com** at registrar (currently points at parking IPs):
+   apex `A` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`,
+   `185.199.111.153`; `www` `CNAME` → `ninjahawk.github.io`. Delete any
+   registrar parking A/AAAA records.
+2. **After DNS propagates**: Settings → Pages should show the custom domain
+   with a green DNS check (re-enter `xn--pok500-dva.com` and Save if the field
+   is empty); then enable **Enforce HTTPS** once the cert is issued (can take
+   up to ~24h after DNS is correct).
 - Owner is sticking with **poké500.com only** (not buying ASCII `poke500.com`).
   Accept it; don't re-litigate. SEO/discovery will lean on the "Poké" term + the
   in-page "S&Poké 500" name + Reddit/reference links.
+- Note: `ninjahawk.github.io/s-and-poke-500/` redirects into the owner's
+  user-site domain (`nathanlangley.dev/s-and-poke-500/`, 404) — that's the
+  user-site redirect, not a bug here; the project serves on its custom domain.
 
 **Possible next steps / not yet done:**
-- Verify the live daily Action end-to-end once Pages is on (Actions → *Update
-  S&Poké 500 index* → Run workflow).
 - Optional: densify recent history to daily (backfill is weekly); add an image
   on/off switch for extra copyright safety; a small About/legal page.
 

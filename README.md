@@ -43,11 +43,12 @@ The daily job and the code are already here. To go live:
 
 1. **Enable Pages:** Settings → Pages → *Build and deployment* → Deploy from a
    branch → Branch: `main`, Folder: `/docs`.
-2. **Custom domain (`poké500.com`):** the repo ships a `docs/CNAME` pointing at
-   `xn--pok500-dva.com` (the punycode form of the internationalized domain
-   `poké500.com`). Point the domain's DNS at GitHub Pages (apex `A`/`AAAA` records +
-   a `www` `CNAME`), then confirm the domain under Settings → Pages and enable
-   *Enforce HTTPS* once the certificate is issued.
+2. **Custom domain (`poké500.com`):** the repo ships `CNAME` files (root **and**
+   `docs/`) pointing at `xn--pok500-dva.com` (the punycode form of the
+   internationalized domain `poké500.com`) — the root one is the file the Pages UI
+   manages; don't delete it. Point the domain's DNS at GitHub Pages (apex `A`
+   records + a `www` `CNAME`), confirm the domain shows under Settings → Pages,
+   and enable *Enforce HTTPS* once the certificate is issued.
 3. **Daily updates** run automatically (see the workflow below). Trigger the first
    one by hand with Actions → *Update S&Poké 500 index* → *Run workflow*.
 
