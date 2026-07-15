@@ -332,11 +332,6 @@
     svg.appendChild(mk("line", { x1: padL, x2: W - padR, y1: refY, y2: refY,
       stroke: getCss("--faint"), "stroke-width": 1, "stroke-dasharray": "1.5 4",
       "stroke-linecap": "round" }));
-    const coversLaunch = pts[0] === state.history[0];
-    const refLbl = mk("text", { x: W - padR, y: refY - 6, "text-anchor": "end",
-      fill: getCss("--muted"), "font-size": 11.5, "font-family": "inherit" });
-    refLbl.textContent = (coversLaunch ? "Launch " : "Prev. ") + fmtIndex(ref);
-    svg.appendChild(refLbl);
 
     // area + line
     let line = "";
