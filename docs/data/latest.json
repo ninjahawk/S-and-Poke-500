@@ -1,204 +1,22 @@
 {
   "sample": false,
-  "generated": "2026-07-15T16:06:35.075068+00:00",
-  "asOfDate": "2026-07-14",
+  "generated": "2026-07-15T16:35:28.097927+00:00",
+  "asOfDate": "2026-07-15",
   "index": 1033.05,
-  "prevIndex": 1045.3,
-  "change": -12.25,
-  "changePct": -1.17,
+  "prevIndex": 1033.05,
+  "change": 0.0,
+  "changePct": 0.0,
   "divisor": 257.892733095627,
   "baseValue": 1000.0,
   "constituentCount": 500,
   "totalValue": 266417.13,
   "breadth": {
-    "advancing": 25,
-    "declining": 19,
-    "unchanged": 456
+    "advancing": 0,
+    "declining": 0,
+    "unchanged": 500
   },
-  "gainers": [
-    {
-      "id": "83504",
-      "name": "Alakazam E4 Lv.X",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/83504_200w.jpg",
-      "setName": "Rising Rivals",
-      "price": 300.0,
-      "prevPrice": 200.0,
-      "changePct": 50.0
-    },
-    {
-      "id": "89312",
-      "name": "Slowking (H22)",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/89312_200w.jpg",
-      "setName": "Aquapolis",
-      "price": 274.5,
-      "prevPrice": 231.33,
-      "changePct": 18.66
-    },
-    {
-      "id": "513804",
-      "name": "Radiant Charizard - 020/159",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/513804_200w.jpg",
-      "setName": "Prize Pack Series Cards",
-      "price": 330.32,
-      "prevPrice": 294.57,
-      "changePct": 12.14
-    },
-    {
-      "id": "86738",
-      "name": "Light Dragonite",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86738_200w.jpg",
-      "setName": "Neo Destiny",
-      "price": 350.22,
-      "prevPrice": 337.59,
-      "changePct": 3.74
-    },
-    {
-      "id": "88630",
-      "name": "Rayquaza",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88630_200w.jpg",
-      "setName": "Dragons Exalted",
-      "price": 659.95,
-      "prevPrice": 637.46,
-      "changePct": 3.53
-    },
-    {
-      "id": "88895",
-      "name": "Salamence - 10/97",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88895_200w.jpg",
-      "setName": "Dragon",
-      "price": 274.06,
-      "prevPrice": 264.8,
-      "changePct": 3.5
-    },
-    {
-      "id": "704873",
-      "name": "Mega Darkrai ex - 116/084",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/704873_200w.jpg",
-      "setName": "Pitch Black",
-      "price": 401.67,
-      "prevPrice": 391.33,
-      "changePct": 2.64
-    },
-    {
-      "id": "642623",
-      "name": "Zekrom ex - 172/086",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/642623_200w.jpg",
-      "setName": "Black Bolt",
-      "price": 571.98,
-      "prevPrice": 562.64,
-      "changePct": 1.66
-    },
-    {
-      "id": "183829",
-      "name": "Gengar & Mimikyu GX (Full Art)",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/183829_200w.jpg",
-      "setName": "SM - Team Up",
-      "price": 330.41,
-      "prevPrice": 325.48,
-      "changePct": 1.51
-    },
-    {
-      "id": "644350",
-      "name": "Victini - 172/086",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/644350_200w.jpg",
-      "setName": "White Flare",
-      "price": 549.43,
-      "prevPrice": 541.43,
-      "changePct": 1.48
-    }
-  ],
-  "losers": [
-    {
-      "id": "86351",
-      "name": "Jolteon Star",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86351_200w.jpg",
-      "setName": "Power Keepers",
-      "price": 1549.97,
-      "prevPrice": 1999.94,
-      "changePct": -22.5
-    },
-    {
-      "id": "84150",
-      "name": "Celebi ex",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84150_200w.jpg",
-      "setName": "Unseen Forces",
-      "price": 336.66,
-      "prevPrice": 355.0,
-      "changePct": -5.17
-    },
-    {
-      "id": "475983",
-      "name": "Charizard VMAX - 020/189",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/475983_200w.jpg",
-      "setName": "Prize Pack Series Cards",
-      "price": 1000.0,
-      "prevPrice": 1049.98,
-      "changePct": -4.76
-    },
-    {
-      "id": "676088",
-      "name": "Pikachu ex - 276/217",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/676088_200w.jpg",
-      "setName": "Ascended Heroes",
-      "price": 1238.14,
-      "prevPrice": 1284.32,
-      "changePct": -3.6
-    },
-    {
-      "id": "478100",
-      "name": "Giratina VSTAR (Secret)",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/478100_200w.jpg",
-      "setName": "Crown Zenith: Galarian Gallery",
-      "price": 393.85,
-      "prevPrice": 402.69,
-      "changePct": -2.2
-    },
-    {
-      "id": "662184",
-      "name": "Mega Charizard X ex - 125/094",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/662184_200w.jpg",
-      "setName": "Phantasmal Flames",
-      "price": 854.25,
-      "prevPrice": 868.25,
-      "changePct": -1.61
-    },
-    {
-      "id": "211452",
-      "name": "Umbreon & Darkrai GX - SM241",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/211452_200w.jpg",
-      "setName": "SM Promos",
-      "price": 263.49,
-      "prevPrice": 267.27,
-      "changePct": -1.41
-    },
-    {
-      "id": "223078",
-      "name": "Charizard V (Secret)",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/223078_200w.jpg",
-      "setName": "Champion's Path",
-      "price": 263.95,
-      "prevPrice": 266.65,
-      "changePct": -1.01
-    },
-    {
-      "id": "477057",
-      "name": "Mewtwo VSTAR",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/477057_200w.jpg",
-      "setName": "Crown Zenith: Galarian Gallery",
-      "price": 301.79,
-      "prevPrice": 304.57,
-      "changePct": -0.91
-    },
-    {
-      "id": "550258",
-      "name": "Greninja ex - 214/167",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/550258_200w.jpg",
-      "setName": "Twilight Masquerade",
-      "price": 398.32,
-      "prevPrice": 401.63,
-      "changePct": -0.82
-    }
-  ],
+  "gainers": [],
+  "losers": [],
   "constituents": [
     {
       "rank": 1,
@@ -462,8 +280,8 @@
       "setId": "1383",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/86351_200w.jpg",
       "price": 1549.97,
-      "prevPrice": 1999.94,
-      "changePct": -22.5,
+      "prevPrice": 1549.97,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -476,8 +294,8 @@
       "setId": "23821",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/610516_200w.jpg",
       "price": 1503.91,
-      "prevPrice": 1511.45,
-      "changePct": -0.5,
+      "prevPrice": 1503.91,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -532,8 +350,8 @@
       "setId": "24541",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/676096_200w.jpg",
       "price": 1334.2,
-      "prevPrice": 1335.96,
-      "changePct": -0.13,
+      "prevPrice": 1334.2,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -630,8 +448,8 @@
       "setId": "24541",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/676088_200w.jpg",
       "price": 1238.14,
-      "prevPrice": 1284.32,
-      "changePct": -3.6,
+      "prevPrice": 1238.14,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -728,8 +546,8 @@
       "setId": "23353",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/534919_200w.jpg",
       "price": 1064.61,
-      "prevPrice": 1063.77,
-      "changePct": 0.08,
+      "prevPrice": 1064.61,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -784,8 +602,8 @@
       "setId": "22880",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/475983_200w.jpg",
       "price": 1000.0,
-      "prevPrice": 1049.98,
-      "changePct": -4.76,
+      "prevPrice": 1000.0,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -882,8 +700,8 @@
       "setId": "1576",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/101520_200w.jpg",
       "price": 972.41,
-      "prevPrice": 972.0,
-      "changePct": 0.04,
+      "prevPrice": 972.41,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -1050,8 +868,8 @@
       "setId": "24448",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/662184_200w.jpg",
       "price": 854.25,
-      "prevPrice": 868.25,
-      "changePct": -1.61,
+      "prevPrice": 854.25,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -1134,8 +952,8 @@
       "setId": "24541",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/676102_200w.jpg",
       "price": 799.96,
-      "prevPrice": 805.5,
-      "changePct": -0.69,
+      "prevPrice": 799.96,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -1302,8 +1120,8 @@
       "setId": "2594",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/197780_200w.jpg",
       "price": 728.76,
-      "prevPrice": 723.15,
-      "changePct": 0.78,
+      "prevPrice": 728.76,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -1512,8 +1330,8 @@
       "setId": "1394",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/88630_200w.jpg",
       "price": 659.95,
-      "prevPrice": 637.46,
-      "changePct": 3.53,
+      "prevPrice": 659.95,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -1708,8 +1526,8 @@
       "setId": "24541",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/676106_200w.jpg",
       "price": 599.58,
-      "prevPrice": 599.79,
-      "changePct": -0.04,
+      "prevPrice": 599.58,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -1834,8 +1652,8 @@
       "setId": "24325",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/642546_200w.jpg",
       "price": 583.68,
-      "prevPrice": 581.45,
-      "changePct": 0.38,
+      "prevPrice": 583.68,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -1890,8 +1708,8 @@
       "setId": "24325",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/642623_200w.jpg",
       "price": 571.98,
-      "prevPrice": 562.64,
-      "changePct": 1.66,
+      "prevPrice": 571.98,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -1988,8 +1806,8 @@
       "setId": "24326",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/644350_200w.jpg",
       "price": 549.43,
-      "prevPrice": 541.43,
-      "changePct": 1.48,
+      "prevPrice": 549.43,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -2660,8 +2478,8 @@
       "setId": "1525",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/97061_200w.jpg",
       "price": 469.1,
-      "prevPrice": 468.27,
-      "changePct": 0.18,
+      "prevPrice": 469.1,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -3010,8 +2828,8 @@
       "setId": "24541",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/676089_200w.jpg",
       "price": 430.84,
-      "prevPrice": 432.07,
-      "changePct": -0.28,
+      "prevPrice": 430.84,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -3262,8 +3080,8 @@
       "setId": "2534",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/201339_200w.jpg",
       "price": 414.41,
-      "prevPrice": 413.4,
-      "changePct": 0.24,
+      "prevPrice": 414.41,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -3304,8 +3122,8 @@
       "setId": "1451",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/123436_200w.jpg",
       "price": 410.31,
-      "prevPrice": 405.59,
-      "changePct": 1.16,
+      "prevPrice": 410.31,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -3374,8 +3192,8 @@
       "setId": "2464",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/194999_200w.jpg",
       "price": 404.02,
-      "prevPrice": 400.44,
-      "changePct": 0.89,
+      "prevPrice": 404.02,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -3402,8 +3220,8 @@
       "setId": "24688",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/704873_200w.jpg",
       "price": 401.67,
-      "prevPrice": 391.33,
-      "changePct": 2.64,
+      "prevPrice": 401.67,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -3584,8 +3402,8 @@
       "setId": "23473",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/550258_200w.jpg",
       "price": 398.32,
-      "prevPrice": 401.63,
-      "changePct": -0.82,
+      "prevPrice": 398.32,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -3598,8 +3416,8 @@
       "setId": "23237",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/517045_200w.jpg",
       "price": 396.99,
-      "prevPrice": 397.07,
-      "changePct": -0.02,
+      "prevPrice": 396.99,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -3640,8 +3458,8 @@
       "setId": "17689",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/478100_200w.jpg",
       "price": 393.85,
-      "prevPrice": 402.69,
-      "changePct": -2.2,
+      "prevPrice": 393.85,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -3780,8 +3598,8 @@
       "setId": "2464",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/195290_200w.jpg",
       "price": 379.77,
-      "prevPrice": 378.12,
-      "changePct": 0.44,
+      "prevPrice": 379.77,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -4074,8 +3892,8 @@
       "setId": "1444",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/86738_200w.jpg",
       "price": 350.22,
-      "prevPrice": 337.59,
-      "changePct": 3.74,
+      "prevPrice": 350.22,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -4256,8 +4074,8 @@
       "setId": "2377",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/183828_200w.jpg",
       "price": 346.42,
-      "prevPrice": 343.06,
-      "changePct": 0.98,
+      "prevPrice": 346.42,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -4396,8 +4214,8 @@
       "setId": "1398",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/84150_200w.jpg",
       "price": 336.66,
-      "prevPrice": 355.0,
-      "changePct": -5.17,
+      "prevPrice": 336.66,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -4410,8 +4228,8 @@
       "setId": "1861",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/197856_200w.jpg",
       "price": 336.52,
-      "prevPrice": 335.28,
-      "changePct": 0.37,
+      "prevPrice": 336.52,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -4536,8 +4354,8 @@
       "setId": "2377",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/183829_200w.jpg",
       "price": 330.41,
-      "prevPrice": 325.48,
-      "changePct": 1.51,
+      "prevPrice": 330.41,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -4550,8 +4368,8 @@
       "setId": "22880",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/513804_200w.jpg",
       "price": 330.32,
-      "prevPrice": 294.57,
-      "changePct": 12.14,
+      "prevPrice": 330.32,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -4788,8 +4606,8 @@
       "setId": "23821",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/610510_200w.jpg",
       "price": 320.36,
-      "prevPrice": 319.52,
-      "changePct": 0.26,
+      "prevPrice": 320.36,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -5110,8 +4928,8 @@
       "setId": "17689",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/477057_200w.jpg",
       "price": 301.79,
-      "prevPrice": 304.57,
-      "changePct": -0.91,
+      "prevPrice": 301.79,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -5124,8 +4942,8 @@
       "setId": "1367",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/83504_200w.jpg",
       "price": 300.0,
-      "prevPrice": 200.0,
-      "changePct": 50.0,
+      "prevPrice": 300.0,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -5712,8 +5530,8 @@
       "setId": "1861",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/205169_200w.jpg",
       "price": 281.58,
-      "prevPrice": 280.62,
-      "changePct": 0.34,
+      "prevPrice": 281.58,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -6076,8 +5894,8 @@
       "setId": "1397",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/89312_200w.jpg",
       "price": 274.5,
-      "prevPrice": 231.33,
-      "changePct": 18.66,
+      "prevPrice": 274.5,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -6104,8 +5922,8 @@
       "setId": "1376",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/88895_200w.jpg",
       "price": 274.06,
-      "prevPrice": 264.8,
-      "changePct": 3.5,
+      "prevPrice": 274.06,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -6272,8 +6090,8 @@
       "setId": "1938",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/226129_200w.jpg",
       "price": 268.8,
-      "prevPrice": 265.15,
-      "changePct": 1.38,
+      "prevPrice": 268.8,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -6384,8 +6202,8 @@
       "setId": "2685",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/223078_200w.jpg",
       "price": 263.95,
-      "prevPrice": 266.65,
-      "changePct": -1.01,
+      "prevPrice": 263.95,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -6398,8 +6216,8 @@
       "setId": "1861",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/211452_200w.jpg",
       "price": 263.49,
-      "prevPrice": 267.27,
-      "changePct": -1.41,
+      "prevPrice": 263.49,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -6454,8 +6272,8 @@
       "setId": "1397",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/87619_200w.jpg",
       "price": 261.0,
-      "prevPrice": 261.66,
-      "changePct": -0.25,
+      "prevPrice": 261.0,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -6608,8 +6426,8 @@
       "setId": "24325",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/642558_200w.jpg",
       "price": 251.87,
-      "prevPrice": 252.19,
-      "changePct": -0.13,
+      "prevPrice": 251.87,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -6888,8 +6706,8 @@
       "setId": "24655",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/693517_200w.jpg",
       "price": 247.54,
-      "prevPrice": 248.14,
-      "changePct": -0.24,
+      "prevPrice": 247.54,
+      "changePct": 0.0,
       "isNew": false
     },
     {
@@ -6930,8 +6748,8 @@
       "setId": "22872",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/512036_200w.jpg",
       "price": 246.56,
-      "prevPrice": 245.79,
-      "changePct": 0.31,
+      "prevPrice": 246.56,
+      "changePct": 0.0,
       "isNew": false
     },
     {
