@@ -78,10 +78,11 @@
     }
     if (d.generated) {
       const t = new Date(d.generated);
-      $("#as-of").textContent =
+      $("#as-of").innerHTML = esc(
         t.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) +
         ", " + t.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "UTC" }) +
-        " UTC · TCGplayer market prices" + (d.sample ? " · sample data" : "");
+        " UTC · TCGplayer market prices" + (d.sample ? " · sample data" : "")
+      ) + ' · <a class="asof-link" href="#methodology">How prices work</a>';
     }
   }
 
@@ -177,6 +178,8 @@
 
     const body = $("#table-body");
     const frag = document.createDocumentFragment();
+    const asOf = (state.latest && state.latest.asOfDate) || null;
+    let anyStale = false;
     for (const c of rows) {
       const tr = document.createElement("tr");
       tr.dataset.id = c.id;
@@ -187,17 +190,24 @@
         c.changePct == null
           ? `<span class="badge-new">New</span>`
           : `<span class="delta ${c.changePct >= 0 ? "up" : "down"}"><span class="tri" aria-hidden="true">${c.changePct >= 0 ? "▲" : "▼"}</span>${Math.abs(c.changePct).toFixed(2)}%</span>`;
+      const stale = isStale(c, asOf);
+      if (stale) anyStale = true;
+      const staleMark = stale
+        ? `<sup class="stale-mark" title="No recent TCGplayer sales data — price carried forward from ${fmtDate(c.pricedAsOf)}">†</sup>`
+        : "";
       tr.innerHTML = `
         <td class="td-rank">${c.rank}</td>
         <td><div class="td-card">${thumb}<div><span class="td-name">${esc(c.name)}</span> <span class="td-num">#${esc(c.number || "")}</span></div></div></td>
         <td class="td-set col-set">${esc(c.setName || "")}</td>
-        <td class="td-price">${fmtPrice(c.price)}</td>
+        <td class="td-price">${fmtPrice(c.price)}${staleMark}</td>
         <td class="td-change">${changeCell}</td>`;
       frag.appendChild(tr);
     }
     body.innerHTML = "";
     body.appendChild(frag);
     $("#table-count").textContent = `${rows.length} of ${state.constituents.length} cards`;
+    const staleNote = $("#stale-note");
+    if (staleNote) staleNote.hidden = !anyStale;
 
     document.querySelectorAll("th.sortable").forEach((th) => {
       th.classList.remove("sorted-asc", "sorted-desc");
@@ -459,7 +469,29 @@
     $("#cm-rank").textContent = "#" + c.rank + " of 500";
     $("#cm-rarity").textContent = c.rarity || "—";
     $("#cm-prev").textContent = fmtPrice(c.prevPrice);
+    $("#cm-printing").textContent = c.printing || "—";
+    $("#cm-asof").textContent = c.pricedAsOf ? fmtDate(c.pricedAsOf) : "—";
+
+    // Flag carried-forward (stale) prices so nobody mistakes them for a live quote.
+    const staleEl = $("#cm-stale");
+    const asOf = (state.latest && state.latest.asOfDate) || null;
+    if (isStale(c, asOf)) {
+      staleEl.textContent =
+        "† No recent TCGplayer sales data for this card — its most recent market price " +
+        `(${fmtDate(c.pricedAsOf)}) is carried forward. Thinly traded cards like this are ` +
+        "where price trackers disagree the most.";
+      staleEl.hidden = false;
+    } else {
+      staleEl.hidden = true;
+    }
+
+    // Compare the same card across sources — different markets, different numbers.
+    const q = `pokemon ${c.name} ${c.setName || ""}`.trim();
     $("#cm-link").href = "https://www.tcgplayer.com/product/" + encodeURIComponent(c.id);
+    $("#cm-link-pc").href =
+      "https://www.pricecharting.com/search-products?type=prices&q=" + encodeURIComponent(q);
+    $("#cm-link-ebay").href =
+      "https://www.ebay.com/sch/i.html?LH_Complete=1&LH_Sold=1&_nkw=" + encodeURIComponent(q);
 
     // Load the sharpest CDN rendition available, stepping down on error.
     const img = $("#cm-img");
@@ -499,6 +531,11 @@
   }
   function shortDate(iso) {
     return new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  }
+  // A price is "stale" when it was carried forward from an earlier day because
+  // TCGplayer had no fresh sales data for the card in the current snapshot.
+  function isStale(c, asOfDate) {
+    return Boolean(c.pricedAsOf && asOfDate && c.pricedAsOf < asOfDate);
   }
   function esc(s) {
     return String(s).replace(/[&<>"']/g, (c) =>

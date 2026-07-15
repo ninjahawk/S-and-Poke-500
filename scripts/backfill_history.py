@@ -32,7 +32,7 @@ LATEST_PATH = os.path.join(DATA_DIR, "latest.json")
 HISTORY_PATH = os.path.join(DATA_DIR, "history.json")
 
 STEP_DAYS = 7    # weekly sampling for history depth (daily granularity accrues going forward)
-STALE_DAYS = 70  # forward-fill a card's last price for at most this long before dropping it
+STALE_DAYS = tc.STALE_DAYS  # forward-fill cap, shared with the daily builder
 
 
 def sample_dates(latest):

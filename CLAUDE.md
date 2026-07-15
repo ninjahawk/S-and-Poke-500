@@ -42,6 +42,36 @@ often away — you manage end to end).
 - Added: `docs/404.html`, `docs/robots.txt`, `docs/sitemap.xml`, JSON-LD
   WebSite schema in `index.html`.
 
+**Done 2026-07-15 (pricing-accuracy audit, branch `claude/pricing-accuracy-sources-wafpwg`):**
+Prompted by user complaints that prices "look wrong / don't match other sites."
+- **Verified pipeline vs source**: our numbers exactly mirror TCGplayer Market
+  Price via TCGCSV (checked 9 products' raw rows). Cross-checked externally:
+  Umbreon ex 161/131 within ~3% of PriceCharting; but thin vintage diverges
+  hugely by *source definition* (Charizard Gold Star DF: $4,000 TCGplayer market
+  vs ~$2,136 PriceCharting ungraded). PriceCharting = eBay solds (mixed
+  condition/auctions); we = TCGplayer sales. Neither is "wrong" — now explained
+  on-site.
+- **Bug fixed — staff promos leaked in**: filter matched only `"(staff"`, but
+  TCGplayer uses `[Staff]`; 31 staff promos (6% of basket!) were in the index.
+  Now excluded (`[staff` + `error]` bracket variants added).
+- **Bug fixed — Japanese-only promos in an "English" index**: 5 cards with JP
+  promo numbers (`227/S-P`, `98/XY-P`, …; e.g. rank-15 Pikachu Stamp Box, $1.6k,
+  never released in English — PriceCharting files it under *Japanese* Promo).
+  Now excluded: collector number ending `-P`.
+- **Bug fixed — no staleness cap in daily builder**: `build_index.py` forward-
+  filled prices forever (backfill had 70d cap). Now shared `tc.STALE_DAYS = 70`,
+  per-card `pricedAsOf` tracked; carried prices age out.
+- **Transparency added**: per-card `printing` (96/500 are priced by Reverse
+  Holofoil — a top confusion source!) + `pricedAsOf` in latest.json; † stale
+  markers in table + legend; card modal shows printing/price-date/stale notice
+  + compare links (TCGplayer, PriceCharting, eBay solds); "How these prices
+  work" methodology section (#methodology) explaining source differences;
+  README updated (removed false "lines up with PriceCharting" claim).
+- **Data regenerated** with the fixed universe (2026-07-15 snapshot): 36 bogus
+  cards out, divisor rebalanced 235.66→227.68, index continuous (1082.17,
+  +0.73%). Old carried cards have `printing: null` until next live pricing —
+  self-heals.
+
 **Pending — OWNER must do (can't be done via tools):**
 0. **Settings → Pages → Build and deployment → Folder: change `/ (root)` to
    `/docs`**, Save. Until then the domain serves the README at `/` and the app

@@ -291,6 +291,19 @@ main { padding-block: 22px 8px; }
 }
 .thumb-ph { display: grid; place-items: center; color: var(--faint); font-size: 8px; }
 .table-count { color: var(--muted); font-size: 12.5px; margin: 12px 0 0; }
+.table-note { color: var(--muted); font-size: 12px; margin: 6px 0 0; max-width: 760px; }
+.stale-mark { color: var(--muted); font-size: 0.75em; margin-left: 2px; cursor: help; }
+
+/* --- Methodology --- */
+.methodology { margin-top: 36px; padding-top: 8px; border-top: 1px solid var(--hairline); }
+.method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.method-block h3 { margin: 0 0 6px; font-size: 14px; font-weight: 600; color: var(--ink); }
+.method-block p { margin: 0; color: var(--ink-2); font-size: 13px; line-height: 1.55; }
+.method-block a { color: var(--blue); text-decoration: none; }
+.method-block a:hover { text-decoration: underline; }
+@media (max-width: 720px) { .method-grid { grid-template-columns: 1fr; gap: 16px; } }
+.asof-link { color: var(--blue); text-decoration: none; }
+.asof-link:hover { text-decoration: underline; }
 
 /* --- Footer --- */
 .site-footer { border-top: 1px solid var(--hairline); margin-top: 36px;
@@ -353,11 +366,17 @@ main { padding-block: 22px 8px; }
 .cm-facts div { display: grid; gap: 2px; }
 .cm-facts dt { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--faint); }
 .cm-facts dd { margin: 0; font-size: 0.9rem; color: var(--ink-2); }
+.cm-stale { margin: 12px 0 0; padding: 8px 10px; border-radius: 8px; background: var(--hairline);
+  color: var(--ink-2); font-size: 0.78rem; line-height: 1.45; text-align: left; }
+.cm-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
 .cm-link {
   display: inline-block; margin-top: 14px; font-size: 0.85rem;
   color: var(--blue); text-decoration: none;
 }
 .cm-link:hover { text-decoration: underline; }
+.cm-link-alt { color: var(--muted); }
+.cm-note { margin: 10px 0 0; color: var(--muted); font-size: 0.75rem; }
+.cm-note a { color: var(--muted); text-decoration: underline; }
 body.modal-open { overflow: hidden; }
 .table tbody tr { cursor: pointer; }
 .mover-item { cursor: pointer; }
