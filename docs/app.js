@@ -1,6 +1,8 @@
-/* The S&Poké 500 — frontend logic (vanilla JS, no dependencies).
-   Reads data/latest.json + data/history.json and renders the dashboard, including
-   an S&P-style interactive chart with a hover/drag scrubber. */
+/* S&Poké 500 — frontend logic (vanilla JS, no dependencies).
+   Reads data/latest.json + data/history.json and renders a Google Finance–style
+   quote page: hero number, gradient area chart with a dotted previous-close
+   reference line and hover/drag scrubber, overview stats, movers, and the
+   searchable table of all 500 cards. */
 
 (() => {
   "use strict";
@@ -11,7 +13,7 @@
     range: "all",
     sort: { key: "rank", dir: "asc" },
     search: "",
-    filtered: [],
+    constituents: [],
   };
 
   const $ = (sel) => document.querySelector(sel);
@@ -27,7 +29,6 @@
   const fmtPct = (n) => (n == null ? "—" : (n >= 0 ? "+" : "") + n.toFixed(2) + "%");
   const fmtDate = (iso) =>
     new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-  const dirClass = (n) => (n > 0 ? "up" : n < 0 ? "down" : "flat");
 
   // ---- data load --------------------------------------------------------- //
   async function load() {
@@ -49,41 +50,52 @@
 
   function renderAll() {
     const d = state.latest;
-    const sample = !!d.sample;
-    const banner = $("#sample-banner");
-    banner.hidden = !sample;
-    if (d.asOfDate) $("#as-of").textContent = "As of " + fmtDate(d.asOfDate) + (sample ? " · sample" : "");
-
+    $("#sample-banner").hidden = !d.sample;
     renderHero(d);
-    renderStats(d);
+    renderOverview(d);
     renderMovers(d);
     setupTable(d);
     setupChart();
     document.getElementById("app").setAttribute("aria-busy", "false");
   }
 
-  // ---- hero -------------------------------------------------------------- //
+  // ---- quote header ------------------------------------------------------ //
   function renderHero(d) {
     $("#hero-index").textContent = fmtIndex(d.index);
     const el = $("#hero-change");
     if (d.changePct == null) {
+      el.className = "quote-change flat";
       el.textContent = "Baseline day — change tracked from tomorrow";
-      el.className = "hero-change flat";
     } else {
-      const cls = dirClass(d.changePct);
-      const arrow = cls === "up" ? "▲" : cls === "down" ? "▼" : "•";
-      el.className = "hero-change " + cls;
-      el.textContent = `${arrow} ${fmtIndex(Math.abs(d.change))} (${fmtPct(d.changePct)}) today`;
+      const up = d.changePct >= 0;
+      el.className = "quote-change " + (up ? "up" : "down");
+      el.innerHTML =
+        `<span class="chg-ic">${up ? "↑" : "↓"}</span>` +
+        `<span class="chg-pct">${fmtPct(d.changePct)}</span>` +
+        `<span class="chg-abs">(${(d.change >= 0 ? "+" : "") + fmtIndex(d.change)}) 1D</span>`;
+    }
+    if (d.generated) {
+      const t = new Date(d.generated);
+      $("#as-of").textContent =
+        t.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) +
+        ", " + t.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: "UTC" }) +
+        " UTC · TCGplayer market prices" + (d.sample ? " · sample data" : "");
     }
   }
 
-  // ---- stats ------------------------------------------------------------- //
-  function renderStats(d) {
-    $("#stat-total").textContent = fmtPrice(d.totalValue);
+  // ---- overview ----------------------------------------------------------- //
+  function renderOverview(d) {
+    $("#ov-prev").textContent = fmtIndex(d.prevIndex);
+    $("#ov-total").textContent = fmtPrice(d.totalValue);
+    const pts = state.history;
+    if (pts.length) {
+      const values = pts.map((p) => p.index);
+      $("#ov-high").textContent = fmtIndex(Math.max(...values));
+      $("#ov-low").textContent = fmtIndex(Math.min(...values));
+    }
     const b = d.breadth || { advancing: 0, declining: 0 };
-    $("#stat-breadth").innerHTML =
-      `<span class="up-ink">${b.advancing}</span> / <span class="down-ink">${b.declining}</span>`;
-    $("#stat-count").textContent = d.constituentCount;
+    $("#ov-breadth").innerHTML =
+      `<span class="up-ink">${b.advancing}</span> <span style="color:var(--muted)">/</span> <span class="down-ink">${b.declining}</span>`;
     const net = (b.advancing || 0) - (b.declining || 0);
     const ratio = b.declining ? b.advancing / b.declining : b.advancing;
     let mood = "Balanced";
@@ -91,9 +103,8 @@
     else if (net > 0) mood = "Firm";
     else if (net < 0 && ratio <= 0.5) mood = "Bearish";
     else if (net < 0) mood = "Soft";
-    const mEl = $("#stat-mood");
-    mEl.textContent = mood;
-    mEl.className = "stat-value " + (net > 0 ? "up-ink" : net < 0 ? "down-ink" : "");
+    $("#ov-mood").innerHTML =
+      `<span class="pill ${net > 0 ? "up" : net < 0 ? "down" : "flat"}">${mood}</span>`;
   }
 
   // ---- movers ------------------------------------------------------------ //
@@ -110,8 +121,8 @@
         <div class="mover-set">${esc(c.setName || "")}</div>
       </div>
       <div class="mover-meta">
-        <div class="mover-price">${fmtPrice(c.price)}</div>
-        <div class="mover-pct ${up ? "up-ink" : "down-ink"}">${fmtPct(c.changePct)}</div>
+        <span class="mover-price">${fmtPrice(c.price)}</span>
+        <span class="pill ${up ? "up" : "down"}">${up ? "↑" : "↓"} ${Math.abs(c.changePct).toFixed(2)}%</span>
       </div>`;
     return li;
   }
@@ -120,11 +131,11 @@
     g.innerHTML = ""; l.innerHTML = "";
     const gainers = d.gainers || [], losers = d.losers || [];
     if (!gainers.length && !losers.length) {
-      const note = "<li class='mover-set'>Day-over-day moves appear after the first update.</li>";
+      const note = "<li class='mover-note'>Day-over-day moves appear after the first update.</li>";
       g.innerHTML = note; l.innerHTML = note; return;
     }
-    gainers.forEach((c) => g.appendChild(moverItem(c, true)));
-    losers.forEach((c) => l.appendChild(moverItem(c, false)));
+    gainers.slice(0, 6).forEach((c) => g.appendChild(moverItem(c, true)));
+    losers.slice(0, 6).forEach((c) => l.appendChild(moverItem(c, false)));
   }
 
   // ---- table ------------------------------------------------------------- //
@@ -166,8 +177,8 @@
         : `<span class="td-thumb thumb-ph">—</span>`;
       const changeCell =
         c.changePct == null
-          ? `<span class="badge-new">NEW</span>`
-          : `<span class="${c.changePct >= 0 ? "up-ink" : "down-ink"}">${fmtPct(c.changePct)}</span>`;
+          ? `<span class="badge-new">New</span>`
+          : `<span class="pill ${c.changePct >= 0 ? "up" : "down"}">${c.changePct >= 0 ? "↑" : "↓"} ${Math.abs(c.changePct).toFixed(2)}%</span>`;
       tr.innerHTML = `
         <td class="td-rank">${c.rank}</td>
         <td><div class="td-card">${thumb}<div><span class="td-name">${esc(c.name)}</span> <span class="td-num">#${esc(c.number || "")}</span></div></div></td>
@@ -202,7 +213,6 @@
   }
 
   function setupChart() {
-    // Enable/disable range buttons based on available history span.
     const pts = state.history;
     const spanDays = pts.length >= 2
       ? (new Date(pts[pts.length - 1].date) - new Date(pts[0].date)) / 86400000
@@ -248,7 +258,7 @@
     const W = svg.clientWidth || 1000;
     const H = svg.clientHeight || 340;
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-    const padL = 52, padR = 14, padT = 14, padB = 26;
+    const padL = 56, padR = 14, padT = 18, padB = 28;
     const plotW = W - padL - padR, plotH = H - padT - padB;
 
     const values = pts.map((p) => p.index);
@@ -264,55 +274,72 @@
     const color = up ? getCss("--up") : getCss("--down");
     const gid = "spk-grad";
 
-    // gradient
+    // gradient fill
     const defs = mk("defs");
     const grad = mk("linearGradient", { id: gid, x1: 0, y1: 0, x2: 0, y2: 1 });
-    grad.appendChild(mk("stop", { offset: "0%", "stop-color": color, "stop-opacity": "0.28" }));
+    grad.appendChild(mk("stop", { offset: "0%", "stop-color": color, "stop-opacity": "0.22" }));
     grad.appendChild(mk("stop", { offset: "100%", "stop-color": color, "stop-opacity": "0" }));
     defs.appendChild(grad);
     svg.appendChild(defs);
 
-    // horizontal gridlines + y labels
-    const ticks = 4;
-    for (let t = 0; t <= ticks; t++) {
-      const v = min + ((max - min) * t) / ticks;
-      const yy = y(v);
-      svg.appendChild(mk("line", { x1: padL, x2: W - padR, y1: yy, y2: yy,
-        stroke: getCss("--grid"), "stroke-width": 1 }));
-      const lbl = mk("text", { x: padL - 8, y: yy + 4, "text-anchor": "end",
-        fill: getCss("--muted"), "font-size": 11, "font-family": "system-ui, sans-serif" });
+    // vertical time gridlines + x labels (Google Finance style)
+    const xticks = pts.length > 6 ? 4 : 2;
+    for (let t = 0; t <= xticks; t++) {
+      const i = Math.round(((pts.length - 1) * t) / xticks);
+      const px = x(i);
+      if (t > 0 && t < xticks) {
+        svg.appendChild(mk("line", { x1: px, x2: px, y1: padT, y2: padT + plotH,
+          stroke: getCss("--hairline"), "stroke-width": 1 }));
+      }
+      const lbl = mk("text", { x: px, y: H - 8,
+        "text-anchor": t === 0 ? "start" : t === xticks ? "end" : "middle",
+        fill: getCss("--muted"), "font-size": 11.5, "font-family": "inherit" });
+      lbl.textContent = shortDate(pts[i].date);
+      svg.appendChild(lbl);
+    }
+
+    // y-axis labels (no horizontal gridlines — clean, like the reference)
+    const yticks = 4;
+    for (let t = 0; t <= yticks; t++) {
+      const v = min + ((max - min) * t) / yticks;
+      const lbl = mk("text", { x: padL - 10, y: y(v) + 4, "text-anchor": "end",
+        fill: getCss("--muted"), "font-size": 11.5, "font-family": "inherit" });
       lbl.textContent = Math.round(v).toLocaleString("en-US");
       svg.appendChild(lbl);
     }
 
-    // x labels (start, mid, end)
-    [0, Math.floor((pts.length - 1) / 2), pts.length - 1].forEach((i, k) => {
-      const t = mk("text", { x: x(i), y: H - 8,
-        "text-anchor": k === 0 ? "start" : k === 2 ? "end" : "middle",
-        fill: getCss("--muted"), "font-size": 11, "font-family": "system-ui, sans-serif" });
-      t.textContent = shortDate(pts[i].date);
-      svg.appendChild(t);
-    });
+    // dotted reference line at range-start value (Google's "prev close" line)
+    const ref = values[0];
+    const refY = y(ref);
+    svg.appendChild(mk("line", { x1: padL, x2: W - padR, y1: refY, y2: refY,
+      stroke: getCss("--faint"), "stroke-width": 1, "stroke-dasharray": "1.5 4",
+      "stroke-linecap": "round" }));
+    const refLbl = mk("text", { x: W - padR, y: refY - 6, "text-anchor": "end",
+      fill: getCss("--muted"), "font-size": 11.5, "font-family": "inherit" });
+    refLbl.textContent = (state.range === "all" ? "Launch " : "Prev. ") + fmtIndex(ref);
+    svg.appendChild(refLbl);
 
     // area + line
-    let line = "", area = "";
+    let line = "";
     pts.forEach((p, i) => {
-      const px = x(i), py = y(p.index);
-      line += (i ? "L" : "M") + px.toFixed(1) + "," + py.toFixed(1) + " ";
+      line += (i ? "L" : "M") + x(i).toFixed(1) + "," + y(p.index).toFixed(1) + " ";
     });
-    area = line + `L${x(pts.length - 1).toFixed(1)},${(padT + plotH).toFixed(1)} L${x(0).toFixed(1)},${(padT + plotH).toFixed(1)} Z`;
+    const area = line + `L${x(pts.length - 1).toFixed(1)},${(padT + plotH).toFixed(1)} L${x(0).toFixed(1)},${(padT + plotH).toFixed(1)} Z`;
     svg.appendChild(mk("path", { d: area, fill: `url(#${gid})` }));
     svg.appendChild(mk("path", { d: line, fill: "none", stroke: color,
       "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
 
+    // latest-point dot (always visible, like Google's live dot)
+    svg.appendChild(mk("circle", { cx: x(pts.length - 1), cy: y(values[values.length - 1]),
+      r: 4, fill: color }));
+
     // scrubber elements (hidden until hover)
-    chart.crossLine = mk("line", { class: "cross", stroke: getCss("--axis"),
-      "stroke-width": 1, "stroke-dasharray": "3 3", y1: padT, y2: padT + plotH, opacity: 0 });
-    chart.dot = mk("circle", { r: 4.5, fill: color, stroke: getCss("--surface"),
+    chart.crossLine = mk("line", { stroke: getCss("--border"),
+      "stroke-width": 1, y1: padT, y2: padT + plotH, opacity: 0 });
+    chart.dot = mk("circle", { r: 4.5, fill: color, stroke: getCss("--bg"),
       "stroke-width": 2, opacity: 0 });
     svg.appendChild(chart.crossLine);
     svg.appendChild(chart.dot);
-    chart.color = color;
 
     const first = pts[0].index, last = pts[pts.length - 1].index;
     const chg = ((last / first - 1) * 100);
@@ -328,7 +355,6 @@
     const svg = $("#chart-svg");
     const rect = svg.getBoundingClientRect();
     const relX = ((e.clientX - rect.left) / rect.width) * geo.W;
-    // nearest data index
     let i = Math.round(((relX - geo.padL) / geo.plotW) * (geo.pts.length - 1));
     i = Math.max(0, Math.min(geo.pts.length - 1, i));
     const p = geo.pts[i];
@@ -347,9 +373,7 @@
       `<div class="tt-date">${fmtDate(p.date)}</div>` +
       `<div class="tt-delta ${chg >= 0 ? "up-ink" : "down-ink"}">${fmtPct(chg)} <span style="color:var(--muted)">vs. start</span></div>`;
     tip.hidden = false;
-    const figRect = $("#chart").getBoundingClientRect();
-    const tipX = (px / geo.W) * rect.width; // px within svg
-    let left = tipX;
+    let left = (px / geo.W) * rect.width;
     const half = tip.offsetWidth / 2;
     left = Math.max(half + 2, Math.min(rect.width - half - 2, left));
     tip.style.left = left + "px";
