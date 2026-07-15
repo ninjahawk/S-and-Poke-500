@@ -1,39 +1,207 @@
 {
   "sample": false,
-  "generated": "2026-07-15T16:35:28.097927+00:00",
-  "asOfDate": "2026-07-15",
-  "index": 1033.05,
-  "prevIndex": 1033.05,
-  "change": 0.0,
-  "changePct": 0.0,
-  "divisor": 257.892733095627,
+  "generated": "2026-07-15T19:17:35.539688+00:00",
+  "asOfDate": "2026-07-14",
+  "index": 1074.32,
+  "prevIndex": 1087.52,
+  "change": -13.2,
+  "changePct": -1.21,
+  "divisor": 235.65705086148947,
   "baseValue": 1000.0,
   "constituentCount": 500,
-  "totalValue": 266417.13,
+  "totalValue": 253171.28,
   "breadth": {
-    "advancing": 0,
-    "declining": 0,
-    "unchanged": 500
+    "advancing": 27,
+    "declining": 22,
+    "unchanged": 451
   },
-  "gainers": [],
-  "losers": [],
+  "gainers": [
+    {
+      "id": "83504",
+      "name": "Alakazam E4 Lv.X",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/83504_200w.jpg",
+      "setName": "Rising Rivals",
+      "price": 300.0,
+      "prevPrice": 200.0,
+      "changePct": 50.0
+    },
+    {
+      "id": "89312",
+      "name": "Slowking (H22)",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/89312_200w.jpg",
+      "setName": "Aquapolis",
+      "price": 274.5,
+      "prevPrice": 231.33,
+      "changePct": 18.66
+    },
+    {
+      "id": "513804",
+      "name": "Radiant Charizard - 020/159",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/513804_200w.jpg",
+      "setName": "Prize Pack Series Cards",
+      "price": 330.32,
+      "prevPrice": 294.57,
+      "changePct": 12.14
+    },
+    {
+      "id": "86734",
+      "name": "Light Arcanine",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86734_200w.jpg",
+      "setName": "Neo Destiny",
+      "price": 360.5,
+      "prevPrice": 333.13,
+      "changePct": 8.22
+    },
+    {
+      "id": "86738",
+      "name": "Light Dragonite",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86738_200w.jpg",
+      "setName": "Neo Destiny",
+      "price": 350.22,
+      "prevPrice": 337.59,
+      "changePct": 3.74
+    },
+    {
+      "id": "88630",
+      "name": "Rayquaza",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88630_200w.jpg",
+      "setName": "Dragons Exalted",
+      "price": 659.95,
+      "prevPrice": 637.46,
+      "changePct": 3.53
+    },
+    {
+      "id": "88895",
+      "name": "Salamence - 10/97",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88895_200w.jpg",
+      "setName": "Dragon",
+      "price": 274.06,
+      "prevPrice": 264.8,
+      "changePct": 3.5
+    },
+    {
+      "id": "704873",
+      "name": "Mega Darkrai ex - 116/084",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/704873_200w.jpg",
+      "setName": "Pitch Black",
+      "price": 401.67,
+      "prevPrice": 391.33,
+      "changePct": 2.64
+    },
+    {
+      "id": "642623",
+      "name": "Zekrom ex - 172/086",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/642623_200w.jpg",
+      "setName": "Black Bolt",
+      "price": 571.98,
+      "prevPrice": 562.64,
+      "changePct": 1.66
+    },
+    {
+      "id": "183829",
+      "name": "Gengar & Mimikyu GX (Full Art)",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/183829_200w.jpg",
+      "setName": "SM - Team Up",
+      "price": 330.41,
+      "prevPrice": 325.48,
+      "changePct": 1.51
+    }
+  ],
+  "losers": [
+    {
+      "id": "86351",
+      "name": "Jolteon Star",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86351_200w.jpg",
+      "setName": "Power Keepers",
+      "price": 1549.97,
+      "prevPrice": 1999.94,
+      "changePct": -22.5
+    },
+    {
+      "id": "84150",
+      "name": "Celebi ex",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84150_200w.jpg",
+      "setName": "Unseen Forces",
+      "price": 336.66,
+      "prevPrice": 355.0,
+      "changePct": -5.17
+    },
+    {
+      "id": "475983",
+      "name": "Charizard VMAX - 020/189",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/475983_200w.jpg",
+      "setName": "Prize Pack Series Cards",
+      "price": 1000.0,
+      "prevPrice": 1049.98,
+      "changePct": -4.76
+    },
+    {
+      "id": "676088",
+      "name": "Pikachu ex - 276/217",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/676088_200w.jpg",
+      "setName": "Ascended Heroes",
+      "price": 1238.14,
+      "prevPrice": 1284.32,
+      "changePct": -3.6
+    },
+    {
+      "id": "478100",
+      "name": "Giratina VSTAR (Secret)",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/478100_200w.jpg",
+      "setName": "Crown Zenith: Galarian Gallery",
+      "price": 393.85,
+      "prevPrice": 402.69,
+      "changePct": -2.2
+    },
+    {
+      "id": "662184",
+      "name": "Mega Charizard X ex - 125/094",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/662184_200w.jpg",
+      "setName": "Phantasmal Flames",
+      "price": 854.25,
+      "prevPrice": 868.25,
+      "changePct": -1.61
+    },
+    {
+      "id": "478101",
+      "name": "Arceus VSTAR (Secret)",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/478101_200w.jpg",
+      "setName": "Crown Zenith: Galarian Gallery",
+      "price": 234.66,
+      "prevPrice": 238.45,
+      "changePct": -1.59
+    },
+    {
+      "id": "211452",
+      "name": "Umbreon & Darkrai GX - SM241",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/211452_200w.jpg",
+      "setName": "SM Promos",
+      "price": 263.49,
+      "prevPrice": 267.27,
+      "changePct": -1.41
+    },
+    {
+      "id": "223078",
+      "name": "Charizard V (Secret)",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/223078_200w.jpg",
+      "setName": "Champion's Path",
+      "price": 263.95,
+      "prevPrice": 266.65,
+      "changePct": -1.01
+    },
+    {
+      "id": "477057",
+      "name": "Mewtwo VSTAR",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/477057_200w.jpg",
+      "setName": "Crown Zenith: Galarian Gallery",
+      "price": 301.79,
+      "prevPrice": 304.57,
+      "changePct": -0.91
+    }
+  ],
   "constituents": [
     {
       "rank": 1,
-      "id": "89171",
-      "name": "Shining Tyranitar",
-      "number": "113/105",
-      "rarity": "Secret Rare",
-      "setName": "Neo Destiny",
-      "setId": "1444",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/89171_200w.jpg",
-      "price": 4249.99,
-      "prevPrice": 4249.99,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 2,
       "id": "84198",
       "name": "Charizard Star (Delta Species)",
       "number": "100/101",
@@ -47,7 +215,7 @@
       "isNew": false
     },
     {
-      "rank": 3,
+      "rank": 2,
       "id": "89163",
       "name": "Shining Charizard",
       "number": "107/105",
@@ -61,7 +229,7 @@
       "isNew": false
     },
     {
-      "rank": 4,
+      "rank": 3,
       "id": "183899",
       "name": "Latias & Latios GX (Alternate Full Art)",
       "number": "170/181",
@@ -75,7 +243,7 @@
       "isNew": false
     },
     {
-      "rank": 5,
+      "rank": 4,
       "id": "88111",
       "name": "Pikachu Star",
       "number": "104/110",
@@ -89,7 +257,7 @@
       "isNew": false
     },
     {
-      "rank": 6,
+      "rank": 5,
       "id": "90046",
       "name": "Treecko Star",
       "number": "109/109",
@@ -103,7 +271,7 @@
       "isNew": false
     },
     {
-      "rank": 7,
+      "rank": 6,
       "id": "246723",
       "name": "Umbreon VMAX (Alternate Art Secret)",
       "number": "215/203",
@@ -117,7 +285,7 @@
       "isNew": false
     },
     {
-      "rank": 8,
+      "rank": 7,
       "id": "86905",
       "name": "Lugia",
       "number": "149/147",
@@ -131,7 +299,7 @@
       "isNew": false
     },
     {
-      "rank": 9,
+      "rank": 8,
       "id": "87408",
       "name": "Mew Star (Delta Species)",
       "number": "101/101",
@@ -145,7 +313,7 @@
       "isNew": false
     },
     {
-      "rank": 10,
+      "rank": 9,
       "id": "106999",
       "name": "Charizard",
       "number": "004/102",
@@ -159,7 +327,7 @@
       "isNew": false
     },
     {
-      "rank": 11,
+      "rank": 10,
       "id": "86552",
       "name": "Kyogre Star",
       "number": "112/113",
@@ -173,7 +341,7 @@
       "isNew": false
     },
     {
-      "rank": 12,
+      "rank": 11,
       "id": "84196",
       "name": "Charizard",
       "number": "003/110",
@@ -187,7 +355,7 @@
       "isNew": false
     },
     {
-      "rank": 13,
+      "rank": 12,
       "id": "85503",
       "name": "Flareon Star",
       "number": "100/108",
@@ -201,7 +369,7 @@
       "isNew": false
     },
     {
-      "rank": 14,
+      "rank": 13,
       "id": "89965",
       "name": "Torchic Star",
       "number": "108/109",
@@ -215,21 +383,7 @@
       "isNew": false
     },
     {
-      "rank": 15,
-      "id": "89162",
-      "name": "Shining Celebi",
-      "number": "106/105",
-      "rarity": "Secret Rare",
-      "setName": "Neo Destiny",
-      "setId": "1444",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/89162_200w.jpg",
-      "price": 1801.0,
-      "prevPrice": 1801.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 16,
+      "rank": 14,
       "id": "183830",
       "name": "Gengar & Mimikyu GX (Alternate Full Art)",
       "number": "165/181",
@@ -243,7 +397,7 @@
       "isNew": false
     },
     {
-      "rank": 17,
+      "rank": 15,
       "id": "257103",
       "name": "Pikachu - 227/S-P",
       "number": "227/S-P",
@@ -257,7 +411,7 @@
       "isNew": false
     },
     {
-      "rank": 18,
+      "rank": 16,
       "id": "85670",
       "name": "Gengar",
       "number": "011/110",
@@ -271,7 +425,7 @@
       "isNew": false
     },
     {
-      "rank": 19,
+      "rank": 17,
       "id": "86351",
       "name": "Jolteon Star",
       "number": "101/108",
@@ -280,12 +434,12 @@
       "setId": "1383",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/86351_200w.jpg",
       "price": 1549.97,
-      "prevPrice": 1549.97,
-      "changePct": 0.0,
+      "prevPrice": 1999.94,
+      "changePct": -22.5,
       "isNew": false
     },
     {
-      "rank": 20,
+      "rank": 18,
       "id": "610516",
       "name": "Umbreon ex - 161/131",
       "number": "161/131",
@@ -294,12 +448,12 @@
       "setId": "23821",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/610516_200w.jpg",
       "price": 1503.91,
-      "prevPrice": 1503.91,
-      "changePct": 0.0,
+      "prevPrice": 1511.45,
+      "changePct": -0.5,
       "isNew": false
     },
     {
-      "rank": 21,
+      "rank": 19,
       "id": "86672",
       "name": "Latios Star",
       "number": "106/107",
@@ -313,7 +467,7 @@
       "isNew": false
     },
     {
-      "rank": 22,
+      "rank": 20,
       "id": "167080",
       "name": "Rocket's Mewtwo - 8 [Winner]",
       "number": "008/009",
@@ -327,7 +481,7 @@
       "isNew": false
     },
     {
-      "rank": 23,
+      "rank": 21,
       "id": "85680",
       "name": "Gengar ex",
       "number": "108/112",
@@ -341,7 +495,7 @@
       "isNew": false
     },
     {
-      "rank": 24,
+      "rank": 22,
       "id": "676096",
       "name": "Mega Gengar ex - 284/217",
       "number": "284/217",
@@ -350,40 +504,12 @@
       "setId": "24541",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/676096_200w.jpg",
       "price": 1334.2,
-      "prevPrice": 1334.2,
-      "changePct": 0.0,
+      "prevPrice": 1335.96,
+      "changePct": -0.13,
       "isNew": false
     },
     {
-      "rank": 25,
-      "id": "106997",
-      "name": "Blastoise",
-      "number": "002/102",
-      "rarity": "Holo Rare",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/106997_200w.jpg",
-      "price": 1300.0,
-      "prevPrice": 1300.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 26,
-      "id": "86903",
-      "name": "Lugia",
-      "number": "009/111",
-      "rarity": "Holo Rare",
-      "setName": "Neo Genesis",
-      "setId": "1396",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86903_200w.jpg",
-      "price": 1299.96,
-      "prevPrice": 1299.96,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 27,
+      "rank": 23,
       "id": "86894",
       "name": "Lucky Stadium",
       "number": "41/53",
@@ -397,7 +523,7 @@
       "isNew": false
     },
     {
-      "rank": 28,
+      "rank": 24,
       "id": "90139",
       "name": "Umbreon (H29)",
       "number": "H29/H32",
@@ -411,7 +537,7 @@
       "isNew": false
     },
     {
-      "rank": 29,
+      "rank": 25,
       "id": "88658",
       "name": "Regice Star",
       "number": "90/92",
@@ -425,7 +551,7 @@
       "isNew": false
     },
     {
-      "rank": 30,
+      "rank": 26,
       "id": "85987",
       "name": "Gyarados (H10)",
       "number": "H10/H32",
@@ -439,7 +565,7 @@
       "isNew": false
     },
     {
-      "rank": 31,
+      "rank": 27,
       "id": "676088",
       "name": "Pikachu ex - 276/217",
       "number": "276/217",
@@ -448,12 +574,12 @@
       "setId": "24541",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/676088_200w.jpg",
       "price": 1238.14,
-      "prevPrice": 1238.14,
-      "changePct": 0.0,
+      "prevPrice": 1284.32,
+      "changePct": -3.6,
       "isNew": false
     },
     {
-      "rank": 32,
+      "rank": 28,
       "id": "246733",
       "name": "Rayquaza VMAX (Alternate Art Secret)",
       "number": "218/203",
@@ -467,7 +593,7 @@
       "isNew": false
     },
     {
-      "rank": 33,
+      "rank": 29,
       "id": "83498",
       "name": "Alakazam (H1)",
       "number": "H01/H32",
@@ -481,7 +607,7 @@
       "isNew": false
     },
     {
-      "rank": 34,
+      "rank": 30,
       "id": "84193",
       "name": "Charizard",
       "number": "136/135",
@@ -495,7 +621,7 @@
       "isNew": false
     },
     {
-      "rank": 35,
+      "rank": 31,
       "id": "88537",
       "name": "Raikou Star",
       "number": "114/115",
@@ -509,7 +635,7 @@
       "isNew": false
     },
     {
-      "rank": 36,
+      "rank": 32,
       "id": "89608",
       "name": "Suicune Star",
       "number": "115/115",
@@ -523,7 +649,7 @@
       "isNew": false
     },
     {
-      "rank": 37,
+      "rank": 33,
       "id": "518861",
       "name": "Pikachu with Grey Felt Hat",
       "number": "085",
@@ -537,7 +663,7 @@
       "isNew": false
     },
     {
-      "rank": 38,
+      "rank": 34,
       "id": "534919",
       "name": "Mew ex - 232/091",
       "number": "232/091",
@@ -546,12 +672,12 @@
       "setId": "23353",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/534919_200w.jpg",
       "price": 1064.61,
-      "prevPrice": 1064.61,
-      "changePct": 0.0,
+      "prevPrice": 1063.77,
+      "changePct": 0.08,
       "isNew": false
     },
     {
-      "rank": 39,
+      "rank": 35,
       "id": "253266",
       "name": "Gengar VMAX (Alternate Art Secret)",
       "number": "271/264",
@@ -565,7 +691,7 @@
       "isNew": false
     },
     {
-      "rank": 40,
+      "rank": 36,
       "id": "85927",
       "name": "Groudon Star",
       "number": "111/113",
@@ -579,7 +705,7 @@
       "isNew": false
     },
     {
-      "rank": 41,
+      "rank": 37,
       "id": "91246",
       "name": "M Charizard EX (X) (Secret)",
       "number": "108/106",
@@ -593,7 +719,7 @@
       "isNew": false
     },
     {
-      "rank": 42,
+      "rank": 38,
       "id": "475983",
       "name": "Charizard VMAX - 020/189",
       "number": "020/189",
@@ -602,12 +728,12 @@
       "setId": "22880",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/475983_200w.jpg",
       "price": 1000.0,
-      "prevPrice": 1000.0,
-      "changePct": 0.0,
+      "prevPrice": 1049.98,
+      "changePct": -4.76,
       "isNew": false
     },
     {
-      "rank": 43,
+      "rank": 39,
       "id": "86396",
       "name": "Kabutops (150)",
       "number": "150/144",
@@ -621,7 +747,7 @@
       "isNew": false
     },
     {
-      "rank": 44,
+      "rank": 40,
       "id": "86200",
       "name": "Houndoom (H11)",
       "number": "H11/H32",
@@ -635,7 +761,7 @@
       "isNew": false
     },
     {
-      "rank": 45,
+      "rank": 41,
       "id": "90049",
       "name": "Tropical Beach - BW50 (Worlds 12)",
       "number": "BW50",
@@ -649,7 +775,7 @@
       "isNew": false
     },
     {
-      "rank": 46,
+      "rank": 42,
       "id": "154997",
       "name": "Clefable (Prerelease)",
       "number": "01/64",
@@ -663,7 +789,7 @@
       "isNew": false
     },
     {
-      "rank": 47,
+      "rank": 43,
       "id": "88643",
       "name": "Rayquaza ex",
       "number": "102/107",
@@ -677,7 +803,7 @@
       "isNew": false
     },
     {
-      "rank": 48,
+      "rank": 44,
       "id": "94689",
       "name": "Dialga EX (122 Secret Rare)",
       "number": "122/119",
@@ -691,7 +817,7 @@
       "isNew": false
     },
     {
-      "rank": 49,
+      "rank": 45,
       "id": "101520",
       "name": "M Rayquaza EX (Shiny Full Art)",
       "number": "98/98",
@@ -700,12 +826,12 @@
       "setId": "1576",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/101520_200w.jpg",
       "price": 972.41,
-      "prevPrice": 972.41,
-      "changePct": 0.0,
+      "prevPrice": 972.0,
+      "changePct": 0.04,
       "isNew": false
     },
     {
-      "rank": 50,
+      "rank": 46,
       "id": "87345",
       "name": "Metagross Star",
       "number": "113/113",
@@ -719,7 +845,7 @@
       "isNew": false
     },
     {
-      "rank": 51,
+      "rank": 47,
       "id": "84149",
       "name": "Celebi Star",
       "number": "100/100",
@@ -733,7 +859,7 @@
       "isNew": false
     },
     {
-      "rank": 52,
+      "rank": 48,
       "id": "89167",
       "name": "Shining Mewtwo",
       "number": "109/105",
@@ -747,7 +873,7 @@
       "isNew": false
     },
     {
-      "rank": 53,
+      "rank": 49,
       "id": "228494",
       "name": "Snorlax - 33/95 (Prerelease) [Staff]",
       "number": "33/95",
@@ -761,7 +887,7 @@
       "isNew": false
     },
     {
-      "rank": 54,
+      "rank": 50,
       "id": "86912",
       "name": "Lugia ex",
       "number": "105/115",
@@ -775,7 +901,7 @@
       "isNew": false
     },
     {
-      "rank": 55,
+      "rank": 51,
       "id": "90292",
       "name": "Vaporeon Star",
       "number": "102/108",
@@ -789,7 +915,7 @@
       "isNew": false
     },
     {
-      "rank": 56,
+      "rank": 52,
       "id": "83502",
       "name": "Alakazam Star",
       "number": "99/100",
@@ -803,7 +929,7 @@
       "isNew": false
     },
     {
-      "rank": 57,
+      "rank": 53,
       "id": "88796",
       "name": "Rocket's Snorlax ex",
       "number": "104/109",
@@ -817,7 +943,7 @@
       "isNew": false
     },
     {
-      "rank": 58,
+      "rank": 54,
       "id": "88801",
       "name": "Rocket's Zapdos ex",
       "number": "106/109",
@@ -831,7 +957,7 @@
       "isNew": false
     },
     {
-      "rank": 59,
+      "rank": 55,
       "id": "183964",
       "name": "Magikarp & Wailord GX (Alternate Full Art)",
       "number": "161/181",
@@ -845,7 +971,7 @@
       "isNew": false
     },
     {
-      "rank": 60,
+      "rank": 56,
       "id": "284137",
       "name": "Giratina V (Alternate Full Art)",
       "number": "186/196",
@@ -859,7 +985,7 @@
       "isNew": false
     },
     {
-      "rank": 61,
+      "rank": 57,
       "id": "662184",
       "name": "Mega Charizard X ex - 125/094",
       "number": "125/094",
@@ -868,26 +994,26 @@
       "setId": "24448",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/662184_200w.jpg",
       "price": 854.25,
-      "prevPrice": 854.25,
-      "changePct": 0.0,
+      "prevPrice": 868.25,
+      "changePct": -1.61,
       "isNew": false
     },
     {
-      "rank": 62,
-      "id": "107008",
-      "name": "Ninetales",
-      "number": "012/102",
+      "rank": 58,
+      "id": "106997",
+      "name": "Blastoise",
+      "number": "002/102",
       "rarity": "Holo Rare",
       "setName": "Base Set (Shadowless)",
       "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/107008_200w.jpg",
-      "price": 800.0,
-      "prevPrice": 800.0,
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/106997_200w.jpg",
+      "price": 824.99,
+      "prevPrice": 824.99,
       "changePct": 0.0,
       "isNew": false
     },
     {
-      "rank": 63,
+      "rank": 59,
       "id": "86121",
       "name": "Ho-oh",
       "number": "149/144",
@@ -901,7 +1027,7 @@
       "isNew": false
     },
     {
-      "rank": 64,
+      "rank": 60,
       "id": "88075",
       "name": "Pikachu",
       "number": "086/110",
@@ -915,7 +1041,7 @@
       "isNew": false
     },
     {
-      "rank": 65,
+      "rank": 61,
       "id": "90313",
       "name": "Venusaur",
       "number": "018/110",
@@ -929,7 +1055,7 @@
       "isNew": false
     },
     {
-      "rank": 66,
+      "rank": 62,
       "id": "85671",
       "name": "Gengar (13)",
       "number": "013/165",
@@ -943,7 +1069,7 @@
       "isNew": false
     },
     {
-      "rank": 67,
+      "rank": 63,
       "id": "676102",
       "name": "Mega Dragonite ex - 290/217",
       "number": "290/217",
@@ -952,12 +1078,12 @@
       "setId": "24541",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/676102_200w.jpg",
       "price": 799.96,
-      "prevPrice": 799.96,
-      "changePct": 0.0,
+      "prevPrice": 805.5,
+      "changePct": -0.69,
       "isNew": false
     },
     {
-      "rank": 68,
+      "rank": 64,
       "id": "84910",
       "name": "Dragonite (9)",
       "number": "009/165",
@@ -971,7 +1097,7 @@
       "isNew": false
     },
     {
-      "rank": 69,
+      "rank": 65,
       "id": "89397",
       "name": "Snorlax Lv.X",
       "number": "111/111",
@@ -985,7 +1111,7 @@
       "isNew": false
     },
     {
-      "rank": 70,
+      "rank": 66,
       "id": "42382",
       "name": "Charizard",
       "number": "004/102",
@@ -999,7 +1125,7 @@
       "isNew": false
     },
     {
-      "rank": 71,
+      "rank": 67,
       "id": "84187",
       "name": "Charizard",
       "number": "100/97",
@@ -1013,7 +1139,7 @@
       "isNew": false
     },
     {
-      "rank": 72,
+      "rank": 68,
       "id": "94683",
       "name": "Gengar EX (114 Full Art)",
       "number": "114/119",
@@ -1027,7 +1153,7 @@
       "isNew": false
     },
     {
-      "rank": 73,
+      "rank": 69,
       "id": "88096",
       "name": "Pikachu",
       "number": "7",
@@ -1041,7 +1167,7 @@
       "isNew": false
     },
     {
-      "rank": 74,
+      "rank": 70,
       "id": "83643",
       "name": "Articuno",
       "number": "002/110",
@@ -1055,7 +1181,7 @@
       "isNew": false
     },
     {
-      "rank": 75,
+      "rank": 71,
       "id": "88626",
       "name": "Rayquaza",
       "number": "9/106",
@@ -1069,7 +1195,7 @@
       "isNew": false
     },
     {
-      "rank": 76,
+      "rank": 72,
       "id": "88673",
       "name": "Regirock Star",
       "number": "91/92",
@@ -1083,7 +1209,7 @@
       "isNew": false
     },
     {
-      "rank": 77,
+      "rank": 73,
       "id": "87419",
       "name": "Mewtwo",
       "number": "029/110",
@@ -1097,7 +1223,7 @@
       "isNew": false
     },
     {
-      "rank": 78,
+      "rank": 74,
       "id": "146698",
       "name": "Mewtwo GX (Secret Shining)",
       "number": "78/73",
@@ -1111,7 +1237,7 @@
       "isNew": false
     },
     {
-      "rank": 79,
+      "rank": 75,
       "id": "197780",
       "name": "Charizard GX",
       "number": "SV49/SV94",
@@ -1120,12 +1246,12 @@
       "setId": "2594",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/197780_200w.jpg",
       "price": 728.76,
-      "prevPrice": 728.76,
-      "changePct": 0.0,
+      "prevPrice": 723.15,
+      "changePct": 0.78,
       "isNew": false
     },
     {
-      "rank": 80,
+      "rank": 76,
       "id": "268261",
       "name": "Mega Tokyo's Pikachu - 98/XY-P",
       "number": "98/XY-P",
@@ -1139,7 +1265,7 @@
       "isNew": false
     },
     {
-      "rank": 81,
+      "rank": 77,
       "id": "87022",
       "name": "Magikarp",
       "number": "052/110",
@@ -1153,21 +1279,7 @@
       "isNew": false
     },
     {
-      "rank": 82,
-      "id": "83861",
-      "name": "Blaine's Charizard",
-      "number": "002/132",
-      "rarity": "Holo Rare",
-      "setName": "Gym Challenge",
-      "setId": "1440",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/83861_200w.jpg",
-      "price": 699.99,
-      "prevPrice": 699.99,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 83,
+      "rank": 78,
       "id": "84599",
       "name": "Dark Gengar",
       "number": "006/105",
@@ -1181,7 +1293,7 @@
       "isNew": false
     },
     {
-      "rank": 84,
+      "rank": 79,
       "id": "87418",
       "name": "Mewtwo (20)",
       "number": "020/165",
@@ -1195,7 +1307,7 @@
       "isNew": false
     },
     {
-      "rank": 85,
+      "rank": 80,
       "id": "90135",
       "name": "Ultra Ball",
       "number": "122/116",
@@ -1209,7 +1321,7 @@
       "isNew": false
     },
     {
-      "rank": 86,
+      "rank": 81,
       "id": "583700",
       "name": "Paradise Resort - 045 (World Championships 2023) [Staff]",
       "number": "045",
@@ -1223,7 +1335,7 @@
       "isNew": false
     },
     {
-      "rank": 87,
+      "rank": 82,
       "id": "681244",
       "name": "Celebratory Fanfare (Ace Trainer)",
       "number": "028",
@@ -1237,7 +1349,7 @@
       "isNew": false
     },
     {
-      "rank": 88,
+      "rank": 83,
       "id": "89611",
       "name": "Suicune ex",
       "number": "94/95",
@@ -1251,7 +1363,7 @@
       "isNew": false
     },
     {
-      "rank": 89,
+      "rank": 84,
       "id": "87695",
       "name": "Nidoking (150)",
       "number": "150/147",
@@ -1265,7 +1377,7 @@
       "isNew": false
     },
     {
-      "rank": 90,
+      "rank": 85,
       "id": "476008",
       "name": "Pikachu VMAX - 044/185",
       "number": "044/185",
@@ -1279,7 +1391,7 @@
       "isNew": false
     },
     {
-      "rank": 91,
+      "rank": 86,
       "id": "102803",
       "name": "Gyarados - XY60 (Prerelease) [Staff]",
       "number": "XY60",
@@ -1293,7 +1405,7 @@
       "isNew": false
     },
     {
-      "rank": 92,
+      "rank": 87,
       "id": "84777",
       "name": "Deoxys EX (Team Plasma) (Full Art)",
       "number": "111/116",
@@ -1307,7 +1419,21 @@
       "isNew": false
     },
     {
-      "rank": 93,
+      "rank": 88,
+      "id": "89171",
+      "name": "Shining Tyranitar",
+      "number": "113/105",
+      "rarity": "Secret Rare",
+      "setName": "Neo Destiny",
+      "setId": "1444",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/89171_200w.jpg",
+      "price": 670.0,
+      "prevPrice": 670.0,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 89,
       "id": "84190",
       "name": "Charizard",
       "number": "103/100",
@@ -1321,7 +1447,7 @@
       "isNew": false
     },
     {
-      "rank": 94,
+      "rank": 90,
       "id": "88630",
       "name": "Rayquaza",
       "number": "128/124",
@@ -1330,12 +1456,12 @@
       "setId": "1394",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/88630_200w.jpg",
       "price": 659.95,
-      "prevPrice": 659.95,
-      "changePct": 0.0,
+      "prevPrice": 637.46,
+      "changePct": 3.53,
       "isNew": false
     },
     {
-      "rank": 95,
+      "rank": 91,
       "id": "84298",
       "name": "Chimecho (Delta Species)",
       "number": "001/017",
@@ -1349,7 +1475,7 @@
       "isNew": false
     },
     {
-      "rank": 96,
+      "rank": 92,
       "id": "89386",
       "name": "Snorlax",
       "number": "064/110",
@@ -1363,7 +1489,7 @@
       "isNew": false
     },
     {
-      "rank": 97,
+      "rank": 93,
       "id": "575154",
       "name": "Champions Festival - SWSH296 (World Championships 2022)",
       "number": "SWSH296",
@@ -1377,7 +1503,7 @@
       "isNew": false
     },
     {
-      "rank": 98,
+      "rank": 94,
       "id": "183967",
       "name": "Charizard - SM158 [Staff]",
       "number": "SM158",
@@ -1391,7 +1517,7 @@
       "isNew": false
     },
     {
-      "rank": 99,
+      "rank": 95,
       "id": "84195",
       "name": "Charizard (Delta Species)",
       "number": "4/100",
@@ -1405,7 +1531,7 @@
       "isNew": false
     },
     {
-      "rank": 100,
+      "rank": 96,
       "id": "189316",
       "name": "Gardevoir & Sylveon GX (205) (Alternate Full Art)",
       "number": "205/214",
@@ -1419,7 +1545,7 @@
       "isNew": false
     },
     {
-      "rank": 101,
+      "rank": 97,
       "id": "86916",
       "name": "Lugia EX (Team Plasma) (134 Full Art)",
       "number": "134/135",
@@ -1433,49 +1559,7 @@
       "isNew": false
     },
     {
-      "rank": 102,
-      "id": "88874",
-      "name": "Sabrina's Gengar",
-      "number": "014/132",
-      "rarity": "Holo Rare",
-      "setName": "Gym Heroes",
-      "setId": "1441",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88874_200w.jpg",
-      "price": 600.87,
-      "prevPrice": 600.87,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 103,
-      "id": "107000",
-      "name": "Gyarados",
-      "number": "006/102",
-      "rarity": "Holo Rare",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/107000_200w.jpg",
-      "price": 600.0,
-      "prevPrice": 600.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 104,
-      "id": "107011",
-      "name": "Zapdos",
-      "number": "016/102",
-      "rarity": "Holo Rare",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/107011_200w.jpg",
-      "price": 600.0,
-      "prevPrice": 600.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 105,
+      "rank": 98,
       "id": "85825",
       "name": "Golem",
       "number": "148/144",
@@ -1489,7 +1573,7 @@
       "isNew": false
     },
     {
-      "rank": 106,
+      "rank": 99,
       "id": "86444",
       "name": "Kingdra (148)",
       "number": "148/147",
@@ -1503,7 +1587,7 @@
       "isNew": false
     },
     {
-      "rank": 107,
+      "rank": 100,
       "id": "518863",
       "name": "Paradise Resort - 045 (World Championships 2023)",
       "number": "045",
@@ -1517,7 +1601,7 @@
       "isNew": false
     },
     {
-      "rank": 108,
+      "rank": 101,
       "id": "676106",
       "name": "Mega Charizard Y ex - 294/217",
       "number": "294/217",
@@ -1526,12 +1610,12 @@
       "setId": "24541",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/676106_200w.jpg",
       "price": 599.58,
-      "prevPrice": 599.58,
-      "changePct": 0.0,
+      "prevPrice": 599.79,
+      "changePct": -0.04,
       "isNew": false
     },
     {
-      "rank": 109,
+      "rank": 102,
       "id": "84205",
       "name": "Charmander",
       "number": "070/110",
@@ -1545,7 +1629,7 @@
       "isNew": false
     },
     {
-      "rank": 110,
+      "rank": 103,
       "id": "578146",
       "name": "Paradise Resort - 150 (World Championships 2024)",
       "number": "150",
@@ -1559,21 +1643,7 @@
       "isNew": false
     },
     {
-      "rank": 111,
-      "id": "84652",
-      "name": "Dark Scizor",
-      "number": "009/105",
-      "rarity": "Holo Rare",
-      "setName": "Neo Destiny",
-      "setId": "1444",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84652_200w.jpg",
-      "price": 595.34,
-      "prevPrice": 595.34,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 112,
+      "rank": 104,
       "id": "89169",
       "name": "Shining Raichu",
       "number": "111/105",
@@ -1587,7 +1657,7 @@
       "isNew": false
     },
     {
-      "rank": 113,
+      "rank": 105,
       "id": "228500",
       "name": "Victini - 43/101 (Prerelease) [Staff]",
       "number": "43/101",
@@ -1601,7 +1671,7 @@
       "isNew": false
     },
     {
-      "rank": 114,
+      "rank": 106,
       "id": "85490",
       "name": "Flareon (H7)",
       "number": "H07/H32",
@@ -1615,7 +1685,7 @@
       "isNew": false
     },
     {
-      "rank": 115,
+      "rank": 107,
       "id": "268123",
       "name": "Poncho-wearing Pikachu - 203/XY-P",
       "number": "203/XY-P",
@@ -1629,7 +1699,7 @@
       "isNew": false
     },
     {
-      "rank": 116,
+      "rank": 108,
       "id": "89164",
       "name": "Shining Gyarados",
       "number": "65/64",
@@ -1643,7 +1713,7 @@
       "isNew": false
     },
     {
-      "rank": 117,
+      "rank": 109,
       "id": "642546",
       "name": "Victini - 171/086",
       "number": "171/086",
@@ -1652,12 +1722,12 @@
       "setId": "24325",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/642546_200w.jpg",
       "price": 583.68,
-      "prevPrice": 583.68,
-      "changePct": 0.0,
+      "prevPrice": 581.45,
+      "changePct": 0.38,
       "isNew": false
     },
     {
-      "rank": 118,
+      "rank": 110,
       "id": "224366",
       "name": "Charizard - SWSH066 (Prerelease) [Staff]",
       "number": "SWSH066",
@@ -1671,7 +1741,7 @@
       "isNew": false
     },
     {
-      "rank": 119,
+      "rank": 111,
       "id": "138497",
       "name": "Charizard GX (Secret)",
       "number": "150/147",
@@ -1685,7 +1755,7 @@
       "isNew": false
     },
     {
-      "rank": 120,
+      "rank": 112,
       "id": "89528",
       "name": "Starmie (H28)",
       "number": "H28/H32",
@@ -1699,7 +1769,7 @@
       "isNew": false
     },
     {
-      "rank": 121,
+      "rank": 113,
       "id": "642623",
       "name": "Zekrom ex - 172/086",
       "number": "172/086",
@@ -1708,12 +1778,26 @@
       "setId": "24325",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/642623_200w.jpg",
       "price": 571.98,
-      "prevPrice": 571.98,
+      "prevPrice": 562.64,
+      "changePct": 1.66,
+      "isNew": false
+    },
+    {
+      "rank": 114,
+      "id": "83861",
+      "name": "Blaine's Charizard",
+      "number": "002/132",
+      "rarity": "Holo Rare",
+      "setName": "Gym Challenge",
+      "setId": "1440",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/83861_200w.jpg",
+      "price": 570.67,
+      "prevPrice": 570.67,
       "changePct": 0.0,
       "isNew": false
     },
     {
-      "rank": 122,
+      "rank": 115,
       "id": "88778",
       "name": "Rocket's Mewtwo ex",
       "number": "99/109",
@@ -1727,7 +1811,7 @@
       "isNew": false
     },
     {
-      "rank": 123,
+      "rank": 116,
       "id": "246758",
       "name": "Dragonite V (Alternate Full Art)",
       "number": "192/203",
@@ -1741,7 +1825,7 @@
       "isNew": false
     },
     {
-      "rank": 124,
+      "rank": 117,
       "id": "610511",
       "name": "Sylveon ex - 156/131",
       "number": "156/131",
@@ -1755,7 +1839,7 @@
       "isNew": false
     },
     {
-      "rank": 125,
+      "rank": 118,
       "id": "89485",
       "name": "Squirtle",
       "number": "095/110",
@@ -1769,7 +1853,7 @@
       "isNew": false
     },
     {
-      "rank": 126,
+      "rank": 119,
       "id": "87423",
       "name": "Mewtwo",
       "number": "9",
@@ -1783,7 +1867,7 @@
       "isNew": false
     },
     {
-      "rank": 127,
+      "rank": 120,
       "id": "126025",
       "name": "Gyarados - 34/108 (Prerelease) [Staff]",
       "number": "34/108",
@@ -1797,7 +1881,7 @@
       "isNew": false
     },
     {
-      "rank": 128,
+      "rank": 121,
       "id": "644350",
       "name": "Victini - 172/086",
       "number": "172/086",
@@ -1806,12 +1890,12 @@
       "setId": "24326",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/644350_200w.jpg",
       "price": 549.43,
-      "prevPrice": 549.43,
-      "changePct": 0.0,
+      "prevPrice": 541.43,
+      "changePct": 1.48,
       "isNew": false
     },
     {
-      "rank": 129,
+      "rank": 122,
       "id": "83857",
       "name": "Black Kyurem EX (145 Full Art)",
       "number": "145/149",
@@ -1825,7 +1909,7 @@
       "isNew": false
     },
     {
-      "rank": 130,
+      "rank": 123,
       "id": "85638",
       "name": "Gardevoir",
       "number": "109/108",
@@ -1839,7 +1923,7 @@
       "isNew": false
     },
     {
-      "rank": 131,
+      "rank": 124,
       "id": "88629",
       "name": "Rayquaza (Shiny)",
       "number": "SL10",
@@ -1853,7 +1937,7 @@
       "isNew": false
     },
     {
-      "rank": 132,
+      "rank": 125,
       "id": "633031",
       "name": "Team Rocket's Mewtwo ex - 231/182",
       "number": "231/182",
@@ -1867,7 +1951,7 @@
       "isNew": false
     },
     {
-      "rank": 133,
+      "rank": 126,
       "id": "87916",
       "name": "Palkia EX (Team Plasma) (100 Full Art)",
       "number": "100/101",
@@ -1881,7 +1965,7 @@
       "isNew": false
     },
     {
-      "rank": 134,
+      "rank": 127,
       "id": "88625",
       "name": "Rayquaza",
       "number": "22/107",
@@ -1895,7 +1979,21 @@
       "isNew": false
     },
     {
-      "rank": 135,
+      "rank": 128,
+      "id": "86903",
+      "name": "Lugia",
+      "number": "009/111",
+      "rarity": "Holo Rare",
+      "setName": "Neo Genesis",
+      "setId": "1396",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86903_200w.jpg",
+      "price": 527.8,
+      "prevPrice": 527.8,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 129,
       "id": "451834",
       "name": "Lugia V (Alternate Full Art)",
       "number": "186/195",
@@ -1909,7 +2007,7 @@
       "isNew": false
     },
     {
-      "rank": 136,
+      "rank": 130,
       "id": "201338",
       "name": "Arceus & Dialga & Palkia GX (Alternate Full Art)",
       "number": "221/236",
@@ -1923,7 +2021,7 @@
       "isNew": false
     },
     {
-      "rank": 137,
+      "rank": 131,
       "id": "84918",
       "name": "Dragonite ex",
       "number": "90/97",
@@ -1937,7 +2035,7 @@
       "isNew": false
     },
     {
-      "rank": 138,
+      "rank": 132,
       "id": "88644",
       "name": "Rayquaza ex - 039 (EX Collector's Tin)",
       "number": "039",
@@ -1951,7 +2049,7 @@
       "isNew": false
     },
     {
-      "rank": 139,
+      "rank": 133,
       "id": "87410",
       "name": "Mew ex",
       "number": "100/110",
@@ -1965,7 +2063,7 @@
       "isNew": false
     },
     {
-      "rank": 140,
+      "rank": 134,
       "id": "246728",
       "name": "Rayquaza V (Alternate Full Art)",
       "number": "194/203",
@@ -1979,7 +2077,7 @@
       "isNew": false
     },
     {
-      "rank": 141,
+      "rank": 135,
       "id": "247386",
       "name": "Special Delivery Bidoof",
       "number": "SWSH177",
@@ -1993,7 +2091,7 @@
       "isNew": false
     },
     {
-      "rank": 142,
+      "rank": 136,
       "id": "90592",
       "name": "White Kyurem EX (146 Full Art)",
       "number": "146/149",
@@ -2007,7 +2105,7 @@
       "isNew": false
     },
     {
-      "rank": 143,
+      "rank": 137,
       "id": "107010",
       "name": "Venusaur",
       "number": "015/102",
@@ -2021,7 +2119,7 @@
       "isNew": false
     },
     {
-      "rank": 144,
+      "rank": 138,
       "id": "97052",
       "name": "Team Aqua's Kyogre EX",
       "number": "6/34",
@@ -2035,7 +2133,7 @@
       "isNew": false
     },
     {
-      "rank": 145,
+      "rank": 139,
       "id": "681249",
       "name": "Dawn (Regional Championship) [Staff]",
       "number": "087/094",
@@ -2049,7 +2147,7 @@
       "isNew": false
     },
     {
-      "rank": 146,
+      "rank": 140,
       "id": "90154",
       "name": "Umbreon ex",
       "number": "112/115",
@@ -2063,7 +2161,7 @@
       "isNew": false
     },
     {
-      "rank": 147,
+      "rank": 141,
       "id": "84025",
       "name": "Bulbasaur",
       "number": "068/110",
@@ -2077,21 +2175,7 @@
       "isNew": false
     },
     {
-      "rank": 148,
-      "id": "85266",
-      "name": "Entei (6)",
-      "number": "06/64",
-      "rarity": "Holo Rare",
-      "setName": "Neo Revelation",
-      "setId": "1389",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/85266_200w.jpg",
-      "price": 500.0,
-      "prevPrice": 500.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 149,
+      "rank": 142,
       "id": "85750",
       "name": "Glaceon LV.X",
       "number": "98/100",
@@ -2105,7 +2189,7 @@
       "isNew": false
     },
     {
-      "rank": 150,
+      "rank": 143,
       "id": "90114",
       "name": "Tyranitar (H28)",
       "number": "H28/H32",
@@ -2119,7 +2203,7 @@
       "isNew": false
     },
     {
-      "rank": 151,
+      "rank": 144,
       "id": "84758",
       "name": "Deoxys (Shiny)",
       "number": "SL1",
@@ -2133,7 +2217,7 @@
       "isNew": false
     },
     {
-      "rank": 152,
+      "rank": 145,
       "id": "84199",
       "name": "Charizard ex",
       "number": "105/112",
@@ -2147,7 +2231,7 @@
       "isNew": false
     },
     {
-      "rank": 153,
+      "rank": 146,
       "id": "276363",
       "name": "Clefairy - 381/SM-P (Dream League)",
       "number": "381/SM-P",
@@ -2161,7 +2245,7 @@
       "isNew": false
     },
     {
-      "rank": 154,
+      "rank": 147,
       "id": "211992",
       "name": "Flareon - 12/108 (Regional Championships) [Staff]",
       "number": "012/108",
@@ -2175,7 +2259,7 @@
       "isNew": false
     },
     {
-      "rank": 155,
+      "rank": 148,
       "id": "85669",
       "name": "Gengar (10)",
       "number": "010/144",
@@ -2189,7 +2273,7 @@
       "isNew": false
     },
     {
-      "rank": 156,
+      "rank": 149,
       "id": "83576",
       "name": "Arcanine (H2)",
       "number": "H02/H32",
@@ -2203,7 +2287,7 @@
       "isNew": false
     },
     {
-      "rank": 157,
+      "rank": 150,
       "id": "90125",
       "name": "Tyranitar ex",
       "number": "111/115",
@@ -2217,7 +2301,7 @@
       "isNew": false
     },
     {
-      "rank": 158,
+      "rank": 151,
       "id": "85079",
       "name": "Eevee",
       "number": "074/110",
@@ -2231,7 +2315,7 @@
       "isNew": false
     },
     {
-      "rank": 159,
+      "rank": 152,
       "id": "83888",
       "name": "Blastoise (4)",
       "number": "004/165",
@@ -2245,7 +2329,7 @@
       "isNew": false
     },
     {
-      "rank": 160,
+      "rank": 153,
       "id": "90137",
       "name": "Umbreon (13)",
       "number": "13/75",
@@ -2259,7 +2343,7 @@
       "isNew": false
     },
     {
-      "rank": 161,
+      "rank": 154,
       "id": "85626",
       "name": "Garchomp (120 Secret Rare)",
       "number": "120/116",
@@ -2273,21 +2357,7 @@
       "isNew": false
     },
     {
-      "rank": 162,
-      "id": "107007",
-      "name": "Poliwrath",
-      "number": "013/102",
-      "rarity": "Holo Rare",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/107007_200w.jpg",
-      "price": 499.0,
-      "prevPrice": 499.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 163,
+      "rank": 155,
       "id": "88782",
       "name": "Rocket's Moltres ex",
       "number": "100/109",
@@ -2301,7 +2371,7 @@
       "isNew": false
     },
     {
-      "rank": 164,
+      "rank": 156,
       "id": "642289",
       "name": "Reshiram ex - 173/086",
       "number": "173/086",
@@ -2315,7 +2385,7 @@
       "isNew": false
     },
     {
-      "rank": 165,
+      "rank": 157,
       "id": "164207",
       "name": "Garchomp - 5/147 (Championship Promo) [Staff]",
       "number": "005/147",
@@ -2329,7 +2399,7 @@
       "isNew": false
     },
     {
-      "rank": 166,
+      "rank": 158,
       "id": "231415",
       "name": "Espeon - 48/108 (National Championships) [Staff]",
       "number": "048/108",
@@ -2343,7 +2413,7 @@
       "isNew": false
     },
     {
-      "rank": 167,
+      "rank": 159,
       "id": "85679",
       "name": "Gengar (Prime)",
       "number": "94/102",
@@ -2357,7 +2427,7 @@
       "isNew": false
     },
     {
-      "rank": 168,
+      "rank": 160,
       "id": "179429",
       "name": "Champions Festival - SM78 (World Championships 2017)",
       "number": "SM78",
@@ -2371,21 +2441,7 @@
       "isNew": false
     },
     {
-      "rank": 169,
-      "id": "86118",
-      "name": "Ho-oh (7)",
-      "number": "07/64",
-      "rarity": "Holo Rare",
-      "setName": "Neo Revelation",
-      "setId": "1389",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86118_200w.jpg",
-      "price": 488.52,
-      "prevPrice": 488.52,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 170,
+      "rank": 161,
       "id": "90146",
       "name": "Umbreon (Prime)",
       "number": "86/90",
@@ -2399,7 +2455,7 @@
       "isNew": false
     },
     {
-      "rank": 171,
+      "rank": 162,
       "id": "88768",
       "name": "Rocket's Articuno ex",
       "number": "96/109",
@@ -2413,7 +2469,7 @@
       "isNew": false
     },
     {
-      "rank": 172,
+      "rank": 163,
       "id": "162272",
       "name": "Pikachu - 5/5",
       "number": "005/005",
@@ -2427,7 +2483,7 @@
       "isNew": false
     },
     {
-      "rank": 173,
+      "rank": 164,
       "id": "87460",
       "name": "Milotic ex",
       "number": "96/106",
@@ -2441,7 +2497,7 @@
       "isNew": false
     },
     {
-      "rank": 174,
+      "rank": 165,
       "id": "88531",
       "name": "Raikou (H26)",
       "number": "H26/H32",
@@ -2455,7 +2511,7 @@
       "isNew": false
     },
     {
-      "rank": 175,
+      "rank": 166,
       "id": "85933",
       "name": "Groudon EX (106 Full Art)",
       "number": "106/108",
@@ -2469,7 +2525,7 @@
       "isNew": false
     },
     {
-      "rank": 176,
+      "rank": 167,
       "id": "97061",
       "name": "Team Magma's Groudon EX",
       "number": "15/34",
@@ -2478,26 +2534,12 @@
       "setId": "1525",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/97061_200w.jpg",
       "price": 469.1,
-      "prevPrice": 469.1,
-      "changePct": 0.0,
+      "prevPrice": 468.27,
+      "changePct": 0.18,
       "isNew": false
     },
     {
-      "rank": 177,
-      "id": "107009",
-      "name": "Raichu",
-      "number": "014/102",
-      "rarity": "Holo Rare",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/107009_200w.jpg",
-      "price": 467.5,
-      "prevPrice": 467.5,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 178,
+      "rank": 168,
       "id": "42479",
       "name": "Charizard",
       "number": "004/130",
@@ -2511,7 +2553,7 @@
       "isNew": false
     },
     {
-      "rank": 179,
+      "rank": 169,
       "id": "84183",
       "name": "Charizard (6)",
       "number": "006/165",
@@ -2525,7 +2567,7 @@
       "isNew": false
     },
     {
-      "rank": 180,
+      "rank": 170,
       "id": "83897",
       "name": "Blastoise",
       "number": "137/135",
@@ -2539,35 +2581,7 @@
       "isNew": false
     },
     {
-      "rank": 181,
-      "id": "106520",
-      "name": "Dragonite (4)",
-      "number": "04/62",
-      "rarity": "Holo Rare",
-      "setName": "Fossil",
-      "setId": "630",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/106520_200w.jpg",
-      "price": 461.75,
-      "prevPrice": 461.75,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 182,
-      "id": "89597",
-      "name": "Suicune (14)",
-      "number": "14/64",
-      "rarity": "Holo Rare",
-      "setName": "Neo Revelation",
-      "setId": "1389",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/89597_200w.jpg",
-      "price": 460.7,
-      "prevPrice": 460.7,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 183,
+      "rank": 171,
       "id": "157767",
       "name": "Lillie (Full Art)",
       "number": "151/156",
@@ -2581,7 +2595,7 @@
       "isNew": false
     },
     {
-      "rank": 184,
+      "rank": 172,
       "id": "162269",
       "name": "Wurmple - 2/5",
       "number": "002/005",
@@ -2595,7 +2609,7 @@
       "isNew": false
     },
     {
-      "rank": 185,
+      "rank": 173,
       "id": "201334",
       "name": "Blastoise & Piplup GX (Alternate Full Art)",
       "number": "215/236",
@@ -2609,7 +2623,7 @@
       "isNew": false
     },
     {
-      "rank": 186,
+      "rank": 174,
       "id": "83590",
       "name": "Arcanine ex",
       "number": "83/92",
@@ -2623,7 +2637,7 @@
       "isNew": false
     },
     {
-      "rank": 187,
+      "rank": 175,
       "id": "87407",
       "name": "Mew (Delta Species)",
       "number": "003/017",
@@ -2637,7 +2651,7 @@
       "isNew": false
     },
     {
-      "rank": 188,
+      "rank": 176,
       "id": "85926",
       "name": "Groudon (Shiny)",
       "number": "SL4",
@@ -2651,7 +2665,7 @@
       "isNew": false
     },
     {
-      "rank": 189,
+      "rank": 177,
       "id": "88247",
       "name": "Politoed (H23)",
       "number": "H23/H32",
@@ -2665,7 +2679,7 @@
       "isNew": false
     },
     {
-      "rank": 190,
+      "rank": 178,
       "id": "89598",
       "name": "Suicune (H25)",
       "number": "H25/H32",
@@ -2679,7 +2693,7 @@
       "isNew": false
     },
     {
-      "rank": 191,
+      "rank": 179,
       "id": "89166",
       "name": "Shining Magikarp",
       "number": "66/64",
@@ -2693,7 +2707,7 @@
       "isNew": false
     },
     {
-      "rank": 192,
+      "rank": 180,
       "id": "126022",
       "name": "Charizard (XY Evolutions Prerelease)",
       "number": "11/108",
@@ -2707,21 +2721,7 @@
       "isNew": false
     },
     {
-      "rank": 193,
-      "id": "84572",
-      "name": "Dark Charizard (4)",
-      "number": "04/82",
-      "rarity": "Holo Rare",
-      "setName": "Team Rocket",
-      "setId": "1373",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84572_200w.jpg",
-      "price": 444.29,
-      "prevPrice": 444.29,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 194,
+      "rank": 181,
       "id": "84201",
       "name": "Charizard G Lv.X",
       "number": "143",
@@ -2735,7 +2735,7 @@
       "isNew": false
     },
     {
-      "rank": 195,
+      "rank": 182,
       "id": "46466",
       "name": "Mew",
       "number": "01/18",
@@ -2749,49 +2749,7 @@
       "isNew": false
     },
     {
-      "rank": 196,
-      "id": "86734",
-      "name": "Light Arcanine",
-      "number": "012/105",
-      "rarity": "Holo Rare",
-      "setName": "Neo Destiny",
-      "setId": "1444",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86734_200w.jpg",
-      "price": 440.0,
-      "prevPrice": 440.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 197,
-      "id": "86198",
-      "name": "Houndoom",
-      "number": "08/64",
-      "rarity": "Holo Rare",
-      "setName": "Neo Revelation",
-      "setId": "1389",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86198_200w.jpg",
-      "price": 439.99,
-      "prevPrice": 439.99,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 198,
-      "id": "90099",
-      "name": "Typhlosion (18)",
-      "number": "018/111",
-      "rarity": "Holo Rare",
-      "setName": "Neo Genesis",
-      "setId": "1396",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/90099_200w.jpg",
-      "price": 435.0,
-      "prevPrice": 435.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 199,
+      "rank": 183,
       "id": "101518",
       "name": "Primal Kyogre EX (Shiny Full Art)",
       "number": "96/98",
@@ -2805,7 +2763,7 @@
       "isNew": false
     },
     {
-      "rank": 200,
+      "rank": 184,
       "id": "583726",
       "name": "Paradise Resort - 150 (World Championships 2024) [Staff]",
       "number": "150",
@@ -2819,7 +2777,7 @@
       "isNew": false
     },
     {
-      "rank": 201,
+      "rank": 185,
       "id": "676089",
       "name": "Pikachu ex - 277/217",
       "number": "277/217",
@@ -2828,12 +2786,12 @@
       "setId": "24541",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/676089_200w.jpg",
       "price": 430.84,
-      "prevPrice": 430.84,
-      "changePct": 0.0,
+      "prevPrice": 432.07,
+      "changePct": -0.28,
       "isNew": false
     },
     {
-      "rank": 202,
+      "rank": 186,
       "id": "83900",
       "name": "Blastoise ex",
       "number": "104/112",
@@ -2847,7 +2805,7 @@
       "isNew": false
     },
     {
-      "rank": 203,
+      "rank": 187,
       "id": "85988",
       "name": "Gyarados (11)",
       "number": "011/144",
@@ -2861,35 +2819,7 @@
       "isNew": false
     },
     {
-      "rank": 204,
-      "id": "147229",
-      "name": "Pikachu (Red Cheeks)",
-      "number": "058/102",
-      "rarity": "Common",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/147229_200w.jpg",
-      "price": 429.98,
-      "prevPrice": 429.98,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 205,
-      "id": "106996",
-      "name": "Alakazam",
-      "number": "001/102",
-      "rarity": "Holo Rare",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/106996_200w.jpg",
-      "price": 429.0,
-      "prevPrice": 429.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 206,
+      "rank": 188,
       "id": "497606",
       "name": "Magikarp - 203/193",
       "number": "203/193",
@@ -2903,35 +2833,7 @@
       "isNew": false
     },
     {
-      "rank": 207,
-      "id": "90113",
-      "name": "Tyranitar (12)",
-      "number": "12/75",
-      "rarity": "Holo Rare",
-      "setName": "Neo Discovery",
-      "setId": "1434",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/90113_200w.jpg",
-      "price": 425.0,
-      "prevPrice": 425.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 208,
-      "id": "85290",
-      "name": "Erika's Dragonair",
-      "number": "004/132",
-      "rarity": "Holo Rare",
-      "setName": "Gym Heroes",
-      "setId": "1441",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/85290_200w.jpg",
-      "price": 425.0,
-      "prevPrice": 425.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 209,
+      "rank": 189,
       "id": "84592",
       "name": "Dark Espeon",
       "number": "004/105",
@@ -2945,7 +2847,7 @@
       "isNew": false
     },
     {
-      "rank": 210,
+      "rank": 190,
       "id": "94688",
       "name": "M Gengar EX (121 Secret Rare)",
       "number": "121/119",
@@ -2959,7 +2861,7 @@
       "isNew": false
     },
     {
-      "rank": 211,
+      "rank": 191,
       "id": "87412",
       "name": "Mew EX (120 Full Art)",
       "number": "120/124",
@@ -2973,7 +2875,21 @@
       "isNew": false
     },
     {
-      "rank": 212,
+      "rank": 192,
+      "id": "89162",
+      "name": "Shining Celebi",
+      "number": "106/105",
+      "rarity": "Secret Rare",
+      "setName": "Neo Destiny",
+      "setId": "1444",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/89162_200w.jpg",
+      "price": 423.33,
+      "prevPrice": 423.33,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 193,
       "id": "90280",
       "name": "Vaporeon (H31)",
       "number": "H31/H32",
@@ -2987,7 +2903,7 @@
       "isNew": false
     },
     {
-      "rank": 213,
+      "rank": 194,
       "id": "84709",
       "name": "Darkrai EX (107 Full Art)",
       "number": "107/108",
@@ -3001,7 +2917,7 @@
       "isNew": false
     },
     {
-      "rank": 214,
+      "rank": 195,
       "id": "84587",
       "name": "Dark Dragonite",
       "number": "15/109",
@@ -3015,7 +2931,7 @@
       "isNew": false
     },
     {
-      "rank": 215,
+      "rank": 196,
       "id": "86958",
       "name": "Machamp (H15)",
       "number": "H15/H32",
@@ -3029,7 +2945,7 @@
       "isNew": false
     },
     {
-      "rank": 216,
+      "rank": 197,
       "id": "246696",
       "name": "Leafeon VMAX (Alternate Art Secret)",
       "number": "205/203",
@@ -3043,21 +2959,7 @@
       "isNew": false
     },
     {
-      "rank": 217,
-      "id": "84568",
-      "name": "Dark Blastoise (3)",
-      "number": "03/82",
-      "rarity": "Holo Rare",
-      "setName": "Team Rocket",
-      "setId": "1373",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84568_200w.jpg",
-      "price": 418.0,
-      "prevPrice": 418.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 218,
+      "rank": 198,
       "id": "85682",
       "name": "Gengar Lv.X",
       "number": "97/99",
@@ -3071,7 +2973,7 @@
       "isNew": false
     },
     {
-      "rank": 219,
+      "rank": 199,
       "id": "201339",
       "name": "Reshiram & Zekrom GX (Full Art)",
       "number": "222/236",
@@ -3080,12 +2982,12 @@
       "setId": "2534",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/201339_200w.jpg",
       "price": 414.41,
-      "prevPrice": 414.41,
-      "changePct": 0.0,
+      "prevPrice": 413.4,
+      "changePct": 0.24,
       "isNew": false
     },
     {
-      "rank": 220,
+      "rank": 200,
       "id": "90712",
       "name": "Zapdos",
       "number": "019/110",
@@ -3099,7 +3001,21 @@
       "isNew": false
     },
     {
-      "rank": 221,
+      "rank": 201,
+      "id": "88874",
+      "name": "Sabrina's Gengar",
+      "number": "014/132",
+      "rarity": "Holo Rare",
+      "setName": "Gym Heroes",
+      "setId": "1441",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88874_200w.jpg",
+      "price": 412.31,
+      "prevPrice": 412.31,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 202,
       "id": "87396",
       "name": "Mew (19)",
       "number": "019/165",
@@ -3113,7 +3029,7 @@
       "isNew": false
     },
     {
-      "rank": 222,
+      "rank": 203,
       "id": "123436",
       "name": "Pikachu EX - XY124",
       "number": "XY124",
@@ -3122,12 +3038,12 @@
       "setId": "1451",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/123436_200w.jpg",
       "price": 410.31,
-      "prevPrice": 410.31,
-      "changePct": 0.0,
+      "prevPrice": 405.59,
+      "changePct": 1.16,
       "isNew": false
     },
     {
-      "rank": 223,
+      "rank": 204,
       "id": "676093",
       "name": "Team Rocket's Mewtwo ex - 281/217",
       "number": "281/217",
@@ -3141,7 +3057,7 @@
       "isNew": false
     },
     {
-      "rank": 224,
+      "rank": 205,
       "id": "246704",
       "name": "Sylveon VMAX (Alternate Art Secret)",
       "number": "212/203",
@@ -3155,7 +3071,7 @@
       "isNew": false
     },
     {
-      "rank": 225,
+      "rank": 206,
       "id": "90151",
       "name": "Umbreon (Delta Species)",
       "number": "17/113",
@@ -3169,7 +3085,7 @@
       "isNew": false
     },
     {
-      "rank": 226,
+      "rank": 207,
       "id": "102802",
       "name": "Gyarados - XY60 (Prerelease)",
       "number": "XY60",
@@ -3183,7 +3099,7 @@
       "isNew": false
     },
     {
-      "rank": 227,
+      "rank": 208,
       "id": "194999",
       "name": "Mewtwo & Mew GX (Secret)",
       "number": "242/236",
@@ -3192,12 +3108,12 @@
       "setId": "2464",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/194999_200w.jpg",
       "price": 404.02,
-      "prevPrice": 404.02,
-      "changePct": 0.0,
+      "prevPrice": 400.44,
+      "changePct": 0.89,
       "isNew": false
     },
     {
-      "rank": 228,
+      "rank": 209,
       "id": "227646",
       "name": "Special Delivery Pikachu - SWSH074",
       "number": "SWSH074",
@@ -3211,7 +3127,7 @@
       "isNew": false
     },
     {
-      "rank": 229,
+      "rank": 210,
       "id": "704873",
       "name": "Mega Darkrai ex - 116/084",
       "number": "116/084",
@@ -3220,12 +3136,12 @@
       "setId": "24688",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/704873_200w.jpg",
       "price": 401.67,
-      "prevPrice": 401.67,
-      "changePct": 0.0,
+      "prevPrice": 391.33,
+      "changePct": 2.64,
       "isNew": false
     },
     {
-      "rank": 230,
+      "rank": 211,
       "id": "88272",
       "name": "Poliwrath (H24)",
       "number": "H24/H32",
@@ -3239,7 +3155,7 @@
       "isNew": false
     },
     {
-      "rank": 231,
+      "rank": 212,
       "id": "86906",
       "name": "Lugia",
       "number": "29/115",
@@ -3253,35 +3169,7 @@
       "isNew": false
     },
     {
-      "rank": 232,
-      "id": "106998",
-      "name": "Chansey",
-      "number": "003/102",
-      "rarity": "Holo Rare",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/106998_200w.jpg",
-      "price": 400.0,
-      "prevPrice": 400.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 233,
-      "id": "107003",
-      "name": "Magneton",
-      "number": "009/102",
-      "rarity": "Holo Rare",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/107003_200w.jpg",
-      "price": 400.0,
-      "prevPrice": 400.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 234,
+      "rank": 213,
       "id": "228481",
       "name": "Leafeon - 17/90 (Prerelease) [Staff]",
       "number": "17/90",
@@ -3295,7 +3183,7 @@
       "isNew": false
     },
     {
-      "rank": 235,
+      "rank": 214,
       "id": "211976",
       "name": "Vaporeon - 25/108 (State Championships) [Staff]",
       "number": "025/108",
@@ -3309,7 +3197,7 @@
       "isNew": false
     },
     {
-      "rank": 236,
+      "rank": 215,
       "id": "84483",
       "name": "Crobat (H5)",
       "number": "H05/H32",
@@ -3323,7 +3211,7 @@
       "isNew": false
     },
     {
-      "rank": 237,
+      "rank": 216,
       "id": "84646",
       "name": "Dark Raichu",
       "number": "007/110",
@@ -3337,21 +3225,7 @@
       "isNew": false
     },
     {
-      "rank": 238,
-      "id": "85316",
-      "name": "Espeon (1)",
-      "number": "01/75",
-      "rarity": "Holo Rare",
-      "setName": "Neo Discovery",
-      "setId": "1434",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/85316_200w.jpg",
-      "price": 399.99,
-      "prevPrice": 399.99,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 239,
+      "rank": 217,
       "id": "86199",
       "name": "Houndoom (H11)",
       "number": "H11/H32",
@@ -3365,7 +3239,7 @@
       "isNew": false
     },
     {
-      "rank": 240,
+      "rank": 218,
       "id": "86391",
       "name": "Kabutops (H13)",
       "number": "H13/H32",
@@ -3379,7 +3253,7 @@
       "isNew": false
     },
     {
-      "rank": 241,
+      "rank": 219,
       "id": "84917",
       "name": "Dragonite (Delta Species)",
       "number": "3/113",
@@ -3393,7 +3267,7 @@
       "isNew": false
     },
     {
-      "rank": 242,
+      "rank": 220,
       "id": "550258",
       "name": "Greninja ex - 214/167",
       "number": "214/167",
@@ -3402,12 +3276,12 @@
       "setId": "23473",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/550258_200w.jpg",
       "price": 398.32,
-      "prevPrice": 398.32,
-      "changePct": 0.0,
+      "prevPrice": 401.63,
+      "changePct": -0.82,
       "isNew": false
     },
     {
-      "rank": 243,
+      "rank": 221,
       "id": "517045",
       "name": "Charizard ex - 199/165",
       "number": "199/165",
@@ -3416,12 +3290,12 @@
       "setId": "23237",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/517045_200w.jpg",
       "price": 396.99,
-      "prevPrice": 396.99,
-      "changePct": 0.0,
+      "prevPrice": 397.07,
+      "changePct": -0.02,
       "isNew": false
     },
     {
-      "rank": 244,
+      "rank": 222,
       "id": "84581",
       "name": "Dark Dragonair",
       "number": "038/110",
@@ -3435,7 +3309,7 @@
       "isNew": false
     },
     {
-      "rank": 245,
+      "rank": 223,
       "id": "246719",
       "name": "Umbreon V (Alternate Full Art)",
       "number": "189/203",
@@ -3449,7 +3323,7 @@
       "isNew": false
     },
     {
-      "rank": 246,
+      "rank": 224,
       "id": "478100",
       "name": "Giratina VSTAR (Secret)",
       "number": "GG69/GG70",
@@ -3458,12 +3332,12 @@
       "setId": "17689",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/478100_200w.jpg",
       "price": 393.85,
-      "prevPrice": 393.85,
-      "changePct": 0.0,
+      "prevPrice": 402.69,
+      "changePct": -2.2,
       "isNew": false
     },
     {
-      "rank": 247,
+      "rank": 225,
       "id": "88787",
       "name": "Rocket's Scizor ex",
       "number": "101/109",
@@ -3477,7 +3351,7 @@
       "isNew": false
     },
     {
-      "rank": 248,
+      "rank": 226,
       "id": "88642",
       "name": "Rayquaza ex",
       "number": "97/97",
@@ -3491,7 +3365,7 @@
       "isNew": false
     },
     {
-      "rank": 249,
+      "rank": 227,
       "id": "88112",
       "name": "Piloswine (H22)",
       "number": "H22/H32",
@@ -3505,7 +3379,7 @@
       "isNew": false
     },
     {
-      "rank": 250,
+      "rank": 228,
       "id": "97090",
       "name": "Metagross - BW75 (Team Plasma) (Prerelease) [Staff]",
       "number": "BW75",
@@ -3519,7 +3393,7 @@
       "isNew": false
     },
     {
-      "rank": 251,
+      "rank": 229,
       "id": "88634",
       "name": "Rayquaza - 016/110 (Delta Species)",
       "number": "16/110",
@@ -3533,7 +3407,7 @@
       "isNew": false
     },
     {
-      "rank": 252,
+      "rank": 230,
       "id": "98141",
       "name": "M Rayquaza EX (105 Full Art)",
       "number": "105/108",
@@ -3547,7 +3421,7 @@
       "isNew": false
     },
     {
-      "rank": 253,
+      "rank": 231,
       "id": "178795",
       "name": "Giratina - SM151 (Prerelease) [Staff]",
       "number": "SM151",
@@ -3561,7 +3435,7 @@
       "isNew": false
     },
     {
-      "rank": 254,
+      "rank": 232,
       "id": "118870",
       "name": "Tyranitar - XY130 (Prerelease) [Staff]",
       "number": "XY130",
@@ -3575,7 +3449,7 @@
       "isNew": false
     },
     {
-      "rank": 255,
+      "rank": 233,
       "id": "84144",
       "name": "Celebi",
       "number": "145/144",
@@ -3589,7 +3463,7 @@
       "isNew": false
     },
     {
-      "rank": 256,
+      "rank": 234,
       "id": "195290",
       "name": "Mega Sableye & Tyranitar GX (Alternate Full Art)",
       "number": "226/236",
@@ -3598,12 +3472,12 @@
       "setId": "2464",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/195290_200w.jpg",
       "price": 379.77,
-      "prevPrice": 379.77,
-      "changePct": 0.0,
+      "prevPrice": 378.12,
+      "changePct": 0.44,
       "isNew": false
     },
     {
-      "rank": 257,
+      "rank": 235,
       "id": "183831",
       "name": "Gengar & Mimikyu GX (Secret)",
       "number": "186/181",
@@ -3617,7 +3491,7 @@
       "isNew": false
     },
     {
-      "rank": 258,
+      "rank": 236,
       "id": "241673",
       "name": "Blaziken VMAX (Alternate Art Secret)",
       "number": "201/198",
@@ -3631,49 +3505,7 @@
       "isNew": false
     },
     {
-      "rank": 259,
-      "id": "106521",
-      "name": "Gengar (5)",
-      "number": "05/62",
-      "rarity": "Holo Rare",
-      "setName": "Fossil",
-      "setId": "630",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/106521_200w.jpg",
-      "price": 371.83,
-      "prevPrice": 371.83,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 260,
-      "id": "45122",
-      "name": "Snorlax (11)",
-      "number": "11/64",
-      "rarity": "Holo Rare",
-      "setName": "Jungle",
-      "setId": "635",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/45122_200w.jpg",
-      "price": 371.69,
-      "prevPrice": 371.69,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 261,
-      "id": "84594",
-      "name": "Dark Feraligatr",
-      "number": "005/105",
-      "rarity": "Holo Rare",
-      "setName": "Neo Destiny",
-      "setId": "1444",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84594_200w.jpg",
-      "price": 369.99,
-      "prevPrice": 369.99,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 262,
+      "rank": 237,
       "id": "87404",
       "name": "Mew",
       "number": "10",
@@ -3687,7 +3519,7 @@
       "isNew": false
     },
     {
-      "rank": 263,
+      "rank": 238,
       "id": "84807",
       "name": "Dialga (Shiny)",
       "number": "SL2",
@@ -3701,21 +3533,21 @@
       "isNew": false
     },
     {
-      "rank": 264,
-      "id": "87531",
-      "name": "Misty's Gyarados",
-      "number": "013/132",
+      "rank": 239,
+      "id": "86734",
+      "name": "Light Arcanine",
+      "number": "012/105",
       "rarity": "Holo Rare",
-      "setName": "Gym Challenge",
-      "setId": "1440",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/87531_200w.jpg",
-      "price": 360.24,
-      "prevPrice": 360.24,
-      "changePct": 0.0,
+      "setName": "Neo Destiny",
+      "setId": "1444",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86734_200w.jpg",
+      "price": 360.5,
+      "prevPrice": 333.13,
+      "changePct": 8.22,
       "isNew": false
     },
     {
-      "rank": 265,
+      "rank": 240,
       "id": "88641",
       "name": "Rayquaza C LV.X - DP47",
       "number": "DP47",
@@ -3729,7 +3561,21 @@
       "isNew": false
     },
     {
-      "rank": 266,
+      "rank": 241,
+      "id": "84572",
+      "name": "Dark Charizard (4)",
+      "number": "04/82",
+      "rarity": "Holo Rare",
+      "setName": "Team Rocket",
+      "setId": "1373",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84572_200w.jpg",
+      "price": 359.53,
+      "prevPrice": 355.61,
+      "changePct": 1.1,
+      "isNew": false
+    },
+    {
+      "rank": 242,
       "id": "590027",
       "name": "Pikachu ex - 238/191",
       "number": "238/191",
@@ -3743,7 +3589,7 @@
       "isNew": false
     },
     {
-      "rank": 267,
+      "rank": 243,
       "id": "83651",
       "name": "Articuno (148)",
       "number": "148",
@@ -3757,21 +3603,7 @@
       "isNew": false
     },
     {
-      "rank": 268,
-      "id": "83860",
-      "name": "Blaine's Arcanine",
-      "number": "001/132",
-      "rarity": "Holo Rare",
-      "setName": "Gym Challenge",
-      "setId": "1440",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/83860_200w.jpg",
-      "price": 355.79,
-      "prevPrice": 355.79,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 269,
+      "rank": 244,
       "id": "195296",
       "name": "Misty's Favor (Full Art)",
       "number": "235/236",
@@ -3785,7 +3617,7 @@
       "isNew": false
     },
     {
-      "rank": 270,
+      "rank": 245,
       "id": "84569",
       "name": "Dark Blastoise",
       "number": "004/110",
@@ -3799,7 +3631,7 @@
       "isNew": false
     },
     {
-      "rank": 271,
+      "rank": 246,
       "id": "489291",
       "name": "Charizard VSTAR - 018/172",
       "number": "018/172",
@@ -3813,7 +3645,7 @@
       "isNew": false
     },
     {
-      "rank": 272,
+      "rank": 247,
       "id": "85267",
       "name": "Entei (H8)",
       "number": "H08/H32",
@@ -3827,7 +3659,7 @@
       "isNew": false
     },
     {
-      "rank": 273,
+      "rank": 248,
       "id": "88789",
       "name": "Rocket's Scyther ex",
       "number": "102/109",
@@ -3841,7 +3673,7 @@
       "isNew": false
     },
     {
-      "rank": 274,
+      "rank": 249,
       "id": "89385",
       "name": "Snorlax",
       "number": "49/53",
@@ -3855,7 +3687,7 @@
       "isNew": false
     },
     {
-      "rank": 275,
+      "rank": 250,
       "id": "87764",
       "name": "Ninetales",
       "number": "017/110",
@@ -3869,7 +3701,7 @@
       "isNew": false
     },
     {
-      "rank": 276,
+      "rank": 251,
       "id": "88711",
       "name": "Reshiram (114 Full Art Secret Rare)",
       "number": "114/113",
@@ -3883,7 +3715,7 @@
       "isNew": false
     },
     {
-      "rank": 277,
+      "rank": 252,
       "id": "86738",
       "name": "Light Dragonite",
       "number": "014/105",
@@ -3892,12 +3724,12 @@
       "setId": "1444",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/86738_200w.jpg",
       "price": 350.22,
-      "prevPrice": 350.22,
-      "changePct": 0.0,
+      "prevPrice": 337.59,
+      "changePct": 3.74,
       "isNew": false
     },
     {
-      "rank": 278,
+      "rank": 253,
       "id": "84485",
       "name": "Crobat (147)",
       "number": "147/144",
@@ -3911,7 +3743,7 @@
       "isNew": false
     },
     {
-      "rank": 279,
+      "rank": 254,
       "id": "88074",
       "name": "Pikachu",
       "number": "084/144",
@@ -3925,7 +3757,7 @@
       "isNew": false
     },
     {
-      "rank": 280,
+      "rank": 255,
       "id": "84223",
       "name": "Charmeleon",
       "number": "037/110",
@@ -3939,7 +3771,7 @@
       "isNew": false
     },
     {
-      "rank": 281,
+      "rank": 256,
       "id": "90143",
       "name": "Umbreon",
       "number": "041/147",
@@ -3953,7 +3785,7 @@
       "isNew": false
     },
     {
-      "rank": 282,
+      "rank": 257,
       "id": "236461",
       "name": "Ditto - 61/113 (Origins International Game Expo 2007)",
       "number": "61/113",
@@ -3967,7 +3799,7 @@
       "isNew": false
     },
     {
-      "rank": 283,
+      "rank": 258,
       "id": "96566",
       "name": "Altaria - BW48 (Prerelease) [Staff]",
       "number": "BW48",
@@ -3981,7 +3813,7 @@
       "isNew": false
     },
     {
-      "rank": 284,
+      "rank": 259,
       "id": "87023",
       "name": "Magikarp",
       "number": "075/144",
@@ -3995,7 +3827,7 @@
       "isNew": false
     },
     {
-      "rank": 285,
+      "rank": 260,
       "id": "84764",
       "name": "Deoxys (Delta Species - Normal Forme)",
       "number": "5/110",
@@ -4009,35 +3841,7 @@
       "isNew": false
     },
     {
-      "rank": 286,
-      "id": "84141",
-      "name": "Celebi (3)",
-      "number": "03/64",
-      "rarity": "Holo Rare",
-      "setName": "Neo Revelation",
-      "setId": "1389",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84141_200w.jpg",
-      "price": 349.99,
-      "prevPrice": 349.99,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 287,
-      "id": "88788",
-      "name": "Rocket's Scyther",
-      "number": "013/132",
-      "rarity": "Holo Rare",
-      "setName": "Gym Heroes",
-      "setId": "1441",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88788_200w.jpg",
-      "price": 349.99,
-      "prevPrice": 349.99,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 288,
+      "rank": 261,
       "id": "86918",
       "name": "Lugia Legend (Top)",
       "number": "113/123",
@@ -4051,21 +3855,7 @@
       "isNew": false
     },
     {
-      "rank": 289,
-      "id": "88529",
-      "name": "Raikou (13)",
-      "number": "13/64",
-      "rarity": "Holo Rare",
-      "setName": "Neo Revelation",
-      "setId": "1389",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88529_200w.jpg",
-      "price": 347.54,
-      "prevPrice": 347.54,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 290,
+      "rank": 262,
       "id": "183828",
       "name": "Gengar & Mimikyu GX",
       "number": "53/181",
@@ -4074,12 +3864,12 @@
       "setId": "2377",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/183828_200w.jpg",
       "price": 346.42,
-      "prevPrice": 346.42,
-      "changePct": 0.0,
+      "prevPrice": 343.06,
+      "changePct": 0.98,
       "isNew": false
     },
     {
-      "rank": 291,
+      "rank": 263,
       "id": "90784",
       "name": "______'s Pikachu",
       "number": "24/53",
@@ -4093,7 +3883,7 @@
       "isNew": false
     },
     {
-      "rank": 292,
+      "rank": 264,
       "id": "253265",
       "name": "Espeon VMAX (Alternate Art Secret)",
       "number": "270/264",
@@ -4107,7 +3897,7 @@
       "isNew": false
     },
     {
-      "rank": 293,
+      "rank": 265,
       "id": "662185",
       "name": "Mega Charizard X ex - 130/094",
       "number": "130/094",
@@ -4121,7 +3911,7 @@
       "isNew": false
     },
     {
-      "rank": 294,
+      "rank": 266,
       "id": "263873",
       "name": "Charizard V (Alternate Full Art)",
       "number": "154/172",
@@ -4135,7 +3925,7 @@
       "isNew": false
     },
     {
-      "rank": 295,
+      "rank": 267,
       "id": "88794",
       "name": "Rocket's Sneasel ex",
       "number": "103/109",
@@ -4149,7 +3939,7 @@
       "isNew": false
     },
     {
-      "rank": 296,
+      "rank": 268,
       "id": "89168",
       "name": "Shining Noctowl",
       "number": "110/105",
@@ -4163,7 +3953,7 @@
       "isNew": false
     },
     {
-      "rank": 297,
+      "rank": 269,
       "id": "87556",
       "name": "Moltres (H20)",
       "number": "H20/H32",
@@ -4177,7 +3967,7 @@
       "isNew": false
     },
     {
-      "rank": 298,
+      "rank": 270,
       "id": "84664",
       "name": "Dark Vaporeon",
       "number": "009/110",
@@ -4191,7 +3981,7 @@
       "isNew": false
     },
     {
-      "rank": 299,
+      "rank": 271,
       "id": "695405",
       "name": "Judge - 076/088 (Regional Championships) [Staff]",
       "number": "076/088",
@@ -4205,7 +3995,21 @@
       "isNew": false
     },
     {
-      "rank": 300,
+      "rank": 272,
+      "id": "86198",
+      "name": "Houndoom",
+      "number": "08/64",
+      "rarity": "Holo Rare",
+      "setName": "Neo Revelation",
+      "setId": "1389",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86198_200w.jpg",
+      "price": 336.66,
+      "prevPrice": 336.66,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 273,
       "id": "84150",
       "name": "Celebi ex",
       "number": "117/115",
@@ -4214,12 +4018,12 @@
       "setId": "1398",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/84150_200w.jpg",
       "price": 336.66,
-      "prevPrice": 336.66,
-      "changePct": 0.0,
+      "prevPrice": 355.0,
+      "changePct": -5.17,
       "isNew": false
     },
     {
-      "rank": 301,
+      "rank": 274,
       "id": "197856",
       "name": "Mewtwo & Mew GX - SM191",
       "number": "SM191",
@@ -4228,12 +4032,12 @@
       "setId": "1861",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/197856_200w.jpg",
       "price": 336.52,
-      "prevPrice": 336.52,
-      "changePct": 0.0,
+      "prevPrice": 335.28,
+      "changePct": 0.37,
       "isNew": false
     },
     {
-      "rank": 302,
+      "rank": 275,
       "id": "90124",
       "name": "Tyranitar ex (Holo)",
       "number": "017/017",
@@ -4247,7 +4051,7 @@
       "isNew": false
     },
     {
-      "rank": 303,
+      "rank": 276,
       "id": "89395",
       "name": "Snorlax (Delta Species)",
       "number": "10/101",
@@ -4261,7 +4065,7 @@
       "isNew": false
     },
     {
-      "rank": 304,
+      "rank": 277,
       "id": "194979",
       "name": "Raichu & Alolan Raichu GX (Alternate Full Art)",
       "number": "221/236",
@@ -4275,7 +4079,7 @@
       "isNew": false
     },
     {
-      "rank": 305,
+      "rank": 278,
       "id": "189310",
       "name": "Greninja & Zoroark GX (201) (Alternate Full Art)",
       "number": "201/214",
@@ -4289,7 +4093,7 @@
       "isNew": false
     },
     {
-      "rank": 306,
+      "rank": 279,
       "id": "610499",
       "name": "Leafeon ex - 144/131",
       "number": "144/131",
@@ -4303,7 +4107,7 @@
       "isNew": false
     },
     {
-      "rank": 307,
+      "rank": 280,
       "id": "85331",
       "name": "Espeon ex",
       "number": "102/115",
@@ -4317,7 +4121,7 @@
       "isNew": false
     },
     {
-      "rank": 308,
+      "rank": 281,
       "id": "86885",
       "name": "Lucario - BW85",
       "number": "BW85",
@@ -4331,7 +4135,7 @@
       "isNew": false
     },
     {
-      "rank": 309,
+      "rank": 282,
       "id": "85414",
       "name": "Feraligatr (12)",
       "number": "012/165",
@@ -4345,7 +4149,7 @@
       "isNew": false
     },
     {
-      "rank": 310,
+      "rank": 283,
       "id": "183829",
       "name": "Gengar & Mimikyu GX (Full Art)",
       "number": "164/181",
@@ -4354,12 +4158,12 @@
       "setId": "2377",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/183829_200w.jpg",
       "price": 330.41,
-      "prevPrice": 330.41,
-      "changePct": 0.0,
+      "prevPrice": 325.48,
+      "changePct": 1.51,
       "isNew": false
     },
     {
-      "rank": 311,
+      "rank": 284,
       "id": "513804",
       "name": "Radiant Charizard - 020/159",
       "number": "020/159",
@@ -4368,12 +4172,12 @@
       "setId": "22880",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/513804_200w.jpg",
       "price": 330.32,
-      "prevPrice": 330.32,
-      "changePct": 0.0,
+      "prevPrice": 294.57,
+      "changePct": 12.14,
       "isNew": false
     },
     {
-      "rank": 312,
+      "rank": 285,
       "id": "88647",
       "name": "Rayquaza ex (Delta Species)",
       "number": "97/101",
@@ -4387,7 +4191,7 @@
       "isNew": false
     },
     {
-      "rank": 313,
+      "rank": 286,
       "id": "86675",
       "name": "Latios ex (Delta Species)",
       "number": "96/101",
@@ -4401,7 +4205,7 @@
       "isNew": false
     },
     {
-      "rank": 314,
+      "rank": 287,
       "id": "84185",
       "name": "Charizard (40)",
       "number": "040/165",
@@ -4415,7 +4219,7 @@
       "isNew": false
     },
     {
-      "rank": 315,
+      "rank": 288,
       "id": "83657",
       "name": "Articuno EX (Team Plasma) (132 Full Art)",
       "number": "132/135",
@@ -4429,7 +4233,7 @@
       "isNew": false
     },
     {
-      "rank": 316,
+      "rank": 289,
       "id": "90739",
       "name": "Zekrom (115 Full Art Secret Rare)",
       "number": "115/113",
@@ -4443,7 +4247,7 @@
       "isNew": false
     },
     {
-      "rank": 317,
+      "rank": 290,
       "id": "535090",
       "name": "Charizard ex - 234/091",
       "number": "234/091",
@@ -4457,7 +4261,7 @@
       "isNew": false
     },
     {
-      "rank": 318,
+      "rank": 291,
       "id": "257102",
       "name": "Cramorant - 226/S-P",
       "number": "226/S-P",
@@ -4471,7 +4275,7 @@
       "isNew": false
     },
     {
-      "rank": 319,
+      "rank": 292,
       "id": "85739",
       "name": "Giratina (Team Plasma)",
       "number": "BW74",
@@ -4485,7 +4289,7 @@
       "isNew": false
     },
     {
-      "rank": 320,
+      "rank": 293,
       "id": "86075",
       "name": "Here Comes Team Rocket!",
       "number": "111/109",
@@ -4499,7 +4303,7 @@
       "isNew": false
     },
     {
-      "rank": 321,
+      "rank": 294,
       "id": "86280",
       "name": "Infernape E4 Lv.X",
       "number": "108/111",
@@ -4513,7 +4317,7 @@
       "isNew": false
     },
     {
-      "rank": 322,
+      "rank": 295,
       "id": "84669",
       "name": "Dark Wartortle",
       "number": "039/110",
@@ -4527,7 +4331,7 @@
       "isNew": false
     },
     {
-      "rank": 323,
+      "rank": 296,
       "id": "89606",
       "name": "Suicune (Shiny)",
       "number": "SL11",
@@ -4541,21 +4345,7 @@
       "isNew": false
     },
     {
-      "rank": 324,
-      "id": "88777",
-      "name": "Rocket's Mewtwo",
-      "number": "014/132",
-      "rarity": "Holo Rare",
-      "setName": "Gym Challenge",
-      "setId": "1440",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88777_200w.jpg",
-      "price": 323.33,
-      "prevPrice": 323.33,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 325,
+      "rank": 297,
       "id": "88091",
       "name": "Pikachu",
       "number": "112/111",
@@ -4569,7 +4359,7 @@
       "isNew": false
     },
     {
-      "rank": 326,
+      "rank": 298,
       "id": "84837",
       "name": "Ditto - 040/113 (Squirtle)",
       "number": "40/113",
@@ -4583,21 +4373,7 @@
       "isNew": false
     },
     {
-      "rank": 327,
-      "id": "90098",
-      "name": "Typhlosion (17)",
-      "number": "017/111",
-      "rarity": "Holo Rare",
-      "setName": "Neo Genesis",
-      "setId": "1396",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/90098_200w.jpg",
-      "price": 320.5,
-      "prevPrice": 320.5,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 328,
+      "rank": 299,
       "id": "610510",
       "name": "Espeon ex - 155/131",
       "number": "155/131",
@@ -4606,12 +4382,12 @@
       "setId": "23821",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/610510_200w.jpg",
       "price": 320.36,
-      "prevPrice": 320.36,
-      "changePct": 0.0,
+      "prevPrice": 319.52,
+      "changePct": 0.26,
       "isNew": false
     },
     {
-      "rank": 329,
+      "rank": 300,
       "id": "85280",
       "name": "Entei EX (103 Full Art)",
       "number": "103/108",
@@ -4625,7 +4401,7 @@
       "isNew": false
     },
     {
-      "rank": 330,
+      "rank": 301,
       "id": "84208",
       "name": "Charmander",
       "number": "98/97",
@@ -4639,21 +4415,7 @@
       "isNew": false
     },
     {
-      "rank": 331,
-      "id": "88011",
-      "name": "Pichu",
-      "number": "012/111",
-      "rarity": "Holo Rare",
-      "setName": "Neo Genesis",
-      "setId": "1396",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88011_200w.jpg",
-      "price": 319.31,
-      "prevPrice": 319.31,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 332,
+      "rank": 302,
       "id": "86560",
       "name": "Kyogre EX (104 Full Art)",
       "number": "104/108",
@@ -4667,7 +4429,7 @@
       "isNew": false
     },
     {
-      "rank": 333,
+      "rank": 303,
       "id": "88542",
       "name": "Raikou EX (105 Full Art)",
       "number": "105/108",
@@ -4681,21 +4443,7 @@
       "isNew": false
     },
     {
-      "rank": 334,
-      "id": "84584",
-      "name": "Dark Dragonite (5)",
-      "number": "05/82",
-      "rarity": "Holo Rare",
-      "setName": "Team Rocket",
-      "setId": "1373",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84584_200w.jpg",
-      "price": 318.0,
-      "prevPrice": 318.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 335,
+      "rank": 304,
       "id": "83537",
       "name": "Ampharos (H1)",
       "number": "H01/H32",
@@ -4709,7 +4457,7 @@
       "isNew": false
     },
     {
-      "rank": 336,
+      "rank": 305,
       "id": "86128",
       "name": "Ho-Oh ex",
       "number": "104/115",
@@ -4723,7 +4471,7 @@
       "isNew": false
     },
     {
-      "rank": 337,
+      "rank": 306,
       "id": "87767",
       "name": "Ninetales (H19)",
       "number": "H19/H32",
@@ -4737,7 +4485,7 @@
       "isNew": false
     },
     {
-      "rank": 338,
+      "rank": 307,
       "id": "87428",
       "name": "Mewtwo ex",
       "number": "101/109",
@@ -4751,7 +4499,7 @@
       "isNew": false
     },
     {
-      "rank": 339,
+      "rank": 308,
       "id": "89644",
       "name": "Surfing Pikachu",
       "number": "114/111",
@@ -4765,7 +4513,7 @@
       "isNew": false
     },
     {
-      "rank": 340,
+      "rank": 309,
       "id": "610504",
       "name": "Vaporeon ex - 149/131",
       "number": "149/131",
@@ -4779,21 +4527,7 @@
       "isNew": false
     },
     {
-      "rank": 341,
-      "id": "107006",
-      "name": "Nidoking",
-      "number": "011/102",
-      "rarity": "Holo Rare",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/107006_200w.jpg",
-      "price": 310.0,
-      "prevPrice": 310.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 342,
+      "rank": 310,
       "id": "86551",
       "name": "Kyogre (Shiny)",
       "number": "SL6",
@@ -4807,7 +4541,7 @@
       "isNew": false
     },
     {
-      "rank": 343,
+      "rank": 311,
       "id": "87775",
       "name": "Ninetales",
       "number": "3",
@@ -4821,7 +4555,7 @@
       "isNew": false
     },
     {
-      "rank": 344,
+      "rank": 312,
       "id": "87405",
       "name": "Mew (Prime)",
       "number": "97/102",
@@ -4835,7 +4569,7 @@
       "isNew": false
     },
     {
-      "rank": 345,
+      "rank": 313,
       "id": "88769",
       "name": "Rocket's Entei ex",
       "number": "97/109",
@@ -4849,7 +4583,7 @@
       "isNew": false
     },
     {
-      "rank": 346,
+      "rank": 314,
       "id": "101519",
       "name": "Primal Groudon EX (Shiny Full Art)",
       "number": "97/98",
@@ -4863,7 +4597,7 @@
       "isNew": false
     },
     {
-      "rank": 347,
+      "rank": 315,
       "id": "194955",
       "name": "Slowpoke & Psyduck GX (Alternate Full Art)",
       "number": "218/236",
@@ -4877,7 +4611,7 @@
       "isNew": false
     },
     {
-      "rank": 348,
+      "rank": 316,
       "id": "517270",
       "name": "Snorlax - 051 (Pokemon Center Exclusive)",
       "number": "051",
@@ -4891,7 +4625,21 @@
       "isNew": false
     },
     {
-      "rank": 349,
+      "rank": 317,
+      "id": "85316",
+      "name": "Espeon (1)",
+      "number": "01/75",
+      "rarity": "Holo Rare",
+      "setName": "Neo Discovery",
+      "setId": "1434",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/85316_200w.jpg",
+      "price": 304.69,
+      "prevPrice": 304.69,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 318,
       "id": "197823",
       "name": "Umbreon GX",
       "number": "SV69/SV94",
@@ -4905,7 +4653,7 @@
       "isNew": false
     },
     {
-      "rank": 350,
+      "rank": 319,
       "id": "246756",
       "name": "Glaceon VMAX (Alternate Art Secret)",
       "number": "209/203",
@@ -4919,7 +4667,7 @@
       "isNew": false
     },
     {
-      "rank": 351,
+      "rank": 320,
       "id": "477057",
       "name": "Mewtwo VSTAR",
       "number": "GG44/GG70",
@@ -4928,12 +4676,12 @@
       "setId": "17689",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/477057_200w.jpg",
       "price": 301.79,
-      "prevPrice": 301.79,
-      "changePct": 0.0,
+      "prevPrice": 304.57,
+      "changePct": -0.91,
       "isNew": false
     },
     {
-      "rank": 352,
+      "rank": 321,
       "id": "83504",
       "name": "Alakazam E4 Lv.X",
       "number": "103/111",
@@ -4942,12 +4690,12 @@
       "setId": "1367",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/83504_200w.jpg",
       "price": 300.0,
-      "prevPrice": 300.0,
-      "changePct": 0.0,
+      "prevPrice": 200.0,
+      "changePct": 50.0,
       "isNew": false
     },
     {
-      "rank": 353,
+      "rank": 322,
       "id": "83577",
       "name": "Arcanine (3)",
       "number": "003/144",
@@ -4961,7 +4709,7 @@
       "isNew": false
     },
     {
-      "rank": 354,
+      "rank": 323,
       "id": "90115",
       "name": "Tyranitar (29)",
       "number": "029/165",
@@ -4975,7 +4723,7 @@
       "isNew": false
     },
     {
-      "rank": 355,
+      "rank": 324,
       "id": "88797",
       "name": "Rocket's Suicune ex",
       "number": "105/109",
@@ -4989,7 +4737,7 @@
       "isNew": false
     },
     {
-      "rank": 356,
+      "rank": 325,
       "id": "87406",
       "name": "Mew - BW98",
       "number": "BW98",
@@ -5003,7 +4751,7 @@
       "isNew": false
     },
     {
-      "rank": 357,
+      "rank": 326,
       "id": "88013",
       "name": "Pichu (22)",
       "number": "022/165",
@@ -5017,7 +4765,7 @@
       "isNew": false
     },
     {
-      "rank": 358,
+      "rank": 327,
       "id": "183969",
       "name": "Jirachi - SM161 [Staff]",
       "number": "SM161",
@@ -5031,7 +4779,7 @@
       "isNew": false
     },
     {
-      "rank": 359,
+      "rank": 328,
       "id": "199311",
       "name": "Champions Festival (2015)",
       "number": "XY91",
@@ -5045,7 +4793,7 @@
       "isNew": false
     },
     {
-      "rank": 360,
+      "rank": 329,
       "id": "89557",
       "name": "Steelix (H23)",
       "number": "H23/H32",
@@ -5059,7 +4807,7 @@
       "isNew": false
     },
     {
-      "rank": 361,
+      "rank": 330,
       "id": "245913",
       "name": "Dark Houndoom - 37/109 (Prerelease)",
       "number": "37/109",
@@ -5073,7 +4821,7 @@
       "isNew": false
     },
     {
-      "rank": 362,
+      "rank": 331,
       "id": "201250",
       "name": "Solgaleo & Lunala GX (Full Art)",
       "number": "216/236",
@@ -5087,7 +4835,7 @@
       "isNew": false
     },
     {
-      "rank": 363,
+      "rank": 332,
       "id": "84830",
       "name": "Ditto",
       "number": "051/144",
@@ -5101,21 +4849,7 @@
       "isNew": false
     },
     {
-      "rank": 364,
-      "id": "107001",
-      "name": "Clefairy",
-      "number": "005/102",
-      "rarity": "Holo Rare",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/107001_200w.jpg",
-      "price": 299.0,
-      "prevPrice": 299.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 365,
+      "rank": 333,
       "id": "97091",
       "name": "Porygon-Z (Team Plasma) - BW84 (Prerelease) [Staff]",
       "number": "BW84",
@@ -5129,21 +4863,7 @@
       "isNew": false
     },
     {
-      "rank": 366,
-      "id": "107041",
-      "name": "Bulbasaur",
-      "number": "044/102",
-      "rarity": "Common",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/107041_200w.jpg",
-      "price": 298.19,
-      "prevPrice": 298.19,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 367,
+      "rank": 334,
       "id": "91245",
       "name": "M Charizard EX (Y) (Secret)",
       "number": "107/106",
@@ -5157,7 +4877,7 @@
       "isNew": false
     },
     {
-      "rank": 368,
+      "rank": 335,
       "id": "86917",
       "name": "Lugia Legend (Bottom)",
       "number": "114/123",
@@ -5171,7 +4891,7 @@
       "isNew": false
     },
     {
-      "rank": 369,
+      "rank": 336,
       "id": "90123",
       "name": "Tyranitar (Delta Species)",
       "number": "16/113",
@@ -5185,7 +4905,7 @@
       "isNew": false
     },
     {
-      "rank": 370,
+      "rank": 337,
       "id": "610505",
       "name": "Glaceon ex - 150/131",
       "number": "150/131",
@@ -5199,7 +4919,7 @@
       "isNew": false
     },
     {
-      "rank": 371,
+      "rank": 338,
       "id": "86911",
       "name": "Lugia (Shiny)",
       "number": "SL7",
@@ -5213,7 +4933,7 @@
       "isNew": false
     },
     {
-      "rank": 372,
+      "rank": 339,
       "id": "89165",
       "name": "Shining Kabutops",
       "number": "108/105",
@@ -5227,7 +4947,7 @@
       "isNew": false
     },
     {
-      "rank": 373,
+      "rank": 340,
       "id": "87912",
       "name": "Palkia (Shiny)",
       "number": "SL8",
@@ -5241,7 +4961,7 @@
       "isNew": false
     },
     {
-      "rank": 374,
+      "rank": 341,
       "id": "676107",
       "name": "Mega Dragonite ex - 295/217",
       "number": "295/217",
@@ -5255,7 +4975,7 @@
       "isNew": false
     },
     {
-      "rank": 375,
+      "rank": 342,
       "id": "84930",
       "name": "Dratini",
       "number": "072/110",
@@ -5269,7 +4989,7 @@
       "isNew": false
     },
     {
-      "rank": 376,
+      "rank": 343,
       "id": "85203",
       "name": "Empoleon (117 Secret Rare)",
       "number": "117/116",
@@ -5283,7 +5003,7 @@
       "isNew": false
     },
     {
-      "rank": 377,
+      "rank": 344,
       "id": "118862",
       "name": "Blastoise EX - XY122",
       "number": "XY122",
@@ -5297,7 +5017,7 @@
       "isNew": false
     },
     {
-      "rank": 378,
+      "rank": 345,
       "id": "85666",
       "name": "Genesect EX (Team Plasma) (97 Full Art)",
       "number": "97/101",
@@ -5311,7 +5031,7 @@
       "isNew": false
     },
     {
-      "rank": 379,
+      "rank": 346,
       "id": "86553",
       "name": "Kyogre & Groudon Legend (Bottom)",
       "number": "88/90",
@@ -5325,7 +5045,7 @@
       "isNew": false
     },
     {
-      "rank": 380,
+      "rank": 347,
       "id": "476050",
       "name": "Umbreon VMAX - 095/203",
       "number": "095/203",
@@ -5339,7 +5059,7 @@
       "isNew": false
     },
     {
-      "rank": 381,
+      "rank": 348,
       "id": "88635",
       "name": "Rayquaza - 026/110 (Delta Species)",
       "number": "26/110",
@@ -5353,21 +5073,21 @@
       "isNew": false
     },
     {
-      "rank": 382,
-      "id": "86750",
-      "name": "Light Togetic",
-      "number": "015/105",
+      "rank": 349,
+      "id": "106996",
+      "name": "Alakazam",
+      "number": "001/102",
       "rarity": "Holo Rare",
-      "setName": "Neo Destiny",
-      "setId": "1444",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86750_200w.jpg",
-      "price": 290.0,
-      "prevPrice": 290.0,
+      "setName": "Base Set (Shadowless)",
+      "setId": "1663",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/106996_200w.jpg",
+      "price": 290.32,
+      "prevPrice": 290.32,
       "changePct": 0.0,
       "isNew": false
     },
     {
-      "rank": 383,
+      "rank": 350,
       "id": "85317",
       "name": "Espeon (H9)",
       "number": "H09/H32",
@@ -5381,7 +5101,7 @@
       "isNew": false
     },
     {
-      "rank": 384,
+      "rank": 351,
       "id": "84919",
       "name": "Dragonite ex (Delta Species)",
       "number": "91/101",
@@ -5395,7 +5115,7 @@
       "isNew": false
     },
     {
-      "rank": 385,
+      "rank": 352,
       "id": "86002",
       "name": "Gyarados (Delta Species)",
       "number": "8/110",
@@ -5409,7 +5129,7 @@
       "isNew": false
     },
     {
-      "rank": 386,
+      "rank": 353,
       "id": "170938",
       "name": "Rayquaza GX (Secret)",
       "number": "177/168",
@@ -5423,7 +5143,7 @@
       "isNew": false
     },
     {
-      "rank": 387,
+      "rank": 354,
       "id": "87426",
       "name": "Mewtwo (Delta Species)",
       "number": "24/110",
@@ -5437,7 +5157,7 @@
       "isNew": false
     },
     {
-      "rank": 388,
+      "rank": 355,
       "id": "642618",
       "name": "Zekrom ex - 166/086",
       "number": "166/086",
@@ -5451,7 +5171,7 @@
       "isNew": false
     },
     {
-      "rank": 389,
+      "rank": 356,
       "id": "89487",
       "name": "Squirtle (132)",
       "number": "132/165",
@@ -5465,7 +5185,7 @@
       "isNew": false
     },
     {
-      "rank": 390,
+      "rank": 357,
       "id": "88785",
       "name": "Rocket's Raikou ex",
       "number": "108/107",
@@ -5479,7 +5199,7 @@
       "isNew": false
     },
     {
-      "rank": 391,
+      "rank": 358,
       "id": "172931",
       "name": "Kyogre - SM129 (Prerelease) [Staff]",
       "number": "SM129",
@@ -5493,21 +5213,7 @@
       "isNew": false
     },
     {
-      "rank": 392,
-      "id": "85710",
-      "name": "Giovanni's Gyarados",
-      "number": "005/132",
-      "rarity": "Holo Rare",
-      "setName": "Gym Challenge",
-      "setId": "1440",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/85710_200w.jpg",
-      "price": 283.0,
-      "prevPrice": 283.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 393,
+      "rank": 359,
       "id": "91206",
       "name": "M Charizard EX (X)",
       "number": "69/106",
@@ -5521,7 +5227,7 @@
       "isNew": false
     },
     {
-      "rank": 394,
+      "rank": 360,
       "id": "205169",
       "name": "Armored Mewtwo - SM228",
       "number": "SM228",
@@ -5530,12 +5236,12 @@
       "setId": "1861",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/205169_200w.jpg",
       "price": 281.58,
-      "prevPrice": 281.58,
-      "changePct": 0.0,
+      "prevPrice": 280.62,
+      "changePct": 0.34,
       "isNew": false
     },
     {
-      "rank": 395,
+      "rank": 361,
       "id": "90743",
       "name": "Zekrom EX (97 Full Art)",
       "number": "97/99",
@@ -5549,7 +5255,7 @@
       "isNew": false
     },
     {
-      "rank": 396,
+      "rank": 362,
       "id": "183909",
       "name": "Eevee & Snorlax GX (Secret)",
       "number": "191/181",
@@ -5563,7 +5269,7 @@
       "isNew": false
     },
     {
-      "rank": 397,
+      "rank": 363,
       "id": "86879",
       "name": "Lucario",
       "number": "12",
@@ -5577,7 +5283,7 @@
       "isNew": false
     },
     {
-      "rank": 398,
+      "rank": 364,
       "id": "85741",
       "name": "Giratina EX (124 Full Art)",
       "number": "124/124",
@@ -5591,7 +5297,7 @@
       "isNew": false
     },
     {
-      "rank": 399,
+      "rank": 365,
       "id": "86673",
       "name": "Latios ex",
       "number": "94/97",
@@ -5605,21 +5311,7 @@
       "isNew": false
     },
     {
-      "rank": 400,
-      "id": "85307",
-      "name": "Erika's Venusaur",
-      "number": "004/132",
-      "rarity": "Holo Rare",
-      "setName": "Gym Challenge",
-      "setId": "1440",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/85307_200w.jpg",
-      "price": 280.0,
-      "prevPrice": 280.0,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 401,
+      "rank": 366,
       "id": "90141",
       "name": "Umbreon (32)",
       "number": "032/144",
@@ -5633,7 +5325,7 @@
       "isNew": false
     },
     {
-      "rank": 402,
+      "rank": 367,
       "id": "85923",
       "name": "Groudon - 014/106",
       "number": "14/106",
@@ -5647,7 +5339,7 @@
       "isNew": false
     },
     {
-      "rank": 403,
+      "rank": 368,
       "id": "97809",
       "name": "Ho-Oh ex (Holo)",
       "number": "017/017",
@@ -5661,7 +5353,7 @@
       "isNew": false
     },
     {
-      "rank": 404,
+      "rank": 369,
       "id": "90320",
       "name": "Venusaur",
       "number": "1",
@@ -5675,7 +5367,7 @@
       "isNew": false
     },
     {
-      "rank": 405,
+      "rank": 370,
       "id": "654527",
       "name": "Mega Lucario ex - 188/132",
       "number": "188/132",
@@ -5689,21 +5381,7 @@
       "isNew": false
     },
     {
-      "rank": 406,
-      "id": "84647",
-      "name": "Dark Raichu",
-      "number": "83/82",
-      "rarity": "Secret Rare",
-      "setName": "Team Rocket",
-      "setId": "1373",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84647_200w.jpg",
-      "price": 278.87,
-      "prevPrice": 278.87,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 407,
+      "rank": 371,
       "id": "84184",
       "name": "Charizard (39)",
       "number": "039/165",
@@ -5717,7 +5395,7 @@
       "isNew": false
     },
     {
-      "rank": 408,
+      "rank": 372,
       "id": "125253",
       "name": "M Gengar EX",
       "number": "XY166",
@@ -5731,7 +5409,7 @@
       "isNew": false
     },
     {
-      "rank": 409,
+      "rank": 373,
       "id": "489296",
       "name": "Gengar V - 156/264",
       "number": "156/264",
@@ -5745,7 +5423,7 @@
       "isNew": false
     },
     {
-      "rank": 410,
+      "rank": 374,
       "id": "253177",
       "name": "Mew VMAX (Alternate Art Secret)",
       "number": "269/264",
@@ -5759,7 +5437,7 @@
       "isNew": false
     },
     {
-      "rank": 411,
+      "rank": 375,
       "id": "159115",
       "name": "______'s Pikachu",
       "number": "24",
@@ -5773,7 +5451,7 @@
       "isNew": false
     },
     {
-      "rank": 412,
+      "rank": 376,
       "id": "123184",
       "name": "Pokemon Communication - 98/123 (League Promo)",
       "number": "098/123",
@@ -5787,7 +5465,7 @@
       "isNew": false
     },
     {
-      "rank": 413,
+      "rank": 377,
       "id": "83644",
       "name": "Articuno (H3)",
       "number": "H03/H32",
@@ -5801,7 +5479,7 @@
       "isNew": false
     },
     {
-      "rank": 414,
+      "rank": 378,
       "id": "87298",
       "name": "Meganium ex",
       "number": "106/115",
@@ -5815,7 +5493,7 @@
       "isNew": false
     },
     {
-      "rank": 415,
+      "rank": 379,
       "id": "85991",
       "name": "Gyarados",
       "number": "8/107",
@@ -5829,7 +5507,7 @@
       "isNew": false
     },
     {
-      "rank": 416,
+      "rank": 380,
       "id": "86349",
       "name": "Jolteon (Delta Species)",
       "number": "7/113",
@@ -5843,7 +5521,7 @@
       "isNew": false
     },
     {
-      "rank": 417,
+      "rank": 381,
       "id": "221298",
       "name": "Rare Candy - 82/95 (League Promo)",
       "number": "082/095",
@@ -5857,7 +5535,7 @@
       "isNew": false
     },
     {
-      "rank": 418,
+      "rank": 382,
       "id": "86337",
       "name": "Jolteon (H12)",
       "number": "H12/H32",
@@ -5871,7 +5549,7 @@
       "isNew": false
     },
     {
-      "rank": 419,
+      "rank": 383,
       "id": "230533",
       "name": "Blaziken - 14/111 (National Championships) [Staff]",
       "number": "014/111",
@@ -5885,7 +5563,7 @@
       "isNew": false
     },
     {
-      "rank": 420,
+      "rank": 384,
       "id": "89312",
       "name": "Slowking (H22)",
       "number": "H22/H32",
@@ -5894,12 +5572,12 @@
       "setId": "1397",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/89312_200w.jpg",
       "price": 274.5,
-      "prevPrice": 274.5,
-      "changePct": 0.0,
+      "prevPrice": 231.33,
+      "changePct": 18.66,
       "isNew": false
     },
     {
-      "rank": 421,
+      "rank": 385,
       "id": "96047",
       "name": "Primal Kyogre EX (Alpha - 149 Full Art)",
       "number": "149/160",
@@ -5913,7 +5591,7 @@
       "isNew": false
     },
     {
-      "rank": 422,
+      "rank": 386,
       "id": "88895",
       "name": "Salamence - 10/97",
       "number": "10/97",
@@ -5922,12 +5600,12 @@
       "setId": "1376",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/88895_200w.jpg",
       "price": 274.06,
-      "prevPrice": 274.06,
-      "changePct": 0.0,
+      "prevPrice": 264.8,
+      "changePct": 3.5,
       "isNew": false
     },
     {
-      "rank": 423,
+      "rank": 387,
       "id": "633032",
       "name": "Cynthia's Garchomp ex - 232/182",
       "number": "232/182",
@@ -5941,7 +5619,7 @@
       "isNew": false
     },
     {
-      "rank": 424,
+      "rank": 388,
       "id": "84188",
       "name": "Charizard",
       "number": "6/108",
@@ -5955,7 +5633,7 @@
       "isNew": false
     },
     {
-      "rank": 425,
+      "rank": 389,
       "id": "84608",
       "name": "Dark Gyarados",
       "number": "36/109",
@@ -5969,7 +5647,7 @@
       "isNew": false
     },
     {
-      "rank": 426,
+      "rank": 390,
       "id": "84660",
       "name": "Dark Tyranitar",
       "number": "011/105",
@@ -5983,7 +5661,7 @@
       "isNew": false
     },
     {
-      "rank": 427,
+      "rank": 391,
       "id": "234060",
       "name": "Tyranitar V (Alternate Full Art)",
       "number": "155/163",
@@ -5997,7 +5675,7 @@
       "isNew": false
     },
     {
-      "rank": 428,
+      "rank": 392,
       "id": "476070",
       "name": "Rayquaza VMAX - 111/203",
       "number": "111/203",
@@ -6011,7 +5689,7 @@
       "isNew": false
     },
     {
-      "rank": 429,
+      "rank": 393,
       "id": "201651",
       "name": "Rosa (Full Art)",
       "number": "236/236",
@@ -6025,7 +5703,7 @@
       "isNew": false
     },
     {
-      "rank": 430,
+      "rank": 394,
       "id": "86201",
       "name": "Houndoom (12)",
       "number": "012/144",
@@ -6039,7 +5717,7 @@
       "isNew": false
     },
     {
-      "rank": 431,
+      "rank": 395,
       "id": "89170",
       "name": "Shining Steelix",
       "number": "112/105",
@@ -6053,7 +5731,7 @@
       "isNew": false
     },
     {
-      "rank": 432,
+      "rank": 396,
       "id": "84028",
       "name": "Bulbasaur",
       "number": "39/95",
@@ -6067,7 +5745,7 @@
       "isNew": false
     },
     {
-      "rank": 433,
+      "rank": 397,
       "id": "84785",
       "name": "Dewgong (H6)",
       "number": "H06/H32",
@@ -6081,7 +5759,7 @@
       "isNew": false
     },
     {
-      "rank": 434,
+      "rank": 398,
       "id": "226129",
       "name": "Togepi & Cleffa & Igglybuff GX - 143a/236",
       "number": "143a/236",
@@ -6090,12 +5768,26 @@
       "setId": "1938",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/226129_200w.jpg",
       "price": 268.8,
-      "prevPrice": 268.8,
+      "prevPrice": 265.15,
+      "changePct": 1.38,
+      "isNew": false
+    },
+    {
+      "rank": 399,
+      "id": "86118",
+      "name": "Ho-oh (7)",
+      "number": "07/64",
+      "rarity": "Holo Rare",
+      "setName": "Neo Revelation",
+      "setId": "1389",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86118_200w.jpg",
+      "price": 267.98,
+      "prevPrice": 267.98,
       "changePct": 0.0,
       "isNew": false
     },
     {
-      "rank": 435,
+      "rank": 400,
       "id": "88525",
       "name": "Raichu ex",
       "number": "98/100",
@@ -6109,7 +5801,7 @@
       "isNew": false
     },
     {
-      "rank": 436,
+      "rank": 401,
       "id": "85323",
       "name": "Espeon (Prime)",
       "number": "81/90",
@@ -6123,7 +5815,7 @@
       "isNew": false
     },
     {
-      "rank": 437,
+      "rank": 402,
       "id": "89682",
       "name": "Swampert ex",
       "number": "95/95",
@@ -6137,7 +5829,7 @@
       "isNew": false
     },
     {
-      "rank": 438,
+      "rank": 403,
       "id": "231419",
       "name": "Poliwrath - 21/95 (League Promo) [Staff]",
       "number": "021/095",
@@ -6151,7 +5843,7 @@
       "isNew": false
     },
     {
-      "rank": 439,
+      "rank": 404,
       "id": "90323",
       "name": "Venusaur ex",
       "number": "112/112",
@@ -6165,7 +5857,7 @@
       "isNew": false
     },
     {
-      "rank": 440,
+      "rank": 405,
       "id": "88637",
       "name": "Rayquaza & Deoxys Legend (Bottom)",
       "number": "90/90",
@@ -6179,7 +5871,7 @@
       "isNew": false
     },
     {
-      "rank": 441,
+      "rank": 406,
       "id": "87433",
       "name": "Mewtwo LV.X",
       "number": "144/146",
@@ -6193,7 +5885,7 @@
       "isNew": false
     },
     {
-      "rank": 442,
+      "rank": 407,
       "id": "223078",
       "name": "Charizard V (Secret)",
       "number": "79/73",
@@ -6202,12 +5894,12 @@
       "setId": "2685",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/223078_200w.jpg",
       "price": 263.95,
-      "prevPrice": 263.95,
-      "changePct": 0.0,
+      "prevPrice": 266.65,
+      "changePct": -1.01,
       "isNew": false
     },
     {
-      "rank": 443,
+      "rank": 408,
       "id": "211452",
       "name": "Umbreon & Darkrai GX - SM241",
       "number": "SM241",
@@ -6216,12 +5908,12 @@
       "setId": "1861",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/211452_200w.jpg",
       "price": 263.49,
-      "prevPrice": 263.49,
-      "changePct": 0.0,
+      "prevPrice": 267.27,
+      "changePct": -1.41,
       "isNew": false
     },
     {
-      "rank": 444,
+      "rank": 409,
       "id": "85929",
       "name": "Groudon ex",
       "number": "93/101",
@@ -6235,7 +5927,7 @@
       "isNew": false
     },
     {
-      "rank": 445,
+      "rank": 410,
       "id": "87782",
       "name": "Ninetales ex",
       "number": "96/101",
@@ -6249,7 +5941,7 @@
       "isNew": false
     },
     {
-      "rank": 446,
+      "rank": 411,
       "id": "84202",
       "name": "Charizard G LV.X - DP45",
       "number": "DP45",
@@ -6263,7 +5955,7 @@
       "isNew": false
     },
     {
-      "rank": 447,
+      "rank": 412,
       "id": "87619",
       "name": "Muk (H17)",
       "number": "H17/H32",
@@ -6272,12 +5964,12 @@
       "setId": "1397",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/87619_200w.jpg",
       "price": 261.0,
-      "prevPrice": 261.0,
-      "changePct": 0.0,
+      "prevPrice": 261.66,
+      "changePct": -0.25,
       "isNew": false
     },
     {
-      "rank": 448,
+      "rank": 413,
       "id": "85996",
       "name": "Gyarados",
       "number": "6",
@@ -6291,7 +5983,7 @@
       "isNew": false
     },
     {
-      "rank": 449,
+      "rank": 414,
       "id": "87425",
       "name": "Mewtwo (Delta Species)",
       "number": "12/113",
@@ -6305,7 +5997,7 @@
       "isNew": false
     },
     {
-      "rank": 450,
+      "rank": 415,
       "id": "90293",
       "name": "Vaporeon ex",
       "number": "110/113",
@@ -6319,21 +6011,21 @@
       "isNew": false
     },
     {
-      "rank": 451,
-      "id": "107002",
-      "name": "Hitmonchan",
-      "number": "007/102",
+      "rank": 416,
+      "id": "88777",
+      "name": "Rocket's Mewtwo",
+      "number": "014/132",
       "rarity": "Holo Rare",
-      "setName": "Base Set (Shadowless)",
-      "setId": "1663",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/107002_200w.jpg",
-      "price": 254.99,
-      "prevPrice": 254.99,
+      "setName": "Gym Challenge",
+      "setId": "1440",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88777_200w.jpg",
+      "price": 254.95,
+      "prevPrice": 254.95,
       "changePct": 0.0,
       "isNew": false
     },
     {
-      "rank": 452,
+      "rank": 417,
       "id": "107005",
       "name": "Mewtwo",
       "number": "010/102",
@@ -6347,7 +6039,7 @@
       "isNew": false
     },
     {
-      "rank": 453,
+      "rank": 418,
       "id": "83899",
       "name": "Blastoise (Delta Species)",
       "number": "2/100",
@@ -6361,7 +6053,7 @@
       "isNew": false
     },
     {
-      "rank": 454,
+      "rank": 419,
       "id": "86327",
       "name": "Jirachi",
       "number": "9/107",
@@ -6375,7 +6067,7 @@
       "isNew": false
     },
     {
-      "rank": 455,
+      "rank": 420,
       "id": "85274",
       "name": "Entei (Shiny)",
       "number": "SL3",
@@ -6389,7 +6081,7 @@
       "isNew": false
     },
     {
-      "rank": 456,
+      "rank": 421,
       "id": "84529",
       "name": "Cubone",
       "number": "103/165",
@@ -6403,7 +6095,7 @@
       "isNew": false
     },
     {
-      "rank": 457,
+      "rank": 422,
       "id": "232871",
       "name": "Porygon2 - 49/106 (Prerelease) [Staff]",
       "number": "49/106",
@@ -6417,7 +6109,7 @@
       "isNew": false
     },
     {
-      "rank": 458,
+      "rank": 423,
       "id": "642558",
       "name": "Seismitoad - 105/086",
       "number": "105/086",
@@ -6426,12 +6118,12 @@
       "setId": "24325",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/642558_200w.jpg",
       "price": 251.87,
-      "prevPrice": 251.87,
-      "changePct": 0.0,
+      "prevPrice": 252.19,
+      "changePct": -0.13,
       "isNew": false
     },
     {
-      "rank": 459,
+      "rank": 424,
       "id": "87781",
       "name": "Ninetales (Delta Species)",
       "number": "8/101",
@@ -6445,7 +6137,7 @@
       "isNew": false
     },
     {
-      "rank": 460,
+      "rank": 425,
       "id": "198360",
       "name": "Champions Festival - SM231 (World Championships 2019)",
       "number": "SM231",
@@ -6459,7 +6151,7 @@
       "isNew": false
     },
     {
-      "rank": 461,
+      "rank": 426,
       "id": "85792",
       "name": "Golbat",
       "number": "060/144",
@@ -6473,7 +6165,7 @@
       "isNew": false
     },
     {
-      "rank": 462,
+      "rank": 427,
       "id": "86381",
       "name": "Kabuto",
       "number": "048/110",
@@ -6487,7 +6179,7 @@
       "isNew": false
     },
     {
-      "rank": 463,
+      "rank": 428,
       "id": "90117",
       "name": "Tyranitar",
       "number": "040/147",
@@ -6501,7 +6193,7 @@
       "isNew": false
     },
     {
-      "rank": 464,
+      "rank": 429,
       "id": "90630",
       "name": "Wooper (66)",
       "number": "066/147",
@@ -6515,7 +6207,7 @@
       "isNew": false
     },
     {
-      "rank": 465,
+      "rank": 430,
       "id": "86555",
       "name": "Kyogre ex - 001 (Nintendo Power Magazine)",
       "number": "001",
@@ -6529,7 +6221,7 @@
       "isNew": false
     },
     {
-      "rank": 466,
+      "rank": 431,
       "id": "84662",
       "name": "Dark Tyranitar - 020/109",
       "number": "20/109",
@@ -6543,7 +6235,7 @@
       "isNew": false
     },
     {
-      "rank": 467,
+      "rank": 432,
       "id": "118864",
       "name": "Moltres - XY127 (Prerelease) [Staff]",
       "number": "XY127",
@@ -6557,7 +6249,7 @@
       "isNew": false
     },
     {
-      "rank": 468,
+      "rank": 433,
       "id": "88760",
       "name": "Riolu - BW33 (Cosmos Holo)",
       "number": "BW33",
@@ -6571,7 +6263,7 @@
       "isNew": false
     },
     {
-      "rank": 469,
+      "rank": 434,
       "id": "89189",
       "name": "Shuckle",
       "number": "096/144",
@@ -6585,7 +6277,7 @@
       "isNew": false
     },
     {
-      "rank": 470,
+      "rank": 435,
       "id": "88436",
       "name": "Psyduck",
       "number": "44/95",
@@ -6599,7 +6291,7 @@
       "isNew": false
     },
     {
-      "rank": 471,
+      "rank": 436,
       "id": "88954",
       "name": "Sceptile ex",
       "number": "93/95",
@@ -6613,7 +6305,7 @@
       "isNew": false
     },
     {
-      "rank": 472,
+      "rank": 437,
       "id": "84812",
       "name": "Dialga LV.X",
       "number": "105/106",
@@ -6627,21 +6319,7 @@
       "isNew": false
     },
     {
-      "rank": 473,
-      "id": "84610",
-      "name": "Dark Houndoom",
-      "number": "007/105",
-      "rarity": "Holo Rare",
-      "setName": "Neo Destiny",
-      "setId": "1444",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84610_200w.jpg",
-      "price": 249.99,
-      "prevPrice": 249.99,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 474,
+      "rank": 438,
       "id": "477774",
       "name": "Latias Star - 2006 (Hiroki Yano)",
       "number": "105/107",
@@ -6655,7 +6333,7 @@
       "isNew": false
     },
     {
-      "rank": 475,
+      "rank": 439,
       "id": "175064",
       "name": "Champions Festival - SM148 (World Championships 2018)",
       "number": "SM148",
@@ -6669,7 +6347,7 @@
       "isNew": false
     },
     {
-      "rank": 476,
+      "rank": 440,
       "id": "86570",
       "name": "Kyurem EX (96 Full Art)",
       "number": "96/99",
@@ -6683,7 +6361,7 @@
       "isNew": false
     },
     {
-      "rank": 477,
+      "rank": 441,
       "id": "91238",
       "name": "Charizard EX (100 Full Art)",
       "number": "100/106",
@@ -6697,7 +6375,7 @@
       "isNew": false
     },
     {
-      "rank": 478,
+      "rank": 442,
       "id": "693517",
       "name": "Mega Greninja ex - 116/086",
       "number": "116/086",
@@ -6706,12 +6384,12 @@
       "setId": "24655",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/693517_200w.jpg",
       "price": 247.54,
-      "prevPrice": 247.54,
-      "changePct": 0.0,
+      "prevPrice": 248.14,
+      "changePct": -0.24,
       "isNew": false
     },
     {
-      "rank": 479,
+      "rank": 443,
       "id": "201286",
       "name": "Mega Lopunny & Jigglypuff GX (Alternate Full Art)",
       "number": "226/236",
@@ -6725,7 +6403,7 @@
       "isNew": false
     },
     {
-      "rank": 480,
+      "rank": 444,
       "id": "246689",
       "name": "Espeon V (Alternate Full Art)",
       "number": "180/203",
@@ -6739,7 +6417,7 @@
       "isNew": false
     },
     {
-      "rank": 481,
+      "rank": 445,
       "id": "512036",
       "name": "Charmander - 044 (Pokemon Center Exclusive)",
       "number": "044",
@@ -6748,12 +6426,12 @@
       "setId": "22872",
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/512036_200w.jpg",
       "price": 246.56,
-      "prevPrice": 246.56,
-      "changePct": 0.0,
+      "prevPrice": 245.79,
+      "changePct": 0.31,
       "isNew": false
     },
     {
-      "rank": 482,
+      "rank": 446,
       "id": "83579",
       "name": "Arcanine",
       "number": "15/100",
@@ -6767,21 +6445,7 @@
       "isNew": false
     },
     {
-      "rank": 483,
-      "id": "88866",
-      "name": "Sabrina's Alakazam",
-      "number": "016/132",
-      "rarity": "Holo Rare",
-      "setName": "Gym Challenge",
-      "setId": "1440",
-      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88866_200w.jpg",
-      "price": 246.16,
-      "prevPrice": 246.16,
-      "changePct": 0.0,
-      "isNew": false
-    },
-    {
-      "rank": 484,
+      "rank": 447,
       "id": "178982",
       "name": "Lugia GX (Secret)",
       "number": "227/214",
@@ -6795,7 +6459,7 @@
       "isNew": false
     },
     {
-      "rank": 485,
+      "rank": 448,
       "id": "519139",
       "name": "Lunala",
       "number": "102/236",
@@ -6809,7 +6473,7 @@
       "isNew": false
     },
     {
-      "rank": 486,
+      "rank": 449,
       "id": "85674",
       "name": "Gengar",
       "number": "5/92",
@@ -6823,7 +6487,7 @@
       "isNew": false
     },
     {
-      "rank": 487,
+      "rank": 450,
       "id": "89490",
       "name": "Squirtle - 083/112",
       "number": "83/112",
@@ -6837,7 +6501,7 @@
       "isNew": false
     },
     {
-      "rank": 488,
+      "rank": 451,
       "id": "220668",
       "name": "Politoed - 7/95 (League Promo) [Staff]",
       "number": "007/095",
@@ -6851,7 +6515,7 @@
       "isNew": false
     },
     {
-      "rank": 489,
+      "rank": 452,
       "id": "88660",
       "name": "Regice ex",
       "number": "98/106",
@@ -6865,7 +6529,7 @@
       "isNew": false
     },
     {
-      "rank": 490,
+      "rank": 453,
       "id": "148350",
       "name": "Shaymin EX - 77a/108",
       "number": "077a/108",
@@ -6879,7 +6543,7 @@
       "isNew": false
     },
     {
-      "rank": 491,
+      "rank": 454,
       "id": "224363",
       "name": "Lugia - SWSH069 (Prerelease) [Staff]",
       "number": "SWSH069",
@@ -6893,7 +6557,7 @@
       "isNew": false
     },
     {
-      "rank": 492,
+      "rank": 455,
       "id": "178970",
       "name": "Mimikyu GX (Secret)",
       "number": "226/214",
@@ -6907,7 +6571,7 @@
       "isNew": false
     },
     {
-      "rank": 493,
+      "rank": 456,
       "id": "84653",
       "name": "Dark Slowbro",
       "number": "008/110",
@@ -6921,7 +6585,7 @@
       "isNew": false
     },
     {
-      "rank": 494,
+      "rank": 457,
       "id": "232873",
       "name": "Gengar - 5/92 (Gym Challenge)",
       "number": "005/092",
@@ -6935,7 +6599,7 @@
       "isNew": false
     },
     {
-      "rank": 495,
+      "rank": 458,
       "id": "83499",
       "name": "Alakazam (2)",
       "number": "002/144",
@@ -6949,7 +6613,7 @@
       "isNew": false
     },
     {
-      "rank": 496,
+      "rank": 459,
       "id": "86131",
       "name": "Ho-Oh Ex (119 Full Art)",
       "number": "119/124",
@@ -6963,7 +6627,7 @@
       "isNew": false
     },
     {
-      "rank": 497,
+      "rank": 460,
       "id": "164214",
       "name": "Milotic - 70/147 (Prerelease) [Staff]",
       "number": "70/147",
@@ -6977,7 +6641,7 @@
       "isNew": false
     },
     {
-      "rank": 498,
+      "rank": 461,
       "id": "84661",
       "name": "Dark Tyranitar - 019/109",
       "number": "19/109",
@@ -6991,7 +6655,7 @@
       "isNew": false
     },
     {
-      "rank": 499,
+      "rank": 462,
       "id": "201620",
       "name": "Reshiram & Zekrom GX (Secret)",
       "number": "259/236",
@@ -7005,7 +6669,7 @@
       "isNew": false
     },
     {
-      "rank": 500,
+      "rank": 463,
       "id": "88633",
       "name": "Rayquaza (Delta Species)",
       "number": "13/113",
@@ -7015,6 +6679,524 @@
       "image": "https://tcgplayer-cdn.tcgplayer.com/product/88633_200w.jpg",
       "price": 240.17,
       "prevPrice": 240.17,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 464,
+      "id": "87456",
+      "name": "Milotic (Shiny)",
+      "number": "SH7",
+      "rarity": "Shiny Holo Rare",
+      "setName": "Supreme Victors",
+      "setId": "1384",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/87456_200w.jpg",
+      "price": 240.08,
+      "prevPrice": 240.08,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 465,
+      "id": "87432",
+      "name": "Mewtwo EX (98 Full Art)",
+      "number": "98/99",
+      "rarity": "Ultra Rare",
+      "setName": "Next Destinies",
+      "setId": "1412",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/87432_200w.jpg",
+      "price": 239.5,
+      "prevPrice": 239.5,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 466,
+      "id": "113748",
+      "name": "Flareon EX (Full Art)",
+      "number": "RC28/RC32",
+      "rarity": "Ultra Rare",
+      "setName": "Generations: Radiant Collection",
+      "setId": "1729",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/113748_200w.jpg",
+      "price": 238.04,
+      "prevPrice": 238.04,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 467,
+      "id": "86004",
+      "name": "Gyarados ex",
+      "number": "109/112",
+      "rarity": "Ultra Rare",
+      "setName": "FireRed & LeafGreen",
+      "setId": "1419",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86004_200w.jpg",
+      "price": 237.6,
+      "prevPrice": 237.6,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 468,
+      "id": "227092",
+      "name": "Salamence - 8/20 (Regional Championships) [Staff]",
+      "number": "008/020",
+      "rarity": "Promo",
+      "setName": "League & Championship Cards",
+      "setId": "1539",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/227092_200w.jpg",
+      "price": 237.5,
+      "prevPrice": 237.5,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 469,
+      "id": "157764",
+      "name": "Cynthia (Full Art)",
+      "number": "148/156",
+      "rarity": "Ultra Rare",
+      "setName": "SM - Ultra Prism",
+      "setId": "2178",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/157764_200w.jpg",
+      "price": 237.48,
+      "prevPrice": 237.48,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 470,
+      "id": "83497",
+      "name": "Alakazam (1)",
+      "number": "001/165",
+      "rarity": "Holo Rare",
+      "setName": "Expedition",
+      "setId": "1375",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/83497_200w.jpg",
+      "price": 236.24,
+      "prevPrice": 236.24,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 471,
+      "id": "85278",
+      "name": "Entei ex",
+      "number": "91/95",
+      "rarity": "Ultra Rare",
+      "setName": "Team Magma vs Team Aqua",
+      "setId": "1377",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/85278_200w.jpg",
+      "price": 236.12,
+      "prevPrice": 236.12,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 472,
+      "id": "86332",
+      "name": "Jirachi ex",
+      "number": "94/100",
+      "rarity": "Ultra Rare",
+      "setName": "Crystal Guardians",
+      "setId": "1395",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86332_200w.jpg",
+      "price": 235.0,
+      "prevPrice": 235.0,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 473,
+      "id": "478101",
+      "name": "Arceus VSTAR (Secret)",
+      "number": "GG70/GG70",
+      "rarity": "Secret Rare",
+      "setName": "Crown Zenith: Galarian Gallery",
+      "setId": "17689",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/478101_200w.jpg",
+      "price": 234.66,
+      "prevPrice": 238.45,
+      "changePct": -1.59,
+      "isNew": false
+    },
+    {
+      "rank": 474,
+      "id": "241768",
+      "name": "Galarian Moltres V (Alternate Full Art)",
+      "number": "177/198",
+      "rarity": "Ultra Rare",
+      "setName": "Chilling Reign",
+      "setId": "2807",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/241768_200w.jpg",
+      "price": 234.24,
+      "prevPrice": 234.24,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 475,
+      "id": "189308",
+      "name": "Marshadow & Machamp GX (199) (Full Art)",
+      "number": "199/214",
+      "rarity": "Ultra Rare",
+      "setName": "SM - Unbroken Bonds",
+      "setId": "2420",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/189308_200w.jpg",
+      "price": 233.75,
+      "prevPrice": 233.75,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 476,
+      "id": "87678",
+      "name": "N (Supporter) (Full Art)",
+      "number": "101/101",
+      "rarity": "Ultra Rare",
+      "setName": "Noble Victories",
+      "setId": "1385",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/87678_200w.jpg",
+      "price": 233.55,
+      "prevPrice": 233.55,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 477,
+      "id": "649232",
+      "name": "Paradise Resort - 224 (World Championships 2025)",
+      "number": "224",
+      "rarity": "Promo",
+      "setName": "Scarlet & Violet Promo Cards",
+      "setId": "22872",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/649232_200w.jpg",
+      "price": 233.4,
+      "prevPrice": 233.4,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 478,
+      "id": "85491",
+      "name": "Flareon (8)",
+      "number": "008/144",
+      "rarity": "Rare",
+      "setName": "Skyridge",
+      "setId": "1372",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/85491_200w.jpg",
+      "price": 233.33,
+      "prevPrice": 233.33,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 479,
+      "id": "183806",
+      "name": "Pikachu & Zekrom GX (Secret)",
+      "number": "184/181",
+      "rarity": "Secret Rare",
+      "setName": "SM - Team Up",
+      "setId": "2377",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/183806_200w.jpg",
+      "price": 233.23,
+      "prevPrice": 233.23,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 480,
+      "id": "223073",
+      "name": "Charizard VMAX (Secret)",
+      "number": "74/73",
+      "rarity": "Secret Rare",
+      "setName": "Champion's Path",
+      "setId": "2685",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/223073_200w.jpg",
+      "price": 233.12,
+      "prevPrice": 233.12,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 481,
+      "id": "185985",
+      "name": "Pikachu & Zekrom GX",
+      "number": "SM168",
+      "rarity": "Promo",
+      "setName": "SM Promos",
+      "setId": "1861",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/185985_200w.jpg",
+      "price": 233.06,
+      "prevPrice": 234.42,
+      "changePct": -0.58,
+      "isNew": false
+    },
+    {
+      "rank": 482,
+      "id": "85417",
+      "name": "Feraligatr",
+      "number": "4/115",
+      "rarity": "Holo Rare",
+      "setName": "Unseen Forces",
+      "setId": "1398",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/85417_200w.jpg",
+      "price": 232.99,
+      "prevPrice": 232.99,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 483,
+      "id": "90311",
+      "name": "Venusaur",
+      "number": "13/53",
+      "rarity": "Promo",
+      "setName": "WoTC Promo",
+      "setId": "1418",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/90311_200w.jpg",
+      "price": 232.93,
+      "prevPrice": 232.93,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 484,
+      "id": "84840",
+      "name": "Ditto - 63/113 (Pikachu)",
+      "number": "063/113",
+      "rarity": "Common",
+      "setName": "Delta Species",
+      "setId": "1429",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84840_200w.jpg",
+      "price": 232.66,
+      "prevPrice": 232.66,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 485,
+      "id": "86669",
+      "name": "Latios (Delta Species)",
+      "number": "9/113",
+      "rarity": "Holo Rare",
+      "setName": "Delta Species",
+      "setId": "1429",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86669_200w.jpg",
+      "price": 232.5,
+      "prevPrice": 232.5,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 486,
+      "id": "42360",
+      "name": "Blastoise",
+      "number": "002/102",
+      "rarity": "Holo Rare",
+      "setName": "Base Set",
+      "setId": "604",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/42360_200w.jpg",
+      "price": 231.65,
+      "prevPrice": 231.65,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 487,
+      "id": "87692",
+      "name": "Nidoking (H18)",
+      "number": "H18/H32",
+      "rarity": "Holo Rare",
+      "setName": "Aquapolis",
+      "setId": "1397",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/87692_200w.jpg",
+      "price": 230.98,
+      "prevPrice": 230.98,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 488,
+      "id": "654518",
+      "name": "Mega Lucario ex - 179/132",
+      "number": "179/132",
+      "rarity": "Special Illustration Rare",
+      "setName": "Mega Evolution",
+      "setId": "24380",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/654518_200w.jpg",
+      "price": 230.92,
+      "prevPrice": 231.69,
+      "changePct": -0.33,
+      "isNew": false
+    },
+    {
+      "rank": 489,
+      "id": "84585",
+      "name": "Dark Dragonite",
+      "number": "005/110",
+      "rarity": "Holo Rare",
+      "setName": "Legendary Collection",
+      "setId": "1374",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/84585_200w.jpg",
+      "price": 230.55,
+      "prevPrice": 230.55,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 490,
+      "id": "83456",
+      "name": "Absol ex",
+      "number": "92/108",
+      "rarity": "Ultra Rare",
+      "setName": "Power Keepers",
+      "setId": "1383",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/83456_200w.jpg",
+      "price": 230.48,
+      "prevPrice": 230.48,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 491,
+      "id": "86676",
+      "name": "Latios EX (113 Full Art)",
+      "number": "113/116",
+      "rarity": "Ultra Rare",
+      "setName": "Plasma Freeze",
+      "setId": "1382",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86676_200w.jpg",
+      "price": 230.32,
+      "prevPrice": 230.32,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 492,
+      "id": "85543",
+      "name": "Forretress (H8)",
+      "number": "H08/H32",
+      "rarity": "Holo Rare",
+      "setName": "Skyridge",
+      "setId": "1372",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/85543_200w.jpg",
+      "price": 229.99,
+      "prevPrice": 229.99,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 493,
+      "id": "85096",
+      "name": "Eevee - BW97",
+      "number": "BW97",
+      "rarity": "Promo",
+      "setName": "Black and White Promos",
+      "setId": "1407",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/85096_200w.jpg",
+      "price": 229.99,
+      "prevPrice": 229.99,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 494,
+      "id": "88948",
+      "name": "Sceptile",
+      "number": "005/017",
+      "rarity": "Rare",
+      "setName": "POP Series 4",
+      "setId": "1452",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88948_200w.jpg",
+      "price": 229.96,
+      "prevPrice": 229.96,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 495,
+      "id": "87413",
+      "name": "Mew EX (Full Art)",
+      "number": "RC24/RC25",
+      "rarity": "Ultra Rare",
+      "setName": "Legendary Treasures: Radiant Collection",
+      "setId": "1465",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/87413_200w.jpg",
+      "price": 228.55,
+      "prevPrice": 228.55,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 496,
+      "id": "86127",
+      "name": "Ho-Oh (Shiny)",
+      "number": "SL5",
+      "rarity": "Shiny Holo Rare",
+      "setName": "Call of Legends",
+      "setId": "1415",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/86127_200w.jpg",
+      "price": 228.49,
+      "prevPrice": 228.49,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 497,
+      "id": "454438",
+      "name": "Luxray - 7/130 (National Championships) [Staff]",
+      "number": "007/130",
+      "rarity": "Promo",
+      "setName": "League & Championship Cards",
+      "setId": "1539",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/454438_200w.jpg",
+      "price": 227.0,
+      "prevPrice": 227.0,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 498,
+      "id": "284122",
+      "name": "Aerodactyl V (Alternate Full Art)",
+      "number": "180/196",
+      "rarity": "Ultra Rare",
+      "setName": "Lost Origin",
+      "setId": "3118",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/284122_200w.jpg",
+      "price": 226.68,
+      "prevPrice": 226.68,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 499,
+      "id": "610501",
+      "name": "Flareon ex - 146/131",
+      "number": "146/131",
+      "rarity": "Special Illustration Rare",
+      "setName": "Prismatic Evolutions",
+      "setId": "23821",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/610501_200w.jpg",
+      "price": 226.59,
+      "prevPrice": 226.59,
+      "changePct": 0.0,
+      "isNew": false
+    },
+    {
+      "rank": 500,
+      "id": "88432",
+      "name": "Psyduck",
+      "number": "73/100",
+      "rarity": "Common",
+      "setName": "Sandstorm",
+      "setId": "1392",
+      "image": "https://tcgplayer-cdn.tcgplayer.com/product/88432_200w.jpg",
+      "price": 226.56,
+      "prevPrice": 226.56,
       "changePct": 0.0,
       "isNew": false
     }

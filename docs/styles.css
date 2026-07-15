@@ -365,3 +365,8 @@ body.modal-open { overflow: hidden; }
   .card-modal { padding: 12px; }
   .card-modal-panel { padding: 14px 14px 18px; }
 }
+
+/* ---- brand logo image ---------------------------------------------------- */
+.brand-mark img { display: block; width: 28px; height: 28px; border-radius: 8px; }
+.crumb { white-space: nowrap; }
+.crumb .ticker { color: var(--faint); }

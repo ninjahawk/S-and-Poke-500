@@ -258,7 +258,6 @@
 
     if (!pts || pts.length < 2) {
       empty.hidden = false;
-      $("#chart-caption").textContent = "";
       chart.geo = null;
       return;
     }
@@ -351,14 +350,6 @@
     svg.appendChild(chart.crossLine);
     svg.appendChild(chart.dot);
 
-    const first = pts[0].index, last = pts[pts.length - 1].index;
-    const chg = ((last / first - 1) * 100);
-    const label = coversLaunch
-      ? "since launch"
-      : ({ 7: "past week", 30: "past month", 180: "past 6 months", 365: "past year", 1825: "past 5 years" }[state.range] || "");
-    $("#chart-caption").innerHTML =
-      `<span class="${chg >= 0 ? "up-ink" : "down-ink"}">${fmtPct(chg)}</span> ${label} · ${pts.length} day${pts.length === 1 ? "" : "s"} of history` +
-      (state.latest.sample ? " · sample data" : "");
   }
 
   function onScrub(e) {
