@@ -53,14 +53,27 @@ def build():
     print("Fetching catalog + live prices from TCGCSV ...", flush=True)
     catalog = tc.build_catalog()
     subtypes = {}
-    prices = tc.live_prices(subtype_out=subtypes)
-    if len(prices) < tc.TARGET_SIZE:
-        raise RuntimeError(f"Only {len(prices)} priced cards from TCGCSV")
+    raw_prices = tc.live_prices(subtype_out=subtypes)
+    if len(raw_prices) < tc.TARGET_SIZE:
+        raise RuntimeError(f"Only {len(raw_prices)} priced cards from TCGCSV")
 
     # Previous state -- ignored if it was sample/preview data.
     prev = load_json(LATEST_PATH, {})
     if prev.get("sample"):
         prev = {}
+
+    # Glitch guard: reference each live print against the median of the card's
+    # recent prices (persisted per-card as `priceWindow`). A print that deviates
+    # wildly is a TCGplayer blip -- hold the median instead of leaking a fake
+    # spike/dip into the index; a level that persists eventually dominates the
+    # window and is accepted. Same rolling-median rule the backfill seeds.
+    guard_windows = {
+        c["id"]: list(c["priceWindow"])
+        for c in prev.get("constituents", [])
+        if c.get("priceWindow")
+    }
+    prices = tc.guard_prices(raw_prices, guard_windows)
+    held = {pid for pid in raw_prices if prices.get(pid) != raw_prices.get(pid)}
     prev_divisor = prev.get("divisor")
     prev_index = prev.get("index")
     prev_prices = {c["id"]: c.get("price") for c in prev.get("constituents", []) if c.get("price")}
@@ -126,9 +139,10 @@ def build():
                 declining += 1
             else:
                 unchanged += 1
-        # Provenance: is this a real price from today's snapshot, or one
-        # carried forward from the last day TCGplayer had sales data for it?
-        live_today = pid in prices
+        # Provenance: is this a real price from today's snapshot, or one carried
+        # forward -- either because TCGplayer had no sales data for it, or its
+        # print was held back by the glitch guard as an unconfirmed outlier?
+        live_today = pid in raw_prices and pid not in held
         constituents.append({
             "rank": rank,
             "id": meta["id"],
@@ -144,6 +158,7 @@ def build():
             "isNew": prior is None and bool(prev_ids),
             "printing": (subtypes.get(pid) if live_today else prev_printing.get(pid)) or None,
             "pricedAsOf": today_asof if live_today else prev_priced_asof.get(pid),
+            "priceWindow": [round(x, 2) for x in guard_windows.get(pid, [])] or None,
         })
 
     movable = [c for c in constituents if c["changePct"] is not None]

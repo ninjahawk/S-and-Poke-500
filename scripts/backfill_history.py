@@ -68,10 +68,12 @@ def main():
 
     carry = {}                # productId -> last-known price (forward-fill)
     carry_dt = {}             # productId -> date last actually priced
+    guard_windows = {}        # productId -> [recent prices] (glitch guard state)
 
     for i, d in enumerate(dates):
         ds = d.isoformat()
-        prices = tc.archive_prices(ds)
+        # Reject TCGplayer glitch prints before they can fabricate movers/spikes.
+        prices = tc.guard_prices(tc.archive_prices(ds), guard_windows)
         if len(prices) < tc.TARGET_SIZE:
             print(f"  {ds}: only {len(prices)} priced -- skipping", flush=True)
             continue
@@ -136,6 +138,8 @@ def main():
             "prevPrice": round(prior, 2) if prior else None,
             "changePct": change_pct,
             "isNew": prior is None and prev_eff is not None,
+            # Seed the glitch-guard window so the daily builder continues it.
+            "priceWindow": [round(x, 2) for x in guard_windows.get(pid, [])] or None,
         })
 
     movable = [c for c in constituents if c["changePct"] is not None]

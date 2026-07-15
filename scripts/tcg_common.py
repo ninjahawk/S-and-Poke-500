@@ -20,6 +20,7 @@ import io
 import json
 import os
 import re
+import statistics
 import time
 import urllib.request
 
@@ -31,6 +32,20 @@ BASE_INDEX_VALUE = 1000.0
 TARGET_SIZE = 500
 ARCHIVE_START = "2024-02-08"  # earliest daily price archive TCGCSV publishes
 STALE_DAYS = 70  # forward-fill a card's last price for at most this long before dropping it
+
+# Glitch guard. TCGplayer's *market* price regularly prints a wild value for a
+# thinly traded card -- e.g. Charizard ex (FRLG) sat at a broken $500 "market"
+# for months while its cheapest listing was $1,700; Lugia was a steady $2,225
+# that glitch-*dipped* to $500 for two weeks; a card jumps 50x for a day because
+# a cheap printing got picked. Passed straight through these fabricate absurd
+# movers (+5,137%). We reference each day's price against the MEDIAN of the
+# card's recent prices: an isolated spike or dip (a minority of the window)
+# never moves the median, so it's rejected and the card holds its median price;
+# a level that persists long enough to dominate the window becomes the new
+# normal and is accepted. Median is robust to 1-2 point outliers in either
+# direction, which last-value comparison is not (a dip poisons the baseline).
+GLITCH_FACTOR = 2.0     # a print >2x or <1/2 the card's rolling median is treated as a glitch
+_GLITCH_WINDOW = 5      # number of recent prints the median is taken over
 
 _SET_PREFIX = re.compile(r"^[A-Z0-9]{2,6}:\s+")  # "SWSH07: Evolving Skies" -> "Evolving Skies"
 
@@ -282,6 +297,38 @@ def archive_prices(date):
             with open(path, "r", encoding="utf-8") as handle:
                 _prices_from_group_rows(json.load(handle).get("results", []), prices)
     return prices
+
+
+def guard_prices(raw, windows):
+    """Glitch-filter one day's representative prices against a rolling median.
+
+    `raw` is {productId: market price} for the day. `windows` ({pid: [recent
+    prices]}) is mutated to carry state across an ordered sequence of days.
+    Returns the effective prices: a print within GLITCH_FACTOR of the median of
+    the card's recent prints is taken as-is; a wilder one is held at the median
+    (so an isolated glitch spike/dip can't leak into the index or fabricate a
+    move). Every raw print still enters the window, so a level that genuinely
+    persists eventually dominates the median and is accepted. A card with no
+    history yet is trusted.
+    """
+    eff = {}
+    for pid, m in raw.items():
+        if not isinstance(m, (int, float)) or m <= 0:
+            continue
+        win = windows.get(pid)
+        if not win:
+            windows[pid] = [m]
+            eff[pid] = m
+            continue
+        ref = statistics.median(win)
+        if ref > 0 and (1.0 / GLITCH_FACTOR) <= (m / ref) <= GLITCH_FACTOR:
+            eff[pid] = m            # in-band: trust the real print
+        else:
+            eff[pid] = round(ref, 2)  # outlier: hold the robust median instead
+        win.append(m)
+        if len(win) > _GLITCH_WINDOW:
+            win.pop(0)
+    return eff
 
 
 def rank_basket(prices, catalog, size=TARGET_SIZE):

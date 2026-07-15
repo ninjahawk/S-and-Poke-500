@@ -11,6 +11,15 @@ often away — you manage end to end).
 
 ## Status (as of 2026-07-15)
 
+> **⚠️ ACTIVE HANDOFF — read `HANDOFF.md` first.** A price-glitch-guard effort is
+> in progress and unfinished. Live site is fine (untouched); new guard code is
+> committed but **not activated** (data not regenerated). One product decision is
+> open (how to present daily Top-Movers, since TCGplayer thin-card data can't
+> support reliable daily moves) plus one ~8-min backfill run to finish. Also
+> shipped & live this session: modal layout-shift fix, chart x-axis year labels,
+> and removal of the "Market mood" row. Full detail + exact finish steps in
+> `HANDOFF.md`.
+
 **Done & pushed to `main`:**
 - Google Finance–style UI (`docs/`). Refined off the "candy pill" look → plain
   colored text + small triangles (▲▼). Legal/trademark footer, OG/Twitter meta,
