@@ -37,6 +37,27 @@ It's a solo free project — if there's something you'd want tracked (weekly mov
 
 ---
 
+## Video shoot — director's notes (35s silent vertical, one take)
+
+Pre-flight: DND on; open poké500.com in the browser (URL bar visible =
+branding); scroll the full page once to warm the image cache, back to top;
+set range to **1M** (opening position); dark mode optional; record.
+
+Move at half natural speed. Shot list:
+
+| Time | Shot | Direction |
+|---|---|---|
+| 0–4s | Cold open | Hold on **1,355.70**, no touching |
+| 4–10s | The zoom-out ⭐ | Tap **1Y**, beat, tap **MAX** — the money shot |
+| 10–16s | The scrub | Press-drag to Feb 2024 (~1,000), hold, drag to today |
+| 16–22s | Movers | Slow scroll through Today's movers |
+| 22–29s | The rich list | Crawl ranks 1–6 ($4,000 Zard Star → Moonbreon) |
+| 29–35s | Moonbreon close-up | Tap Umbreon VMAX row → modal ($2,396, #6 of 500), hold 2s, cut |
+
+Post: same title/body, video inline at the top of the text post (Reddit app
+supports inline video). Fallback: video post + body pasted as immediate first
+comment. Videos autoplay muted in-feed — shot 1 must be the big number.
+
 ## Posting checklist (from LAUNCH.md)
 
 - [ ] **r/PokeInvesting only** tonight — no crossposting; the rest of collector
