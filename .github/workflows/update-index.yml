@@ -59,6 +59,13 @@ jobs:
       # movers. Commit it so the baseline survives to the next run.
       - name: Persist newsletter state
         run: |
+          # The state file only exists once the first issue has been sent;
+          # until then this step is a no-op (git add on a missing path fails
+          # the whole run otherwise).
+          if [ ! -f docs/data/newsletter_state.json ]; then
+            echo "No newsletter state file yet (no issue sent)."
+            exit 0
+          fi
           git add docs/data/newsletter_state.json
           if git diff --cached --quiet; then
             echo "No newsletter state change."
