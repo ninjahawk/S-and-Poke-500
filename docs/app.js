@@ -655,9 +655,50 @@
       promo.hidden = true;
       localStorage.setItem(key, "dismissed");
     });
+    promo.querySelector(".promo-cta").addEventListener("click", (e) => {
+      e.preventDefault();
+      openSubModal();
+    });
+  }
+
+  // Subscribe dialog. Same open/close mechanics as the card lightbox; the
+  // form posts to Buttondown in a new tab (double opt-in lands by email),
+  // so on submit we swap the form for a "check your inbox" note.
+  function openSubModal() {
+    const modal = $("#sub-modal");
+    modal.hidden = false;
+    document.body.classList.add("modal-open");
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      modal.classList.add("is-open");
+      setTimeout(() => $("#sm-email").focus({ preventScroll: true }), 230);
+    }));
+  }
+  function closeSubModal() {
+    const modal = $("#sub-modal");
+    modal.classList.remove("is-open");
+    document.body.classList.remove("modal-open");
+    setTimeout(() => { modal.hidden = true; }, 220);
+  }
+  function initSubModal() {
+    const modal = $("#sub-modal");
+    if (!modal) return;
+    modal.addEventListener("click", (e) => {
+      if (e.target.closest("[data-close]")) closeSubModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.hidden) closeSubModal();
+    });
+    $("#sm-form").addEventListener("submit", () => {
+      // Let the POST proceed in its new tab, then show the confirmation note.
+      setTimeout(() => {
+        $("#sm-form").hidden = true;
+        $("#sm-done").hidden = false;
+      }, 150);
+    });
   }
 
   initSettings();
   initPromo();
+  initSubModal();
   load();
 })();

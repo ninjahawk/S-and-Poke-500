@@ -484,6 +484,31 @@ body.modal-open { overflow: hidden; }
   .td-card { gap: 8px; }
 }
 
+/* ---- subscribe dialog ---------------------------------------------------- */
+.sub-panel { max-width: 380px; padding: 28px 24px 22px; text-align: center; }
+.sm-hero {
+  width: 48px; height: 48px; margin: 2px auto 14px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--blue-soft); color: var(--blue);
+}
+.sm-title { margin: 0; font-size: 1.3rem; font-weight: 500; letter-spacing: -0.01em; }
+.sm-blurb { margin: 8px auto 18px; max-width: 300px; color: var(--ink-2); font-size: 13.5px; line-height: 1.5; }
+.sm-form { display: flex; flex-direction: column; gap: 10px; }
+.sm-form input[type="email"] {
+  width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 10px;
+  background: var(--bg); color: var(--ink); font: inherit; font-size: 14px; text-align: center;
+}
+.sm-form input[type="email"]:focus { outline: none; border-color: var(--blue); }
+.sm-form button {
+  padding: 11px 18px; border: none; border-radius: 20px;
+  background: var(--blue); color: var(--bg); font: inherit; font-size: 14px;
+  font-weight: 500; cursor: pointer;
+}
+.sm-form button:hover { filter: brightness(1.08); }
+.sm-done { margin: 4px 0 8px; padding: 12px; border-radius: 10px;
+  background: var(--up-soft); color: var(--up); font-size: 13.5px; }
+.sm-fine { margin: 14px 0 0; color: var(--muted); font-size: 12px; }
+
 /* ---- brand logo image ---------------------------------------------------- */
 .brand-mark img { display: block; width: 28px; height: 28px; border-radius: 8px; }
 .crumb { white-space: nowrap; }
