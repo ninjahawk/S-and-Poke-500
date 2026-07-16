@@ -123,16 +123,24 @@
   }
   function renderMovers(d) {
     const g = $("#gainers"), l = $("#losers");
+    const cols = $("#mover-cols"), empty = $("#movers-empty"), note = $("#movers-note");
     g.innerHTML = ""; l.innerHTML = "";
     const gainers = d.gainers || [], losers = d.losers || [];
     if (!gainers.length && !losers.length) {
-      // No movers at all: either this is the very first snapshot (no previous
-      // close to compare against) or a genuinely flat day.
-      const note = d.prevIndex == null
-        ? "<li class='mover-note'>Day-over-day moves appear after the first update.</li>"
-        : "<li class='mover-note'>No confirmed movers — no card with confirmed prices on both days changed price.</li>";
-      g.innerHTML = note; l.innerHTML = note; return;
+      // Collapse the whole section to one line. Distinguish "today's price
+      // snapshot hasn't landed yet" (sourceStamp is from a previous day)
+      // from a genuinely flat day.
+      const stampDay = (d.sourceStamp || "").slice(0, 10);
+      const waiting = d.asOfDate && stampDay && stampDay < d.asOfDate;
+      empty.textContent = d.prevIndex == null
+        ? "Day-over-day moves appear after the first update."
+        : waiting
+          ? "No movers yet — today's TCGplayer price snapshot lands around 4pm ET."
+          : "No confirmed movers today — no card with confirmed prices on both days changed price.";
+      cols.hidden = true; note.hidden = true; empty.hidden = false;
+      return;
     }
+    cols.hidden = false; note.hidden = false; empty.hidden = true;
     gainers.slice(0, 6).forEach((c) => g.appendChild(moverItem(c, true)));
     losers.slice(0, 6).forEach((c) => l.appendChild(moverItem(c, false)));
   }
