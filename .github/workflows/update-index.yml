@@ -45,3 +45,11 @@ jobs:
             git commit -m "chore: update S&Poke 500 index ($(date -u +%Y-%m-%d))"
             git push
           fi
+
+      # No-op until the BUTTONDOWN_API_KEY repo secret exists. The script
+      # itself makes sure only the build that ingested TODAY's TCGCSV
+      # snapshot sends (one email per market day, duplicate-safe).
+      - name: Send market-close newsletter (Buttondown)
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: python3 scripts/send_newsletter.py

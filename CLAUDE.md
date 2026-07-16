@@ -151,8 +151,9 @@ the three remaining optional items):**
 **Possible next steps / not yet done:**
 - Glance at today's ~20:23 UTC daily build (first run at the normal cadence
   since densify; the 03:43 UTC append already verified the series continues).
-- Once Buttondown approves the account: add a subscribe form/link to the site,
-  and build the daily/weekly "market close" email off `latest.json`.
+- Once Buttondown approves the account: owner adds the `BUTTONDOWN_API_KEY`
+  repo secret — the already-built email pipeline then goes live on its own
+  (see the Newsletter section).
 - Flywheel item 1 (daily "market close" auto-post to social) — still blocked
   on the owner creating X/Bluesky/Discord accounts. Search Console — needs
   owner's Google account.
@@ -206,8 +207,27 @@ Gmail; if >1 day, email support@buttondown.com.
 **IMPORTANT — do not draft Buttondown vetting/review answers**: their form
 explicitly says "don't use an LLM"; they hand-read responses and AI-written
 answers slow or sink the review. Give the owner facts, let them phrase it.
-Not yet done (post-approval): subscribe form/link on the site; daily or weekly
-"market close" email generated from `latest.json`.
+
+**Pipeline is BUILT (2026-07-16, same branch), dormant until the key exists:**
+- **Subscribe form** on the homepage (`#subscribe`, above the footer; linked
+  from the footer row) posts to Buttondown's embed endpoint for `poke500`.
+  Works as soon as the account is enabled; verified rendering in both themes.
+- **`scripts/send_newsletter.py`** (stdlib-only, like the builder) composes
+  the "market close" email from `latest.json` (level, change, breadth, top-3
+  confirmed gainers/decliners; graceful zero-mover copy) and POSTs it via the
+  Buttondown API (`status: about_to_send`). Runs as the last step of
+  `update-index.yml`. Triple-gated: exits 0 if (a) `BUTTONDOWN_API_KEY` env/
+  secret is missing, (b) `latest.json`'s `sourceStamp` date != today UTC —
+  crucial because early-UTC builds append a point from *yesterday's* snapshot;
+  only the ~20:23 UTC build after TCGCSV's daily drop is "the close" — or
+  (c) an email with `market close <asOfDate>` in the subject already exists
+  (duplicate-safe re-runs). All four paths unit-tested with a mocked API.
+- **Owner step when approval lands**: copy the API key from Buttondown
+  Settings → API, add it as Actions repo secret **`BUTTONDOWN_API_KEY`**
+  (repo Settings → Secrets and variables → Actions). Next 20:23 UTC run
+  sends automatically. NOTE: Buttondown's docs are ambiguous about whether
+  the emails API needs a paid plan (~$9/mo) — if the send fails 401/402/403
+  with the key set, that's the likely reason (the script's error hints this).
 
 ## Analytics
 GoatCounter (free, cookieless, not consent-gated): dashboard at
