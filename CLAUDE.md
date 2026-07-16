@@ -32,6 +32,11 @@ you (see `archive/BRANCHES.md`).
   until parking was disabled; www worked first. poké500.com stays canonical;
   use the ASCII form in typed/spoken links.
 - **Monetization plan**: `MONETIZE.md` (affiliates first — owner liked it).
+- **Day-0 mobile polish shipped** (from Reddit feedback, both live): empty
+  movers section collapses to one state-aware line (says "snapshot lands
+  ~4pm ET" before the daily drop), and the Top-500 table no longer clips the
+  daily-change column on phones (fit verified at 390/360px; 77% of traffic
+  is mobile).
 
 ## Repo map — active vs archive
 
