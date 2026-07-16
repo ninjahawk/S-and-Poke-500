@@ -643,6 +643,21 @@
     sync();
   }
 
+  // Promo banner: shown unless this specific promo was dismissed. The id
+  // lives on the element so a future banner (new id) reappears for everyone.
+  function initPromo() {
+    const promo = $("#promo-banner");
+    if (!promo) return;
+    const key = "spk-promo-" + promo.dataset.promoId;
+    if (localStorage.getItem(key) === "dismissed") return;
+    promo.hidden = false;
+    $("#promo-dismiss").addEventListener("click", () => {
+      promo.hidden = true;
+      localStorage.setItem(key, "dismissed");
+    });
+  }
+
   initSettings();
+  initPromo();
   load();
 })();

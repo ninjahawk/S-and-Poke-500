@@ -45,6 +45,21 @@
     <span id="sample-banner-text">Showing sample preview data. Live market data begins after the first daily update.</span>
   </div>
 
+  <!-- Promo banner (Google-style). Hidden until app.js confirms it wasn't
+       dismissed; dismissal persists per-banner via its data-promo-id. -->
+  <div id="promo-banner" class="promo" data-promo-id="newsletter-2026-07" hidden>
+    <div class="wrap promo-inner">
+      <span class="promo-ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+      </span>
+      <span class="promo-text"><strong>New:</strong> a free weekly market recap, straight to your inbox.</span>
+      <a class="promo-cta" href="#subscribe">Subscribe</a>
+      <button id="promo-dismiss" class="promo-close" type="button" aria-label="Dismiss">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="./" aria-label="S&Poké 500 home">

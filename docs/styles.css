@@ -104,6 +104,39 @@ a:hover { text-decoration: underline; }
   text-align: center;
 }
 
+/* --- Promo banner (Google-style announcement bar) --- */
+.promo { background: var(--blue-soft); color: var(--ink); }
+.promo-inner {
+  display: flex; align-items: center; gap: 10px;
+  min-height: 44px; padding-block: 7px; font-size: 13.5px;
+}
+.promo-ic { flex: none; display: grid; place-items: center; color: var(--blue); }
+.promo-text { min-width: 0; }
+.promo-text strong { font-weight: 500; }
+.promo-cta {
+  flex: none; font-weight: 500; color: var(--blue);
+  padding: 5px 12px; border-radius: 16px;
+}
+.promo-cta:hover { text-decoration: none; background: rgba(26, 115, 232, 0.12); }
+:root[data-theme="dark"] .promo-cta:hover { background: rgba(138, 180, 248, 0.15); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .promo-cta:hover { background: rgba(138, 180, 248, 0.15); }
+}
+.promo-close {
+  flex: none; margin-left: auto; width: 32px; height: 32px; border: 0;
+  border-radius: 50%; background: transparent; color: var(--muted);
+  cursor: pointer; display: grid; place-items: center;
+}
+.promo-close:hover { background: rgba(0, 0, 0, 0.08); color: var(--ink); }
+:root[data-theme="dark"] .promo-close:hover { background: rgba(255, 255, 255, 0.1); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .promo-close:hover { background: rgba(255, 255, 255, 0.1); }
+}
+@media (max-width: 480px) {
+  .promo-inner { gap: 8px; font-size: 13px; }
+  .promo-ic { display: none; }
+}
+
 /* --- Header --- */
 .site-header { border-bottom: 1px solid var(--hairline); background: var(--bg); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
