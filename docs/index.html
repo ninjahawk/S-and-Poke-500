@@ -115,7 +115,8 @@
     <!-- Movers -->
     <section class="movers" aria-label="Biggest movers">
       <h2 class="section-title">Today's movers</h2>
-      <div class="mover-cols">
+      <p id="movers-empty" class="movers-empty" hidden></p>
+      <div class="mover-cols" id="mover-cols">
         <div class="mover-col">
           <h3 class="mover-title">Top gainers</h3>
           <ul id="gainers" class="mover-list"></ul>
@@ -125,7 +126,7 @@
           <ul id="losers" class="mover-list"></ul>
         </div>
       </div>
-      <p class="table-note">Daily moves are shown only for cards with a confirmed TCGplayer price on
+      <p class="table-note" id="movers-note">Daily moves are shown only for cards with a confirmed TCGplayer price on
         both days — see <a href="#methodology">how these prices work</a>.</p>
     </section>
 
