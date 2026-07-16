@@ -157,6 +157,11 @@ the three remaining optional items):**
 - Flywheel item 1 (daily "market close" auto-post to social) — still blocked
   on the owner creating X/Bluesky/Discord accounts. Search Console — needs
   owner's Google account.
+- **Monetization plan is in `MONETIZE.md`** (2026-07-16, owner liked it —
+  especially affiliates). First move when owner is ready: they create eBay
+  Partner Network + TCGplayer/Impact affiliate accounts, then a session
+  converts the existing card-modal compare links sitewide + updates the
+  "non-commercial" footer wording and adds affiliate disclosure.
 
 ## Data pipeline (`scripts/`)
 
