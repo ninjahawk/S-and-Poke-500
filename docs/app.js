@@ -130,7 +130,7 @@
       // close to compare against) or a genuinely flat day.
       const note = d.prevIndex == null
         ? "<li class='mover-note'>Day-over-day moves appear after the first update.</li>"
-        : "<li class='mover-note'>No confirmed movers — no card with confirmed prices on both days changed price.</li>";
+        : "<li class='mover-note'>No confirmed movers</li>";
       g.innerHTML = note; l.innerHTML = note; return;
     }
     gainers.slice(0, 6).forEach((c) => g.appendChild(moverItem(c, true)));
