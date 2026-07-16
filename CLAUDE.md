@@ -24,11 +24,13 @@ you (see `archive/BRANCHES.md`).
 - **Newsletter (weekly, Buttondown `poke500`)**: pipeline fully built, merged,
   live on the site; DORMANT until the owner adds the `BUTTONDOWN_API_KEY`
   secret. Buttondown account pending human review. Details below.
-- **poke500.com (ASCII) purchased** (Spaceship, 2026-07-16 ~15:00 UTC) after
-  positive Reddit reception. Redirect records (301 unmasked, `@` + `www` →
-  `https://xn--pok500-dva.com/`) still NOT live as of ~17:40 UTC — apex still
-  serves Spaceship parking. poké500.com stays canonical; use the ASCII form in
-  typed/spoken links.
+- **poke500.com (ASCII) is LIVE** (purchased on Spaceship 2026-07-16 ~15:00
+  UTC; redirect verified ~18:45 UTC): all four combinations (http/https ×
+  apex/www) 301 → `https://xn--pok500-dva.com/` and land 200. Spaceship URL
+  redirect (301 unmasked, FreeSSL certs) + auto-renew ON, renews 2027-07-16.
+  Gotcha for the record: Spaceship's parking page overrode the apex redirect
+  until parking was disabled; www worked first. poké500.com stays canonical;
+  use the ASCII form in typed/spoken links.
 - **Monetization plan**: `MONETIZE.md` (affiliates first — owner liked it).
 
 ## Repo map — active vs archive
@@ -59,10 +61,7 @@ one — do NOT merge that branch.
    2026-07-16): then copy the API key (Buttondown Settings → API) and add repo
    Actions secret **`BUTTONDOWN_API_KEY`**. The next ~20:23 UTC build sends
    issue #1 automatically.
-2. **poke500.com redirects** (Spaceship): add URL-Redirect records, 301
-   unmasked, `@` and `www` → `https://xn--pok500-dva.com/`; a session should
-   verify the chain once saved.
-3. Ongoing launch execution per `LAUNCH.md` (next Reddit waves, Show HN).
+2. Ongoing launch execution per `LAUNCH.md` (next Reddit waves, Show HN).
    Blocked-on-owner: X/Bluesky/Discord accounts (social auto-post), Google
    account (Search Console), affiliate accounts (MONETIZE.md step 1).
 
@@ -70,7 +69,6 @@ one — do NOT merge that branch.
 
 - Spot-check tonight's ~20:23 UTC build (first with genuinely fresh prices
   post-densify): same-day refresh of the 07-16 point, sane movers/breadth.
-- Verify poke500.com redirect chain once the owner saves the records.
 - When Buttondown approves + key added: watch the first newsletter send in the
   Action log.
 
