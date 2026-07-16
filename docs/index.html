@@ -282,21 +282,30 @@
     <div class="card-modal-backdrop" data-close></div>
     <div class="card-modal-panel sub-panel" role="dialog" aria-modal="true" aria-labelledby="sm-title">
       <button class="card-modal-close" type="button" aria-label="Close" data-close>&#10005;</button>
-      <div class="sm-hero" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+      <div id="sm-main">
+        <div class="sm-hero" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        </div>
+        <h2 id="sm-title" class="sm-title">Don&rsquo;t miss a move</h2>
+        <p class="sm-blurb">Where the index closed, the week&rsquo;s range, and the biggest
+          gainers &amp; losers &mdash; one short email, every Friday.</p>
+        <form id="sm-form" class="sm-form" action="https://buttondown.com/api/emails/embed-subscribe/poke500"
+              method="post" target="_blank">
+          <input type="hidden" name="embed" value="1" />
+          <input id="sm-email" type="email" name="email" placeholder="you@example.com" required
+                 aria-label="Email address" autocomplete="email" />
+          <button type="submit">Get the free recap</button>
+        </form>
       </div>
-      <h2 id="sm-title" class="sm-title">Don&rsquo;t miss a move</h2>
-      <p class="sm-blurb">Where the index closed, the week&rsquo;s range, and the biggest
-        gainers &amp; losers &mdash; one short email, every Friday.</p>
-      <form id="sm-form" class="sm-form" action="https://buttondown.com/api/emails/embed-subscribe/poke500"
-            method="post" target="_blank">
-        <input type="hidden" name="embed" value="1" />
-        <input id="sm-email" type="email" name="email" placeholder="you@example.com" required
-               aria-label="Email address" autocomplete="email" />
-        <button type="submit">Get the free recap</button>
-      </form>
-      <p id="sm-done" class="sm-done" hidden>Check your inbox &mdash; click the confirmation
-        link and you&rsquo;re in.</p>
+      <div id="sm-success" hidden>
+        <div class="sm-hero sm-hero-ok" aria-hidden="true">
+          <svg class="sm-check" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 7"/></svg>
+        </div>
+        <h2 class="sm-title">Check your inbox</h2>
+        <p class="sm-blurb">We sent a confirmation link to
+          <strong id="sm-sent-to"></strong>. Click it and you&rsquo;re in.</p>
+        <button id="sm-ok" class="sm-ok" type="button">Done</button>
+      </div>
       <p class="sm-fine">Free &middot; no spam &middot; unsubscribe anytime</p>
     </div>
   </div>

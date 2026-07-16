@@ -677,7 +677,12 @@
     const modal = $("#sub-modal");
     modal.classList.remove("is-open");
     document.body.classList.remove("modal-open");
-    setTimeout(() => { modal.hidden = true; }, 220);
+    setTimeout(() => {
+      modal.hidden = true;
+      // Reset to the form for the next open.
+      $("#sm-main").hidden = false;
+      $("#sm-success").hidden = true;
+    }, 220);
   }
   function initSubModal() {
     const modal = $("#sub-modal");
@@ -689,12 +694,16 @@
       if (e.key === "Escape" && !modal.hidden) closeSubModal();
     });
     $("#sm-form").addEventListener("submit", () => {
-      // Let the POST proceed in its new tab, then show the confirmation note.
+      // The POST proceeds in its new tab (double opt-in lands by email);
+      // swap the dialog to its success state, echoing the address.
+      const email = $("#sm-email").value;
       setTimeout(() => {
-        $("#sm-form").hidden = true;
-        $("#sm-done").hidden = false;
+        $("#sm-sent-to").textContent = email;
+        $("#sm-main").hidden = true;
+        $("#sm-success").hidden = false;
       }, 150);
     });
+    $("#sm-ok").addEventListener("click", closeSubModal);
   }
 
   initSettings();

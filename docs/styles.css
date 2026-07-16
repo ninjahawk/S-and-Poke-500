@@ -505,9 +505,26 @@ body.modal-open { overflow: hidden; }
   font-weight: 500; cursor: pointer;
 }
 .sm-form button:hover { filter: brightness(1.08); }
-.sm-done { margin: 4px 0 8px; padding: 12px; border-radius: 10px;
-  background: var(--up-soft); color: var(--up); font-size: 13.5px; }
 .sm-fine { margin: 14px 0 0; color: var(--muted); font-size: 12px; }
+
+/* Success state: the badge pops in and the check draws itself (both skipped
+   under prefers-reduced-motion). display:none -> shown restarts the
+   animations, so no JS class juggling is needed. */
+.sm-hero-ok { background: var(--up-soft); color: var(--up); animation: sm-pop 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.2); }
+.sm-check path { stroke-dasharray: 24; stroke-dashoffset: 24; animation: sm-draw 0.3s ease 0.12s forwards; }
+@keyframes sm-pop { from { transform: scale(0.6); opacity: 0; } }
+@keyframes sm-draw { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .sm-hero-ok { animation: none; }
+  .sm-check path { animation: none; stroke-dashoffset: 0; }
+}
+#sm-sent-to { color: var(--ink); font-weight: 500; overflow-wrap: anywhere; }
+.sm-ok {
+  margin-top: 2px; padding: 9px 20px; border: 0; border-radius: 18px;
+  background: transparent; color: var(--blue); font: inherit; font-size: 14px;
+  font-weight: 500; cursor: pointer;
+}
+.sm-ok:hover { background: var(--blue-soft); }
 
 /* ---- brand logo image ---------------------------------------------------- */
 .brand-mark img { display: block; width: 28px; height: 28px; border-radius: 8px; }
