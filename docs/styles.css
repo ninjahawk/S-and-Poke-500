@@ -132,9 +132,14 @@ a:hover { text-decoration: underline; }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .promo-close:hover { background: rgba(255, 255, 255, 0.1); }
 }
+.promo-short { display: none; }
 @media (max-width: 480px) {
   .promo-inner { gap: 8px; font-size: 13px; }
   .promo-ic { display: none; }
+  .promo-long { display: none; }
+  .promo-short { display: inline; }
+  .promo-cta { padding: 5px 8px; }
+  .promo-close { width: 28px; height: 28px; }
 }
 
 /* --- Header --- */
