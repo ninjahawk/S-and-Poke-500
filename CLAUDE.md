@@ -2,186 +2,107 @@
 
 The **S&Poké 500** is a price-weighted index of the 500 most valuable English,
 raw/ungraded Pokémon card **singles** — a "Google Finance for the Pokémon card
-market." Static site on GitHub Pages, fed by a daily GitHub Action. Target
-domain: **poké500.com** (punycode `xn--pok500-dva.com`).
+market." Static site on GitHub Pages, fed by a daily GitHub Action. Domain:
+**poké500.com** (punycode `xn--pok500-dva.com`; ASCII alias `poke500.com`
+owned, redirect pending — see below).
 
 Repo: `ninjahawk/s-and-poke-500`. Work happens on **`main`** (Pages serves from
-`main` `/docs`). This is a solo hobby/launch project by the owner (on mobile,
-often away — you manage end to end).
+`main` `/docs`). Solo hobby project by the owner (on mobile, often away — you
+manage end to end). **Multiple Claude sessions sometimes run in parallel**;
+before assuming a fact is current, check whether another branch is ahead of
+you (see `archive/BRANCHES.md`).
 
-## Status (as of 2026-07-16)
+## Current state (as of 2026-07-16 ~18:00 UTC)
 
-> **✅ LAUNCHED (2026-07-16 ~00:00 UTC).** The site is fully live at
-> **https://xn--pok500-dva.com/** (poké500.com): the glitch-guard work was
-> merged to `main` (fast-forward, `4676db7`), Pages deployed it, and the owner
-> completed all three manual steps — Pages folder is now **`/docs`** (app
-> serves at `/`), registrar DNS points at GitHub Pages (apex A + www CNAME
-> verified), and **Enforce HTTPS is on** (HTTP 301s to HTTPS, cert valid).
-> Live index **1,252.47** (see the 2026-07-16 densify entry below for why the
-> level changed from launch's 1,355.70). `HANDOFF.md` is a resolution record.
+- **LIVE** at https://xn--pok500-dva.com/ since 2026-07-16 ~00:00 UTC. Pages
+  `/docs`, DNS, Enforce-HTTPS all verified. Index **1,251.65** (−0.07%),
+  286 history points (weekly to 2026-01-08, daily after).
+- **Reddit soft launch is LIVE**: r/PokeInvesting, rev-3 "horse race" framing,
+  approved after mod delay. ~12:30 UTC: 1.6k views, 7 shares; GoatCounter
+  day-0: 5k post views → 87 visits (~1.7% CTR, normal). Runbook + decision
+  rules: `REDDIT_POST.md`. Next waves per `LAUNCH.md` sequencing.
+- **Newsletter (weekly, Buttondown `poke500`)**: pipeline fully built, merged,
+  live on the site; DORMANT until the owner adds the `BUTTONDOWN_API_KEY`
+  secret. Buttondown account pending human review. Details below.
+- **poke500.com (ASCII) purchased** (Spaceship, 2026-07-16 ~15:00 UTC) after
+  positive Reddit reception. Redirect records (301 unmasked, `@` + `www` →
+  `https://xn--pok500-dva.com/`) still NOT live as of ~17:40 UTC — apex still
+  serves Spaceship parking. poké500.com stays canonical; use the ASCII form in
+  typed/spoken links.
+- **Monetization plan**: `MONETIZE.md` (affiliates first — owner liked it).
 
-**Done & pushed to `main`:**
-- Google Finance–style UI (`docs/`). Refined off the "candy pill" look → plain
-  colored text + small triangles (▲▼). Legal/trademark footer, OG/Twitter meta,
-  `docs/og-image.png` social card, light+dark themes.
-- **Data pipeline rebuilt on TCGCSV** (free daily TCGplayer mirror; no API key).
-  See `scripts/`. Real history reconstructed back to **2024-02-08** (~2.5 yrs,
-  129 weekly points), index rebased to **1,000** at that date.
-- Range selector: 1W/1M/6M/1Y/**MAX** (MAX shows the full series however long it
-  grows; it was "5Y" pre-launch, which overstated the ~2.5y of data).
-- `docs/CNAME` = `xn--pok500-dva.com`; canonical/OG URLs use it too.
+## Repo map — active vs archive
 
-**Done 2026-07-15 (launch-readiness pass):**
-- **Pages is enabled** (owner did it, ~14:50 UTC): Deploy from a branch,
-  `main` / **`/ (root)`** — NOT `/docs`. Verified by Host-header probe: the
-  domain serves the Jekyll-rendered README at `/` and the app at `/docs/`.
-  Owner must flip the folder to `/docs` (see pending list). There is no
-  API/MCP tool for Pages settings, so this can't be done for them.
-- **Daily Action verified end-to-end**: workflow_dispatch run succeeded and
-  committed `chore: update S&Poke 500 index (2026-07-15)` to `main`. A 0.00%
-  day right after a same-day refresh is expected (TCGCSV live == latest archive).
-- **CNAME lesson (IMPORTANT — do not repeat):** Pages reads `CNAME` from the
-  *publish folder* — with source = root, that's the **root** `CNAME`
-  (`xn--pok500-dva.com`, created when the owner set the domain). A session
-  deleted it as "redundant" (`ba68d3a`), which **deregistered the domain** from
-  GitHub's edge (Host-header probe returned "Site not found"). Restoring it
-  (PR #3, merged) re-registered the domain within seconds of deploy — verified
-  edge now serves 200 for that Host. **Keep root `CNAME` AND `docs/CNAME`, same
-  value** — one covers source=root, the other covers source=/docs.
-  GitHub Pages accepts IDNs in punycode form (docs + the accepted UI entry).
-- Added: `docs/404.html`, `docs/robots.txt`, `docs/sitemap.xml`, JSON-LD
-  WebSite schema in `index.html`.
+**Active root docs** (keep current): `README.md` (public face), `CLAUDE.md`
+(this file — current state + durable reference), `LAUNCH.md` (launch playbook,
+still being executed), `REDDIT_POST.md` (live post runbook), `VIRALITY.md`
+(research backing the post framing; source of the "never claim first/only
+index" rule), `MONETIZE.md` (revenue plan).
 
-**Done 2026-07-15 (pricing-accuracy audit, branch `claude/pricing-accuracy-sources-wafpwg`):**
-Prompted by user complaints that prices "look wrong / don't match other sites."
-- **Verified pipeline vs source**: our numbers exactly mirror TCGplayer Market
-  Price via TCGCSV (checked 9 products' raw rows). Cross-checked externally:
-  Umbreon ex 161/131 within ~3% of PriceCharting; but thin vintage diverges
-  hugely by *source definition* (Charizard Gold Star DF: $4,000 TCGplayer market
-  vs ~$2,136 PriceCharting ungraded). PriceCharting = eBay solds (mixed
-  condition/auctions); we = TCGplayer sales. Neither is "wrong" — now explained
-  on-site.
-- **Bug fixed — staff promos leaked in**: filter matched only `"(staff"`, but
-  TCGplayer uses `[Staff]`; 31 staff promos (6% of basket!) were in the index.
-  Now excluded (`[staff` + `error]` bracket variants added).
-- **Bug fixed — Japanese-only promos in an "English" index**: 5 cards with JP
-  promo numbers (`227/S-P`, `98/XY-P`, …; e.g. rank-15 Pikachu Stamp Box, $1.6k,
-  never released in English — PriceCharting files it under *Japanese* Promo).
-  Now excluded: collector number ending `-P`.
-- **Bug fixed — no staleness cap in daily builder**: `build_index.py` forward-
-  filled prices forever (backfill had 70d cap). Now shared `tc.STALE_DAYS = 70`,
-  per-card `pricedAsOf` tracked; carried prices age out.
-- **Transparency added**: per-card `printing` (96/500 are priced by Reverse
-  Holofoil — a top confusion source!) + `pricedAsOf` in latest.json; † stale
-  markers in table + legend; card modal shows printing/price-date/stale notice
-  + compare links (TCGplayer, PriceCharting, eBay solds); "How these prices
-  work" methodology section (#methodology) explaining source differences;
-  README updated (removed false "lines up with PriceCharting" claim).
-- **Data regenerated** with the fixed universe (2026-07-15 snapshot): 36 bogus
-  cards out, divisor rebalanced 235.66→227.68, index continuous (1082.17,
-  +0.73%). Old carried cards have `printing: null` until next live pricing —
-  self-heals.
+**Archive** (`archive/` — historical, do not act on): session-by-session build
+log (`HISTORY.md`), the resolved launch handoff, the retired-branch ledger
+(`BRANCHES.md`), rejected logo variant. Convention: superseded material moves
+there instead of being deleted.
 
-**Done 2026-07-15, late session (glitch guard activated + movers gate, branch
-`claude/continue-6bvev4` — needs merge to `main`):**
-- **Movers decision resolved** (the HANDOFF.md open item): per-card daily
-  change exists **only between two guard-confirmed prints**. `guard_prices`
-  reports held prints; `trusted`/`prevTrusted` flags per constituent;
-  unconfirmed endpoints ⇒ `changePct: null` ⇒ card shows "—" and sits out of
-  movers + breadth. Index level itself uses every effective price (honest).
-  Kills the fake +240%/+5,137% movers AND the late-release jumps (Shuckle).
-- **New guard hole fixed**: windows were persisted only for the 500
-  constituents, so any card below the cutoff was trusted unconditionally by
-  the daily build — a one-day spike could enter the basket at a fake price.
-  Now `latest.json` carries a `guardWindows` watch zone (ranks 501–1000).
-- **Frontend**: null `changePct` no longer renders as "New" (uses `isNew`);
-  gated cards show "—" + tooltip; modal says "no confirmed daily change";
-  methodology + movers-panel note explain the confirmed-print rule.
-- **Data regenerated with the guard** (backfill + daily build, all invariants
-  verified): 129 points, base 1,000 @ 2024-02-08 → **1,355.70** (divisor
-  180.3037). Worst surviving mover +28%. The public index number changed
-  materially from 1,082 (old buggy series) — expected and correct.
+**Branches**: `main` + this session's designated branch are the only active
+ones; two parallel-session branches from 2026-07-16 are open (their durable
+facts are already folded into this file); everything else is dead and listed
+in `archive/BRANCHES.md` for the owner to delete in the GitHub UI. Remote
+sessions cannot delete branches or push tags — don't try, document instead.
+NOTE: `claude/reddit-post-metrics-du0hya` contains a daily-close email
+pipeline (`send_daily_email.py`) that is **superseded** by the merged weekly
+one — do NOT merge that branch.
 
-**Owner launch steps — ALL DONE (verified 2026-07-16 ~00:00 UTC):**
-0. ✅ Pages folder switched to `/docs` — app is the homepage; `404.html`,
-   `robots.txt`, `sitemap.xml` all serve 200 from `/`.
-1. ✅ Registrar DNS: apex resolves to the four GitHub Pages A records; `www`
-   resolves via CNAME (v4+v6). Parking IPs gone.
-2. ✅ HTTPS: cert issued and **Enforce HTTPS on** — `http://` 301s to
-   `https://xn--pok500-dva.com/`, apex serves 200, `www` 301s to apex.
-- Owner is sticking with **poké500.com only** (not buying ASCII `poke500.com`).
-  Accept it; don't re-litigate. SEO/discovery will lean on the "Poké" term + the
-  in-page "S&Poké 500" name + Reddit/reference links.
-- Note: `ninjahawk.github.io/s-and-poke-500/` redirects into the owner's
-  user-site domain (`nathanlangley.dev/s-and-poke-500/`, 404) — that's the
-  user-site redirect, not a bug here; the project serves on its custom domain.
+## Owner to-do (the only human steps outstanding)
 
-**Done 2026-07-16, early session (branch `claude/continue-previous-gwpi5f` —
-the three remaining optional items):**
-- **History densified to daily for the recent 6 months** (`backfill_history.py`
-  `DENSE_DAYS = 183`): 285 points now (101 weekly to 2026-01-08, then daily
-  from 2026-01-14) vs 129 weekly. The 1W/1M/6M chart ranges now have daily
-  resolution, matching the cadence the live builder appends at. Verified: the
-  100 overlapping weekly points reproduce the old series EXACTLY (deterministic
-  chain), all 18 invariants pass (sum/divisor/breadth/gating/guardWindows/
-  cadence), max step 5.25%, worst mover +28.09%.
-- **The index level changed: 1,355.70 → 1,252.47 (+0.86% 1D).** Expected, not
-  a bug: with daily (vs weekly) rebalancing over the recent stretch the divisor
-  chain takes a different path, and the 1D baseline basket differs. The daily
-  path is the more correct one (it's how the index behaves going forward), and
-  this happened BEFORE any publicity (Day-0 post not yet made). LAUNCH.md's
-  "up 36%" claims were updated to ~25%.
-- **Card-image on/off switch** in the header (persisted like the theme).
-  Images off = thumbnails/modal image are *not rendered at all* (no TCGplayer
-  CDN requests), for extra copyright caution; modal image box collapses.
-- **About & legal page** `docs/about.html` (serves at `/about` — GH Pages
-  resolves extensionless): index summary, universe rules, legal/trademark/
-  privacy posture, GitHub link (repo is public). Linked from footer + sitemap.
+1. **Buttondown approval** (email to owner's Gmail, expected within ~a day of
+   2026-07-16): then copy the API key (Buttondown Settings → API) and add repo
+   Actions secret **`BUTTONDOWN_API_KEY`**. The next ~20:23 UTC build sends
+   issue #1 automatically.
+2. **poke500.com redirects** (Spaceship): add URL-Redirect records, 301
+   unmasked, `@` and `www` → `https://xn--pok500-dva.com/`; a session should
+   verify the chain once saved.
+3. Ongoing launch execution per `LAUNCH.md` (next Reddit waves, Show HN).
+   Blocked-on-owner: X/Bluesky/Discord accounts (social auto-post), Google
+   account (Search Console), affiliate accounts (MONETIZE.md step 1).
 
-**Done 2026-07-16, newsletter session (branch `claude/newsletter-creation-gbl2t4`):**
-- **First post-densify daily build verified clean**: the hourly Action ran at
-  03:43 UTC (densify had reset `sourceStamp`, so the stamp check fired) and
-  appended the 2026-07-16 point — **1,251.65 (−0.07%)**, 286 history points,
-  500 constituents, `guardWindows` intact, `prevIndex` 1252.47 matches.
-  Commit `b169913` on `main`.
-- **Buttondown newsletter account created by the owner** — see the
-  "Newsletter (Buttondown)" section below for durable details. Pending
-  Buttondown's human review at session end.
+## Session next steps
 
-**Possible next steps / not yet done:**
-- Glance at today's ~20:23 UTC daily build (first run at the normal cadence
-  since densify; the 03:43 UTC append already verified the series continues).
-- Once Buttondown approves the account: owner adds the `BUTTONDOWN_API_KEY`
-  repo secret — the already-built email pipeline then goes live on its own
-  (see the Newsletter section).
-- Flywheel item 1 (daily "market close" auto-post to social) — still blocked
-  on the owner creating X/Bluesky/Discord accounts. Search Console — needs
-  owner's Google account.
-- **Monetization plan is in `MONETIZE.md`** (2026-07-16, owner liked it —
-  especially affiliates). First move when owner is ready: they create eBay
-  Partner Network + TCGplayer/Impact affiliate accounts, then a session
-  converts the existing card-modal compare links sitewide + updates the
-  "non-commercial" footer wording and adds affiliate disclosure.
+- Spot-check tonight's ~20:23 UTC build (first with genuinely fresh prices
+  post-densify): same-day refresh of the 07-16 point, sane movers/breadth.
+- Verify poke500.com redirect chain once the owner saves the records.
+- When Buttondown approves + key added: watch the first newsletter send in the
+  Action log.
 
 ## Data pipeline (`scripts/`)
 
 - `tcg_common.py` — shared source of truth. TCGCSV category 3 = English Pokémon.
   Universe = **singles only** (must have a card `Number`); **excludes** sealed +
-  oddities (jumbo/oversized box toppers, staff promos, error cards,
-  "miscellaneous"). Representative price = **max TCGplayer market price across
+  oddities (jumbo/oversized box toppers, staff promos — bracket variants
+  `[staff`/`error]` — "miscellaneous", and JP-only promos: collector numbers
+  ending `-P`). Representative price = **max TCGplayer market price across
   regular printings; 1st Edition rows are EXCLUDED** (fallback: used only if a
   product has no non-1st-Ed market price). Why (2026-07-15, owner-approved):
   trophy 1st Eds trade off-TCGplayer, so their market prices are broken —
-  Shadowless 1st Ed Charizard showed $250 vs ~$20k+ real; mixing printings made
-  the top of the list incoherent (1st Ed Tyranitar #1 while 1st Ed Base Zard
-  couldn't rank). No mid/listing fallback ever. **Forward-fills** last-known
-  price across gap days (STALE cap 70d) — critical: without it, thin-trading
-  days fake a crash. Keys are **string** productIds everywhere.
+  Shadowless 1st Ed Charizard showed $250 vs ~$20k+ real. No mid/listing
+  fallback ever. **Forward-fills** last-known price across gap days (STALE cap
+  70d) — critical: without it, thin-trading days fake a crash. Keys are
+  **string** productIds everywhere.
+- **Glitch guard + movers gate** (protects against TCGplayer printing broken
+  prices): a price far outside a card's own recent window is held at its
+  recent median until later snapshots confirm it. Per-card daily change exists
+  only between two guard-confirmed prints (`trusted`/`prevTrusted` flags);
+  unconfirmed ⇒ `changePct: null` ⇒ "—" in the UI, excluded from movers +
+  breadth. The index level itself uses every effective price. `latest.json`
+  carries `guardWindows` for ranks 501–1000 so below-cutoff cards can't enter
+  the basket at an unconfirmed spike.
 - `backfill_history.py` — one-time. Weekly reconstruction from the TCGCSV price
-  **archive** (`/archive/tcgplayer/prices-YYYY-MM-DD.ppmd.7z`, needs `py7zr`).
-  Dynamic top-500 membership per date; S&P-style divisor chaining. Writes
-  `docs/data/{latest,history}.json`. Run: `pip install py7zr && python3
-  scripts/backfill_history.py` (~8 min: ~127 archive downloads + catalog build).
+  **archive** (`/archive/tcgplayer/prices-YYYY-MM-DD.ppmd.7z`, needs `py7zr`),
+  daily for the most recent `DENSE_DAYS = 183`. Dynamic top-500 membership per
+  date; S&P-style divisor chaining. Writes `docs/data/{latest,history}.json`.
+  Run: `pip install py7zr && python3 scripts/backfill_history.py` (~8 min).
+  Regenerating CHANGES THE INDEX LEVEL (divisor path) — expected, but never do
+  it casually post-publicity.
 - `build_index.py` — the Action's job (stdlib only, no py7zr, no key). Runs
   **hourly** (cron :23) but exits in seconds unless TCGCSV's
   `last-updated.txt` stamp differs from `latest.json`'s stored `sourceStamp`
@@ -189,93 +110,112 @@ the three remaining optional items):**
   live prices, continues the series from committed `latest.json`, appends a
   history point. Daily change is measured vs the previous *day* (same-day
   re-runs keep the prior baseline). Frontend polls the JSON every 5 min +
-  on tab focus, so open tabs update without reload.
-- `make_sample.py` — legacy offline sample generator; unused now.
+  on tab focus.
+- `send_newsletter.py` — weekly Buttondown recap; see Newsletter section.
+- `make_sample.py` — legacy offline sample generator; unused.
 
 **Gotchas learned the hard way:**
-- TCGCSV "live" prices == the latest daily archive (same snapshot). So the
-  backfill compares the **two most recent distinct archive days** for the final
-  1-day change — don't compare live vs same-day archive (gives all-zero moves).
+- TCGCSV "live" prices == the latest daily archive (same snapshot). The
+  backfill compares the **two most recent distinct archive days** for the
+  final 1-day change — don't compare live vs same-day archive (all-zero moves).
 - Only ~40–50 of 500 cards move on a given day (vintage prices are sticky);
   breadth/movers reflecting that is correct, not a bug.
+- Early-UTC hourly runs can append a point built from *yesterday's* snapshot
+  (e.g. after anything resets `sourceStamp`); the point self-corrects at the
+  next ~20:23 same-day refresh.
+
+**CNAME lesson (IMPORTANT — do not repeat):** Pages reads `CNAME` from the
+*publish folder*. A session deleted the root `CNAME` as "redundant", which
+**deregistered the domain** from GitHub's edge. **Keep root `CNAME` AND
+`docs/CNAME`, same value** (`xn--pok500-dva.com`) — one covers source=root,
+the other source=/docs. GitHub Pages accepts IDNs in punycode form.
+
+**Marketing claim rule (from VIRALITY.md):** competitor **PokéViews 100**
+exists (equal-weighted monthly top-100) — **never claim "first/only index"**;
+differentiate on real index mechanics (500 cards, divisor chaining, daily
+membership), transparency, free/no-signup.
 
 ## Newsletter (Buttondown)
+
 Created by the owner 2026-07-16, handle **poke500** (dashboard at
 buttondown.com; account is the owner's Gmail). Buttondown's automated vetting
 flagged the new account for **human review** — the owner submitted the vetting
-form (name/description/goals + poké500.com and the GitHub repo as identity
-links) and at session end the account showed "Your account was disabled" in
-the activity log. That's expected: sending is paused while review is pending;
-the top-of-dashboard banner is the real status ("a real person is reviewing…
-usually a few hours, up to a day"). Approval arrives by email to the owner's
-Gmail; if >1 day, email support@buttondown.com.
+form and the account shows "disabled" while review is pending (the
+top-of-dashboard banner is the real status; approval by email, usually hours,
+up to a day; if >1 day, email support@buttondown.com).
 **IMPORTANT — do not draft Buttondown vetting/review answers**: their form
 explicitly says "don't use an LLM"; they hand-read responses and AI-written
 answers slow or sink the review. Give the owner facts, let them phrase it.
 
-**Pipeline is BUILT (2026-07-16, same branch), dormant until the key exists.
-Cadence is WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
+**Pipeline is BUILT and merged, dormant until the key exists. Cadence is
+WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
 - **Subscribe form** on the homepage (`#subscribe`, above the footer; linked
   from the footer row; heading "Weekly market updates to your inbox") posts to
-  Buttondown's embed endpoint for `poke500`. Works as soon as the account is
-  enabled; verified rendering in both themes.
-- **`scripts/send_newsletter.py`** (stdlib-only, like the builder) composes a
-  weekly recap — index close, change since last issue, week's range, top-3
-  **week-over-week** confirmed gainers/decliners — and POSTs it via the
-  Buttondown API (`status: about_to_send`). Runs as the last step of
-  `update-index.yml`. Weekly movers need a baseline: after each send the
-  script writes `docs/data/newsletter_state.json` (per-card price+trusted
-  snapshot) and the workflow commits it. The FIRST issue therefore has no
-  movers ("sets the baseline" copy) and goes out on the first fresh build
-  after the key is added, whatever weekday; issues then lock to Fridays
-  (catch-up send if ≥8 days pass). Gates, each exit-0: (a) no
-  `BUTTONDOWN_API_KEY` secret, (b) `latest.json` `sourceStamp` date != today
-  UTC — early-UTC builds append a point from *yesterday's* snapshot; only the
-  ~20:23 UTC build after TCGCSV's drop is "the close", (c) not an issue day,
-  (d) subject `week ending <asOfDate>` already sent (duplicate-safe re-runs).
-  All paths unit-tested with a mocked API.
-- **Owner step when approval lands**: copy the API key from Buttondown
-  Settings → API, add it as Actions repo secret **`BUTTONDOWN_API_KEY`**
-  (repo Settings → Secrets and variables → Actions). Next 20:23 UTC run
-  sends automatically.
+  Buttondown's embed endpoint for `poke500` (hidden `embed=1` input required).
+  Works as soon as the account is enabled; verified rendering in both themes.
+- **`scripts/send_newsletter.py`** (stdlib-only) composes a weekly recap —
+  index close, change since last issue, week's range, top-3 **week-over-week**
+  confirmed gainers/decliners — and POSTs it via the Buttondown API
+  (`status: about_to_send`). Runs as the last step of `update-index.yml`.
+  Weekly movers baseline: after each send the script writes
+  `docs/data/newsletter_state.json` (per-card price+trusted snapshot) and the
+  workflow commits it. The FIRST issue has no movers ("sets the baseline")
+  and goes out on the first fresh build after the key is added, whatever
+  weekday; issues then lock to Fridays (catch-up if ≥8 days pass). Gates,
+  each exit-0: (a) no `BUTTONDOWN_API_KEY` secret, (b) `latest.json`
+  `sourceStamp` date != today UTC (only the ~20:23 UTC build after TCGCSV's
+  drop is "the close"), (c) not an issue day, (d) subject
+  `week ending <asOfDate>` already sent. All paths unit-tested with a mocked
+  API.
 - **Plan/pricing facts (verified 2026-07-16 against Buttondown's own pages)**:
   free plan = up to **100 subscribers**, unlimited sends; the API is
-  **"available on all plans, including free"** (their /features/api FAQ). The
-  paid-feature banner in their docs applies to *scheduling* emails via the API
-  (`status: scheduled` + `publish_date`) — we never schedule; OUR cron is the
-  GitHub Action and we POST `about_to_send` for immediate send. So $0 until
-  >100 subscribers.
+  **"available on all plans, including free"**. The paid-feature banner
+  applies to *scheduling* via the API (`status: scheduled` + `publish_date`)
+  — we never schedule; OUR cron is the GitHub Action and we POST
+  `about_to_send`. So $0 until >100 subscribers.
 - **API quirks handled in the script (don't remove)**: requests pin
   `X-API-Version: 2026-04-01`; POSTs carry `X-Buttondown-Live-Dangerously:
   true` because that API version rejects a key's FIRST `about_to_send` with
-  400 `sending_requires_confirmation` without it. The subscribe form needs the
-  hidden `embed=1` input per their embed docs.
+  400 `sending_requires_confirmation` without it.
+- A parallel session built a DAILY variant (`send_daily_email.py` on branch
+  `claude/reddit-post-metrics-du0hya`) — superseded, never merge it.
 
 ## Analytics
+
 GoatCounter (free, cookieless, not consent-gated): dashboard at
-**https://poke500.goatcounter.com** — account is the owner's email; login is in
-the owner's password manager/chat history (created 2026-07-16; verification
-email sent to their Gmail). Snippet is the last script tag in
-`docs/index.html`. Adblock impact is minimal vs GA. The dashboard can be made
-public in its settings if the owner wants stats as part of the transparency
-story.
+**https://poke500.goatcounter.com**. Account is under one of the owner's
+personal Gmail addresses — this repo is PUBLIC, so never write emails or
+credentials into it. Owner has confirmed working login (2026-07-16). Snippet
+is the last script tag in `docs/index.html`. Day-0 baseline: 5k Reddit post
+views → 87 visits (~1.7% CTR); ~78% of referrers show "(unknown)" = Reddit
+iOS in-app browser.
 
 ## Frontend (`docs/`)
+
 `index.html` + `styles.css` + `app.js` (vanilla, no deps). Reads
-`data/latest.json` + `data/history.json`. Card images come from TCGplayer CDN
-(`tcgplayer-cdn.tcgplayer.com`). Theme toggle, chart scrubber, sortable/search
-table of the 500.
+`data/latest.json` + `data/history.json`. Card images from TCGplayer CDN
+(`tcgplayer-cdn.tcgplayer.com`) with a header on/off switch (off = no CDN
+requests at all). Theme toggle, chart scrubber, sortable/search table,
+subscribe section, about page (`/about`).
 
 ## Legal posture
+
 Independent fan project. Nominative use of "Pokémon" + card names/thumbnails to
 identify what's priced; parody of "S&P 500". Footer disclaims affiliation with
 Nintendo / Creatures / GAME FREAK / The Pokémon Company / TCGplayer / S&P Global.
 Prices are factual (not copyrightable); card **images** are the only real (small)
-copyright surface — comparable trackers (PriceCharting, PokeData) do the same.
-Not legal advice; owner told this.
+copyright surface — comparable trackers do the same. Footer currently says
+"non-commercial" — MUST be updated when monetization starts (see MONETIZE.md
+caveats). Not legal advice; owner told this.
 
 ## Dev notes
+
 - Screenshots: global Playwright at `/opt/node22/lib/node_modules` (symlink
   `node_modules` in scratchpad); Chromium at `/opt/pw-browsers/chromium`; use
   `waitUntil: 'domcontentloaded'` (500 CDN images never let networkidle fire).
 - Serve locally: `cd docs && python3 -m http.server`.
+- reddit.com is NOT fetchable from the remote env — owner pastes post metrics
+  and comment text; draft replies for them.
+- Remote sessions: pushes work only to the session's designated branch; PRs
+  are created/merged via the GitHub MCP tools. Branch deletion and tag pushes
+  are blocked (403) — record in `archive/BRANCHES.md` instead.

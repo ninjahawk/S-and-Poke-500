@@ -106,7 +106,12 @@ scripts/
   make_sample.py          # regenerate offline sample preview data (legacy)
 .github/workflows/
   update-index.yml        # runs the daily pipeline and commits the data
+archive/                  # historical records (session log, retired branches, old handoffs)
 ```
+
+Working docs at the repo root: `CLAUDE.md` (current project state),
+`LAUNCH.md` / `REDDIT_POST.md` / `VIRALITY.md` (launch playbook),
+`MONETIZE.md` (revenue plan). Historical material lives in `archive/`.
 
 ## Running the pipeline yourself
 
