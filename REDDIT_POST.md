@@ -37,6 +37,15 @@ It's a solo free project — if there's something you'd want tracked (weekly mov
 
 ---
 
+## Video — DONE (2026-07-16)
+
+A finished 33s demo mp4 (`poke500-demo.mp4`, 720×1280, silent, ~4.5 MB) was
+produced with a scripted Playwright recording against a local copy of the
+live site (card images localized so they render instantly) and sent to the
+owner in chat. Shot order: cold open on 1,355.70 → 1Y→MAX zoom-out → tooltip
+scrub across the chart → movers → top-10 crawl → Moonbreon modal → return to
+hero. The hand-shot notes below are the fallback if a reshoot is ever needed.
+
 ## Video shoot — director's notes (35s silent vertical, one take)
 
 Pre-flight: DND on; open poké500.com in the browser (URL bar visible =
