@@ -109,9 +109,12 @@ Prompted by user complaints that prices "look wrong / don't match other sites."
    resolves via CNAME (v4+v6). Parking IPs gone.
 2. ✅ HTTPS: cert issued and **Enforce HTTPS on** — `http://` 301s to
    `https://xn--pok500-dva.com/`, apex serves 200, `www` 301s to apex.
-- Owner is sticking with **poké500.com only** (not buying ASCII `poke500.com`).
-  Accept it; don't re-litigate. SEO/discovery will lean on the "Poké" term + the
-  in-page "S&Poké 500" name + Reddit/reference links.
+- ~~Owner is sticking with **poké500.com only**~~ SUPERSEDED 2026-07-16: owner
+  **bought ASCII `poke500.com`** (Spaceship) after positive Reddit reception.
+  Plan: registrar-level **301 (unmasked)** redirect, `@` + `www` →
+  `https://xn--pok500-dva.com/`. poké500.com stays canonical (GitHub Pages
+  allows one custom domain; repo CNAMEs unchanged). Use the ASCII form in
+  typed/spoken links (Reddit comments, video).
 - Note: `ninjahawk.github.io/s-and-poke-500/` redirects into the owner's
   user-site domain (`nathanlangley.dev/s-and-poke-500/`, 404) — that's the
   user-site redirect, not a bug here; the project serves on its custom domain.
@@ -155,7 +158,13 @@ the three remaining optional items):**
   views is normal for the first hours after a mod-approval delay. Playbook:
   reply to every comment fast; hold r/PokemonTCG until Day 1.
   NOTE: reddit.com (www + old) is **blocked from the remote env** — comment
-  text must be pasted in by the owner; draft replies for them.
+  text must be pasted in by the owner; draft replies for them. First comments
+  answered (universe question + fund joke; replies drafted and posted).
+- **poke500.com purchased** (~15:00 UTC, Spaceship — after their mobile cart
+  hung; cause was the browser/content-blocker, their status page was clean).
+  Owner to add the two URL-Redirect records (301 unmasked, `@` and `www` →
+  `https://xn--pok500-dva.com/`); verify the redirect chain once saved.
+  README/about/LAUNCH updated to mention the alias.
 
 **Possible next steps / not yet done:**
 - Spot-check tonight's ~20:23 UTC build (first with genuinely fresh prices

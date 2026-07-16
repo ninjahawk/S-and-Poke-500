@@ -4,7 +4,8 @@
 equivalent of the S&P 500.** One number that tells you, at a glance, whether the
 overall Pokémon card market is heating up, cooling off, or topping out.
 
-**Live at [poké500.com](https://xn--pok500-dva.com/).**
+**Live at [poké500.com](https://xn--pok500-dva.com/)** (plain-ASCII
+[poke500.com](https://poke500.com) redirects there).
 
 It's a static website (GitHub Pages) fed by a daily GitHub Action. There's no
 server to go down: the site is just HTML/CSS/JS reading two JSON files, and a
@@ -76,7 +77,10 @@ The site is deployed and auto-updating. If it ever needs to be re-created:
    internationalized domain `poké500.com`) — the root one is the file the Pages UI
    manages; don't delete either. Point the domain's DNS at GitHub Pages (apex `A`
    records + a `www` `CNAME`), confirm the domain shows under Settings → Pages,
-   and enable *Enforce HTTPS* once the certificate is issued.
+   and enable *Enforce HTTPS* once the certificate is issued. The ASCII alias
+   `poke500.com` is not part of this repo at all — it's a registrar-level 301
+   redirect to `https://xn--pok500-dva.com/` (GitHub Pages allows only one
+   custom domain per site).
 3. **Daily updates** run automatically (see the workflow below). Trigger one
    by hand with Actions → *Update S&Poké 500 index* → *Run workflow*.
 

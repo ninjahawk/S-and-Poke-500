@@ -1,6 +1,8 @@
 # S&Poké 500 — maximum-hype launch playbook
 
 Everything is paste-ready. Site: **https://xn--pok500-dva.com/** (poké500.com).
+**poke500.com** is a registrar-level 301 to the same site — use the ASCII form
+anywhere people will type or say the address (comments, video, podcasts).
 Stats: **https://poke500.goatcounter.com** (watch referrers live during each post).
 
 ## Positioning (pick per audience, never mix)
