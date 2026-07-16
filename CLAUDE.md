@@ -156,6 +156,15 @@ Prompted by user complaints that prices "look wrong / don't match other sites."
 - Only ~40–50 of 500 cards move on a given day (vintage prices are sticky);
   breadth/movers reflecting that is correct, not a bug.
 
+## Analytics
+GoatCounter (free, cookieless, not consent-gated): dashboard at
+**https://poke500.goatcounter.com** — account is the owner's email; login is in
+the owner's password manager/chat history (created 2026-07-16; verification
+email sent to their Gmail). Snippet is the last script tag in
+`docs/index.html`. Adblock impact is minimal vs GA. The dashboard can be made
+public in its settings if the owner wants stats as part of the transparency
+story.
+
 ## Frontend (`docs/`)
 `index.html` + `styles.css` + `app.js` (vanilla, no deps). Reads
 `data/latest.json` + `data/history.json`. Card images come from TCGplayer CDN
