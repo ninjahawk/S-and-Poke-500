@@ -122,20 +122,40 @@ a:hover { text-decoration: underline; }
   background: transparent; color: var(--muted); display: grid; place-items: center;
 }
 .theme-toggle:hover { background: var(--chip); color: var(--ink); }
-.ic-sun { display: none; }
-/* Card-image switch: with images off the slashed icon shows and the card
-   modal's (now empty) image box collapses. Thumbnails themselves are not
-   rendered at all in this mode (see app.js), not merely hidden. */
-.ic-img-off { display: none; }
-:root[data-images="off"] .ic-img-on { display: none; }
-:root[data-images="off"] .ic-img-off { display: block; }
+/* With images off the card modal's (now empty) image box collapses.
+   Thumbnails themselves are not rendered at all in this mode (see app.js),
+   not merely hidden. */
 :root[data-images="off"] .card-modal-imgwrap { display: none; }
-:root[data-theme="dark"] .ic-moon { display: none; }
-:root[data-theme="dark"] .ic-sun { display: block; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .ic-moon { display: none; }
-  :root:not([data-theme="light"]) .ic-sun { display: block; }
+
+/* Settings menu (header gear). New preferences belong in here. */
+.settings { position: relative; }
+.settings-menu {
+  position: absolute; top: calc(100% + 6px); right: 0; z-index: 50;
+  min-width: 220px; padding: 6px; border: 1px solid var(--border);
+  border-radius: 12px; background: var(--bg);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
 }
+.settings-title {
+  padding: 8px 12px 6px; color: var(--muted); font-size: 12px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.settings-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  width: 100%; padding: 10px 12px; border: 0; border-radius: 8px;
+  background: transparent; color: var(--ink); font: inherit; font-size: 14px;
+  cursor: pointer; text-align: left;
+}
+.settings-row:hover { background: var(--chip); }
+.switch {
+  flex: none; width: 34px; height: 20px; border-radius: 10px;
+  background: var(--border); position: relative; transition: background 0.15s;
+}
+.switch .knob {
+  position: absolute; top: 2px; left: 2px; width: 16px; height: 16px;
+  border-radius: 50%; background: var(--bg); transition: left 0.15s;
+}
+.settings-row[aria-checked="true"] .switch { background: var(--blue); }
+.settings-row[aria-checked="true"] .switch .knob { left: 16px; }
 
 main { padding-block: 22px 8px; }
 
