@@ -138,9 +138,28 @@ the three remaining optional items):**
   resolves extensionless): index summary, universe rules, legal/trademark/
   privacy posture, GitHub link (repo is public). Linked from footer + sitemap.
 
+**Done 2026-07-16, midday session (branch `claude/reddit-post-metrics-du0hya`):**
+- **Day-0 build gate largely verified.** The Action committed a real build at
+  03:43 UTC (`b169913`) — triggered early because the densify rewrote
+  `sourceStamp` to the archive stamp, so the next hourly run saw a mismatch.
+  It appended cleanly to the densified series: 285→286 points, 2026-07-16 =
+  **1,251.65** (−0.07% vs 1,252.47), 500 constituents, guardWindows intact,
+  live site serves it. All per-card confirmed changes are 0.00% — expected
+  (TCGCSV live == the 07-15 archive snapshot at that hour); the −0.07% is
+  divisor/membership rebalance + non-gated fills. Tonight's ~20:23 UTC run
+  (after the real ~20:05 drop) will same-day-refresh the 07-16 point with
+  genuinely new prices — that's the last bit to spot-check.
+- **Reddit soft launch is LIVE** (r/PokeInvesting per LAUNCH.md). Metrics
+  reported by owner ~12:30 UTC: post approved, **1.6k views, 7 shares,
+  1 upvote, 1 comment**. Shares are the healthy signal; 1 upvote at 1.6k
+  views is normal for the first hours after a mod-approval delay. Playbook:
+  reply to every comment fast; hold r/PokemonTCG until Day 1.
+  NOTE: reddit.com (www + old) is **blocked from the remote env** — comment
+  text must be pasted in by the owner; draft replies for them.
+
 **Possible next steps / not yet done:**
-- Verify today's ~20:23 UTC daily build (the Day-0 soft-launch gate in
-  LAUNCH.md) continues the densified series cleanly.
+- Spot-check tonight's ~20:23 UTC build (first with genuinely fresh prices
+  post-densify): same-day refresh of the 07-16 point, sane movers/breadth.
 - Flywheel item 1 (daily "market close" auto-post) — blocked on the owner
   creating the X/Bluesky/Discord account. Search Console — needs owner's
   Google account.
