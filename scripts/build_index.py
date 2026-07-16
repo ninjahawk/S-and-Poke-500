@@ -50,6 +50,25 @@ def build():
         print(f"TCGCSV unchanged since {stamp}; nothing to do.", flush=True)
         return
 
+    # Corruption tripwires -- fail loudly rather than quietly destroy the
+    # series. load_json fails soft (returns {}), which is right for a genuine
+    # first run but catastrophic mid-life: a missing/corrupt latest.json would
+    # silently RE-BASE the index to 1000, and a corrupt history.json would
+    # silently rewrite 2.5 years of points down to one. If one file is gone
+    # while the other clearly shows an established series, something is broken;
+    # abort so CI goes red and the file can be restored from git.
+    history_points = (load_json(HISTORY_PATH, {}) or {}).get("points") or []
+    if history_points and not prev_snapshot.get("divisor"):
+        raise RuntimeError(
+            "latest.json is missing/corrupt but history.json has "
+            f"{len(history_points)} points -- refusing to re-base the index; "
+            "restore docs/data/latest.json from git")
+    if prev_snapshot.get("constituents") and not history_points:
+        raise RuntimeError(
+            "history.json is missing/corrupt but latest.json exists -- "
+            "refusing to rewrite the series; restore docs/data/history.json "
+            "from git")
+
     print("Fetching catalog + live prices from TCGCSV ...", flush=True)
     catalog = tc.build_catalog()
     subtypes = {}
