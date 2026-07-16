@@ -5,6 +5,12 @@
 https://www.reddit.com/r/PokeInvesting/s/AlfDGheWPI
 (reddit.com is not fetchable from the dev environment — owner reports status.)
 
+**Metrics log (owner-reported → GoatCounter visits):**
+- ~12:30 UTC: 1.6k views, 7 shares → 87 visits (~1.7% CTR)
+- ~19:00 UTC: 18k views, 43 shares, 13 upvotes, 33 comments → 293 visits
+  (~1.6% CTR). Shares are the viral vector; upvote count lags because most
+  traffic arrives via share links (viewers can't/don't vote).
+
 The posted version is **rev 3, the "horse race" framing** (below) — chosen
 after the virality research in `VIRALITY.md`. A modmail asking for approval
 was suggested to the owner (unknown if sent).
