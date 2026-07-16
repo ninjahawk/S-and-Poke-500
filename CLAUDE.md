@@ -208,20 +208,27 @@ Gmail; if >1 day, email support@buttondown.com.
 explicitly says "don't use an LLM"; they hand-read responses and AI-written
 answers slow or sink the review. Give the owner facts, let them phrase it.
 
-**Pipeline is BUILT (2026-07-16, same branch), dormant until the key exists:**
+**Pipeline is BUILT (2026-07-16, same branch), dormant until the key exists.
+Cadence is WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
 - **Subscribe form** on the homepage (`#subscribe`, above the footer; linked
-  from the footer row) posts to Buttondown's embed endpoint for `poke500`.
-  Works as soon as the account is enabled; verified rendering in both themes.
-- **`scripts/send_newsletter.py`** (stdlib-only, like the builder) composes
-  the "market close" email from `latest.json` (level, change, breadth, top-3
-  confirmed gainers/decliners; graceful zero-mover copy) and POSTs it via the
+  from the footer row; heading "Weekly market updates to your inbox") posts to
+  Buttondown's embed endpoint for `poke500`. Works as soon as the account is
+  enabled; verified rendering in both themes.
+- **`scripts/send_newsletter.py`** (stdlib-only, like the builder) composes a
+  weekly recap — index close, change since last issue, week's range, top-3
+  **week-over-week** confirmed gainers/decliners — and POSTs it via the
   Buttondown API (`status: about_to_send`). Runs as the last step of
-  `update-index.yml`. Triple-gated: exits 0 if (a) `BUTTONDOWN_API_KEY` env/
-  secret is missing, (b) `latest.json`'s `sourceStamp` date != today UTC —
-  crucial because early-UTC builds append a point from *yesterday's* snapshot;
-  only the ~20:23 UTC build after TCGCSV's daily drop is "the close" — or
-  (c) an email with `market close <asOfDate>` in the subject already exists
-  (duplicate-safe re-runs). All four paths unit-tested with a mocked API.
+  `update-index.yml`. Weekly movers need a baseline: after each send the
+  script writes `docs/data/newsletter_state.json` (per-card price+trusted
+  snapshot) and the workflow commits it. The FIRST issue therefore has no
+  movers ("sets the baseline" copy) and goes out on the first fresh build
+  after the key is added, whatever weekday; issues then lock to Fridays
+  (catch-up send if ≥8 days pass). Gates, each exit-0: (a) no
+  `BUTTONDOWN_API_KEY` secret, (b) `latest.json` `sourceStamp` date != today
+  UTC — early-UTC builds append a point from *yesterday's* snapshot; only the
+  ~20:23 UTC build after TCGCSV's drop is "the close", (c) not an issue day,
+  (d) subject `week ending <asOfDate>` already sent (duplicate-safe re-runs).
+  All paths unit-tested with a mocked API.
 - **Owner step when approval lands**: copy the API key from Buttondown
   Settings → API, add it as Actions repo secret **`BUTTONDOWN_API_KEY`**
   (repo Settings → Secrets and variables → Actions). Next 20:23 UTC run
