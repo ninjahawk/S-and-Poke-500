@@ -10,8 +10,8 @@
   const state = {
     latest: null,
     history: [], // [{date, index, ...}]
-    range: "1825", // 5Y — the widest option (effectively "max" until history exceeds it)
-    maxRange: "1825",
+    range: "max", // non-numeric ⇒ visiblePoints shows the full series, however long it grows
+    maxRange: "max",
     sort: { key: "rank", dir: "asc" },
     search: "",
     constituents: [],
@@ -229,7 +229,7 @@
       : 0;
     document.querySelectorAll(".range-btn").forEach((btn) => {
       const r = btn.dataset.range;
-      // The widest button (5Y) always shows everything; narrower ones switch off
+      // The MAX button always shows everything; narrower ones switch off
       // until enough history exists to fill roughly half their window.
       btn.disabled = r !== state.maxRange && (pts.length < 2 || spanDays < parseInt(r, 10) * 0.5);
       btn.classList.toggle("is-active", r === state.range);

@@ -4,6 +4,8 @@
 equivalent of the S&P 500.** One number that tells you, at a glance, whether the
 overall Pokémon card market is heating up, cooling off, or topping out.
 
+**Live at [poké500.com](https://xn--pok500-dva.com/).**
+
 It's a static website (GitHub Pages) fed by a daily GitHub Action. There's no
 server to go down: the site is just HTML/CSS/JS reading two JSON files, and a
 scheduled job refreshes those files once a day.
@@ -44,8 +46,13 @@ scheduled job refreshes those files once a day.
   number stays continuous when cards enter or leave the top 500. The index is
   rebased to **1,000** on the first archived day (2024-02-08).
 - **Movement:** up when the basket gets pricier, down when it cools. Daily change,
-  per-card moves, market breadth (advancing vs. declining), and "market mood" are
-  all derived from the same daily snapshot.
+  per-card moves, and market breadth (advancing vs. declining) all come from the
+  same daily snapshot. Two safeguards keep thin-card noise out: a price that
+  deviates wildly from a card's own recent median is held until later snapshots
+  confirm it (TCGplayer occasionally prints a broken market value), and a card's
+  *daily move* is shown only between two confirmed prices — cards without one
+  show "—" and sit out of the movers list rather than displaying a made-up
+  percentage.
 
 ### About the history
 The chart is reconstructed weekly from the TCGCSV price archive (2024-02-08 →
@@ -56,21 +63,21 @@ actually ranks it there — so it's a real index with dynamic membership, not
 is: reliable raw-single prices don't exist much before 2024, so the chart starts
 there rather than fabricating a deeper line.
 
-## One-time setup (do these in the repo settings)
+## Hosting setup (already live — kept for reference)
 
-The daily job and the code are already here. To go live:
+The site is deployed and auto-updating. If it ever needs to be re-created:
 
-1. **Enable Pages:** Settings → Pages → *Build and deployment* → Deploy from a
+1. **Pages:** Settings → Pages → *Build and deployment* → Deploy from a
    branch → Branch: `main`, Folder: **`/docs`** (not `/ (root)` — the root
    serves this README instead of the app).
 2. **Custom domain (`poké500.com`):** the repo ships `CNAME` files (root **and**
    `docs/`) pointing at `xn--pok500-dva.com` (the punycode form of the
    internationalized domain `poké500.com`) — the root one is the file the Pages UI
-   manages; don't delete it. Point the domain's DNS at GitHub Pages (apex `A`
+   manages; don't delete either. Point the domain's DNS at GitHub Pages (apex `A`
    records + a `www` `CNAME`), confirm the domain shows under Settings → Pages,
    and enable *Enforce HTTPS* once the certificate is issued.
-3. **Daily updates** run automatically (see the workflow below). Trigger the first
-   one by hand with Actions → *Update S&Poké 500 index* → *Run workflow*.
+3. **Daily updates** run automatically (see the workflow below). Trigger one
+   by hand with Actions → *Update S&Poké 500 index* → *Run workflow*.
 
 ## Project layout
 

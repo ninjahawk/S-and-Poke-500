@@ -27,7 +27,8 @@ often away — you manage end to end).
 - **Data pipeline rebuilt on TCGCSV** (free daily TCGplayer mirror; no API key).
   See `scripts/`. Real history reconstructed back to **2024-02-08** (~2.5 yrs,
   129 weekly points), index rebased to **1,000** at that date.
-- Range selector capped at **5Y** (1W/1M/6M/1Y/5Y).
+- Range selector: 1W/1M/6M/1Y/**MAX** (MAX shows the full series however long it
+  grows; it was "5Y" pre-launch, which overstated the ~2.5y of data).
 - `docs/CNAME` = `xn--pok500-dva.com`; canonical/OG URLs use it too.
 
 **Done 2026-07-15 (launch-readiness pass):**
