@@ -20,6 +20,29 @@ often away — you manage end to end).
 > Live index **1,355.70**; edge-verified: data invariants hold, guardWindows
 > present, worst mover +28%. `HANDOFF.md` is a resolution record.
 
+> **🔴 ACTIVE: soft-launch marketing in flight (2026-07-16 ~03:00 UTC).**
+> Branch **`claude/reddit-post-soft-launch-2lo8tx`** (not merged). The owner
+> POSTED the launch post to r/PokeInvesting — **it is awaiting moderator
+> approval**: https://www.reddit.com/r/PokeInvesting/s/AlfDGheWPI
+> First actions for a new session: read **`REDDIT_POST.md`** (live status,
+> posted text, decision rules, prepared first comment) and **`VIRALITY.md`**
+> (verified vs-S&P numbers, case-study analysis, next waves). Key rules:
+> if the post is approved → owner posts the prepared methodology first-comment
+> and works replies (draft answers: LAUNCH.md + VIRALITY.md); if still pending
+> in the morning → **delete and repost fresh 8–11am ET** (stale post age kills
+> ranking). Do NOT crosspost anywhere until this wave settles; r/PokemonTCG
+> (video-led) is Day 1–2, Show HN Day 3–7. Notes: reddit.com is NOT fetchable
+> from this environment (blocked) — the owner is the eyes on the thread; the
+> claude-code-remote scheduler MCP (send_later/triggers) was broken in the
+> prior session ("requires approval" on every call, even read-only — server
+> auth lost after mid-session reconnect; may work fresh). A 33s demo video
+> exists: `poke500-demo.mp4` on the branch (TEMPORARY delivery copy — delete
+> before merge; also sent to owner in chat), earmarked for the r/PokemonTCG
+> wave. LAUNCH.md's "nobody else has an index" claim is WRONG — see
+> VIRALITY.md competitor section (PokéViews 100, Cardboard Tracker, TCGFish);
+> never claim "first/only," differentiate on rigor (500 cards, divisor
+> chaining, daily membership, open code).
+
 **Done & pushed to `main`:**
 - Google Finance–style UI (`docs/`). Refined off the "candy pill" look → plain
   colored text + small triangles (▲▼). Legal/trademark footer, OG/Twitter meta,

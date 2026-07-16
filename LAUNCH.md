@@ -11,8 +11,10 @@ Stats: **https://poke500.goatcounter.com** (watch referrers live during each pos
   GitHub Pages + one GitHub Action, no server, no API keys, methodology fully open."
 - **Normies / video:** "I built a stock market for Pokémon cards."
 
-The differentiators to hammer: it's an **index** (nobody else has one — PriceCharting
-et al. are per-card lookups), it's **transparent** (open methodology, open code,
+The differentiators to hammer: real index mechanics (500 cards, S&P-style
+divisor chaining, DAILY membership — vs PokéViews 100's equal-weighted
+monthly top-100; see VIRALITY.md §competitors — **never claim "first/only
+index," others exist**), it's **transparent** (open methodology, open code,
 compare links on every card), and it's **free with no signup**.
 
 ## Sequencing

@@ -1,41 +1,93 @@
-# Soft-launch Reddit post — r/PokeInvesting (rev 2, finalized 2026-07-16)
+# Soft-launch Reddit post — LIVE STATUS & runbook
 
-Rev 1 read like a product changelog; rewritten as a data-drop post — findings
-first, tool second. Numbers verified against live data at finalization:
-index 1,355.70 (2026-07-15, −0.19%), base 1,000 @ 2024-02-08 (+35.6%),
-basket total $244,438, cheapest constituent $214.90, breadth 32/30/394.
+**Status (2026-07-16 ~03:00 UTC):** POSTED to r/PokeInvesting by the owner,
+**awaiting moderator approval**. Link:
+https://www.reddit.com/r/PokeInvesting/s/AlfDGheWPI
+(reddit.com is not fetchable from the dev environment — owner reports status.)
 
-Post as a **text post with the chart image embedded at the top of the body**
-(new Reddit supports inline images in text posts). Image: `chart-max.png`
-(the MAX-range hero screenshot — sent in chat).
+The posted version is **rev 3, the "horse race" framing** (below) — chosen
+after the virality research in `VIRALITY.md`. A modmail asking for approval
+was suggested to the owner (unknown if sent).
 
----
+## Decision rules (agreed with owner)
 
-## Title
+- **Approved within ~2–3h of posting** → owner immediately posts the prepared
+  FIRST COMMENT (below), then replies to every comment for ~2 hours.
+  Prepared answers: `LAUNCH.md` §Prepared answers + `VIRALITY.md`
+  §Competitive reality (the "PokéViews already exists" answer).
+- **Still pending next morning** → DELETE and repost fresh between
+  **8–11am ET** (same title/body/image). Reddit ranks on upvotes-vs-age; a
+  post approved hours late is born buried. Fresh clock > pending post.
+- **No crossposting** anywhere until this wave settles. Next waves:
+  r/PokemonTCG Day 1–2 (video-led, casual tone), Show HN Day 3–7 (add the
+  vs-S&P table to the architecture first-comment).
+- Scoreboard: https://poke500.goatcounter.com (reddit.com shows as referrer;
+  soft-post success bar 500–2k visits).
 
-The 500 most valuable English Pokémon cards, tracked daily as one index: up 36% since Feb 2024. Buying one of each would run you $244,438.
+## What was posted (rev 3 — title)
 
-## Body
+Over the last 12 months, the 500 most valuable English Pokémon cards returned
++19.7%. The S&P 500 returned +20.9%. I built a free live index so you can
+watch the race (poké500.com)
 
-*(chart image here)*
+## Body (chart screenshot embedded at top)
 
-I got tired of per-card price lookups with no way to see the whole market, so I built a stock-market-style index of it — the S&Poké 500. Some things it surfaced that I haven't seen anywhere else:
+Everyone's throwing around numbers right now — "average cards up 46%!", the
+$16M Logan Paul Pikachu, "even Buffett should rethink." I wanted the real
+number, so I built one: the **S&Poké 500**, a live index of the 500 most
+valuable English raw singles, calculated like an actual market index (divisor
+chaining, daily membership rebalancing) from TCGplayer market prices, with
+history back to Feb 2024.
 
-- **It takes $215 just to crack the top 500.** Card #500 right now is — of course — a Charizard.
-- **#1 isn't Base Set Zard.** It's Charizard Star (Delta Species) at $4,000, with Shining Charizard literally $1 behind at $3,999. Base Set Unlimited sits at #9 ($2,146).
-- **Moonbreon check: #6 overall at $2,396** — the only modern card ahead of it is the Latias & Latios GX alt art at $3,279.
-- **Vintage prices are STICKY.** On a typical day ~90% of the top 500 don't move at all. Yesterday: 32 up, 30 down, 394 flat. When someone says "the market is pumping," it's usually ~50 cards doing all the work.
-- **The big picture:** flat-to-down through most of 2024, then two big legs up in 2025. Base 1,000 in Feb 2024 → **1,355.70** today.
+The race so far:
 
-Site: [poké500.com](https://xn--pok500-dva.com/) — free, no signup, no ads. Updates itself daily around 4pm ET.
+| | Top 500 Pokémon cards | S&P 500 |
+|---|---|---|
+| Last 12 months | **+19.7%** | +20.9% |
+| 2026 so far | +7.9% | +10.6% |
+| Since Feb 2024 | +35.6% | +51.5% |
 
-How it works in one line: real index math (price-weighted with a divisor, like the Dow — membership rebalances as cards move in and out of the top 500), priced off TCGplayer market prices, raw English singles only (no 1st Editions, no sealed, no graded — the methodology page explains why).
+Before anyone yells — yes: no dividends, you'd lose ~15% selling on
+TCGplayer, and this is raw ungraded singles only. Stocks are still winning.
+But the top of the card market keeping pace with the hottest stock market in
+memory, with a max drawdown of 5.9%, is wilder than I expected when I started.
 
-Every card on the site links out to TCGplayer, PriceCharting, and eBay solds so you can call BS on any price — and please do. "Why does card X show $Y" almost always has an interesting answer, usually a printing difference or a source difference.
+Other things the data shows: it takes **$215 just to crack the top 500**
+(card #500 is — of course — a Charizard). #1 isn't Base Set Zard, it's
+Charizard Star Delta Species at $4,000. Moonbreon is #6 at $2,396. And ~90%
+of the top 500 don't move on a given day — the "market" is basically 50 cards
+doing all the work.
 
-It's a solo free project — if there's something you'd want tracked (weekly movers, a WOTC-era-only sub-index, whatever), say so and I'll build the good ideas.
+Site: [poké500.com](https://xn--pok500-dva.com/) — free, no signup, no ads,
+updates daily ~4pm ET. Every card links out to TCGplayer/PriceCharting/eBay
+so you can check me, and the methodology (including the ugly parts) is public
+on the site.
 
----
+**Search your biggest card and tell me its rank.** And if you think a price
+is wrong, say so — "why does card X show $Y" always has an interesting answer.
+
+## FIRST COMMENT (owner posts immediately on approval)
+
+Methodology for anyone who wants to poke holes: prices are TCGplayer market
+price (not listings), one representative printing per card, 1st Editions
+excluded because their TCGplayer prices are broken ($250 "market price" on a
+$20k card), obviously-glitched prints get filtered by a rolling-median guard,
+and a card only shows a daily % between two confirmed prices. Index math is
+S&P-style divisor chaining so the level stays continuous when membership
+changes. All of it's documented on the site — happy to answer anything about
+the math. And to be extra clear: this is data, not investment advice.
+
+## Assets
+
+- **Chart screenshot** (MAX range hero) — sent to owner in chat; regenerate:
+  serve `docs/` locally, Playwright at 1100px, click MAX, clip top 640px.
+- **Demo video** `poke500-demo.mp4` — 33s, 720×1280, silent; in repo root on
+  this branch (TEMPORARY delivery copy, delete before merge) and sent in
+  chat. Earmarked to LEAD the r/PokemonTCG wave, not r/PokeInvesting.
+  Recording pipeline: see prior session — staged copy of docs/ with card
+  images localized (CDN unreachable by headless Chromium; curl works via
+  proxy), Playwright recordVideo + scripted choreography, imageio-ffmpeg
+  webm→mp4. Full shot list below (hand-shot fallback).
 
 ## Video — DONE (2026-07-16)
 
@@ -63,17 +115,8 @@ Move at half natural speed. Shot list:
 | 22–29s | The rich list | Crawl ranks 1–6 ($4,000 Zard Star → Moonbreon) |
 | 29–35s | Moonbreon close-up | Tap Umbreon VMAX row → modal ($2,396, #6 of 500), hold 2s, cut |
 
-Post: same title/body, video inline at the top of the text post (Reddit app
-supports inline video). Fallback: video post + body pasted as immediate first
-comment. Videos autoplay muted in-feed — shot 1 must be the big number.
+## Superseded drafts
 
-## Posting checklist (from LAUNCH.md)
-
-- [ ] **r/PokeInvesting only** tonight — no crossposting; the rest of collector
-      Reddit waits for Day 1–2, one sub per half-day.
-- [ ] Attach `chart-max.png` at the top of the body.
-- [ ] Reply to **every** comment in the first ~2 hours; prepared answers for
-      the common criticisms are in `LAUNCH.md` → "Prepared answers".
-- [ ] Tone: data/transparency, never investment advice.
-- [ ] Watch referrers live at https://poke500.goatcounter.com — soft-post
-      success bar is roughly 500–2k visits.
+- Rev 1 (feature-list "I built a thing") — rejected by owner as boring.
+- Rev 2 (data-drop, no S&P comparison) — superseded by rev 3 after the
+  virality research; rev 2's bullets were folded into rev 3's body.
