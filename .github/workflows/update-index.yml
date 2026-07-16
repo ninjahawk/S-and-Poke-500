@@ -35,13 +35,27 @@ jobs:
         run: python3 scripts/build_index.py
 
       - name: Commit updated data
+        id: commit
         run: |
           git config user.name "spoke-500-bot"
           git config user.email "actions@github.com"
           git add docs/data/latest.json docs/data/history.json
           if git diff --cached --quiet; then
             echo "No data changes to commit."
+            echo "committed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "chore: update S&Poke 500 index ($(date -u +%Y-%m-%d))"
             git push
+            echo "committed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # Email the daily close to Buttondown subscribers. Only runs when this
+      # build actually committed new data; the script itself additionally
+      # refuses to send unless prices are genuinely fresh (snapshot date ==
+      # index date) and no email for the date exists yet. A failure here must
+      # never fail the data build.
+      - name: Send daily-close email
+        if: steps.commit.outputs.committed == 'true'
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: python3 scripts/send_daily_email.py || echo "::warning::Daily email failed; index build unaffected."

@@ -166,9 +166,29 @@ the three remaining optional items):**
   `https://xn--pok500-dva.com/`); verify the redirect chain once saved.
   README/about/LAUNCH updated to mention the alias.
 
+- **Daily-close email list built** (same session): `scripts/send_daily_email.py`
+  (stdlib-only) renders a professional HTML close email (level, change, breadth,
+  top-5 confirmed movers, CTA, legal footer) and sends via **Buttondown** API.
+  Send gates: workflow step only runs when the build committed; script refuses
+  unless `date(sourceStamp) == asOfDate` (genuinely fresh prices — blocks
+  stamp-mismatch rebuilds like the 03:43 one) AND no Buttondown email with the
+  same close date exists (dedupe fails CLOSED). `--dry-run` writes a preview
+  HTML; `--force` bypasses gates for testing. Signup section on index.html
+  (`#subscribe`, after movers; light/dark/mobile verified, new `--on-blue` var
+  for dark button contrast), footer link, privacy paragraph on about.html.
+  Form posts to Buttondown embed-subscribe slug **`poke500`** — owner must
+  claim exactly that username when creating the account, or the form action
+  needs a one-line update. OWNER steps to activate: (1) create Buttondown
+  account (username `poke500`), keep the default footer (it carries the
+  unsubscribe link); (2) repo Settings → Secrets → Actions → add
+  `BUTTONDOWN_API_KEY`; (3) subscribe their own emails via the site form —
+  tonight's ~20:23 build then doubles as the live test.
+
 **Possible next steps / not yet done:**
 - Spot-check tonight's ~20:23 UTC build (first with genuinely fresh prices
   post-densify): same-day refresh of the 07-16 point, sane movers/breadth.
+- Owner: Spaceship URL-Redirect records for poke500.com still NOT live as of
+  ~15:45 UTC (apex still parks, www doesn't resolve) — chase + verify.
 - Flywheel item 1 (daily "market close" auto-post) — blocked on the owner
   creating the X/Bluesky/Discord account. Search Console — needs owner's
   Google account.
