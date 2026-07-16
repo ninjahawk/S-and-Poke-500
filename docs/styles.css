@@ -415,6 +415,15 @@ body.modal-open { overflow: hidden; }
 @media (max-width: 480px) {
   .card-modal { padding: 12px; }
   .card-modal-panel { padding: 14px 14px 18px; }
+  /* keep the 4 visible table columns inside a 360px viewport — without this
+     the change column hangs ~25px off-screen and % values get clipped */
+  .table { font-size: 13px; }
+  .table thead th { padding: 10px 5px; }
+  .table tbody td { padding: 8px 5px; }
+  .table thead th:first-child, .table tbody td:first-child { padding-left: 2px; }
+  .table thead th:last-child, .table tbody td:last-child { padding-right: 2px; }
+  .td-rank { width: 24px; }
+  .td-card { gap: 8px; }
 }
 
 /* ---- brand logo image ---------------------------------------------------- */
