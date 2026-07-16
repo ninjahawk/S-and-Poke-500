@@ -112,7 +112,8 @@ archive/                  # historical records (session log, retired branches, o
 
 Working docs at the repo root: `CLAUDE.md` (current project state),
 `LAUNCH.md` / `REDDIT_POST.md` / `VIRALITY.md` (launch playbook),
-`MONETIZE.md` (revenue plan). Historical material lives in `archive/`.
+`MONETIZE.md` (revenue plan), `ROADMAP.md` (planned product work).
+Historical material lives in `archive/`.
 
 ## Running the pipeline yourself
 

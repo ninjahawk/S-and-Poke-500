@@ -44,7 +44,8 @@ you (see `archive/BRANCHES.md`).
 (this file — current state + durable reference), `LAUNCH.md` (launch playbook,
 still being executed), `REDDIT_POST.md` (live post runbook), `VIRALITY.md`
 (research backing the post framing; source of the "never claim first/only
-index" rule), `MONETIZE.md` (revenue plan).
+index" rule), `MONETIZE.md` (revenue plan), `ROADMAP.md` (planned product
+work — PWA/installable app is item 1, owner-committed).
 
 **Archive** (`archive/` — historical, do not act on): session-by-session build
 log (`HISTORY.md`), the resolved launch handoff, the retired-branch ledger

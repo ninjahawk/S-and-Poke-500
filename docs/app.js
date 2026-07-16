@@ -584,25 +584,52 @@
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
 
-  // ---- card-image switch --------------------------------------------------- //
-  // Off = thumbnails and the modal image are never rendered (no CDN requests),
-  // for anyone who prefers a text-only view. Persisted like the theme.
+  // ---- settings menu ------------------------------------------------------ //
+  // All user preferences live under the header gear. Storage keys are
+  // unchanged from the old standalone toggles, so existing visitors keep
+  // their choices. Images off = thumbnails and the modal image are never
+  // rendered (no CDN requests), for anyone who prefers a text-only view.
   function imagesOff() {
     return document.documentElement.getAttribute("data-images") === "off";
   }
-  function initImages() {
+  function isDarkTheme() {
+    const cur = document.documentElement.getAttribute("data-theme");
+    return cur ? cur === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  function initSettings() {
+    const saved = localStorage.getItem("spk-theme");
+    if (saved) document.documentElement.setAttribute("data-theme", saved);
     if (localStorage.getItem("spk-images") === "off") {
       document.documentElement.setAttribute("data-images", "off");
     }
-    const btn = $("#img-toggle");
+
+    const btn = $("#settings-btn"), menu = $("#settings-menu");
+    const optTheme = $("#opt-theme"), optImages = $("#opt-images");
     const sync = () => {
-      const off = imagesOff();
-      btn.setAttribute("aria-pressed", String(!off));
-      btn.setAttribute("aria-label", off ? "Show card images" : "Hide card images");
-      btn.title = off ? "Show card images" : "Hide card images";
+      optTheme.setAttribute("aria-checked", String(isDarkTheme()));
+      optImages.setAttribute("aria-checked", String(!imagesOff()));
     };
-    sync();
-    btn.addEventListener("click", () => {
+    const close = () => { menu.hidden = true; btn.setAttribute("aria-expanded", "false"); };
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = menu.hidden;
+      menu.hidden = !open;
+      btn.setAttribute("aria-expanded", String(open));
+      if (open) sync();
+    });
+    document.addEventListener("click", (e) => {
+      if (!menu.hidden && !menu.contains(e.target) && e.target !== btn) close();
+    });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+
+    optTheme.addEventListener("click", () => {
+      const next = isDarkTheme() ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("spk-theme", next);
+      sync();
+      if (state.latest) drawChart(); // recolor for new theme
+    });
+    optImages.addEventListener("click", () => {
       const next = imagesOff() ? "on" : "off";
       if (next === "off") document.documentElement.setAttribute("data-images", "off");
       else document.documentElement.removeAttribute("data-images");
@@ -613,23 +640,9 @@
         renderTable();
       }
     });
+    sync();
   }
 
-  // ---- theme toggle ------------------------------------------------------ //
-  function initTheme() {
-    const saved = localStorage.getItem("spk-theme");
-    if (saved) document.documentElement.setAttribute("data-theme", saved);
-    $("#theme-toggle").addEventListener("click", () => {
-      const cur = document.documentElement.getAttribute("data-theme");
-      const isDark = cur ? cur === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-      const next = isDark ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem("spk-theme", next);
-      if (state.latest) drawChart(); // recolor for new theme
-    });
-  }
-
-  initTheme();
-  initImages();
+  initSettings();
   load();
 })();
