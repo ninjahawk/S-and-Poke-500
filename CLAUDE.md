@@ -9,7 +9,7 @@ Repo: `ninjahawk/s-and-poke-500`. Work happens on **`main`** (Pages serves from
 `main` `/docs`). This is a solo hobby/launch project by the owner (on mobile,
 often away — you manage end to end).
 
-## Status (as of 2026-07-15)
+## Status (as of 2026-07-16)
 
 > **✅ LAUNCHED (2026-07-16 ~00:00 UTC).** The site is fully live at
 > **https://xn--pok500-dva.com/** (poké500.com): the glitch-guard work was
@@ -138,12 +138,25 @@ the three remaining optional items):**
   resolves extensionless): index summary, universe rules, legal/trademark/
   privacy posture, GitHub link (repo is public). Linked from footer + sitemap.
 
+**Done 2026-07-16, newsletter session (branch `claude/newsletter-creation-gbl2t4`):**
+- **First post-densify daily build verified clean**: the hourly Action ran at
+  03:43 UTC (densify had reset `sourceStamp`, so the stamp check fired) and
+  appended the 2026-07-16 point — **1,251.65 (−0.07%)**, 286 history points,
+  500 constituents, `guardWindows` intact, `prevIndex` 1252.47 matches.
+  Commit `b169913` on `main`.
+- **Buttondown newsletter account created by the owner** — see the
+  "Newsletter (Buttondown)" section below for durable details. Pending
+  Buttondown's human review at session end.
+
 **Possible next steps / not yet done:**
-- Verify today's ~20:23 UTC daily build (the Day-0 soft-launch gate in
-  LAUNCH.md) continues the densified series cleanly.
-- Flywheel item 1 (daily "market close" auto-post) — blocked on the owner
-  creating the X/Bluesky/Discord account. Search Console — needs owner's
-  Google account.
+- Glance at today's ~20:23 UTC daily build (first run at the normal cadence
+  since densify; the 03:43 UTC append already verified the series continues).
+- Once Buttondown approves the account: owner adds the `BUTTONDOWN_API_KEY`
+  repo secret — the already-built email pipeline then goes live on its own
+  (see the Newsletter section).
+- Flywheel item 1 (daily "market close" auto-post to social) — still blocked
+  on the owner creating X/Bluesky/Discord accounts. Search Console — needs
+  owner's Google account.
 
 ## Data pipeline (`scripts/`)
 
@@ -180,6 +193,48 @@ the three remaining optional items):**
   1-day change — don't compare live vs same-day archive (gives all-zero moves).
 - Only ~40–50 of 500 cards move on a given day (vintage prices are sticky);
   breadth/movers reflecting that is correct, not a bug.
+
+## Newsletter (Buttondown)
+Created by the owner 2026-07-16, handle **poke500** (dashboard at
+buttondown.com; account is the owner's Gmail). Buttondown's automated vetting
+flagged the new account for **human review** — the owner submitted the vetting
+form (name/description/goals + poké500.com and the GitHub repo as identity
+links) and at session end the account showed "Your account was disabled" in
+the activity log. That's expected: sending is paused while review is pending;
+the top-of-dashboard banner is the real status ("a real person is reviewing…
+usually a few hours, up to a day"). Approval arrives by email to the owner's
+Gmail; if >1 day, email support@buttondown.com.
+**IMPORTANT — do not draft Buttondown vetting/review answers**: their form
+explicitly says "don't use an LLM"; they hand-read responses and AI-written
+answers slow or sink the review. Give the owner facts, let them phrase it.
+
+**Pipeline is BUILT (2026-07-16, same branch), dormant until the key exists.
+Cadence is WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
+- **Subscribe form** on the homepage (`#subscribe`, above the footer; linked
+  from the footer row; heading "Weekly market updates to your inbox") posts to
+  Buttondown's embed endpoint for `poke500`. Works as soon as the account is
+  enabled; verified rendering in both themes.
+- **`scripts/send_newsletter.py`** (stdlib-only, like the builder) composes a
+  weekly recap — index close, change since last issue, week's range, top-3
+  **week-over-week** confirmed gainers/decliners — and POSTs it via the
+  Buttondown API (`status: about_to_send`). Runs as the last step of
+  `update-index.yml`. Weekly movers need a baseline: after each send the
+  script writes `docs/data/newsletter_state.json` (per-card price+trusted
+  snapshot) and the workflow commits it. The FIRST issue therefore has no
+  movers ("sets the baseline" copy) and goes out on the first fresh build
+  after the key is added, whatever weekday; issues then lock to Fridays
+  (catch-up send if ≥8 days pass). Gates, each exit-0: (a) no
+  `BUTTONDOWN_API_KEY` secret, (b) `latest.json` `sourceStamp` date != today
+  UTC — early-UTC builds append a point from *yesterday's* snapshot; only the
+  ~20:23 UTC build after TCGCSV's drop is "the close", (c) not an issue day,
+  (d) subject `week ending <asOfDate>` already sent (duplicate-safe re-runs).
+  All paths unit-tested with a mocked API.
+- **Owner step when approval lands**: copy the API key from Buttondown
+  Settings → API, add it as Actions repo secret **`BUTTONDOWN_API_KEY`**
+  (repo Settings → Secrets and variables → Actions). Next 20:23 UTC run
+  sends automatically. NOTE: Buttondown's docs are ambiguous about whether
+  the emails API needs a paid plan (~$9/mo) — if the send fails 401/402/403
+  with the key set, that's the likely reason (the script's error hints this).
 
 ## Analytics
 GoatCounter (free, cookieless, not consent-gated): dashboard at

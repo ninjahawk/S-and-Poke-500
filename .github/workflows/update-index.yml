@@ -45,3 +45,24 @@ jobs:
             git commit -m "chore: update S&Poke 500 index ($(date -u +%Y-%m-%d))"
             git push
           fi
+
+      # No-op until the BUTTONDOWN_API_KEY repo secret exists. The script
+      # itself enforces the weekly cadence (Fridays, first issue immediately)
+      # and only sends from the build that ingested TODAY's TCGCSV snapshot.
+      - name: Send weekly newsletter (Buttondown)
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: python3 scripts/send_newsletter.py
+
+      # After a send, the script snapshots constituent prices into
+      # newsletter_state.json so next week's issue can report week-over-week
+      # movers. Commit it so the baseline survives to the next run.
+      - name: Persist newsletter state
+        run: |
+          git add docs/data/newsletter_state.json
+          if git diff --cached --quiet; then
+            echo "No newsletter state change."
+          else
+            git commit -m "chore: record newsletter issue ($(date -u +%Y-%m-%d))"
+            git push
+          fi
