@@ -4,7 +4,8 @@
 equivalent of the S&P 500.** One number that tells you, at a glance, whether the
 overall Pokémon card market is heating up, cooling off, or topping out.
 
-**Live at [poké500.com](https://xn--pok500-dva.com/).**
+**Live at [poké500.com](https://xn--pok500-dva.com/)** (also reachable as
+[poke500.com](https://poke500.com), which redirects there).
 
 It's a static website (GitHub Pages) fed by a daily GitHub Action. There's no
 server to go down: the site is just HTML/CSS/JS reading two JSON files, and a
