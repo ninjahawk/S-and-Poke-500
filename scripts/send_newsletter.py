@@ -47,13 +47,24 @@ FRIDAY = 4  # date.weekday()
 
 
 def api_request(key, url, payload=None):
+    headers = {
+        "Authorization": f"Token {key}",
+        "Content-Type": "application/json",
+        # Pin the API version so Buttondown-side default changes can't alter
+        # behavior under us.
+        "X-API-Version": "2026-04-01",
+    }
+    if payload is not None:
+        # As of API 2026-04-01, the first-ever POST with status
+        # "about_to_send" on a key is rejected with 400
+        # sending_requires_confirmation unless this opt-in header is present
+        # (it's ignored once the key has sent before). Without it the very
+        # first automated issue would fail.
+        headers["X-Buttondown-Live-Dangerously"] = "true"
     req = urllib.request.Request(
         url,
         data=json.dumps(payload).encode() if payload is not None else None,
-        headers={
-            "Authorization": f"Token {key}",
-            "Content-Type": "application/json",
-        },
+        headers=headers,
         method="POST" if payload is not None else "GET",
     )
     with urllib.request.urlopen(req, timeout=30) as resp:
