@@ -125,7 +125,10 @@ Charizard worth more than my car") → the chart ("the whole market, one line �
 1. **Daily "market close" auto-post** — a small GitHub Action off latest.json posting
    "S&Poké 500 closed at 1,252.47 (+0.86%) · top mover: X +28%" to X/Bluesky/a
    Discord webhook. (I can build this in an afternoon once you create the accounts —
-   it's the single best retention mechanic.)
+   it's the single best retention mechanic.) **Email channel exists**: Buttondown
+   account **poke500** created 2026-07-16, pending their human review (see
+   CLAUDE.md "Newsletter" section) — once approved, the same Action can drive a
+   daily/weekly market-close email via Buttondown's API.
 2. **Weekly movers recap** posted to r/PokeInvesting — becomes a ritual.
 3. **Milestone posts** ("index crosses 1,400") — pre-write, post on trigger.
 4. **Google Search Console** — submit the sitemap so "pokemon card market index"
