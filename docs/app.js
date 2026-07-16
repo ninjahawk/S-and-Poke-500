@@ -277,9 +277,14 @@
     const pad = (max - min) * 0.12 || max * 0.02 || 1;
     min -= pad; max += pad;
 
-    const x = (i) => padL + (pts.length === 1 ? plotW / 2 : (i / (pts.length - 1)) * plotW);
+    // Position points by DATE, not array index: the series mixes weekly deep
+    // history with daily recent points, so index-based spacing would compress
+    // years and stretch months on the long ranges.
+    const times = pts.map((p) => new Date(p.date + "T00:00:00").getTime());
+    const t0 = times[0], t1 = times[times.length - 1];
+    const x = (i) => padL + (t1 === t0 ? plotW / 2 : ((times[i] - t0) / (t1 - t0)) * plotW);
     const y = (v) => padT + plotH - ((v - min) / (max - min)) * plotH;
-    chart.geo = { pts, x, y, padL, padR, padT, padB, plotW, plotH, W, H };
+    chart.geo = { pts, times, t0, t1, x, y, padL, padR, padT, padB, plotW, plotH, W, H };
 
     const up = values[values.length - 1] >= values[0];
     const color = up ? getCss("--up") : getCss("--down");
@@ -298,7 +303,7 @@
       (new Date(pts[pts.length - 1].date) - new Date(pts[0].date)) / 86400000;
     const xticks = pts.length > 6 ? 4 : 2;
     for (let t = 0; t <= xticks; t++) {
-      const i = Math.round(((pts.length - 1) * t) / xticks);
+      const i = nearestIndex(times, t0 + ((t1 - t0) * t) / xticks);
       const px = x(i);
       if (t > 0 && t < xticks) {
         svg.appendChild(mk("line", { x1: px, x2: px, y1: padT, y2: padT + plotH,
@@ -358,8 +363,8 @@
     const svg = $("#chart-svg");
     const rect = svg.getBoundingClientRect();
     const relX = ((e.clientX - rect.left) / rect.width) * geo.W;
-    let i = Math.round(((relX - geo.padL) / geo.plotW) * (geo.pts.length - 1));
-    i = Math.max(0, Math.min(geo.pts.length - 1, i));
+    const frac = Math.max(0, Math.min(1, (relX - geo.padL) / geo.plotW));
+    const i = nearestIndex(geo.times, geo.t0 + frac * (geo.t1 - geo.t0));
     const p = geo.pts[i];
     const px = geo.x(i), py = geo.y(p.index);
     chart.crossLine.setAttribute("x1", px);
@@ -530,6 +535,15 @@
   }
 
   // ---- small utils ------------------------------------------------------- //
+  // Index of the timestamp in the sorted array `times` closest to `target`.
+  function nearestIndex(times, target) {
+    let lo = 0, hi = times.length - 1;
+    while (hi - lo > 1) {
+      const mid = (lo + hi) >> 1;
+      if (times[mid] < target) lo = mid; else hi = mid;
+    }
+    return target - times[lo] <= times[hi] - target ? lo : hi;
+  }
   function mk(tag, attrs) {
     const el = document.createElementNS(SVGNS, tag);
     if (attrs) for (const k in attrs) el.setAttribute(k, attrs[k]);

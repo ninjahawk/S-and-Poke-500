@@ -55,8 +55,9 @@ scheduled job refreshes those files once a day.
   percentage.
 
 ### About the history
-The chart is reconstructed weekly from the TCGCSV price archive (2024-02-08 →
-today) and then grows one point per day going forward. Basket membership is
+The chart is reconstructed from the TCGCSV price archive (2024-02-08 → today):
+weekly points for the deep history, daily points for the most recent six
+months, and then it grows one point per day going forward. Basket membership is
 recomputed on every date — a card is in the 500 only on the days its market price
 actually ranks it there — so it's a real index with dynamic membership, not
 "today's winners" painted onto the past. The archive is where the free data floor

@@ -53,7 +53,7 @@ daily updates and maybe testimonial comments by then.
 > **Title:** One number for the whole Pokémon card market — I made a free "stock
 > market index" of the 500 most valuable cards
 >
-> Body: shorter version of the above; open with the chart ("up 36% since Feb 2024"),
+> Body: shorter version of the above; open with the chart ("up ~25% since Feb 2024"),
 > close with the feedback ask. Check sub rules for self-promo day/flair first.
 
 ### Show HN (Day 3–7)
@@ -74,14 +74,14 @@ daily updates and maybe testimonial comments by then.
 
 ### X/Twitter thread (any time after Day 0; screenshots > links for reach)
 1. "The S&P 500, but for Pokémon cards. I built it. It's free." + hero screenshot
-2. Chart screenshot: "Feb 2024 → today: +35%. Now you can actually see it."
+2. Chart screenshot: "Feb 2024 → today: +25%. Now you can actually see it."
 3. One juicy card story (e.g. the $2,146 Shadowless Charizard + why trackers disagree)
 4. "How it works" (methodology screenshot) 5. link + "index updates daily ~4pm ET"
 
 ### TikTok / Shorts / Reels script (~30s)
 Hook: "This is the stock market… for Pokémon cards." → scroll the top 10 ("a
 Charizard worth more than my car") → the chart ("the whole market, one line — up
-35% in two years") → "free, link in bio, updates every day at 4pm Eastern."
+25% in two years") → "free, link in bio, updates every day at 4pm Eastern."
 
 ### Journalist / community-site pitch (PokéBeach, PokeGuardian, TCGplayer Infinite writers)
 > Subject: A free daily "S&P 500" for Pokémon cards — data source for your market coverage
@@ -123,7 +123,7 @@ Charizard worth more than my car") → the chart ("the whole market, one line �
 ## Flywheel (week 2+, highest-leverage first)
 
 1. **Daily "market close" auto-post** — a small GitHub Action off latest.json posting
-   "S&Poké 500 closed at 1,355.70 (−0.19%) · top mover: X +28%" to X/Bluesky/a
+   "S&Poké 500 closed at 1,252.47 (+0.86%) · top mover: X +28%" to X/Bluesky/a
    Discord webhook. (I can build this in an afternoon once you create the accounts —
    it's the single best retention mechanic.)
 2. **Weekly movers recap** posted to r/PokeInvesting — becomes a ritual.

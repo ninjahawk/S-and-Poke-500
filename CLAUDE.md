@@ -17,8 +17,8 @@ often away — you manage end to end).
 > completed all three manual steps — Pages folder is now **`/docs`** (app
 > serves at `/`), registrar DNS points at GitHub Pages (apex A + www CNAME
 > verified), and **Enforce HTTPS is on** (HTTP 301s to HTTPS, cert valid).
-> Live index **1,355.70**; edge-verified: data invariants hold, guardWindows
-> present, worst mover +28%. `HANDOFF.md` is a resolution record.
+> Live index **1,252.47** (see the 2026-07-16 densify entry below for why the
+> level changed from launch's 1,355.70). `HANDOFF.md` is a resolution record.
 
 **Done & pushed to `main`:**
 - Google Finance–style UI (`docs/`). Refined off the "candy pill" look → plain
@@ -116,9 +116,34 @@ Prompted by user complaints that prices "look wrong / don't match other sites."
   user-site domain (`nathanlangley.dev/s-and-poke-500/`, 404) — that's the
   user-site redirect, not a bug here; the project serves on its custom domain.
 
+**Done 2026-07-16, early session (branch `claude/continue-previous-gwpi5f` —
+the three remaining optional items):**
+- **History densified to daily for the recent 6 months** (`backfill_history.py`
+  `DENSE_DAYS = 183`): 285 points now (101 weekly to 2026-01-08, then daily
+  from 2026-01-14) vs 129 weekly. The 1W/1M/6M chart ranges now have daily
+  resolution, matching the cadence the live builder appends at. Verified: the
+  100 overlapping weekly points reproduce the old series EXACTLY (deterministic
+  chain), all 18 invariants pass (sum/divisor/breadth/gating/guardWindows/
+  cadence), max step 5.25%, worst mover +28.09%.
+- **The index level changed: 1,355.70 → 1,252.47 (+0.86% 1D).** Expected, not
+  a bug: with daily (vs weekly) rebalancing over the recent stretch the divisor
+  chain takes a different path, and the 1D baseline basket differs. The daily
+  path is the more correct one (it's how the index behaves going forward), and
+  this happened BEFORE any publicity (Day-0 post not yet made). LAUNCH.md's
+  "up 36%" claims were updated to ~25%.
+- **Card-image on/off switch** in the header (persisted like the theme).
+  Images off = thumbnails/modal image are *not rendered at all* (no TCGplayer
+  CDN requests), for extra copyright caution; modal image box collapses.
+- **About & legal page** `docs/about.html` (serves at `/about` — GH Pages
+  resolves extensionless): index summary, universe rules, legal/trademark/
+  privacy posture, GitHub link (repo is public). Linked from footer + sitemap.
+
 **Possible next steps / not yet done:**
-- Optional: densify recent history to daily (backfill is weekly); add an image
-  on/off switch for extra copyright safety; a small About/legal page.
+- Verify today's ~20:23 UTC daily build (the Day-0 soft-launch gate in
+  LAUNCH.md) continues the densified series cleanly.
+- Flywheel item 1 (daily "market close" auto-post) — blocked on the owner
+  creating the X/Bluesky/Discord account. Search Console — needs owner's
+  Google account.
 
 ## Data pipeline (`scripts/`)
 
