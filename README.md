@@ -8,7 +8,9 @@ overall Pokémon card market is heating up, cooling off, or topping out.
 
 It's a static website (GitHub Pages) fed by a daily GitHub Action. There's no
 server to go down: the site is just HTML/CSS/JS reading two JSON files, and a
-scheduled job refreshes those files once a day.
+scheduled job refreshes those files once a day. A weekly email recap (index
+close, week's range, week-over-week movers) goes out via
+[Buttondown](https://buttondown.com/poke500) — subscribe form is on the site.
 
 ## How the index works
 
@@ -79,6 +81,9 @@ The site is deployed and auto-updating. If it ever needs to be re-created:
    and enable *Enforce HTTPS* once the certificate is issued.
 3. **Daily updates** run automatically (see the workflow below). Trigger one
    by hand with Actions → *Update S&Poké 500 index* → *Run workflow*.
+4. **Newsletter (optional):** the same workflow sends the weekly recap when a
+   `BUTTONDOWN_API_KEY` Actions secret exists (Settings → Secrets and
+   variables → Actions). Without the secret the step is a silent no-op.
 
 ## Project layout
 
@@ -92,10 +97,12 @@ docs/                     # the website (served by GitHub Pages)
   data/
     latest.json           # today's snapshot: index, movers, all 500 cards
     history.json          # the index time series (the chart)
+    newsletter_state.json # per-card baseline from the last issue (after 1st send)
 scripts/
   tcg_common.py           # shared: TCGCSV catalog/prices + index math
   build_index.py          # daily pipeline (stdlib only): live prices -> index -> JSON
   backfill_history.py     # one-time: rebuild history from the TCGCSV price archive
+  send_newsletter.py      # weekly recap email via Buttondown (stdlib only)
   make_sample.py          # regenerate offline sample preview data (legacy)
 .github/workflows/
   update-index.yml        # runs the daily pipeline and commits the data
