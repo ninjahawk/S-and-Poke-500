@@ -18,12 +18,16 @@ you (see `archive/BRANCHES.md`).
   `/docs`, DNS, Enforce-HTTPS all verified. Index **1,251.65** (−0.07%),
   286 history points (weekly to 2026-01-08, daily after).
 - **Reddit soft launch is LIVE**: r/PokeInvesting, rev-3 "horse race" framing,
-  approved after mod delay. ~12:30 UTC: 1.6k views, 7 shares; GoatCounter
-  day-0: 5k post views → 87 visits (~1.7% CTR, normal). Runbook + decision
-  rules: `REDDIT_POST.md`. Next waves per `LAUNCH.md` sequencing.
-- **Newsletter (weekly, Buttondown `poke500`)**: pipeline fully built, merged,
-  live on the site; DORMANT until the owner adds the `BUTTONDOWN_API_KEY`
-  secret. Buttondown account pending human review. Details below.
+  approved after mod delay. Latest (owner-reported ~19:00 UTC): **18k views,
+  43 shares, 13 upvotes, 33 comments; 293 GoatCounter visits** (~1.6% CTR,
+  consistent with day-0). Shares are the strong signal; low upvote count is
+  normal for share-driven traffic. Runbook + decision rules: `REDDIT_POST.md`.
+  Next waves per `LAUNCH.md` sequencing.
+- **Newsletter (weekly, Buttondown `poke500`)**: **account APPROVED**
+  (2026-07-16 ~19:00 UTC; owner subscribed themselves and verified the
+  double-opt-in flow works). Pipeline fully built, merged, live on the site;
+  still DORMANT until the owner adds the `BUTTONDOWN_API_KEY` Actions secret
+  — the next fresh (~20:23 UTC) build after that sends issue #1. Details below.
 - **poke500.com (ASCII) is LIVE** (purchased on Spaceship 2026-07-16 ~15:00
   UTC; redirect verified ~18:45 UTC): all four combinations (http/https ×
   apex/www) 301 → `https://xn--pok500-dva.com/` and land 200. Spaceship URL
@@ -63,10 +67,10 @@ one — do NOT merge that branch.
 
 ## Owner to-do (the only human steps outstanding)
 
-1. **Buttondown approval** (email to owner's Gmail, expected within ~a day of
-   2026-07-16): then copy the API key (Buttondown Settings → API) and add repo
-   Actions secret **`BUTTONDOWN_API_KEY`**. The next ~20:23 UTC build sends
-   issue #1 automatically.
+1. **Add the Buttondown API key** (approval came through 2026-07-16): copy the
+   key (Buttondown Settings → API) and add repo Actions secret
+   **`BUTTONDOWN_API_KEY`**. The next ~20:23 UTC build sends issue #1
+   automatically (baseline issue, no movers; then locks to Fridays).
 2. Ongoing launch execution per `LAUNCH.md` (next Reddit waves, Show HN).
    Blocked-on-owner: X/Bluesky/Discord accounts (social auto-post), Google
    account (Search Console), affiliate accounts (MONETIZE.md step 1).
@@ -75,8 +79,9 @@ one — do NOT merge that branch.
 
 - Spot-check tonight's ~20:23 UTC build (first with genuinely fresh prices
   post-densify): same-day refresh of the 07-16 point, sane movers/breadth.
-- When Buttondown approves + key added: watch the first newsletter send in the
-  Action log.
+- When the owner adds `BUTTONDOWN_API_KEY`: watch the first newsletter send in
+  the Action log (subject `week ending <asOfDate>`; owner is subscriber #1 and
+  should receive it).
 
 ## Data pipeline (`scripts/`)
 
@@ -142,14 +147,15 @@ membership), transparency, free/no-signup.
 ## Newsletter (Buttondown)
 
 Created by the owner 2026-07-16, handle **poke500** (dashboard at
-buttondown.com; account is the owner's Gmail). Buttondown's automated vetting
-flagged the new account for **human review** — the owner submitted the vetting
-form and the account shows "disabled" while review is pending (the
-top-of-dashboard banner is the real status; approval by email, usually hours,
-up to a day; if >1 day, email support@buttondown.com).
-**IMPORTANT — do not draft Buttondown vetting/review answers**: their form
-explicitly says "don't use an LLM"; they hand-read responses and AI-written
-answers slow or sink the review. Give the owner facts, let them phrase it.
+buttondown.com; account is the owner's Gmail). Buttondown's human review
+**APPROVED the account same day (~19:00 UTC)** — the account is enabled. The
+owner subscribed their own email and confirmed the full double-opt-in signup
+flow works end to end (multi-step = intent filter + deliverability protection;
+owner is subscriber #1). Remaining step: add the `BUTTONDOWN_API_KEY` Actions
+secret (see Owner to-do). Historical note kept for future accounts: new
+Buttondown accounts get flagged for human vetting and show "disabled" until
+approved; their form says "don't use an LLM" for the vetting answers — never
+draft those.
 
 **Pipeline is BUILT and merged, dormant until the key exists. Cadence is
 WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
