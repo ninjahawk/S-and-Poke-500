@@ -29,6 +29,10 @@ daily updates and maybe testimonial comments by then.
 
 **Week 2+: evergreen** — short-form video, journalist pitches, the flywheel below.
 
+Launch traffic converts on its own: the homepage subscribe form feeds the weekly
+Buttondown email (live once the account clears review), so every wave banks
+returning readers automatically.
+
 ## Paste-ready posts
 
 ### r/PokeInvesting (Day 0 — the bullseye audience)
