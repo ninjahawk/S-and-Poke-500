@@ -232,9 +232,19 @@ Cadence is WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
 - **Owner step when approval lands**: copy the API key from Buttondown
   Settings → API, add it as Actions repo secret **`BUTTONDOWN_API_KEY`**
   (repo Settings → Secrets and variables → Actions). Next 20:23 UTC run
-  sends automatically. NOTE: Buttondown's docs are ambiguous about whether
-  the emails API needs a paid plan (~$9/mo) — if the send fails 401/402/403
-  with the key set, that's the likely reason (the script's error hints this).
+  sends automatically.
+- **Plan/pricing facts (verified 2026-07-16 against Buttondown's own pages)**:
+  free plan = up to **100 subscribers**, unlimited sends; the API is
+  **"available on all plans, including free"** (their /features/api FAQ). The
+  paid-feature banner in their docs applies to *scheduling* emails via the API
+  (`status: scheduled` + `publish_date`) — we never schedule; OUR cron is the
+  GitHub Action and we POST `about_to_send` for immediate send. So $0 until
+  >100 subscribers.
+- **API quirks handled in the script (don't remove)**: requests pin
+  `X-API-Version: 2026-04-01`; POSTs carry `X-Buttondown-Live-Dangerously:
+  true` because that API version rejects a key's FIRST `about_to_send` with
+  400 `sending_requires_confirmation` without it. The subscribe form needs the
+  hidden `embed=1` input per their embed docs.
 
 ## Analytics
 GoatCounter (free, cookieless, not consent-gated): dashboard at
