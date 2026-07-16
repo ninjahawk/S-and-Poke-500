@@ -116,12 +116,20 @@ a:hover { text-decoration: underline; }
   font-size: 11px; font-weight: 500; color: var(--muted);
   border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; margin-left: 4px;
 }
+.header-meta { display: flex; align-items: center; gap: 2px; }
 .theme-toggle {
   width: 40px; height: 40px; border-radius: 50%; border: 0; cursor: pointer;
   background: transparent; color: var(--muted); display: grid; place-items: center;
 }
 .theme-toggle:hover { background: var(--chip); color: var(--ink); }
 .ic-sun { display: none; }
+/* Card-image switch: with images off the slashed icon shows and the card
+   modal's (now empty) image box collapses. Thumbnails themselves are not
+   rendered at all in this mode (see app.js), not merely hidden. */
+.ic-img-off { display: none; }
+:root[data-images="off"] .ic-img-on { display: none; }
+:root[data-images="off"] .ic-img-off { display: block; }
+:root[data-images="off"] .card-modal-imgwrap { display: none; }
 :root[data-theme="dark"] .ic-moon { display: none; }
 :root[data-theme="dark"] .ic-sun { display: block; }
 @media (prefers-color-scheme: dark) {

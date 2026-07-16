@@ -106,7 +106,7 @@
     const li = document.createElement("li");
     li.className = "mover-item";
     li.dataset.id = c.id;
-    const thumb = c.image
+    const thumb = c.image && !imagesOff()
       ? `<img class="mover-thumb" src="${c.image}" alt="" loading="lazy" />`
       : `<span class="mover-thumb thumb-ph">CARD</span>`;
     li.innerHTML = `
@@ -174,7 +174,7 @@
     for (const c of rows) {
       const tr = document.createElement("tr");
       tr.dataset.id = c.id;
-      const thumb = c.image
+      const thumb = c.image && !imagesOff()
         ? `<img class="td-thumb" src="${c.image}" alt="" loading="lazy" />`
         : `<span class="td-thumb thumb-ph">—</span>`;
       const changeCell =
@@ -488,7 +488,7 @@
     // the modal never shows a half-rendered card.
     const img = $("#cm-img");
     const spinner = $("#cm-loading");
-    const candidates = c.image
+    const candidates = c.image && !imagesOff()
       ? [c.image.replace("_200w", "_in_1000x1000"), c.image.replace("_200w", "_400w"), c.image]
       : [];
     let attempt = 0;
@@ -562,6 +562,37 @@
       ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
 
+  // ---- card-image switch --------------------------------------------------- //
+  // Off = thumbnails and the modal image are never rendered (no CDN requests),
+  // for anyone who prefers a text-only view. Persisted like the theme.
+  function imagesOff() {
+    return document.documentElement.getAttribute("data-images") === "off";
+  }
+  function initImages() {
+    if (localStorage.getItem("spk-images") === "off") {
+      document.documentElement.setAttribute("data-images", "off");
+    }
+    const btn = $("#img-toggle");
+    const sync = () => {
+      const off = imagesOff();
+      btn.setAttribute("aria-pressed", String(!off));
+      btn.setAttribute("aria-label", off ? "Show card images" : "Hide card images");
+      btn.title = off ? "Show card images" : "Hide card images";
+    };
+    sync();
+    btn.addEventListener("click", () => {
+      const next = imagesOff() ? "on" : "off";
+      if (next === "off") document.documentElement.setAttribute("data-images", "off");
+      else document.documentElement.removeAttribute("data-images");
+      localStorage.setItem("spk-images", next);
+      sync();
+      if (state.latest) {
+        renderMovers(state.latest);
+        renderTable();
+      }
+    });
+  }
+
   // ---- theme toggle ------------------------------------------------------ //
   function initTheme() {
     const saved = localStorage.getItem("spk-theme");
@@ -577,5 +608,6 @@
   }
 
   initTheme();
+  initImages();
   load();
 })();

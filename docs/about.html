@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About &amp; legal — S&amp;Poké 500</title>
+  <meta name="description" content="What the S&Poké 500 is, how the Pokémon card market index is built, what's in and out of the basket, and the project's legal posture." />
+  <link rel="canonical" href="https://xn--pok500-dva.com/about" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#131314" media="(prefers-color-scheme: dark)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="S&amp;Poké 500" />
+  <meta property="og:title" content="About &amp; legal — S&amp;Poké 500" />
+  <meta property="og:description" content="What the S&Poké 500 is, how the index is built, and the project's legal posture." />
+  <meta property="og:url" content="https://xn--pok500-dva.com/about" />
+  <meta property="og:image" content="https://xn--pok500-dva.com/og-image.png" />
+  <link rel="icon" type="image/png" href="logo.png?v=2" />
+  <link rel="apple-touch-icon" href="logo.png?v=2" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Apply the theme the visitor chose on the index page before first paint. -->
+  <script>try{var t=localStorage.getItem("spk-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <style>
+    .about-prose { max-width: 760px; }
+    .about-prose h2 { margin-top: 34px; }
+    .about-prose p { color: var(--ink); font-size: 14.5px; line-height: 1.65; margin: 10px 0 0; }
+    .about-prose ul { color: var(--ink); font-size: 14.5px; line-height: 1.65; margin: 10px 0 0; padding-left: 22px; }
+    .about-prose li { margin-top: 4px; }
+    .back-link { color: var(--muted); font-size: 13.5px; text-decoration: none; }
+    .back-link:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="./" aria-label="S&Poké 500 home">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="logo.png" alt="" width="28" height="28" />
+        </span>
+        <span class="brand-name">S&amp;Poké</span>
+        <span class="brand-sub">500</span>
+      </a>
+      <div class="header-meta">
+        <a class="back-link" href="./">&larr; Back to the index</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap about-prose">
+    <h1 class="section-title" style="font-size:1.5rem; margin-top: 10px;">About the S&amp;Poké 500</h1>
+    <p>The S&amp;Poké 500 is a <strong>price-weighted index of the 500 most valuable English,
+    raw (ungraded) Pokémon trading card singles</strong> — one number that answers "is the
+    Pokémon card market up or down today?" the way the S&amp;P&nbsp;500 does for stocks. It is a
+    free, independent, non-commercial fan project: no signup, no ads, no tracking cookies.</p>
+
+    <h2 class="section-title">How the index works</h2>
+    <p>Prices are TCGplayer <em>Market Prices</em> (sales-derived, Near&nbsp;Mint, raw) captured
+    once a day via the free <a href="https://tcgcsv.com" rel="noopener">tcgcsv.com</a> mirror.
+    The basket is recomputed every day: the 500 highest-priced eligible singles are in, everything
+    else is out, and an S&amp;P-style <strong>index divisor</strong> keeps the level continuous
+    across membership changes — so the index moves only when prices move, never because the
+    basket turned over. The series is rebased to 1,000 on February&nbsp;8,&nbsp;2024, the earliest
+    day with archived pricing. Full details, including how obviously broken source prices are
+    filtered and when a card shows no daily change, are in
+    <a href="./#methodology">how these prices work</a>.</p>
+
+    <h2 class="section-title">What's in — and what's out</h2>
+    <ul>
+      <li><strong>In:</strong> English-language, raw/ungraded card singles with a TCGplayer
+      market price, priced by their most valuable regular printing.</li>
+      <li><strong>Out:</strong> sealed product (boxes, ETBs, tins), graded cards, Japanese and
+      other non-English cards, 1st&nbsp;Edition printings (they trade off-TCGplayer, so their
+      market figures there are unreliable), jumbo/oversized cards, staff promos, and error cards.</li>
+    </ul>
+    <p>Different trackers measure different markets — PriceCharting averages eBay solds, eBay
+    search shows asking prices, graded prices are a separate market entirely. This index uses one
+    consistent yardstick across all 500 cards, and every card's detail view links to the same card
+    on TCGplayer, PriceCharting, and eBay so you can compare.</p>
+
+    <h2 class="section-title">Who runs this</h2>
+    <p>A solo hobby project. The site is a static page on GitHub Pages fed by one scheduled job —
+    no server, no database. Found a bug or a card that looks mispriced? It almost always has an
+    interesting answer — please open an issue on
+    <a href="https://github.com/ninjahawk/s-and-poke-500" rel="noopener">the GitHub repository</a>.</p>
+
+    <h2 class="section-title">Legal</h2>
+    <p><strong>Not affiliated.</strong> This is an independent, non-commercial fan project. It is
+    not affiliated with, sponsored by, endorsed by, or associated with Nintendo, Creatures Inc.,
+    GAME FREAK inc., The Pokémon Company, TCGplayer, or S&amp;P Global.</p>
+    <p><strong>Trademarks &amp; images.</strong> Pokémon and all related names, characters, and
+    card artwork are trademarks and copyright of their respective owners (Nintendo / Creatures
+    Inc. / GAME FREAK inc. / The Pokémon Company). Card names and thumbnail images are used here
+    nominatively, solely to identify the cards being priced, and are served via TCGplayer; a
+    toggle in the site header turns card images off entirely. &ldquo;S&amp;P&nbsp;500&rdquo; is a
+    registered trademark of S&amp;P Dow Jones Indices / S&amp;P Global; &ldquo;S&amp;Poké&nbsp;500&rdquo;
+    is an independent parody name and is not connected with S&amp;P Global. If you are a rights
+    holder with a concern, open an issue on the GitHub repository above and it will be addressed
+    promptly.</p>
+    <p><strong>No financial advice.</strong> Prices are third-party market estimates provided
+    &ldquo;as is,&rdquo; may be delayed or inaccurate, and are shown for informational and
+    entertainment purposes only — not investment, financial, or purchasing advice. Do your own
+    research before buying or selling anything.</p>
+    <p><strong>Privacy.</strong> No accounts, no cookies. Anonymous, aggregate visit counts are
+    measured with <a href="https://www.goatcounter.com" rel="noopener">GoatCounter</a>, which
+    stores no personal data.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="muted"><a href="./">S&amp;Poké 500 home</a> · <a href="./#methodology">How these
+      prices work</a> · <a href="https://github.com/ninjahawk/s-and-poke-500" rel="noopener">Source
+      on GitHub</a></p>
+    </div>
+  </footer>
+</body>
+</html>

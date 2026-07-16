@@ -31,22 +31,28 @@ DATA_DIR = os.path.join(HERE, os.pardir, "docs", "data")
 LATEST_PATH = os.path.join(DATA_DIR, "latest.json")
 HISTORY_PATH = os.path.join(DATA_DIR, "history.json")
 
-STEP_DAYS = 7    # weekly sampling for history depth (daily granularity accrues going forward)
+STEP_DAYS = 7    # weekly sampling for deep history
+DENSE_DAYS = 183  # most recent stretch sampled daily (covers the 6M chart range)
 STALE_DAYS = tc.STALE_DAYS  # forward-fill cap, shared with the daily builder
 
 
 def sample_dates(latest):
-    """Weekly dates from the archive start, then the two most recent *distinct*
-    archive days so the final snapshot carries a real 1-day change."""
+    """Weekly dates from the archive start, then daily for the most recent
+    DENSE_DAYS so the 1W/1M/6M chart ranges have daily resolution (matching
+    the cadence the live builder appends at). Deeper history stays weekly to
+    keep the backfill to a few hundred archive downloads. The daily tail also
+    guarantees the final snapshot carries a real 1-day change."""
     start = datetime.strptime(tc.ARCHIVE_START, "%Y-%m-%d").date()
+    dense_start = max(latest - timedelta(days=DENSE_DAYS), start)
     dates = []
     d = start
-    while d < latest - timedelta(days=1):
+    while d < dense_start:
         dates.append(d)
         d += timedelta(days=STEP_DAYS)
-    for extra in (latest - timedelta(days=1), latest):
-        if extra not in dates:
-            dates.append(extra)
+    d = dense_start
+    while d <= latest:
+        dates.append(d)
+        d += timedelta(days=1)
     return sorted(set(dates))
 
 
