@@ -211,10 +211,13 @@ the three remaining optional items):**
 
 ## Analytics
 GoatCounter (free, cookieless, not consent-gated): dashboard at
-**https://poke500.goatcounter.com** — account is the owner's email; login is in
-the owner's password manager/chat history (created 2026-07-16; verification
-email sent to their Gmail). Snippet is the last script tag in
-`docs/index.html`. Adblock impact is minimal vs GA. The dashboard can be made
+**https://poke500.goatcounter.com** — account is under the owner's OTHER
+personal Gmail (the "nl…" one, NOT the "jedi…" one; don't write it here — this
+repo is public). Owner logged in successfully 2026-07-16 ~15:30 UTC, so access
+is solved. Snippet is the last script tag in `docs/index.html`. Day-0 reality
+check from the dashboard: 5k Reddit post views → 87 site visits (~1.7% CTR,
+normal), ~90% of traffic Reddit (78% "(unknown)" = Reddit iOS in-app browser),
+4 visits via Facebook re-shares, 72% phones. Adblock impact is minimal vs GA. The dashboard can be made
 public in its settings if the owner wants stats as part of the transparency
 story.
 
