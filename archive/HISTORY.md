@@ -142,3 +142,11 @@ Owner completed all three manual steps, verified by session probes:
 - **MONETIZE.md written** (affiliates → sponsorship → premium tier).
 - **Consolidation**: this archive/ folder created; HANDOFF.md and the session
   log moved here; branch ledger written (BRANCHES.md).
+- **poke500.com alias set up live with the owner** (Spaceship URL redirect,
+  301 unmasked + FreeSSL; the parking page had to be disabled before the apex
+  redirect took effect — www worked first). All four http/https × apex/www
+  combinations verified 301 → canonical.
+- **Day-0 mobile polish from Reddit feedback**: empty movers section
+  collapsed to a single state-aware line; Top-500 table clipping fixed
+  (change column overflowed 390px viewports by ~25px). Drafted the owner's
+  replies to the methodology/fees/1st-Ed/mobile comments on the live thread.
