@@ -50,8 +50,15 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 API = "https://api.buttondown.com/v1/emails"
-SITE = "https://xn--pok500-dva.com/"
+# Reader-facing links use the ASCII alias: raw punycode ("xn--...") URLs
+# in email bodies read as phishing to filters and to anyone hovering a
+# link (see DELIVERABILITY.md). The alias 301s to the canonical domain
+# with paths preserved (verified 2026-07-17).
+SITE = "https://poke500.com/"
 SITE_NAME = "poké500.com"
+# The chart is fetched/polled at the canonical Pages domain directly so
+# the send path never depends on the registrar's redirect service.
+SITE_CANONICAL = "https://xn--pok500-dva.com/"
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "docs" / "data"
 EMAIL_DIR = ROOT / "docs" / "email"
@@ -472,7 +479,7 @@ def main():
         # chart is never published for an issue that won't send. Any
         # failure inside falls back to the plain-markdown compose.
         chart_path = EMAIL_DIR / f"chart-{as_of}.png"
-        chart_url = f"{SITE}email/chart-{as_of}.png"
+        chart_url = f"{SITE_CANONICAL}email/chart-{as_of}.png"
         if render_chart(history, as_of, chart_path) and \
                 publish_chart(chart_path, chart_url):
             subject, body = compose_rich(latest, history, state, chart_url)
