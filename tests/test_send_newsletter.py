@@ -221,6 +221,12 @@ class ComposeRichTests(unittest.TestCase):
         self.assertIn("sets the baseline", body)
         self.assertIn("1,254.19", body)
 
+    def test_site_linked_from_hero_button_and_footer(self):
+        _, body = sn.compose_rich(make_latest(), make_history(), None,
+                                  self.CHART)
+        self.assertGreaterEqual(body.count(f'href="{sn.SITE}"'), 3)
+        self.assertIn(sn.SITE_NAME, body)
+
     def test_movers_render_with_baseline_untrusted_excluded(self):
         cons = [
             {"id": "1", "name": "Winner", "setName": "S", "price": 110.0,
