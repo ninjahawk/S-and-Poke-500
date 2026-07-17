@@ -199,14 +199,18 @@ class PreviewTests(unittest.TestCase):
     Its whole job is to NOT repeat the subject in the inbox."""
 
     def test_leads_with_top_gainer_when_movers_exist(self):
-        wk = {"gainers": [{"name": "Card A"}], "losers": [{"name": "Card B"}]}
+        wk = {"gainers": [{"name": "Card A", "weekPct": 12.34}],
+              "losers": [{"name": "Card B", "weekPct": -5.0}]}
         p = sn.issue_preview(wk)
         self.assertTrue(p.startswith("Card A"))
+        self.assertIn("12.3%", p)
         self.assertNotIn("week ending", p)
 
     def test_falls_back_to_top_loser_then_generic(self):
-        self.assertTrue(sn.issue_preview(
-            {"gainers": [], "losers": [{"name": "Card B"}]}).startswith("Card B"))
+        p = sn.issue_preview(
+            {"gainers": [], "losers": [{"name": "Card B", "weekPct": -5.05}]})
+        self.assertTrue(p.startswith("Card B"))
+        self.assertIn("5.0%", p)
         generic = sn.issue_preview({"gainers": [], "losers": []})
         self.assertNotIn("week ending", generic)
         # reader-facing copy rules (owner): never index-internals jargon

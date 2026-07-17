@@ -192,14 +192,18 @@ def issue_preview(wk):
     """The email's `description` — Buttondown uses it as the preheader
     (inbox preview snippet). Without it the preheader is auto-generated
     from the body's first lines, which duplicates the subject in the
-    inbox. Must be a SECOND hook, never a subject repeat; reader-facing,
-    so mover names yes, index jargon no."""
-    tail = "The chart, the range, and the week in 500 cards."
+    inbox. Must be a SECOND hook, never a subject repeat. Owner rule:
+    plain and specific, zero slogan copy ("cringe") — a real card name
+    and a real number, written like a person would say it."""
     if wk["gainers"]:
-        return f"{wk['gainers'][0]['name']} led the week's movers. {tail}"
+        m = wk["gainers"][0]
+        return (f"{m['name']} was the week's biggest gainer, "
+                f"up {abs(m['weekPct']):.1f}%.")
     if wk["losers"]:
-        return f"{wk['losers'][0]['name']} fell hardest. {tail}"
-    return f"{tail} Read in about a minute."
+        m = wk["losers"][0]
+        return (f"{m['name']} fell {abs(m['weekPct']):.1f}% — "
+                f"the week's biggest move.")
+    return "A quiet week — hardly any cards moved."
 
 
 def mover_lines(movers):
