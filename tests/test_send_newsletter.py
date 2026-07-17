@@ -255,6 +255,20 @@ class ComposeRichTests(unittest.TestCase):
         self.assertGreaterEqual(body.count(f'href="{sn.SITE}"'), 3)
         self.assertIn(sn.SITE_NAME, body)
 
+    def test_reader_links_are_ascii_chart_url_is_canonical(self):
+        # Punycode URLs in email bodies trip phishing heuristics
+        # (DELIVERABILITY.md): reader-facing links must use the ASCII
+        # alias, while the chart is published/polled on the canonical
+        # Pages domain so sending never depends on the alias redirect.
+        self.assertNotIn("xn--", sn.SITE)
+        self.assertIn("xn--", sn.SITE_CANONICAL)
+        for state in (None, make_state("2026-07-10", {"1": [100.0, True]})):
+            _, rich = sn.compose_rich(make_latest(), make_history(), state,
+                                      self.CHART)
+            self.assertNotIn("xn--", rich)
+            _, plain = sn.compose(make_latest(), make_history(), state)
+            self.assertNotIn("xn--", plain)
+
     def test_movers_render_with_baseline_untrusted_excluded(self):
         cons = [
             {"id": "1", "name": "Winner", "setName": "S", "price": 110.0,
