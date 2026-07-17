@@ -376,9 +376,10 @@ def compose_rich(latest, history, state, chart_url):
 
     blocks = [f'''<div style="font-size:15px;line-height:1.5">
 <div style="margin-top:6px;font-size:14px;color:{MUTED}">The Pokémon card market this week</div>
+<a href="{SITE}" style="text-decoration:none;color:inherit">
 <div style="font-size:46px;letter-spacing:-1px;line-height:1.2;margin:2px 0 2px">{index:,.2f}</div>
 <div style="margin-bottom:4px">{_pct_html(chg, 17)}&nbsp; <span style="font-size:13.5px;color:{MUTED}">{wk["changeLabel"]}</span></div>
-<img src="{chart_url}" width="560" alt="One-week chart: the index closed at {index:,.2f}" style="width:100%;height:auto;display:block;margin:10px 0 4px">
+<img src="{chart_url}" width="560" alt="One-week chart: the index closed at {index:,.2f}" style="width:100%;height:auto;display:block;margin:10px 0 4px;border:none"></a>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:12px">{"".join(stats)}</table>''']
 
     if wk["gainers"]:
@@ -400,7 +401,7 @@ def compose_rich(latest, history, state, chart_url):
     blocks.append(f'''<div style="text-align:center;margin:30px 0 6px">
 <a href="{SITE}" style="display:inline-block;background:{BLUE};color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;padding:13px 30px;border-radius:24px">See the full index →</a></div>
 <div style="text-align:center;font-size:12px;color:{MUTED};line-height:1.6;margin-top:16px">
-Price-weighted index of the 500 most valuable English raw Pokémon singles, from TCGplayer market data.<br>One email, every Friday · Not financial advice</div>
+Price-weighted index of the 500 most valuable English raw Pokémon singles, from TCGplayer market data.<br>One email, every Friday · Not financial advice · <a href="{SITE}" style="color:{MUTED}">{SITE_NAME}</a></div>
 </div>''')
     return subject, "".join(blocks)
 

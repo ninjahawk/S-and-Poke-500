@@ -665,19 +665,45 @@
     sync();
   }
 
-  // Promo banner: shown unless this specific promo was dismissed. The id
-  // lives on the element so a future banner (new id) reappears for everyone.
+  // Promo banner: rotates weekly (research: banner blindness sets in after
+  // ~2 weeks; fresh copy re-earns attention). The rotation index flips every
+  // FRIDAY 00:00 UTC — the day a new issue exists to promote — and the
+  // dismissal key includes the week, so each Friday the banner reappears for
+  // everyone, including people who dismissed last week's. Copy variants per
+  // conversion research: loss aversion, specificity, curiosity, identity.
+  const PROMOS = [
+    { long: "<strong>Don&rsquo;t miss a move</strong> &mdash; the week&rsquo;s biggest gainers &amp; losers, every Friday.",
+      short: "<strong>Don&rsquo;t miss a move</strong> &mdash; the week&rsquo;s movers.",
+      cta: "Get the free recap" },
+    { long: "<strong>One email each Friday</strong> &mdash; where the market closed, the week&rsquo;s chart, the movers.",
+      short: "<strong>One email each Friday</strong> &mdash; close, chart, movers.",
+      cta: "Get it free" },
+    { long: "<strong>Which cards moved this week?</strong> The answer lands in your inbox every Friday.",
+      short: "<strong>Which cards moved this week?</strong> Find out Fridays.",
+      cta: "Get the free recap" },
+    { long: "<strong>Collectors who track the market</strong> get the Friday close by email. Join them.",
+      short: "<strong>Track the market</strong> &mdash; the Friday close, by email.",
+      cta: "Join free" },
+  ];
   function initPromo() {
     const promo = $("#promo-banner");
     if (!promo) return;
-    const key = "spk-promo-" + promo.dataset.promoId;
+    // Weeks since epoch with the boundary on Friday 00:00 UTC. Anchored so
+    // the rotation starts at PROMOS[0] in launch week (week 2950).
+    const week = Math.floor((Math.floor(Date.now() / 864e5) - 1) / 7);
+    const p = PROMOS[(week - 2950 + 4 * 1000) % PROMOS.length];
+    promo.querySelector(".promo-long").innerHTML = p.long;
+    promo.querySelector(".promo-short").innerHTML = p.short;
+    const cta = promo.querySelector(".promo-cta");
+    cta.textContent = p.cta;
+    const key = "spk-promo-w" + week;
     if (localStorage.getItem(key) === "dismissed") return;
     promo.hidden = false;
     $("#promo-dismiss").addEventListener("click", () => {
       promo.hidden = true;
       localStorage.setItem(key, "dismissed");
     });
-    promo.querySelector(".promo-cta").addEventListener("click", (e) => {
+    cta.addEventListener("click", (e) => {
       e.preventDefault();
       openSubModal();
     });
