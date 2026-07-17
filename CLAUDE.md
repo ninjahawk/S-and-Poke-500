@@ -87,7 +87,9 @@ still being executed), `REDDIT_POST.md` (live post runbook), `VIRALITY.md`
 index" rule), `MONETIZE.md` (revenue plan), `ROADMAP.md` (planned product
 work — PWA/installable app is item 1, owner-committed), `VENUES.md`
 (graded venue map, v2 rules-verified), `DELIVERABILITY.md` (email
-spam-risk audit + queued punycode-link fix).
+spam-risk audit; punycode-link fix shipped in PR #43), `OUTREACH.md`
+(earned-media/embed plan: press, creators, roundups, permanent
+listings, barter menu).
 
 **Archive** (`archive/` — historical, do not act on): session-by-session build
 log (`HISTORY.md`), the resolved launch handoff, the retired-branch ledger
