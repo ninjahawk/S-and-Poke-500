@@ -32,6 +32,47 @@ mind: pricing megathreads, promo bans, video karma gates).
    (v2, current data) leads X/TikTok/Shorts whenever those accounts
    exist.
 
+# WAVE 2b — r/dataisbeautiful (researched + asset built 2026-07-17, POST TODAY)
+
+**Venue verdict: rule-compatible by design, not hope.** DIB's documented
+rules — "[OC]" in the title, a comment stating data source + tool, plain
+non-sensational titles — are exactly our format, and linking your own
+site in the sourcing comment is standard OC practice there. Multi-million
+member sub; the collectible-vs-stocks frame is the most proven viral
+shape for this data (VIRALITY.md, LEGO study). Stocks winning HELPS here:
+zero shill-smell, and both tribes argue in the comments.
+
+**Asset**: `cards-vs-sp500.png` (sent to owner in chat 2026-07-17; both
+lines indexed to 100 at 2024-02-08, through 2026-07-16: cards +25%,
+S&P +51%). Regenerate: `racechart.py` pattern — S&Poké history.json +
+FRED SP500 CSV (fredgraph.csv?id=SP500; stooq is bot-walled), palette
+#2a78d6/#eb6834 (validated), matplotlib. Numbers verified against
+VIRALITY.md's independently-checked closes.
+
+**Title (plain, per DIB rules):**
+[OC] The 500 most valuable Pokémon cards vs. the S&P 500, indexed to
+Feb 2024
+
+**Required sourcing comment (post immediately — DIB removes OC without it):**
+> Data: the Pokémon line is the S&Poké 500, a price-weighted index of the
+> 500 most valuable English raw (ungraded) Pokémon singles that I built —
+> computed daily from TCGplayer market prices (via the free tcgcsv.com
+> mirror) with S&P-style divisor chaining and daily membership
+> rebalancing. Methodology and the live chart: poké500.com. S&P 500 daily
+> closes via FRED. Tool: matplotlib.
+>
+> Caveats up front: raw ungraded singles only (graded cards are a
+> different market), neither line includes dividends, and selling cards
+> costs ~15% in fees/spread — so in practice the stock gap is even wider
+> than it looks. The part that surprised me: on April 8, 2025, the S&P
+> had round-tripped all the way back to its Feb-2024 level while the
+> cards sat at +13.5% — for a few weeks last spring, cardboard was
+> beating the stock market.
+
+**No newsletter mention** (same reasoning as the wave-2 decision; the
+site converts). Reply to "where's card X" comments with rank lookups —
+same engagement engine as wave 1.
+
 ## Original wave-2 draft (kept as template — numbers current 2026-07-16 close)
 
 **⚠️ NUMBERS CHANGED since wave 1 — never reuse rev-3's stats or the old
