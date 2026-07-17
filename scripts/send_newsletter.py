@@ -74,6 +74,10 @@ DEPLOY_TIMEOUT_S = 240  # max wait for Pages to serve the chart
 GREEN, RED = "#188038", "#c5221f"
 CHART_GREEN, CHART_RED = "#34a853", "#ea4335"
 BLUE, MUTED, HAIR = "#1a73e8", "#80868b", "#dadce033"
+# CTA-button blue: darker than brand BLUE because Gmail's dark mode dims
+# white text toward the background hue — a deeper base keeps the label
+# legible in both modes (issue #1 owner feedback: label looked washed out).
+BTN_BLUE = "#185abc"
 
 
 def api_request(key, url, payload=None):
@@ -182,6 +186,24 @@ def issue_subject(chg, as_of):
     verb = "rose" if chg > 0.005 else "fell" if chg < -0.005 else "held steady"
     amount = "" if verb == "held steady" else f" {abs(chg):.2f}%"
     return f"Pokémon cards {verb}{amount} this week — {issue_anchor(as_of)}"
+
+
+def issue_preview(wk):
+    """The email's `description` — Buttondown uses it as the preheader
+    (inbox preview snippet). Without it the preheader is auto-generated
+    from the body's first lines, which duplicates the subject in the
+    inbox. Must be a SECOND hook, never a subject repeat. Owner rule:
+    plain and specific, zero slogan copy ("cringe") — a real card name
+    and a real number, written like a person would say it."""
+    if wk["gainers"]:
+        m = wk["gainers"][0]
+        return (f"{m['name']} was the week's biggest gainer, "
+                f"up {abs(m['weekPct']):.1f}%.")
+    if wk["losers"]:
+        m = wk["losers"][0]
+        return (f"{m['name']} fell {abs(m['weekPct']):.1f}% — "
+                f"the week's biggest move.")
+    return "A quiet week — hardly any cards moved."
 
 
 def mover_lines(movers):
@@ -419,7 +441,7 @@ def compose_rich(latest, history, state, chart_url):
             f'of the week count as movers.</div>')
 
     blocks.append(f'''<div style="text-align:center;margin:30px 0 6px">
-<a href="{SITE}" style="display:inline-block;background:{BLUE};color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;padding:13px 30px;border-radius:24px">See the full index →</a></div>
+<a href="{SITE}" style="display:inline-block;background:{BTN_BLUE};color:#ffffff;font-size:15px;font-weight:700;text-decoration:none;padding:13px 30px;border-radius:24px">See the full index →</a></div>
 <div style="text-align:center;font-size:12px;color:{MUTED};line-height:1.6;margin-top:16px">
 Price-weighted index of the 500 most valuable English raw Pokémon singles, from TCGplayer market data.<br>Every Friday · Not financial advice · <a href="{SITE}" style="color:{MUTED}">{SITE_NAME}</a></div>
 </div>''')
@@ -489,6 +511,7 @@ def main():
         result = api_request(key, API, {
             "subject": subject,
             "body": body,
+            "description": issue_preview(week_stats(latest, history, state)),
             "status": "about_to_send",
         })
     except urllib.error.HTTPError as e:

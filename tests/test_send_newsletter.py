@@ -194,6 +194,35 @@ class SubjectTests(unittest.TestCase):
         self.assertNotIn("%", flat)
 
 
+class PreviewTests(unittest.TestCase):
+    """issue_preview feeds Buttondown's `description` (the preheader).
+    Its whole job is to NOT repeat the subject in the inbox."""
+
+    def test_leads_with_top_gainer_when_movers_exist(self):
+        wk = {"gainers": [{"name": "Card A", "weekPct": 12.34}],
+              "losers": [{"name": "Card B", "weekPct": -5.0}]}
+        p = sn.issue_preview(wk)
+        self.assertTrue(p.startswith("Card A"))
+        self.assertIn("12.3%", p)
+        self.assertNotIn("week ending", p)
+
+    def test_falls_back_to_top_loser_then_generic(self):
+        p = sn.issue_preview(
+            {"gainers": [], "losers": [{"name": "Card B", "weekPct": -5.05}]})
+        self.assertTrue(p.startswith("Card B"))
+        self.assertIn("5.0%", p)
+        generic = sn.issue_preview({"gainers": [], "losers": []})
+        self.assertNotIn("week ending", generic)
+        # reader-facing copy rules (owner): never index-internals jargon
+        for banned in ("baseline", "per-card"):
+            self.assertNotIn(banned, generic.lower())
+
+    def test_never_equals_subject(self):
+        wk = {"gainers": [], "losers": []}
+        self.assertNotEqual(sn.issue_preview(wk),
+                            sn.issue_subject(1.0, "2026-07-17"))
+
+
 class ComposeTests(unittest.TestCase):
     def test_first_issue_has_movers_teaser_and_no_movers(self):
         subject, body = sn.compose(make_latest(), make_history(), None)
@@ -315,6 +344,9 @@ class RichPathSelectionTests(TempDataMixin, unittest.TestCase):
         payload = calls[-1][1]
         self.assertIn("<img", payload["body"])
         self.assertIn(sn.issue_anchor(TODAY), payload["subject"])
+        # preheader rides along and is not a subject repeat
+        self.assertTrue(payload["description"])
+        self.assertNotEqual(payload["description"], payload["subject"])
 
     def test_plain_fallback_when_render_fails(self):
         self.write_data()

@@ -272,6 +272,94 @@ numbers from latest.json before sending.
   press first), smpratte (earn the mention, don't pitch), Feedspot
   podcast tier (week 3+, only if earlier tiers convert).
 
+## National press beat map (researched 2026-07-17)
+
+The Pokémon-card market is an ACTIVE beat at national outlets right now
+(boom + crime-wave + Logan Paul $16M Pikachu cycle, spring 2026). Every
+piece found cites Circana spending stats or single-card auction
+anecdotes — none cites a market-wide index. That's our opening: pitch
+the daily benchmark as the missing number for the beat, using the Tier
+1–2 press template. **Timing: fold into the Monday/week-2 press round
+(post-HN proof), not before.** Named reporters, verified from
+bylines/search:
+
+| Outlet / reporter | Evidence on the beat | Route |
+|---|---|---|
+| **Bloomberg — Chris Almeida** | "Pokémon Card Boom Sparks a Crime Wave as Values Soar" + video (2026-04-24) | Bloomberg tips page / X |
+| **CNN Business — Vanessa Yurkevich & Isaac Tellechea** | "Pokémon cards are igniting an international crime spree" (2026-04-04); widely syndicated to local TV sites | CNN tips; Yurkevich active on X |
+| **CNBC (byline TBD — page bot-blocked; owner: check byline on phone)** | "Crypto bros, scalpers and Logan Paul…" (2026-05-22) + two video segments + a 2026-03-29 piece; CNBC is the most repeat-coverage outlet found | cnbc.com tips / reporter email pattern firstname.lastname@nbcuni.com once byline known |
+| **CBS Boston** | "Pokémon cards as an investment?" consumer piece | Only if a Boston hook appears; low priority |
+| **Moneywise** | Syndicated the Bloomberg crime angle | Contact form; long-tail SEO value |
+
+Also found (context, not targets): Yahoo Finance ran a Reddit-sourced
+"cards crush S&P 500" aggregation — the vs-S&P genre is proven
+mainstream bait, which validates leading national pitches with the
+cards-vs-S&P chart (hosted: poke500.com/cards-vs-sp500.png). Angle for
+crime-beat reporters: "every theft story needs a 'values have risen X%'
+line — here's a citable daily number instead of an anecdote."
+
+## COLD-PITCH CAMPAIGN (launched 2026-07-17, owner call: all tiers at once)
+
+Owner decision: don't wait for HN proof — pitch the whole beat now.
+"All we need is one yes." Rules that make cold pitches convert (and
+protect the Gmail): every email INDIVIDUALLY sent + personalized first
+line (never BCC, never identical copy), ≤15/day, no attachments (links
+only), one follow-up after 3–4 business days then stop forever, always
+disclose "I built this", never "first/only index".
+
+### Master pitch (press) — v1, stats as of 2026-07-16 close
+
+Subject: `A daily "S&P 500" for Pokémon cards — free data for your
+market coverage` (crime-beat variant: `A citable number for
+Pokémon-card stories — free daily index`)
+
+> Hi [name] — [PERSONAL LINE, see tracker].
+>
+> I run the S&Poké 500 (https://poke500.com/) — a free daily
+> price-weighted index of the 500 most valuable English Pokémon cards,
+> with real index mechanics: S&P-style divisor chaining, daily
+> membership rebalancing, history back to Feb 2024, methodology fully
+> public. Yesterday's close: 1,254.19.
+>
+> One stat readers argue about: over the last 12 months the top-500
+> cards returned +10.2% vs the S&P 500's +20.9% — but in April, when
+> stocks had round-tripped to flat, cards were up +13.5%. Chart:
+> https://poke500.com/cards-vs-sp500.png
+>
+> Cite the daily number any time — no permission needed. If a story
+> needs a custom chart or stat (weekly movers, market breadth, the
+> vs-S&P race), I'll build it free, credited or not; the raw data is
+> open JSON. Nothing for sale — free site, no ads, no signup. I built
+> and run it solo.
+
+### Campaign tracker (status: D=drafted, S=sent, R=replied, Y=yes)
+
+| # | Target | Route | Personal line | Status |
+|---|---|---|---|---|
+| 1 | Rich Mueller, Sports Collectors Daily | editor@sportscollectorsdaily.com | "SCD's Pokémon coverage keeps crossing from hobby news into market territory — figured you could use a market-wide number to anchor those pieces." | S |
+| 2 | Alts.co | hello@alts.co | "Benchmark horse-races are your genre — cards-vs-S&P finally has a real index on the cards side." | S |
+| 3 | Chris Almeida, Bloomberg | calmeida@bloomberg.net BOUNCED 2026-07-17 (550) → use bloomberg.com/tips or X | "Your April crime-wave piece was the best reporting on this market all year — and every story on that beat needs a 'values are up X%' line with something real behind it." | S(bounced) |
+| 4 | Vanessa Yurkevich, CNN Business | vanessa.yurkevich@cnn.com (PATTERN GUESS) | "Your April crime-spree piece nailed the stakes — the missing ingredient in every card-crime story is a citable 'how much have values actually risen' number." | S |
+| 5 | Isaac Tellechea, CNN Business | isaac.tellechea@cnn.com (PATTERN GUESS) | same angle as #4, don't send both the same day — stagger | S |
+| 6 | **Arjun Kharpal**, CNBC (senior tech correspondent, London — byline confirmed by owner 2026-07-17) | arjun.kharpal@nbcuni.com (PATTERN GUESS; verified fallbacks from byline: X @ArjunKharpal, LinkedIn /in/arjunkharpal) | "Your May piece on crypto money rotating into cards is the story my data keeps confirming — here's a daily number for the next one." | |
+| 7 | PokéBeach | pokebeach.com/contact (BODY MUST CONTAIN "Pokemon") | humanized pitch sent | S |
+| 8 | PokeGuardian | news-tip form was BROKEN 2026-07-17 — retry in a few days or X DM | "Your daily news cadence is exactly where a daily market close belongs." | blocked |
+| 9 | Mike Pokemonski, CardChill | cardchill.com/contact BROKEN 2026-07-17 — find his X/IG for a DM, or retry form | recurring-benchmark relationship pitch (drafted, unsent) | blocked |
+| 10 | Nerdbeak | site contact BROKEN 2026-07-17 — retry in a few days | (drafted, unsent) | blocked |
+| 11 | cllct / Darren Rovell | form + X DM both NO-GO 2026-07-17. Fallback: darren@cllct.com (ZoomInfo shows d***@cllct.com; PATTERN GUESS) or public X reply w/ chart | existing cllct draft above | blocked |
+| 12 | ONE37pm | form BROKEN 2026-07-17; email format is first.last@one37pm.com but no confirmed writer target — park | (drafted, unsent) | blocked |
+| 13 | Moneywise | moneywise.com/contact ("pitch a story" flow) | humanized story-pitch sent (angle: "cards beat the S&P in April, lag over 12mo — timing is the story") | S |
+| 14 | CBS Boston (did cards-as-investment piece) | station tips form | "Your cards-as-investment piece asked the right question — here's the market-wide answer, updated daily." | |
+
+Deliberately excluded: gaming press (Kotaku/TheGamer — no card-market
+coverage found, wrong beat), Yahoo Finance (aggregator; they pick up
+from Reddit/other coverage on their own), smpratte (never cold-pitch).
+
+Follow-up template (one per target, day 3–4, then never again):
+> Hi [name] — quick nudge on the note below. One thing I can offer
+> beyond the data: [custom chart matched to their beat]. If it's not
+> for you, no reply needed and I won't follow up again.
+
 ## Future accelerant (ROADMAP candidate, not now)
 
 An **embeddable ticker widget** (one `<script>`/iframe line: "S&Poké
