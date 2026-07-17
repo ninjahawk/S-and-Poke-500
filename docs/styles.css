@@ -502,6 +502,7 @@ body.modal-open { overflow: hidden; }
 .sm-form input[type="email"] {
   width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 10px;
   background: var(--bg); color: var(--ink); font: inherit; font-size: 14px; text-align: center;
+  transition: border-color 0.15s ease;
 }
 .sm-form input[type="email"]:focus { outline: none; border-color: var(--blue); }
 .sm-form button {

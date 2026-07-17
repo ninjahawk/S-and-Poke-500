@@ -716,9 +716,17 @@
     const modal = $("#sub-modal");
     modal.hidden = false;
     lockScroll();
+    // Focus policy: on keyboard/mouse devices, focus the field BEFORE the
+    // panel fades in, so its focused border is there from the first frame.
+    // (Focusing on a delay after the animation snapped the border from dim
+    // to blue mid-open — an off-putting flash.) On touch devices, skip
+    // autofocus entirely: a delayed programmatic focus can't summon the
+    // iOS keyboard anyway, so it only ever painted the flash.
+    if (!matchMedia("(hover: none)").matches) {
+      $("#sm-email").focus({ preventScroll: true });
+    }
     requestAnimationFrame(() => requestAnimationFrame(() => {
       modal.classList.add("is-open");
-      setTimeout(() => $("#sm-email").focus({ preventScroll: true }), 230);
     }));
   }
   function closeSubModal() {
