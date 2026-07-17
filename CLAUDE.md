@@ -44,7 +44,9 @@ you (see `archive/BRANCHES.md`).
   movers section collapses to one state-aware line (says "snapshot lands
   ~4pm ET" before the daily drop), and the Top-500 table no longer clips the
   daily-change column on phones (fit verified at 390/360px; 77% of traffic
-  is mobile).
+  is mobile). Day-1: card/subscribe modals use an iOS-safe scroll lock
+  (body pinned at offset; owner-reported "black bars" bug fixed) and
+  `html` carries the theme background.
 
 ## ⚠️ SUBSCRIBER RETENTION — INCREDIBLY HIGH PRIORITY (owner directive 2026-07-16)
 
@@ -195,10 +197,24 @@ WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
   from the footer row; heading "Weekly market updates to your inbox") posts to
   Buttondown's embed endpoint for `poke500` (hidden `embed=1` input required).
   Works as soon as the account is enabled; verified rendering in both themes.
-- **`scripts/send_newsletter.py`** (stdlib-only) composes a weekly recap —
-  index close, change since last issue, week's range, top-3 **week-over-week**
-  confirmed gainers/decliners — and POSTs it via the Buttondown API
-  (`status: about_to_send`). Runs as the last step of `update-index.yml`.
+- **`scripts/send_newsletter.py`** composes the weekly issue as a **rich
+  Google-Finance-style HTML email** (owner-approved via inbox previews
+  2026-07-17): headline close (Buttondown renders the subject as the H1 —
+  subject pattern `The card market rose X.XX% this week — week ending
+  <asOfDate>`, anchor kept for dedupe), the week's chart (transparent
+  matplotlib PNG → `docs/email/chart-<asOfDate>.png`, committed+pushed by
+  the script, which then POLLS the Pages URL until live before sending),
+  stat rows, and top-3 week-over-week mover rows with card thumbnails.
+  **Fallback armor**: any rich-path failure sends the previous
+  plain-markdown compose instead; chart work only starts after all four
+  send gates pass. Tests: `tests/test_send_newsletter.py` (26, API fully
+  mocked — run `python3 -m unittest discover tests` before touching).
+  POSTs via the Buttondown API (`status: about_to_send`); runs as the last
+  step of `update-index.yml` (which pip-installs matplotlib best-effort).
+  **Preview channel**: due to due diligence around the retention directive,
+  design iterations go to the owner ONLY, via Buttondown draft +
+  `/send-draft` with `recipients: [owner email]` — drafts can't reach the
+  list; preview subjects must NEVER contain "week ending".
   Weekly movers baseline: after each send the script writes
   `docs/data/newsletter_state.json` (per-card price+trusted snapshot) and the
   workflow commits it. The FIRST issue has no movers ("sets the baseline")
