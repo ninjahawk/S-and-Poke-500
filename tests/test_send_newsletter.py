@@ -204,6 +204,113 @@ class ComposeTests(unittest.TestCase):
         self.assertIn("flat", body)
 
 
+class ComposeRichTests(unittest.TestCase):
+    CHART = "https://example.test/chart.png"
+
+    def test_subject_keeps_dedupe_anchor_and_direction_verb(self):
+        subject, body = sn.compose_rich(make_latest(), make_history(), None,
+                                        self.CHART)
+        self.assertIn(f"week ending {TODAY}", subject)
+        self.assertIn("rose", subject)
+        self.assertIn(self.CHART, body)
+
+    def test_first_issue_no_movers_but_baseline_note(self):
+        _, body = sn.compose_rich(make_latest(), make_history(), None,
+                                  self.CHART)
+        self.assertNotIn("Top gainers", body)
+        self.assertIn("sets the baseline", body)
+        self.assertIn("1,254.19", body)
+
+    def test_movers_render_with_baseline_untrusted_excluded(self):
+        cons = [
+            {"id": "1", "name": "Winner", "setName": "S", "price": 110.0,
+             "trusted": True, "image": "https://img/x.jpg"},
+            {"id": "2", "name": "Untrusted", "setName": "S", "price": 300.0,
+             "trusted": False},
+        ]
+        prices = {"1": [100.0, True], "2": [100.0, True]}
+        _, body = sn.compose_rich(make_latest(constituents=cons),
+                                  make_history(),
+                                  make_state("2026-07-10", prices), self.CHART)
+        self.assertIn("Winner", body)
+        self.assertIn("https://img/x.jpg", body)
+        self.assertNotIn("Untrusted", body)
+
+    def test_flat_week_wording(self):
+        latest = make_latest(index=1240.0)
+        latest["constituents"] = []
+        state = make_state("2026-07-10", {})
+        subject, _ = sn.compose_rich(latest, make_history(), state, self.CHART)
+        self.assertIn("held steady", subject)
+        self.assertNotIn("%", subject.split("—")[0])
+
+
+class RichPathSelectionTests(TempDataMixin, unittest.TestCase):
+    def run_main(self, chart_ok, publish_ok=True):
+        calls = []
+
+        def fake_api(key, url, payload=None):
+            calls.append((url, payload))
+            return {"results": []} if payload is None else {"id": "e", "status": "about_to_send"}
+
+        with mock.patch.dict("os.environ", {"BUTTONDOWN_API_KEY": "k"}), \
+             mock.patch.object(sn, "api_request", side_effect=fake_api), \
+             mock.patch.object(sn, "render_chart", return_value=chart_ok), \
+             mock.patch.object(sn, "publish_chart", return_value=publish_ok) as pub:
+            rc = sn.main()
+        return rc, calls, pub
+
+    def test_rich_body_when_chart_succeeds(self):
+        self.write_data()
+        rc, calls, _ = self.run_main(chart_ok=True)
+        self.assertEqual(rc, 0)
+        payload = calls[-1][1]
+        self.assertIn("<img", payload["body"])
+        self.assertIn(f"week ending {TODAY}", payload["subject"])
+
+    def test_plain_fallback_when_render_fails(self):
+        self.write_data()
+        rc, calls, pub = self.run_main(chart_ok=False)
+        self.assertEqual(rc, 0)
+        payload = calls[-1][1]
+        self.assertNotIn("<img", payload["body"])
+        self.assertIn(f"week ending {TODAY}", payload["subject"])
+        pub.assert_not_called()  # no publish attempt without a rendered chart
+
+    def test_plain_fallback_when_publish_fails(self):
+        self.write_data()
+        rc, calls, _ = self.run_main(chart_ok=True, publish_ok=False)
+        self.assertEqual(rc, 0)
+        self.assertNotIn("<img", calls[-1][1]["body"])
+
+    def test_no_chart_work_when_already_sent(self):
+        self.write_data()
+        already = {"results": [{"subject": f"x week ending {TODAY}"}]}
+        with mock.patch.dict("os.environ", {"BUTTONDOWN_API_KEY": "k"}), \
+             mock.patch.object(sn, "api_request", return_value=already), \
+             mock.patch.object(sn, "render_chart") as rc_mock:
+            self.assertEqual(sn.main(), 0)
+            rc_mock.assert_not_called()
+
+
+class RenderChartTests(unittest.TestCase):
+    def test_renders_real_png_with_dense_week(self):
+        import tempfile
+        pts = {"points": [
+            {"date": f"2026-07-{d:02d}", "index": 1240.0 + d} for d in range(9, 17)
+        ]}
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td) / "c.png"
+            ok = sn.render_chart(pts, "2026-07-16", out)
+            self.assertTrue(ok)
+            self.assertGreater(out.stat().st_size, 5000)
+            self.assertEqual(out.read_bytes()[:8], b"\x89PNG\r\n\x1a\n")
+
+    def test_too_few_points_returns_false(self):
+        pts = {"points": [{"date": "2026-07-16", "index": 1250.0}]}
+        self.assertFalse(sn.render_chart(pts, "2026-07-16", Path("/tmp/x.png")))
+
+
 class ApiRequestHeaderTests(unittest.TestCase):
     def capture(self, payload):
         captured = {}
