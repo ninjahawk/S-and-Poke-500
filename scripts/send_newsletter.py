@@ -22,6 +22,17 @@ baseline of each constituent's price captured when the previous issue was
 sent (the workflow commits it after a send). The first issue has no baseline,
 so it carries the index change only; movers start with issue #2.
 
+The issue is a rich HTML email (Google-Finance-style: headline close, the
+week's chart as a hosted PNG, stat rows, mover rows with card thumbnails).
+The chart is rendered with matplotlib (installed by the workflow), committed
+to docs/email/ and served by Pages; the send waits until the image URL is
+live so no subscriber can open the email before its chart exists. If ANY
+part of the rich path fails (matplotlib missing, render error, push or
+deploy timeout), the issue falls back to the plain-markdown compose — a
+plain but correct email always beats a broken pretty one. Subjects in both
+formats keep the literal "week ending <asOfDate>" substring: the already-
+sent dedupe gate matches on it.
+
 API: https://docs.buttondown.com/api-emails-introduction
 Note: if Buttondown gates the emails API behind a paid plan, the POST will
 fail with 401/402/403 — the error text below says what to do.
@@ -29,7 +40,9 @@ fail with 401/402/403 — the error text below says what to do.
 
 import json
 import os
+import subprocess
 import sys
+import time
 import urllib.error
 import urllib.request
 from datetime import date, datetime, timezone
@@ -38,12 +51,21 @@ from pathlib import Path
 API = "https://api.buttondown.com/v1/emails"
 SITE = "https://xn--pok500-dva.com/"
 SITE_NAME = "poké500.com"
-DATA_DIR = Path(__file__).resolve().parent.parent / "docs" / "data"
+ROOT = Path(__file__).resolve().parent.parent
+DATA_DIR = ROOT / "docs" / "data"
+EMAIL_DIR = ROOT / "docs" / "email"
 LATEST = DATA_DIR / "latest.json"
 HISTORY = DATA_DIR / "history.json"
 STATE = DATA_DIR / "newsletter_state.json"
 MOVERS_SHOWN = 3
 FRIDAY = 4  # date.weekday()
+DEPLOY_TIMEOUT_S = 240  # max wait for Pages to serve the chart
+
+# Email palette: mid-tone colors that read on BOTH Gmail light and dark
+# mode (dark mode inverts surfaces but not images or explicit text colors).
+GREEN, RED = "#188038", "#c5221f"
+CHART_GREEN, CHART_RED = "#34a853", "#ea4335"
+BLUE, MUTED, HAIR = "#1a73e8", "#80868b", "#dadce033"
 
 
 def api_request(key, url, payload=None):
@@ -124,6 +146,7 @@ def week_stats(latest, history, state):
     return {
         "changePct": change_pct,
         "changeLabel": change_label,
+        "refIndex": baseline["index"] if baseline else ref["index"],
         "low": lo,
         "high": hi,
         "gainers": gainers,
@@ -208,6 +231,180 @@ def compose(latest, history, state):
     return subject, "\n\n".join(parts)
 
 
+def render_chart(history, as_of, out_path):
+    """Draw the week's line chart as a transparent PNG. False on any failure
+    (matplotlib missing, bad data) — the caller falls back to plain text."""
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.dates as mdates
+        import matplotlib.pyplot as plt
+        from matplotlib.ticker import FuncFormatter
+
+        points = history["points"] if isinstance(history, dict) else history
+        start = date.fromisoformat(as_of).toordinal() - 8
+        week = [p for p in points
+                if date.fromisoformat(p["date"]).toordinal() >= start
+                and p["date"] <= as_of]
+        if len(week) < 2:
+            return False
+        xs = [date.fromisoformat(p["date"]) for p in week]
+        ys = [p["index"] for p in week]
+        line = CHART_GREEN if ys[-1] >= ys[0] else CHART_RED
+        gray = "#9096a0"
+
+        fig, ax = plt.subplots(figsize=(11.2, 3.4), dpi=100)
+        fig.patch.set_alpha(0)
+        ax.set_facecolor("none")
+        ax.plot(xs, ys, color=line, linewidth=3.4, solid_capstyle="round", zorder=3)
+        pad = (max(ys) - min(ys)) or max(ys) * 0.01
+        ax.fill_between(xs, ys, min(ys) - pad * 0.35, color=line, alpha=0.10, zorder=1)
+        ax.scatter([xs[-1]], [ys[-1]], s=90, color=line, zorder=4)
+        ax.scatter([xs[-1]], [ys[-1]], s=280, color=line, alpha=0.22, zorder=4)
+        ax.axhline(ys[0], color=gray, linestyle=(0, (4, 4)), linewidth=1.4,
+                   alpha=0.55, zorder=2)
+        ax.set_ylim(min(ys) - pad * 0.35, max(ys) + pad * 0.3)
+        ax.set_xlim(xs[0], xs[-1])
+        for s in ax.spines.values():
+            s.set_visible(False)
+        ax.grid(axis="y", color=gray, alpha=0.18, linewidth=1.2)
+        ax.set_axisbelow(True)
+        ax.tick_params(colors=gray, labelsize=15, length=0, pad=8)
+        ax.yaxis.tick_right()
+        ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:,.0f}"))
+        ax.xaxis.set_major_formatter(mdates.DateFormatter("%a"))
+        ax.xaxis.set_major_locator(mdates.DayLocator())
+        plt.tight_layout(pad=1.2)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(out_path, dpi=100, transparent=True)
+        plt.close(fig)
+        return True
+    except Exception as e:  # any failure -> plain-text fallback, never a crash
+        print(f"chart render failed ({e!r}) - falling back to plain email")
+        return False
+
+
+def publish_chart(path, url):
+    """Commit+push the chart and wait until Pages actually serves it, so the
+    email can never reference an image that isn't live. False -> fallback."""
+    try:
+        rel = str(path.relative_to(ROOT))
+        subprocess.run(["git", "add", rel], cwd=ROOT, check=True)
+        diff = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=ROOT)
+        if diff.returncode != 0:
+            subprocess.run(["git", "commit", "-m",
+                            f"chore: weekly email chart ({path.stem})"],
+                           cwd=ROOT, check=True)
+            subprocess.run(["git", "push"], cwd=ROOT, check=True)
+        want = path.stat().st_size
+        deadline = time.monotonic() + DEPLOY_TIMEOUT_S
+        while time.monotonic() < deadline:
+            try:
+                req = urllib.request.Request(url, method="GET")
+                with urllib.request.urlopen(req, timeout=15) as resp:
+                    if resp.status == 200 and len(resp.read()) == want:
+                        return True
+            except urllib.error.HTTPError:
+                pass  # 404 until the Pages deploy lands
+            time.sleep(10)
+        print("chart deploy timed out - falling back to plain email")
+        return False
+    except Exception as e:
+        print(f"chart publish failed ({e!r}) - falling back to plain email")
+        return False
+
+
+def _pct_html(pct, size=14):
+    up = pct >= 0
+    return (f'<span style="color:{GREEN if up else RED};font-weight:700;'
+            f'font-size:{size}px;white-space:nowrap">'
+            f'{"▲" if up else "▼"} {abs(pct):.2f}%</span>')
+
+
+def _mover_row(m, last):
+    border = "" if last else f"border-bottom:1px solid {HAIR};"
+    thumb = (f'<img src="{m["image"]}" width="32" alt="" '
+             f'style="border-radius:4px;display:block">') if m.get("image") else ""
+    return f'''<tr>
+<td style="padding:10px 0;{border}width:40px;vertical-align:middle">{thumb}</td>
+<td style="padding:10px 10px;{border}vertical-align:middle">
+  <span style="font-weight:600;font-size:15px;line-height:1.3">{m["name"]}</span><br>
+  <span style="font-size:12.5px;color:{MUTED}">{m["setName"]}</span></td>
+<td style="padding:10px 0;{border}text-align:right;vertical-align:middle;white-space:nowrap;width:86px">
+  <span style="font-size:14.5px">${m["price"]:,.0f}</span><br>{_pct_html(m["weekPct"], 13)}</td></tr>'''
+
+
+def _movers_html(title, color, movers):
+    rows = "".join(_mover_row(m, i == len(movers) - 1)
+                   for i, m in enumerate(movers))
+    return (f'<div style="margin-top:26px">'
+            f'<div style="font-size:12px;font-weight:700;color:{color};'
+            f'letter-spacing:1px;text-transform:uppercase;padding-bottom:2px">{title}</div>'
+            f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0">{rows}</table></div>')
+
+
+def _stat_row(label, value_html, last=False):
+    border = "" if last else f"border-bottom:1px solid {HAIR};"
+    return (f'<tr><td style="padding:9px 0;{border}font-size:13.5px;color:{MUTED}">{label}</td>'
+            f'<td style="padding:9px 0;{border}text-align:right;font-size:14px;'
+            f'font-weight:600;white-space:nowrap">{value_html}</td></tr>')
+
+
+def compose_rich(latest, history, state, chart_url):
+    """The rich HTML issue. Buttondown renders the subject as the email's
+    headline, so the subject IS the design's H1 — the dedupe anchor rides
+    at the end where inbox truncation hides it."""
+    as_of = latest["asOfDate"]
+    index = latest["index"]
+    wk = week_stats(latest, history, state)
+    chg = wk["changePct"]
+    verb = ("rose" if chg > 0.005 else "fell" if chg < -0.005 else "held steady")
+    amount = "" if verb == "held steady" else f" {abs(chg):.2f}%"
+    subject = f"The card market {verb}{amount} this week — week ending {as_of}"
+
+    points = history["points"] if isinstance(history, dict) else history
+    year_start = f"{as_of[:4]}-01-01"
+    ytd_ref = next((p for p in points if p["date"] >= year_start), None)
+    ytd_html = (_pct_html((index / ytd_ref["index"] - 1.0) * 100.0)
+                if ytd_ref and ytd_ref["date"] != as_of else "&mdash;")
+
+    stats = [
+        _stat_row("Week's range", f"{wk['low']:,.2f} &ndash; {wk['high']:,.2f}"),
+        _stat_row("Previous close", f"{wk['refIndex']:,.2f}"),
+        _stat_row(f"{as_of[:4]} so far", ytd_html, last=True),
+    ]
+
+    blocks = [f'''<div style="font-size:15px;line-height:1.5">
+<div style="margin-top:6px;font-size:14px;color:{MUTED}">The Pokémon card market this week</div>
+<div style="font-size:46px;letter-spacing:-1px;line-height:1.2;margin:2px 0 2px">{index:,.2f}</div>
+<div style="margin-bottom:4px">{_pct_html(chg, 17)}&nbsp; <span style="font-size:13.5px;color:{MUTED}">{wk["changeLabel"]}</span></div>
+<img src="{chart_url}" width="560" alt="One-week chart: the index closed at {index:,.2f}" style="width:100%;height:auto;display:block;margin:10px 0 4px">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:12px">{"".join(stats)}</table>''']
+
+    if wk["gainers"]:
+        blocks.append(_movers_html("▲ Top gainers this week", GREEN, wk["gainers"]))
+    if wk["losers"]:
+        blocks.append(_movers_html("▼ Top decliners this week", RED, wk["losers"]))
+    if wk["firstIssue"]:
+        blocks.append(
+            f'<div style="margin-top:22px;font-size:13px;color:{MUTED};'
+            f'font-style:italic">Per-card weekly movers start with the next '
+            f'issue &mdash; this first one sets the baseline.</div>')
+    elif not wk["gainers"] and not wk["losers"]:
+        blocks.append(
+            f'<div style="margin-top:22px;font-size:13px;color:{MUTED}">'
+            f'No confirmed single-card moves this week &mdash; vintage prices '
+            f'are sticky, and only cards with confirmed prices at both ends '
+            f'of the week count as movers.</div>')
+
+    blocks.append(f'''<div style="text-align:center;margin:30px 0 6px">
+<a href="{SITE}" style="display:inline-block;background:{BLUE};color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;padding:13px 30px;border-radius:24px">See the full index →</a></div>
+<div style="text-align:center;font-size:12px;color:{MUTED};line-height:1.6;margin-top:16px">
+Price-weighted index of the 500 most valuable English raw Pokémon singles, from TCGplayer market data.<br>One email, every Friday · Not financial advice</div>
+</div>''')
+    return subject, "".join(blocks)
+
+
 def save_state(latest):
     STATE.write_text(json.dumps({
         "lastSentAsOf": latest["asOfDate"],
@@ -245,7 +442,6 @@ def main():
         return 0
 
     history = json.loads(HISTORY.read_text())
-    subject, body = compose(latest, history, state)
 
     try:
         recent = api_request(key, f"{API}?page=1")
@@ -253,6 +449,17 @@ def main():
         if any(f"week ending {as_of}" in s for s in sent):
             print(f"Already sent the issue for {as_of} - skipping.")
             return 0
+
+        # Rich path — only attempted after every gate has passed, so a
+        # chart is never published for an issue that won't send. Any
+        # failure inside falls back to the plain-markdown compose.
+        chart_path = EMAIL_DIR / f"chart-{as_of}.png"
+        chart_url = f"{SITE}email/chart-{as_of}.png"
+        if render_chart(history, as_of, chart_path) and \
+                publish_chart(chart_path, chart_url):
+            subject, body = compose_rich(latest, history, state, chart_url)
+        else:
+            subject, body = compose(latest, history, state)
 
         result = api_request(key, API, {
             "subject": subject,

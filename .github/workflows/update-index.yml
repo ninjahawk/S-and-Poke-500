@@ -49,6 +49,12 @@ jobs:
       # No-op until the BUTTONDOWN_API_KEY repo secret exists. The script
       # itself enforces the weekly cadence (Fridays, first issue immediately)
       # and only sends from the build that ingested TODAY's TCGCSV snapshot.
+      # matplotlib powers the issue's chart; if it's missing or fails the
+      # script sends the plain-text fallback instead, so this install is
+      # best-effort by design.
+      - name: Install chart dependency
+        run: pip install matplotlib --quiet || true
+
       - name: Send weekly newsletter (Buttondown)
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}

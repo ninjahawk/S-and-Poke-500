@@ -531,15 +531,37 @@
     }
 
     modal.hidden = false;
-    document.body.classList.add("modal-open");
+    lockScroll();
     requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add("is-open")));
   }
 
   function closeCard() {
     const modal = $("#card-modal");
     modal.classList.remove("is-open");
-    document.body.classList.remove("modal-open");
+    unlockScroll();
     setTimeout(() => { modal.hidden = true; }, 220);
+  }
+
+  // iOS-safe scroll lock. Plain `overflow: hidden` on body makes iOS
+  // Safari jump the page to the top and paint its toolbar zones black —
+  // the "choppy black bars" effect. Pinning the body with position:fixed
+  // at the current offset freezes the page exactly where it was.
+  let lockedScrollY = 0;
+  function lockScroll() {
+    lockedScrollY = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${lockedScrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.classList.add("modal-open");
+  }
+  function unlockScroll() {
+    document.body.classList.remove("modal-open");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    window.scrollTo(0, lockedScrollY);
   }
 
   // ---- small utils ------------------------------------------------------- //
@@ -667,7 +689,7 @@
   function openSubModal() {
     const modal = $("#sub-modal");
     modal.hidden = false;
-    document.body.classList.add("modal-open");
+    lockScroll();
     requestAnimationFrame(() => requestAnimationFrame(() => {
       modal.classList.add("is-open");
       setTimeout(() => $("#sm-email").focus({ preventScroll: true }), 230);
@@ -676,7 +698,7 @@
   function closeSubModal() {
     const modal = $("#sub-modal");
     modal.classList.remove("is-open");
-    document.body.classList.remove("modal-open");
+    unlockScroll();
     setTimeout(() => {
       modal.hidden = true;
       // Reset to the form for the next open.

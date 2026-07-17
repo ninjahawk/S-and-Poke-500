@@ -77,6 +77,11 @@
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 
+/* iOS paints overscroll/safe-area regions (status bar, home indicator)
+   with the ROOT element's background; without this they render black when
+   a modal locks the page and the site looks broken at top and bottom. */
+html { background: var(--bg); }
+
 body {
   margin: 0;
   font-family: var(--font);
