@@ -74,7 +74,9 @@ mistakes on the email path.** Concretely, for every session:
    anything else.
 6. **Deliverability protections stay**: double opt-in stays on, no spammy
    subject lines/copy, unsubscribe always works (Buttondown handles it —
-   don't interfere).
+   don't interfere). Spam-risk audit 2026-07-17: `DELIVERABILITY.md` —
+   verdict low-risk; one queued fix (switch email links from the
+   punycode domain to poke500.com, retention rules apply).
 
 ## Repo map — active vs archive
 
@@ -83,7 +85,9 @@ mistakes on the email path.** Concretely, for every session:
 still being executed), `REDDIT_POST.md` (live post runbook), `VIRALITY.md`
 (research backing the post framing; source of the "never claim first/only
 index" rule), `MONETIZE.md` (revenue plan), `ROADMAP.md` (planned product
-work — PWA/installable app is item 1, owner-committed).
+work — PWA/installable app is item 1, owner-committed), `VENUES.md`
+(graded venue map, v2 rules-verified), `DELIVERABILITY.md` (email
+spam-risk audit + queued punycode-link fix).
 
 **Archive** (`archive/` — historical, do not act on): session-by-session build
 log (`HISTORY.md`), the resolved launch handoff, the retired-branch ledger
