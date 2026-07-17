@@ -200,14 +200,16 @@ WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
 - **`scripts/send_newsletter.py`** composes the weekly issue as a **rich
   Google-Finance-style HTML email** (owner-approved via inbox previews
   2026-07-17): headline close (Buttondown renders the subject as the H1 —
-  subject pattern `The card market rose X.XX% this week — week ending
-  <asOfDate>`, anchor kept for dedupe), the week's chart (transparent
+  subject pattern `Pokémon cards rose X.XX% this week — week ending
+  <Mon D, YYYY>`; research-backed rewrite 2026-07-17, both compose paths
+  share `issue_subject()`, anchor `issue_anchor()` kept for dedupe and the
+  gate also matches the legacy ISO form), the week's chart (transparent
   matplotlib PNG → `docs/email/chart-<asOfDate>.png`, committed+pushed by
   the script, which then POLLS the Pages URL until live before sending),
   stat rows, and top-3 week-over-week mover rows with card thumbnails.
   **Fallback armor**: any rich-path failure sends the previous
   plain-markdown compose instead; chart work only starts after all four
-  send gates pass. Tests: `tests/test_send_newsletter.py` (26, API fully
+  send gates pass. Tests: `tests/test_send_newsletter.py` (30, API fully
   mocked — run `python3 -m unittest discover tests` before touching).
   POSTs via the Buttondown API (`status: about_to_send`); runs as the last
   step of `update-index.yml` (which pip-installs matplotlib best-effort).
@@ -217,14 +219,16 @@ WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
   list; preview subjects must NEVER contain "week ending".
   Weekly movers baseline: after each send the script writes
   `docs/data/newsletter_state.json` (per-card price+trusted snapshot) and the
-  workflow commits it. The FIRST issue has no movers ("sets the baseline")
-  and goes out on the first fresh build after the key is added, whatever
-  weekday; issues then lock to Fridays (catch-up if ≥8 days pass). Gates,
-  each exit-0: (a) no `BUTTONDOWN_API_KEY` secret, (b) `latest.json`
-  `sourceStamp` date != today UTC (only the ~20:23 UTC build after TCGCSV's
-  drop is "the close"), (c) not an issue day, (d) subject
-  `week ending <asOfDate>` already sent. All paths unit-tested with a mocked
-  API.
+  workflow commits it. The FIRST issue has no movers (reader-facing copy
+  teases "Starting next Friday: the week's biggest gainers and losers,
+  card by card" — never say "baseline"/"per-card" to readers, owner called
+  that cringe) and goes out on the first fresh build after the key is
+  added, whatever weekday; issues then lock to Fridays (catch-up if ≥8
+  days pass). Gates, each exit-0: (a) no `BUTTONDOWN_API_KEY` secret,
+  (b) `latest.json` `sourceStamp` date != today UTC (only the ~20:23 UTC
+  build after TCGCSV's drop is "the close"), (c) not an issue day,
+  (d) subject with this issue's anchor (or legacy `week ending
+  <asOfDate>`) already sent. All paths unit-tested with a mocked API.
 - **Plan/pricing facts (verified 2026-07-16 against Buttondown's own pages)**:
   free plan = up to **100 subscribers**, unlimited sends; the API is
   **"available on all plans, including free"**. The paid-feature banner
