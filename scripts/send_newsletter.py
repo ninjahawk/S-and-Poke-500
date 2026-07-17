@@ -132,15 +132,29 @@ def week_stats(latest, history, state):
     }
 
 
+def friendly_date(iso):
+    d = date.fromisoformat(iso)
+    return d.strftime("%A, %B ") + str(d.day)
+
+
 def mover_lines(movers):
     return "\n".join(
-        f"- {m['name']} ({m['setName']}) — ${m['price']:,.2f} "
-        f"({m['weekPct']:+.2f}% this week)"
+        f"- **{m['name']}** · {m['setName']} — ${m['price']:,.2f} "
+        f"(**{m['weekPct']:+.2f}%** this week)"
         for m in movers
     )
 
 
 def compose(latest, history, state):
+    """Markdown body, styled for Buttondown's default email template.
+
+    Design notes (owner asked for "very nice looking"): a big H1 close the
+    reader sees before scrolling, the site's ▲/▼ triangles for brand
+    consistency, movers as bolded lists (lists survive every email client;
+    markdown tables don't), and a quiet one-line footer. The subject MUST
+    keep the literal "week ending <asOfDate>" substring — the already-sent
+    dedupe gate matches on it.
+    """
     as_of = latest["asOfDate"]
     index = latest["index"]
     wk = week_stats(latest, history, state)
@@ -151,24 +165,28 @@ def compose(latest, history, state):
         f"S&Poké 500 weekly: {index:,.2f} ({chg:+.2f}%) — week ending {as_of}"
     )
 
+    tri = {"up": "▲", "down": "▼", "flat": "—"}[direction]
+    headline = f"# {index:,.2f} {tri} {abs(chg):.2f}%"
     move_txt = (
-        f"{direction} **{abs(chg):.2f}%** {wk['changeLabel']}"
+        f"**{direction} {abs(chg):.2f}%** {wk['changeLabel']}"
         if direction != "flat"
-        else f"flat {wk['changeLabel']}"
+        else f"**flat** {wk['changeLabel']}"
     )
     parts = [
-        f"The S&Poké 500 closed at **{index:,.2f}** on {as_of}, {move_txt}.",
-        f"Week's range: {wk['low']:,.2f} – {wk['high']:,.2f}.",
+        headline,
+        f"The S&Poké 500 closed at **{index:,.2f}** on "
+        f"{friendly_date(as_of)}, {move_txt}.",
+        f"**Week's range:** {wk['low']:,.2f} – {wk['high']:,.2f}",
     ]
 
     if wk["gainers"]:
-        parts.append("**Top gainers this week**\n\n" + mover_lines(wk["gainers"]))
+        parts.append("### ▲ Top gainers this week\n\n" + mover_lines(wk["gainers"]))
     if wk["losers"]:
-        parts.append("**Top decliners this week**\n\n" + mover_lines(wk["losers"]))
+        parts.append("### ▼ Top decliners this week\n\n" + mover_lines(wk["losers"]))
     if wk["firstIssue"]:
         parts.append(
-            "Per-card weekly movers start with the next issue — this first "
-            "one sets the baseline."
+            "*Per-card weekly movers start with the next issue — this first "
+            "one sets the baseline.*"
         )
     elif not wk["gainers"] and not wk["losers"]:
         parts.append(
@@ -178,7 +196,7 @@ def compose(latest, history, state):
         )
 
     parts.append(
-        f"[See the live index, chart, and all 500 cards →]({SITE})"
+        f"[**See the live index, chart, and all 500 cards →**]({SITE})"
     )
     parts.append(
         "---\n\n"
