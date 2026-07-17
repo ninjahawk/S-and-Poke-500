@@ -46,6 +46,34 @@ you (see `archive/BRANCHES.md`).
   daily-change column on phones (fit verified at 390/360px; 77% of traffic
   is mobile).
 
+## ⚠️ SUBSCRIBER RETENTION — INCREDIBLY HIGH PRIORITY (owner directive 2026-07-16)
+
+Losing a newsletter subscriber is the worst self-inflicted failure this
+project can have. **Retention beats every other consideration; never any
+mistakes on the email path.** Concretely, for every session:
+
+1. **Never send anything to the list manually** — no test emails, no manual
+   workflow triggers to force a send, no API experiments against the real
+   Buttondown account. The ONLY thing that sends is the tested weekly
+   pipeline on its own schedule.
+2. **Cadence is a retention decision**: weekly, locked. Never increase
+   frequency or add new email types without the owner explicitly asking.
+3. **The send gates in `send_newsletter.py` are retention armor** (key
+   check, fresh-close check, Friday check, already-sent dedupe check).
+   Never weaken or remove them. Any change to that script or the
+   workflow's send step needs its unit tests passing AND extra-careful
+   review; when in doubt, don't ship — ask the owner.
+4. **Never risk a broken or duplicate issue.** A malformed email or a
+   double-send burns trust and triggers unsubscribes; if a send's
+   correctness is uncertain, not sending is always the right call (a late
+   issue costs nothing; a bad one costs subscribers).
+5. **The subscriber list lives only in Buttondown** — never export it,
+   never write addresses into this (public) repo, never point the form at
+   anything else.
+6. **Deliverability protections stay**: double opt-in stays on, no spammy
+   subject lines/copy, unsubscribe always works (Buttondown handles it —
+   don't interfere).
+
 ## Repo map — active vs archive
 
 **Active root docs** (keep current): `README.md` (public face), `CLAUDE.md`
