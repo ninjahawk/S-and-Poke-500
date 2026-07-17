@@ -223,6 +223,11 @@ WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
   design iterations go to the owner ONLY, via Buttondown draft +
   `/send-draft` with `recipients: [owner email]` — drafts can't reach the
   list; preview subjects must NEVER contain "week ending".
+  Post-issue-#1 polish (2026-07-17, owner feedback, on session branch
+  until merged): the POST now sets `description` = `issue_preview()` —
+  Buttondown uses it as the preheader, otherwise the inbox snippet
+  duplicates the subject; and the CTA button uses darker `BTN_BLUE`
+  #185abc + weight 700 because Gmail dark mode washed out the label.
   Weekly movers baseline: after each send the script writes
   `docs/data/newsletter_state.json` (per-card price+trusted snapshot) and the
   workflow commits it. The FIRST issue has no movers (reader-facing copy
