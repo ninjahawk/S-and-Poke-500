@@ -336,19 +336,19 @@ Pokémon-card stories — free daily index`)
 
 | # | Target | Route | Personal line | Status |
 |---|---|---|---|---|
-| 1 | Rich Mueller, Sports Collectors Daily | editor@sportscollectorsdaily.com | "SCD's Pokémon coverage keeps crossing from hobby news into market territory — figured you could use a market-wide number to anchor those pieces." | |
-| 2 | Alts.co | hello@alts.co | "Benchmark horse-races are your genre — cards-vs-S&P finally has a real index on the cards side." | |
+| 1 | Rich Mueller, Sports Collectors Daily | editor@sportscollectorsdaily.com | "SCD's Pokémon coverage keeps crossing from hobby news into market territory — figured you could use a market-wide number to anchor those pieces." | S |
+| 2 | Alts.co | hello@alts.co | "Benchmark horse-races are your genre — cards-vs-S&P finally has a real index on the cards side." | S |
 | 3 | Chris Almeida, Bloomberg | calmeida@bloomberg.net BOUNCED 2026-07-17 (550) → use bloomberg.com/tips or X | "Your April crime-wave piece was the best reporting on this market all year — and every story on that beat needs a 'values are up X%' line with something real behind it." | S(bounced) |
 | 4 | Vanessa Yurkevich, CNN Business | vanessa.yurkevich@cnn.com (PATTERN GUESS) | "Your April crime-spree piece nailed the stakes — the missing ingredient in every card-crime story is a citable 'how much have values actually risen' number." | S |
 | 5 | Isaac Tellechea, CNN Business | isaac.tellechea@cnn.com (PATTERN GUESS) | same angle as #4, don't send both the same day — stagger | S |
 | 6 | **Arjun Kharpal**, CNBC (senior tech correspondent, London — byline confirmed by owner 2026-07-17) | arjun.kharpal@nbcuni.com (PATTERN GUESS; verified fallbacks from byline: X @ArjunKharpal, LinkedIn /in/arjunkharpal) | "Your May piece on crypto money rotating into cards is the story my data keeps confirming — here's a daily number for the next one." | |
 | 7 | PokéBeach | pokebeach.com/contact (BODY MUST CONTAIN "Pokemon") | "PokéBeach is where I check Pokemon TCG news daily — for the market/30th-anniversary beat, here's a benchmark number free to cite." | |
-| 8 | PokeGuardian | site contact form | "Your daily news cadence is exactly where a daily market close belongs." | |
+| 8 | PokeGuardian | news-tip form was BROKEN 2026-07-17 — retry in a few days or X DM | "Your daily news cadence is exactly where a daily market close belongs." | blocked |
 | 9 | Mike Pokemonski, CardChill | cardchill.com/contact | "A recurring market column deserves a recurring benchmark — happy to build custom charts for any column, free, forever." | |
 | 10 | Nerdbeak | site contact | "Your 'market is crashing, sort of' piece is the most data-honest take out there — my breadth/movers numbers are exactly that kind of material." | |
 | 11 | cllct / Darren Rovell | cllct.com/contact-us + X DM @darrenrovell (chart attached to DM) | existing cllct draft above | |
 | 12 | ONE37pm | site contact form | "Your collectibles coverage keeps asking 'is the boom real' — here's the daily number that answers it." | |
-| 13 | Moneywise | contact form | "You syndicated the Bloomberg crime-wave angle — the follow-up story is what values are actually doing, daily." | |
+| 13 | Moneywise | moneywise.com/contact ("pitch a story" flow) | humanized story-pitch sent (angle: "cards beat the S&P in April, lag over 12mo — timing is the story") | S |
 | 14 | CBS Boston (did cards-as-investment piece) | station tips form | "Your cards-as-investment piece asked the right question — here's the market-wide answer, updated daily." | |
 
 Deliberately excluded: gaming press (Kotaku/TheGamer — no card-market
