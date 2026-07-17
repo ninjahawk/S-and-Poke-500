@@ -30,8 +30,9 @@ live so no subscriber can open the email before its chart exists. If ANY
 part of the rich path fails (matplotlib missing, render error, push or
 deploy timeout), the issue falls back to the plain-markdown compose — a
 plain but correct email always beats a broken pretty one. Subjects in both
-formats keep the literal "week ending <asOfDate>" substring: the already-
-sent dedupe gate matches on it.
+formats end with the issue_anchor() substring ("week ending <Mon D, YYYY>"):
+the already-sent dedupe gate matches on it (and on the legacy ISO-date form,
+in case an issue sent before this format change gets a same-day re-run).
 
 API: https://docs.buttondown.com/api-emails-introduction
 Note: if Buttondown gates the emails API behind a paid plan, the POST will
@@ -160,6 +161,22 @@ def friendly_date(iso):
     return d.strftime("%A, %B ") + str(d.day)
 
 
+def issue_anchor(iso):
+    """Dedupe anchor, unique per close date, human-readable because
+    Buttondown renders the subject as the email's visible headline."""
+    d = date.fromisoformat(iso)
+    return f"week ending {d.strftime('%b')} {d.day}, {d.year}"
+
+
+def issue_subject(chg, as_of):
+    """One subject for both compose paths. Inbox research: front-load a
+    concrete number (mobile truncates ~35 chars), plain statement over
+    cleverness for a finance audience; the anchor rides at the end."""
+    verb = "rose" if chg > 0.005 else "fell" if chg < -0.005 else "held steady"
+    amount = "" if verb == "held steady" else f" {abs(chg):.2f}%"
+    return f"Pokémon cards {verb}{amount} this week — {issue_anchor(as_of)}"
+
+
 def mover_lines(movers):
     return "\n".join(
         f"- **{m['name']}** · {m['setName']} — ${m['price']:,.2f} "
@@ -175,8 +192,8 @@ def compose(latest, history, state):
     reader sees before scrolling, the site's ▲/▼ triangles for brand
     consistency, movers as bolded lists (lists survive every email client;
     markdown tables don't), and a quiet one-line footer. The subject MUST
-    keep the literal "week ending <asOfDate>" substring — the already-sent
-    dedupe gate matches on it.
+    end with issue_anchor(as_of) — the already-sent dedupe gate matches
+    on it.
     """
     as_of = latest["asOfDate"]
     index = latest["index"]
@@ -184,9 +201,7 @@ def compose(latest, history, state):
     chg = wk["changePct"]
     direction = "up" if chg > 0.005 else "down" if chg < -0.005 else "flat"
 
-    subject = (
-        f"S&Poké 500 weekly: {index:,.2f} ({chg:+.2f}%) — week ending {as_of}"
-    )
+    subject = issue_subject(chg, as_of)
 
     tri = {"up": "▲", "down": "▼", "flat": "—"}[direction]
     headline = f"# {index:,.2f} {tri} {abs(chg):.2f}%"
@@ -208,8 +223,8 @@ def compose(latest, history, state):
         parts.append("### ▼ Top decliners this week\n\n" + mover_lines(wk["losers"]))
     if wk["firstIssue"]:
         parts.append(
-            "*Per-card weekly movers start with the next issue — this first "
-            "one sets the baseline.*"
+            "Starting next Friday: the week's biggest gainers and losers, "
+            "card by card."
         )
     elif not wk["gainers"] and not wk["losers"]:
         parts.append(
@@ -226,7 +241,7 @@ def compose(latest, history, state):
         f"The S&Poké 500 is a price-weighted index of the 500 most valuable "
         f"English raw Pokémon singles, priced from TCGplayer market data. "
         f"You're getting this because you subscribed at {SITE_NAME}. "
-        f"One email per week. Not financial advice."
+        f"Sent every Friday. Not financial advice."
     )
     return subject, "\n\n".join(parts)
 
@@ -358,9 +373,7 @@ def compose_rich(latest, history, state, chart_url):
     index = latest["index"]
     wk = week_stats(latest, history, state)
     chg = wk["changePct"]
-    verb = ("rose" if chg > 0.005 else "fell" if chg < -0.005 else "held steady")
-    amount = "" if verb == "held steady" else f" {abs(chg):.2f}%"
-    subject = f"The card market {verb}{amount} this week — week ending {as_of}"
+    subject = issue_subject(chg, as_of)
 
     points = history["points"] if isinstance(history, dict) else history
     year_start = f"{as_of[:4]}-01-01"
@@ -388,9 +401,9 @@ def compose_rich(latest, history, state, chart_url):
         blocks.append(_movers_html("▼ Top decliners this week", RED, wk["losers"]))
     if wk["firstIssue"]:
         blocks.append(
-            f'<div style="margin-top:22px;font-size:13px;color:{MUTED};'
-            f'font-style:italic">Per-card weekly movers start with the next '
-            f'issue &mdash; this first one sets the baseline.</div>')
+            f'<div style="margin-top:22px;font-size:13px;color:{MUTED}">'
+            f'Starting next Friday: the week&rsquo;s biggest gainers and '
+            f'losers, card by card.</div>')
     elif not wk["gainers"] and not wk["losers"]:
         blocks.append(
             f'<div style="margin-top:22px;font-size:13px;color:{MUTED}">'
@@ -401,7 +414,7 @@ def compose_rich(latest, history, state, chart_url):
     blocks.append(f'''<div style="text-align:center;margin:30px 0 6px">
 <a href="{SITE}" style="display:inline-block;background:{BLUE};color:#ffffff;font-size:15px;font-weight:600;text-decoration:none;padding:13px 30px;border-radius:24px">See the full index →</a></div>
 <div style="text-align:center;font-size:12px;color:{MUTED};line-height:1.6;margin-top:16px">
-Price-weighted index of the 500 most valuable English raw Pokémon singles, from TCGplayer market data.<br>One email, every Friday · Not financial advice · <a href="{SITE}" style="color:{MUTED}">{SITE_NAME}</a></div>
+Price-weighted index of the 500 most valuable English raw Pokémon singles, from TCGplayer market data.<br>Every Friday · Not financial advice · <a href="{SITE}" style="color:{MUTED}">{SITE_NAME}</a></div>
 </div>''')
     return subject, "".join(blocks)
 
@@ -447,7 +460,11 @@ def main():
     try:
         recent = api_request(key, f"{API}?page=1")
         sent = {e.get("subject", "") for e in recent.get("results", [])}
-        if any(f"week ending {as_of}" in s for s in sent):
+        # Match the current anchor AND the legacy ISO-date form, so an
+        # issue sent before an anchor-format change can never be re-sent
+        # by a same-day workflow re-run under the new format.
+        anchors = (issue_anchor(as_of), f"week ending {as_of}")
+        if any(a in s for a in anchors for s in sent):
             print(f"Already sent the issue for {as_of} - skipping.")
             return 0
 

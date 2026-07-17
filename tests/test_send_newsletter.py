@@ -99,11 +99,22 @@ class GateTests(TempDataMixin, unittest.TestCase):
 
     def test_gate_dedupe_skips_before_post(self):
         self.write_data()
-        already = {"results": [{"subject": f"anything week ending {TODAY} x"}]}
+        already = {"results": [{"subject": f"x {sn.issue_anchor(TODAY)} x"}]}
         with mock.patch.dict("os.environ", {"BUTTONDOWN_API_KEY": "k"}), \
              mock.patch.object(sn, "api_request", return_value=already) as api:
             self.assertEqual(sn.main(), 0)
             api.assert_called_once()  # the GET only, never the POST
+            self.assertFalse(self.state_p.exists())
+
+    def test_gate_dedupe_matches_legacy_iso_anchor(self):
+        # An issue sent under the old "week ending <ISO date>" subject must
+        # still block a same-day re-send after the anchor format change.
+        self.write_data()
+        already = {"results": [{"subject": f"anything week ending {TODAY} x"}]}
+        with mock.patch.dict("os.environ", {"BUTTONDOWN_API_KEY": "k"}), \
+             mock.patch.object(sn, "api_request", return_value=already) as api:
+            self.assertEqual(sn.main(), 0)
+            api.assert_called_once()
             self.assertFalse(self.state_p.exists())
 
 
@@ -129,7 +140,7 @@ class SendPathTests(TempDataMixin, unittest.TestCase):
         self.assertEqual(len(calls), 2)  # GET then POST
         url, payload = calls[1]
         self.assertEqual(payload["status"], "about_to_send")
-        self.assertIn(f"week ending {TODAY}", payload["subject"])
+        self.assertIn(sn.issue_anchor(TODAY), payload["subject"])
         self.assertIn("1,254.19", payload["body"])
         state = json.loads(self.state_p.read_text())
         self.assertEqual(state["lastSentAsOf"], TODAY)
@@ -168,12 +179,28 @@ class IssueDayTests(unittest.TestCase):
             sn.is_issue_day("2026-07-17", {"lastSentAsOf": "2026-07-17"}))
 
 
+class SubjectTests(unittest.TestCase):
+    def test_anchor_is_human_readable_and_unique_per_date(self):
+        self.assertEqual(sn.issue_anchor("2026-07-17"),
+                         "week ending Jul 17, 2026")
+
+    def test_subject_frontloads_move_and_ends_with_anchor(self):
+        self.assertEqual(
+            sn.issue_subject(1.234, "2026-07-17"),
+            "Pokémon cards rose 1.23% this week — week ending Jul 17, 2026")
+        self.assertIn("fell 0.50%", sn.issue_subject(-0.5, "2026-07-17"))
+        flat = sn.issue_subject(0.0, "2026-07-17")
+        self.assertIn("held steady", flat)
+        self.assertNotIn("%", flat)
+
+
 class ComposeTests(unittest.TestCase):
-    def test_first_issue_has_baseline_note_and_no_movers(self):
+    def test_first_issue_has_movers_teaser_and_no_movers(self):
         subject, body = sn.compose(make_latest(), make_history(), None)
-        self.assertIn(f"week ending {TODAY}", subject)  # dedupe anchor
+        self.assertIn(sn.issue_anchor(TODAY), subject)  # dedupe anchor
         self.assertIn("1,254.19", body)
-        self.assertIn("baseline", body)
+        self.assertIn("Starting next Friday", body)
+        self.assertNotIn("baseline", body)  # no pipeline jargon in copy
         self.assertNotIn("Top gainers", body)
         self.assertIn(sn.SITE, body)
 
@@ -210,15 +237,16 @@ class ComposeRichTests(unittest.TestCase):
     def test_subject_keeps_dedupe_anchor_and_direction_verb(self):
         subject, body = sn.compose_rich(make_latest(), make_history(), None,
                                         self.CHART)
-        self.assertIn(f"week ending {TODAY}", subject)
+        self.assertIn(sn.issue_anchor(TODAY), subject)
         self.assertIn("rose", subject)
         self.assertIn(self.CHART, body)
 
-    def test_first_issue_no_movers_but_baseline_note(self):
+    def test_first_issue_no_movers_but_teaser(self):
         _, body = sn.compose_rich(make_latest(), make_history(), None,
                                   self.CHART)
         self.assertNotIn("Top gainers", body)
-        self.assertIn("sets the baseline", body)
+        self.assertIn("Starting next Friday", body)
+        self.assertNotIn("baseline", body)
         self.assertIn("1,254.19", body)
 
     def test_site_linked_from_hero_button_and_footer(self):
@@ -272,7 +300,7 @@ class RichPathSelectionTests(TempDataMixin, unittest.TestCase):
         self.assertEqual(rc, 0)
         payload = calls[-1][1]
         self.assertIn("<img", payload["body"])
-        self.assertIn(f"week ending {TODAY}", payload["subject"])
+        self.assertIn(sn.issue_anchor(TODAY), payload["subject"])
 
     def test_plain_fallback_when_render_fails(self):
         self.write_data()
@@ -280,7 +308,7 @@ class RichPathSelectionTests(TempDataMixin, unittest.TestCase):
         self.assertEqual(rc, 0)
         payload = calls[-1][1]
         self.assertNotIn("<img", payload["body"])
-        self.assertIn(f"week ending {TODAY}", payload["subject"])
+        self.assertIn(sn.issue_anchor(TODAY), payload["subject"])
         pub.assert_not_called()  # no publish attempt without a rendered chart
 
     def test_plain_fallback_when_publish_fails(self):
