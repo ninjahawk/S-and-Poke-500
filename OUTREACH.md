@@ -272,6 +272,32 @@ numbers from latest.json before sending.
   press first), smpratte (earn the mention, don't pitch), Feedspot
   podcast tier (week 3+, only if earlier tiers convert).
 
+## National press beat map (researched 2026-07-17)
+
+The Pokémon-card market is an ACTIVE beat at national outlets right now
+(boom + crime-wave + Logan Paul $16M Pikachu cycle, spring 2026). Every
+piece found cites Circana spending stats or single-card auction
+anecdotes — none cites a market-wide index. That's our opening: pitch
+the daily benchmark as the missing number for the beat, using the Tier
+1–2 press template. **Timing: fold into the Monday/week-2 press round
+(post-HN proof), not before.** Named reporters, verified from
+bylines/search:
+
+| Outlet / reporter | Evidence on the beat | Route |
+|---|---|---|
+| **Bloomberg — Chris Almeida** | "Pokémon Card Boom Sparks a Crime Wave as Values Soar" + video (2026-04-24) | Bloomberg tips page / X |
+| **CNN Business — Vanessa Yurkevich & Isaac Tellechea** | "Pokémon cards are igniting an international crime spree" (2026-04-04); widely syndicated to local TV sites | CNN tips; Yurkevich active on X |
+| **CNBC (byline TBD — page bot-blocked; owner: check byline on phone)** | "Crypto bros, scalpers and Logan Paul…" (2026-05-22) + two video segments + a 2026-03-29 piece; CNBC is the most repeat-coverage outlet found | cnbc.com tips / reporter email pattern firstname.lastname@nbcuni.com once byline known |
+| **CBS Boston** | "Pokémon cards as an investment?" consumer piece | Only if a Boston hook appears; low priority |
+| **Moneywise** | Syndicated the Bloomberg crime angle | Contact form; long-tail SEO value |
+
+Also found (context, not targets): Yahoo Finance ran a Reddit-sourced
+"cards crush S&P 500" aggregation — the vs-S&P genre is proven
+mainstream bait, which validates leading national pitches with the
+cards-vs-S&P chart (hosted: poke500.com/cards-vs-sp500.png). Angle for
+crime-beat reporters: "every theft story needs a 'values have risen X%'
+line — here's a citable daily number instead of an anecdote."
+
 ## Future accelerant (ROADMAP candidate, not now)
 
 An **embeddable ticker widget** (one `<script>`/iframe line: "S&Poké
