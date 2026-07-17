@@ -157,6 +157,121 @@ standing referrer row) and "Featured in" grows on /about. Success =
 recurring citations, not one-off spikes: one weekly YouTube segment or
 one columnist habit beats any single article.
 
+## EXECUTION RUNBOOK (added 2026-07-17, DIB post live)
+
+Owner's order of operations TODAY — outreach never displaces the DIB
+comment window (first ~2h decide the post's reach):
+
+1. **DIB comment replies** (~2h, rank lookups + candid caveats).
+2. **GitHub repo topics** (30 sec, repo Settings → ⚙ next to About):
+   `pokemon-tcg`, `pokemon-cards`, `pokemon`, `price-tracker`,
+   `market-index`, `tcgplayer`, `github-pages`.
+3. **Google Alerts** (2 min, google.com/alerts): `"pokemon card index"`,
+   `"best pokemon card price tools"`, `"S&Poké 500" OR "poke500"`.
+4. **Send the timing-insensitive asks** (drafts below): misprint +
+   Delightful TCG roundup-inclusion emails, the three sidebar modmails,
+   AlternativeTo listing.
+5. **Conditional big swing**: if the DIB post is clearly working
+   (≳500 upvotes or climbing fast tonight), email cllct AND DM
+   @darrenrovell on X with the cards-vs-S&P chart while it's live
+   social proof. Otherwise hold cllct for Monday after Show HN.
+6. **Hold for Monday post-HN** (stronger proof): PokéBeach, CardChill,
+   Nerdbeak, PokeGuardian. Product Hunt launch also waits (mid-week).
+
+### Contact routes (found 2026-07-17)
+
+| Target | Route |
+|---|---|
+| PokéBeach | pokebeach.com/contact (webmaster "Water Pokemon Master"); NOTE their filter: include the word "Pokemon" in the body. X: @pokebeach_wpm |
+| cllct | cllct.com/contact-us; founder Darren Rovell (@darrenrovell on X — DM with the chart, he lives for collectibles-vs-stocks stats) |
+| CardChill | cardchill.com/contact (address the market columnist Mike Pokemonski) |
+| Nerdbeak | site footer/contact page (no address surfaced in research) |
+| misprint | support@misprint.com or X @MisprintInc (YC startup; founder is ex-Goldman equity analyst — lead with the divisor math) |
+| Delightful TCG | Shopify contact page (delightfultcg.com → contact) |
+| PokeGuardian | site contact form (about page had none; check footer) |
+| Subreddit mods | "Message the mods" on r/PokeInvesting, r/pokemoncardcollectors, r/Flipping |
+
+### Today's paste-ready drafts
+
+**misprint roundup ask** (to support@misprint.com, subject: "Addition
+for your Pokémon price-tools comparison"):
+> Hi — your "best place to track Pokémon card values" comparison is the
+> best-organized guide out there. One category none of the entries
+> cover: a whole-market index. I built poké500.com (link:
+> https://poke500.com/) — a free S&P-500-style index of the 500 most
+> valuable English raw singles: price-weighted, S&P-style divisor
+> chaining, daily membership rebalancing, history to Feb 2024, open
+> methodology, no signup. It answers "is the market up or down today?"
+> rather than per-card lookup, so it complements rather than competes
+> with the tools you list. If it fits the guide I'd be honored to be
+> included — happy to provide screenshots or a blurb. I built it and
+> run it solo; it's free and has no ads.
+
+**Delightful TCG roundup ask** (contact form; same body as above with
+the first line swapped to reference their "How to track Pokémon card
+prices (2026)" guide).
+
+**Sidebar modmail — r/PokeInvesting** (message the mods):
+> Hi mods — I'm the builder of poké500.com (the S&Poké 500 index that
+> was posted here this week and seemed to land well). If you think it's
+> useful to the community, I'd be grateful for a mention in the wiki or
+> sidebar resources — it's free, no signup, no ads, and the methodology
+> is fully public. Either way, thanks for running the sub; happy to
+> answer any questions about the data.
+
+**Sidebar modmail — r/pokemoncardcollectors** (same shape, swap the
+first parenthetical to "a free live index of the 500 most valuable
+English cards — one number for whether the market's up or down, plus
+per-card ranks/prices"; no "posted here" claim since we haven't yet).
+
+**Sidebar modmail — r/Flipping** (their sidebar's Online Tools list):
+> Hi mods — your sidebar's Online Tools list is a great resource. I
+> built poké500.com, a free daily price index of the 500 most valuable
+> English Pokémon singles (TCGplayer market data, no signup, no ads).
+> Flippers use it to check whether the Pokémon market's running hot or
+> cold at a glance. If you think it earns a spot in the tools list I'd
+> be grateful — and totally understand if not.
+
+**AlternativeTo blurb** (create listing, category price tracking):
+> S&Poké 500 (poké500.com) — a free, live stock-market-style index of
+> the 500 most valuable English Pokémon cards. One number for the whole
+> card market, updated daily from TCGplayer market prices with real
+> index mechanics (price-weighted, divisor chaining, daily membership).
+> Interactive chart back to Feb 2024, sortable top-500 table, per-card
+> price links. Free, no signup, no ads.
+
+**awesome-tcg list entry** (github.com/TCG-Price-Lookup/awesome-tcg —
+owner submits via web-UI edit/PR; remote sessions can't touch external
+repos): add under the most fitting data/tools section:
+`- [S&Poké 500](https://poke500.com/) — free daily price-weighted index
+of the 500 most valuable English Pokémon singles (S&P-style divisor
+chaining, open methodology, JSON data).`
+
+**cllct / Rovell pitch** (email via contact-us; X DM = first two
+sentences + the chart image):
+> Subject: A daily "S&P 500 for Pokémon cards" — free data for your TCG
+> coverage
+>
+> Hi — I built poké500.com, a free price-weighted index of the 500 most
+> valuable English Pokémon cards (real index math: divisor chaining,
+> daily membership, history to Feb 2024). The stat your readers will
+> argue about: over the last 12 months the top-500 Pokémon cards
+> returned +10.2% vs the S&P 500's +20.9% — but last April, while the
+> S&P had round-tripped to flat, the cards were +13.5%. Cite the daily
+> number any time; if a story needs a custom chart or stat (movers,
+> breadth, the vs-S&P race), I'll build it free, credited or not. The
+> data itself is open JSON. Nothing for sale — free site, no ads.
+
+Monday drafts (PokéBeach/CardChill/Nerdbeak/PokeGuardian) use the Tier
+1 press template above + one personalized first line each; refresh all
+numbers from latest.json before sending.
+
+### Kept out of today on purpose
+
+- Product Hunt (stacks with Show HN, mid-next-week), Bulbapedia (needs
+  press first), smpratte (earn the mention, don't pitch), Feedspot
+  podcast tier (week 3+, only if earlier tiers convert).
+
 ## Future accelerant (ROADMAP candidate, not now)
 
 An **embeddable ticker widget** (one `<script>`/iframe line: "S&Poké
