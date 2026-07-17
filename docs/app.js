@@ -148,9 +148,18 @@
   // ---- table ------------------------------------------------------------- //
   function setupTable(d) {
     state.constituents = d.constituents || [];
-    $("#search").addEventListener("input", (e) => {
+    const search = $("#search");
+    search.addEventListener("input", (e) => {
       state.search = e.target.value.trim().toLowerCase();
       renderTable();
+    });
+    // Results filter live as you type, so Enter's job is "done": dismiss
+    // the mobile keyboard (it was a dead key before — nothing happened).
+    search.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        search.blur();
+      }
     });
     document.querySelectorAll("th.sortable").forEach((th) => {
       th.addEventListener("click", () => {
