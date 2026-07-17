@@ -2,7 +2,37 @@
 
 ═══════════════════════════════════════════════════════════════════
 
-# WAVE 2 — r/PokemonTCG (drafted 2026-07-17, ready to post)
+# WAVE 2 — r/PokemonTCG: ❌ DEAD END (owner rules-check 2026-07-17)
+
+**Verdict: do NOT post to r/PokemonTCG.** Owner screenshotted the sub
+rules (~14:50 UTC): Rule 3 restricts pricing/buying/selling content,
+Rule 5 bans "market research for products or services," Rule 7 gates
+video posts behind an undisclosed comment-karma threshold, Rule 6 flags
+AI-made content as spam, Rule 10 covers promotion generally. A market-
+index video post from an account with no karma in that sub trips several
+at once — removal is near-certain and would burn the domain with those
+mods. The draft below is KEPT as the template for any casual collector
+sub that passes a rules check (vet with this exact failure pattern in
+mind: pricing megathreads, promo bans, video karma gates).
+
+**Re-routed plan (highest value first):**
+1. **Today (Friday):** the original r/PokeInvesting thread IS the live
+   channel — post the newsletter EDIT + the gold-star reply; first
+   newsletter issue sends tonight.
+2. **Show HN, Monday 2026-07-20, 9–11am ET** — the real wave 2.
+   LAUNCH.md has title + architecture first-comment ready. ⚠️ Update the
+   vs-S&P table to POST-densify numbers first (1yr +10.2% vs +20.9%;
+   since Feb 2024 +25.4% vs +51.5% — the old +19.7% photo-finish framing
+   is dead; lead with architecture/$0-stack instead, which is HN's angle
+   anyway). No video on HN — screenshots + the live site.
+3. **Weekly movers ritual on r/PokeInvesting starts NEXT Friday**
+   (2026-07-24) — same-sub reposting one day after wave 1 is too soon.
+4. Collector Discords + smaller collector subs: owner vets rules per
+   venue; the drafted post below is the template. The new demo video
+   (v2, current data) leads X/TikTok/Shorts whenever those accounts
+   exist.
+
+## Original wave-2 draft (kept as template — numbers current 2026-07-16 close)
 
 **⚠️ NUMBERS CHANGED since wave 1 — never reuse rev-3's stats or the old
 video.** The daily-densify rebuild (2026-07-16) changed the index's divisor
