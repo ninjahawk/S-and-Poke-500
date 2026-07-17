@@ -25,9 +25,13 @@ you (see `archive/BRANCHES.md`).
   Next waves per `LAUNCH.md` sequencing.
 - **Newsletter (weekly, Buttondown `poke500`)**: **account APPROVED**
   (2026-07-16 ~19:00 UTC; owner subscribed themselves and verified the
-  double-opt-in flow works). Pipeline fully built, merged, live on the site;
+  double-opt-in flow works). **First organic subscriber confirmed
+  2026-07-16 ~23:30 UTC** (launch day; on-model at ~1 sub/60–100 visits).
+  Site now has a promo banner + animated subscribe dialog (shipped PRs
+  #23–#27, conversion-researched copy). Pipeline fully built, merged, live;
   still DORMANT until the owner adds the `BUTTONDOWN_API_KEY` Actions secret
-  — the next fresh (~20:23 UTC) build after that sends issue #1. Details below.
+  — the next hourly build after that sends issue #1 (today's close already
+  ingested). Details below.
 - **poke500.com (ASCII) is LIVE** (purchased on Spaceship 2026-07-16 ~15:00
   UTC; redirect verified ~18:45 UTC): all four combinations (http/https ×
   apex/www) 301 → `https://xn--pok500-dva.com/` and land 200. Spaceship URL
