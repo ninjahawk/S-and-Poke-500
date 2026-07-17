@@ -174,8 +174,17 @@
 
   function renderTable() {
     const q = state.search;
+    // TCGplayer catalogs Gold Star cards as "<Pokémon> Star" ("Rayquaza
+    // Star"), but collectors search "gold star" — alias it in (a Reddit
+    // commenter couldn't find gold star Ray at #5 because of this).
+    const haystack = (c) =>
+      (c.name + " " + (c.setName || "") +
+        (/\bStar\b/.test(c.name) ? " gold star" : "")).toLowerCase();
+    // Match each word independently so "gold star ray" and "umbreon
+    // evolving" work — a single contiguous substring is too strict.
+    const terms = q.split(/\s+/).filter(Boolean);
     let rows = state.constituents.filter(
-      (c) => !q || c.name.toLowerCase().includes(q) || (c.setName || "").toLowerCase().includes(q)
+      (c) => !terms.length || terms.every((t) => haystack(c).includes(t))
     );
     const { key, dir } = state.sort;
     const mul = dir === "asc" ? 1 : -1;
