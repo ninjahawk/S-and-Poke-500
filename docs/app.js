@@ -28,6 +28,9 @@
     return "$" + n.toLocaleString("en-US", opts);
   };
   const fmtPct = (n) => (n == null ? "—" : (n >= 0 ? "+" : "") + n.toFixed(2) + "%");
+  // A change that would render as 0.00% gets no arrow and no color — a green
+  // ▲ on an unchanged price reads as a gain that didn't happen.
+  const isFlat = (pct) => Math.abs(pct) < 0.005;
   const fmtDate = (iso) =>
     new Date(iso + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
@@ -68,6 +71,11 @@
     if (d.changePct == null) {
       el.className = "quote-change flat";
       el.textContent = "Baseline day — change tracked from tomorrow";
+    } else if (isFlat(d.changePct)) {
+      el.className = "quote-change flat";
+      el.innerHTML =
+        `<span class="chg-pct">0.00%</span>` +
+        `<span class="chg-abs">(0.00) Today</span>`;
     } else {
       const up = d.changePct >= 0;
       el.className = "quote-change " + (up ? "up" : "down");
@@ -117,7 +125,9 @@
       </div>
       <div class="mover-meta">
         <span class="mover-price">${fmtPrice(c.price)}</span>
-        <span class="delta ${up ? "up" : "down"}"><span class="tri" aria-hidden="true">${up ? "▲" : "▼"}</span>${Math.abs(c.changePct).toFixed(2)}%</span>
+        ${isFlat(c.changePct)
+          ? `<span class="delta flat">0.00%</span>`
+          : `<span class="delta ${up ? "up" : "down"}"><span class="tri" aria-hidden="true">${up ? "▲" : "▼"}</span>${Math.abs(c.changePct).toFixed(2)}%</span>`}
       </div>`;
     return li;
   }
@@ -208,7 +218,9 @@
           ? (c.isNew
               ? `<span class="badge-new">New</span>`
               : `<span class="delta flat" title="No confirmed day-over-day price for this card — see How these prices work">—</span>`)
-          : `<span class="delta ${c.changePct >= 0 ? "up" : "down"}"><span class="tri" aria-hidden="true">${c.changePct >= 0 ? "▲" : "▼"}</span>${Math.abs(c.changePct).toFixed(2)}%</span>`;
+          : isFlat(c.changePct)
+            ? `<span class="delta flat">0.00%</span>`
+            : `<span class="delta ${c.changePct >= 0 ? "up" : "down"}"><span class="tri" aria-hidden="true">${c.changePct >= 0 ? "▲" : "▼"}</span>${Math.abs(c.changePct).toFixed(2)}%</span>`;
       const stale = isStale(c, asOf);
       if (stale) anyStale = true;
       const staleMark = stale
@@ -482,6 +494,9 @@
     if (c.changePct == null) {
       delta.className = "delta flat";
       delta.textContent = c.isNew ? "New entry" : "— no confirmed daily change";
+    } else if (isFlat(c.changePct)) {
+      delta.className = "delta flat";
+      delta.textContent = "0.00% today";
     } else {
       const up = c.changePct >= 0;
       delta.className = "delta " + (up ? "up" : "down");
