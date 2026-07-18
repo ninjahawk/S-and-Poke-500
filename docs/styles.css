@@ -355,8 +355,8 @@ main { padding-block: 22px 8px; }
 .td-price { text-align: right; font-variant-numeric: tabular-nums; }
 .td-change { text-align: right; white-space: nowrap; }
 .badge-new {
-  font-size: 11px; font-weight: 500; color: var(--blue); background: var(--blue-soft);
-  border-radius: 8px; padding: 3px 8px;
+  font-size: 11px; font-weight: 500; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.04em;
 }
 .thumb-ph { display: grid; place-items: center; color: var(--faint); font-size: 8px; }
 .table-count { color: var(--muted); font-size: 12.5px; margin: 12px 0 0; }
