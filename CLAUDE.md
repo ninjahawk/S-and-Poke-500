@@ -131,6 +131,10 @@ one — do NOT merge that branch.
   Action log / owner inbox; per the retention directive, never force or
   re-run the send manually.
 - Continue `LAUNCH.md` / `OUTREACH.md` execution as the owner unblocks items.
+- **Wave 3 drafted (2026-07-19): r/ClaudeAI "Built with Claude" post** —
+  full runbook (title options, body, first comment, assets, rules check)
+  at the top of `REDDIT_POST.md`. Owner picks a title, grabs screenshots,
+  posts 8–11am ET on a weekday that doesn't collide with Show HN.
 
 ## Data pipeline (`scripts/`)
 

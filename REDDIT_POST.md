@@ -2,6 +2,163 @@
 
 ═══════════════════════════════════════════════════════════════════
 
+# WAVE 3 — r/ClaudeAI "Built with Claude" (drafted 2026-07-19, READY)
+
+**The angle is the workflow, not the product.** r/ClaudeAI (1M members,
++269% yearly growth) does not care about Pokémon cards — it cares about
+*how Claude was used*. The site is the receipt; the CLAUDE.md handoff
+file is the star. Research basis (2026-07-19): the sub's highest-activity
+flair is **"Built with Claude"**, whose documented format is (1) what you
+built, (2) how you built it, (3) screenshots/demo, (4) **at least one
+actual prompt**. Dominant content themes: showcases, workflow tips,
+pain/humor, and candid autonomy stories (2026's breakout was "Claude
+filed my taxes" — autonomy + care on a real task, picked up by press).
+What our post stacks: real autonomy (phone-only owner, sessions manage
+end to end), a stealable artifact (public CLAUDE.md), an honest failure
+story (the CNAME incident), receipts (public repo, live site, 18k-view
+launch), and a meta kicker (Claude researched + drafted the post itself).
+
+**Rules check (owner, before posting):** confirm on the sub that
+"Built with Claude" flair is still live and self-promo posture hasn't
+changed; the format below follows the flair's documented requirements.
+Best window per prior research: **8–11am ET weekday**. One venue at a
+time still applies — do not overlap with Show HN day; whichever runs
+first, let it settle.
+
+**⚠️ Verify-before-posting (owner):** the body claims "~50 PRs" (repo is
+at #53 — true) and "managed from my phone" (true per your workflow). It
+deliberately does NOT claim "never opened a laptop" — only claim that if
+it's actually true. All other facts are documented in the repo.
+
+## Title (pick one; A recommended)
+
+**A (autonomy + candor, recommended):**
+My whole dev team is Claude Code sessions that coordinate through a
+CLAUDE.md handoff file. I approve from my phone. They built and launched
+a live Pokémon-card stock index, ran its Reddit launch (18k views), and
+write the weekly newsletter. One of them once took the site offline.
+
+**B (failure-first hook):**
+A Claude Code session "tidied up" my repo and took my site off the
+internet. Another session fixed it and wrote the lesson into CLAUDE.md so
+it never happens again. This is how my fully-Claude-run Pokémon index
+works — and it's weirdly effective. Public repo inside.
+
+**C (product-first, shortest):**
+I run a live "S&P 500 for Pokémon cards" from my phone. Claude Code does
+the code, deploys, marketing, and newsletter — and coordinates its own
+parallel sessions through a CLAUDE.md file. The whole repo, CLAUDE.md
+included, is public.
+
+## Body (flair: "Built with Claude"; screenshots at top — see Assets)
+
+> **What it is:** [poké500.com](https://xn--pok500-dva.com/) — the
+> S&Poké 500, a price-weighted index of the 500 most valuable English
+> Pokémon cards, computed daily like a real market index (S&P-style
+> divisor chaining, daily membership) from TCGplayer market data, with
+> history back to Feb 2024. Static site on GitHub Pages; a GitHub Action
+> does the daily build. Free, no signup, no ads.
+>
+> **The part this sub might actually care about:** I manage it entirely
+> from my phone. Claude Code (web) sessions do all the work — and since
+> sessions don't share memory, they coordinate through a **CLAUDE.md
+> handoff file** that has become the real brain of the project: current
+> state, my standing directives, a hard-won gotcha ledger, pointers to
+> everything else. New session, one prompt — literally "familiarize and
+> understand the project" — and it's productive in a minute.
+>
+> What the sessions have done, mostly on their own:
+>
+> - Built the pipeline + frontend and launched on Pages with a custom
+>   domain
+> - Did virality research (a whole doc of it, in the repo) and wrote the
+>   launch post for a Pokémon sub → 18k views, ~300 site visits day one
+> - Built a weekly newsletter pipeline with what CLAUDE.md calls
+>   "retention armor" — four independent send gates so it can never
+>   double-send or ship a broken issue. First issue went out Friday,
+>   untouched by human hands.
+> - Fixed mobile bugs from screenshots I paste in from Reddit feedback
+> - ~50 PRs so far, written and merged by Claude. My commits are
+>   basically "yes", "go ahead and merge", and screenshots.
+>
+> **The honest failure story:** early on, a session decided the root
+> `CNAME` file was "redundant" (there's a copy in `/docs`), deleted it,
+> and **deregistered my domain from GitHub Pages**. Site gone. A later
+> session diagnosed it, fixed it in seconds, and wrote the lesson into
+> CLAUDE.md in caps. No session has touched that file since. The gotcha
+> ledger is the project's immune system now.
+>
+> Workflow details that turned out to matter:
+>
+> - Superseded plans move to an `/archive` folder instead of being
+>   deleted — sessions stopped acting on stale docs overnight
+> - Remote sessions can't delete branches, so there's a `BRANCHES.md`
+>   graveyard telling me what to prune from the GitHub UI
+> - Parallel sessions sometimes run at once; CLAUDE.md's first
+>   instruction is "before assuming a fact is current, check whether
+>   another branch is ahead of you"
+> - My directives live in a priority-ordered section (the top one is
+>   about never risking a bad newsletter send) — sessions actually obey
+>   the hierarchy
+>
+> **Prompts, since the flair asks:** my real messages are things like
+> "familiarize and understand the project", "yes update CLAUDE.md", and
+> "go ahead and merge". The CLAUDE.md does the heavy lifting, not the
+> prompts.
+>
+> And yes — a Claude session researched what works on this sub and
+> drafted this post. That research doc is in the repo like everything
+> else.
+>
+> Repo (CLAUDE.md front and center):
+> github.com/ninjahawk/s-and-poke-500 · Site:
+> [poké500.com](https://xn--pok500-dva.com/). Happy to answer anything
+> about the setup.
+
+## First comment (owner posts immediately)
+
+> Direct link to the CLAUDE.md, since that's the actual artifact:
+> https://github.com/ninjahawk/s-and-poke-500/blob/main/CLAUDE.md
+>
+> Honest caveats before anyone asks: I still click "merge" and hold the
+> credentials — Claude has no access to my registrar, Buttondown account,
+> or DNS; those clicks were me, guided by step-by-step instructions it
+> wrote for my phone. And the index math was audited across multiple
+> sessions (one audit found 36 bogus cards an earlier session let in —
+> sessions catching each other's bugs is half the value of the handoff
+> file). Ask me anything about the setup.
+
+## Sanctioned answers
+
+- "Is this just an ad for your site?" → the repo is public, the site is
+  free/no-signup/no-ads, and the post is about the workflow; the site is
+  the evidence it works.
+- "Did Claude REALLY do everything?" → repeat the first-comment caveats;
+  point at the PR history (authored by Claude sessions, merged on
+  approval).
+- Newsletter questions → describe the gates; do NOT link the signup
+  (same no-lead-gen rule as every other wave).
+- If another index comes up → never claim "first/only" (VIRALITY.md
+  rule); this post makes no market claims anyway.
+
+## Assets
+
+1. **Site hero screenshot** (chart + index level) — regenerate per the
+   wave-1 recipe (serve `docs/` locally, Playwright at 1100px).
+2. **CLAUDE.md screenshot** — the "⚠️ SUBSCRIBER RETENTION" directive
+   block or the "Current state" section as rendered on GitHub; the
+   owner-directive block is the more striking image.
+3. Optional: the merged-PR list page showing the run of Claude PRs.
+
+## Measuring
+
+Same scoreboard: https://poke500.goatcounter.com. Expect a different
+shape than wave 1: this sub clicks the *repo* more than the site — watch
+GitHub traffic (Insights → Traffic) too. Success = the thread itself
+(comments/saves); site CTR is a bonus, not the goal.
+
+═══════════════════════════════════════════════════════════════════
+
 # WAVE 2 — r/PokemonTCG: ❌ DEAD END (owner rules-check 2026-07-17)
 
 **Verdict: do NOT post to r/PokemonTCG.** Owner screenshotted the sub
