@@ -57,17 +57,20 @@ headers, sentences of uneven length. When refreshing numbers or editing,
 keep it that way; if a paragraph starts sounding like a landing page,
 cut it.
 
-## Title (pick one; A recommended)
+## Title (pick one; A recommended — short and weird beats long and braggy)
 
 **A:**
-I built a stock market index for Pokémon cards entirely from my phone.
-Never opened an editor. A week after launch, actual collectors are using
-it (poké500.com)
+Charizard has a ticker now. Claude Code runs a live S&P-style index of
+the 500 most valuable Pokémon cards — built entirely from my phone
+(poké500.com)
 
-**B (failure hook):**
-One of my Claude Code sessions deleted my site's domain and called it
-"redundant." Anyway the site's been live a week, runs itself, and
-collectors are using it (poké500.com)
+**B:**
+Claude Code built me the S&P 500, but for Pokémon cards. It's been
+running itself for a week (poké500.com)
+
+**C:**
+asked Claude Code for "the S&P 500 but Pokémon cards." a week later it's
+live, self-updating, and collectors are fact-checking it (poké500.com)
 
 ## Body (hero screenshot at top)
 
