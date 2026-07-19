@@ -4,19 +4,16 @@
 
 # WAVE 3 — r/ClaudeAI "Built with Claude" (drafted 2026-07-19, READY)
 
-**The angle is the workflow, not the product.** r/ClaudeAI (1M members,
-+269% yearly growth) does not care about Pokémon cards — it cares about
-*how Claude was used*. The site is the receipt; the CLAUDE.md handoff
-file is the star. Research basis (2026-07-19): the sub's highest-activity
-flair is **"Built with Claude"**, whose documented format is (1) what you
-built, (2) how you built it, (3) screenshots/demo, (4) **at least one
-actual prompt**. Dominant content themes: showcases, workflow tips,
-pain/humor, and candid autonomy stories (2026's breakout was "Claude
-filed my taxes" — autonomy + care on a real task, picked up by press).
-What our post stacks: real autonomy (phone-only owner, sessions manage
-end to end), a stealable artifact (public CLAUDE.md), an honest failure
-story (the CNAME incident), receipts (public repo, live site, 18k-view
-launch), and a meta kicker (Claude researched + drafted the post itself).
+**The project is the star; Claude is just how it got built** (owner
+decision 2026-07-19 — the post's only job is "that's cool"). r/ClaudeAI
+is 1M members, +269% yearly growth; its highest-activity flair is
+**"Built with Claude"**, whose documented format is (1) what you built,
+(2) how you built it, (3) screenshots/demo, (4) **at least one actual
+prompt** — so the build gets a short section near the end, and the
+workflow color (CLAUDE.md handoff file, phone-only, CNAME story) lives
+there and in comment replies, not in the framing. The showcase itself is
+the site: a real-index-math stock market for Pokémon cards that updates
+itself daily. Screenshot of the chart leads.
 
 **Rules check (owner, before posting):** confirm on the sub that
 "Built with Claude" flair is still live and self-promo posture hasn't
@@ -25,107 +22,76 @@ Best window per prior research: **8–11am ET weekday**. One venue at a
 time still applies — do not overlap with Show HN day; whichever runs
 first, let it settle.
 
-**⚠️ Verify-before-posting (owner):** the body claims "~50 PRs" (repo is
-at #53 — true) and "managed from my phone" (true per your workflow). It
-deliberately does NOT claim "never opened a laptop" — only claim that if
-it's actually true. All other facts are documented in the repo.
+**⚠️ Verify-before-posting (owner):** card facts below are from the
+2026-07-19 close — refresh from the live site if posting later (they
+drift, not structurally). "~50 PRs" is true (repo is at #55). The body
+says "almost entirely from my phone" — tune to whatever is literally
+true for you.
 
-## Title (pick one; A recommended — short, punchy, human)
+## Title (pick one; A recommended — short, punchy, human, about the project)
 
-**A (the mechanic, recommended):**
-My dev team is a bunch of Claude sessions that leave each other notes.
-I just hit approve from my phone
+**A (recommended):**
+I built a live S&P 500 for Pokémon cards with Claude Code
 
-**B (failure-first):**
-One Claude session took my site offline. The next one fixed it and left
-a warning note for the rest
+**B:**
+Claude Code built me a stock market for Pokémon cards
 
-**C (outcome-first):**
-Claude built, launched, and markets my Pokémon card index. I run the
-whole thing from my phone
+**C:**
+A live stock index of the 500 most valuable Pokémon cards, built
+entirely with Claude
 
-Title rules learned drafting these: one idea, under ~20 words, no
-colons/dashes/lists, sounds like a person talking. The details (18k
-views, newsletter, CLAUDE.md) belong in the body — a title that tries
-to carry them reads like ad copy and dies.
+Title rules: one idea, ~12 words, sounds like a person talking, the
+project is the subject. Workflow details and stats belong in the body.
 
-## Body (flair: "Built with Claude"; screenshots at top — see Assets)
+## Body (flair: "Built with Claude"; chart screenshot at top — see Assets)
 
-> **What it is:** [poké500.com](https://xn--pok500-dva.com/) — the
-> S&Poké 500, a price-weighted index of the 500 most valuable English
-> Pokémon cards, computed daily like a real market index (S&P-style
-> divisor chaining, daily membership) from TCGplayer market data, with
-> history back to Feb 2024. Static site on GitHub Pages; a GitHub Action
-> does the daily build. Free, no signup, no ads.
+> I wanted one number that answers "is the Pokémon card market up or
+> down today?" — the way the S&P 500 does it for stocks. So I had
+> Claude Code build it: the **S&Poké 500**, a live price-weighted index
+> of the 500 most valuable English Pokémon cards.
 >
-> **The part this sub might actually care about:** I manage it entirely
-> from my phone. Claude Code (web) sessions do all the work — and since
-> sessions don't share memory, they coordinate through a **CLAUDE.md
-> handoff file** that has become the real brain of the project: current
-> state, my standing directives, a hard-won gotcha ledger, pointers to
-> everything else. New session, one prompt — literally "familiarize and
-> understand the project" — and it's productive in a minute.
+> It's real index math, not a toy: S&P-style divisor chaining so the
+> level stays continuous as cards enter and leave the top 500, daily
+> membership rebalancing, glitch-guarded TCGplayer market prices,
+> history reconstructed back to Feb 2024. It updates itself every day
+> around 4pm ET via a GitHub Action and even sends a weekly email recap
+> it writes on its own. Free, no signup, no ads:
+> [poké500.com](https://xn--pok500-dva.com/)
 >
-> What the sessions have done, mostly on their own:
+> Stuff in the data I didn't expect:
 >
-> - Built the pipeline + frontend and launched on Pages with a custom
->   domain
-> - Did virality research (a whole doc of it, in the repo) and wrote the
->   launch post for a Pokémon sub → 18k views, ~300 site visits day one
-> - Built a weekly newsletter pipeline with what CLAUDE.md calls
->   "retention armor" — four independent send gates so it can never
->   double-send or ship a broken issue. First issue went out Friday,
->   untouched by human hands.
-> - Fixed mobile bugs from screenshots I paste in from Reddit feedback
-> - ~50 PRs so far, written and merged by Claude. My commits are
->   basically "yes", "go ahead and merge", and screenshots.
+> - #1 isn't Base Set Charizard — it's Charizard Star (Delta Species)
+>   at $4,000, with Shining Charizard at $3,999 right behind
+> - It takes about $220 just to crack the top 500
+> - ~90% of the top 500 don't move on a given day — a few dozen cards
+>   do all the work
 >
-> **The honest failure story:** early on, a session decided the root
-> `CNAME` file was "redundant" (there's a copy in `/docs`), deleted it,
-> and **deregistered my domain from GitHub Pages**. Site gone. A later
-> session diagnosed it, fixed it in seconds, and wrote the lesson into
-> CLAUDE.md in caps. No session has touched that file since. The gotcha
-> ledger is the project's immune system now.
+> **How it was built**, since that's the sub: entirely with Claude Code,
+> almost entirely from my phone. It wrote the data pipeline, the
+> frontend, the daily Action, and the newsletter — ~50 PRs so far.
+> Sessions keep the project's state in a CLAUDE.md handoff file so a
+> fresh session picks up where the last one stopped; my actual opening
+> prompt is literally "familiarize and understand the project". Repo is
+> public: github.com/ninjahawk/s-and-poke-500
 >
-> Workflow details that turned out to matter:
->
-> - Superseded plans move to an `/archive` folder instead of being
->   deleted — sessions stopped acting on stale docs overnight
-> - Remote sessions can't delete branches, so there's a `BRANCHES.md`
->   graveyard telling me what to prune from the GitHub UI
-> - Parallel sessions sometimes run at once; CLAUDE.md's first
->   instruction is "before assuming a fact is current, check whether
->   another branch is ahead of you"
-> - My directives live in a priority-ordered section (the top one is
->   about never risking a bad newsletter send) — sessions actually obey
->   the hierarchy
->
-> **Prompts, since the flair asks:** my real messages are things like
-> "familiarize and understand the project", "yes update CLAUDE.md", and
-> "go ahead and merge". The CLAUDE.md does the heavy lifting, not the
-> prompts.
->
-> And yes — a Claude session researched what works on this sub and
-> drafted this post. That research doc is in the repo like everything
-> else.
->
-> Repo (CLAUDE.md front and center):
-> github.com/ninjahawk/s-and-poke-500 · Site:
-> [poké500.com](https://xn--pok500-dva.com/). Happy to answer anything
-> about the setup.
+> Happy to answer anything — about the index or the build.
 
 ## First comment (owner posts immediately)
 
-> Direct link to the CLAUDE.md, since that's the actual artifact:
-> https://github.com/ninjahawk/s-and-poke-500/blob/main/CLAUDE.md
+> Methodology for anyone curious: prices are TCGplayer *market* price
+> (actual sales, not listings) via the free tcgcsv.com mirror, one
+> representative printing per card, 1st Editions excluded (their
+> TCGplayer prices are broken — a $20k card shows $250), obviously
+> glitched prices get filtered against each card's own recent median.
+> Divisor chaining keeps the level continuous when membership changes.
 >
-> Honest caveats before anyone asks: I still click "merge" and hold the
-> credentials — Claude has no access to my registrar, Buttondown account,
-> or DNS; those clicks were me, guided by step-by-step instructions it
-> wrote for my phone. And the index math was audited across multiple
-> sessions (one audit found 36 bogus cards an earlier session let in —
-> sessions catching each other's bugs is half the value of the handoff
-> file). Ask me anything about the setup.
+> On the build: I still click "merge" and hold all the credentials —
+> Claude has no access to my registrar or DNS; those clicks were me,
+> following step-by-step instructions it wrote for my phone. Best war
+> story: one session deleted a "redundant" CNAME file and took the
+> site off the internet; a later session fixed it and wrote the lesson
+> into CLAUDE.md in caps. No session has touched it since. Ask me
+> anything.
 
 ## Sanctioned answers
 
@@ -142,19 +108,18 @@ to carry them reads like ad copy and dies.
 
 ## Assets
 
-1. **Site hero screenshot** (chart + index level) — regenerate per the
-   wave-1 recipe (serve `docs/` locally, Playwright at 1100px).
-2. **CLAUDE.md screenshot** — the "⚠️ SUBSCRIBER RETENTION" directive
-   block or the "Current state" section as rendered on GitHub; the
-   owner-directive block is the more striking image.
-3. Optional: the merged-PR list page showing the run of Claude PRs.
+1. **Chart hero screenshot leads** (MAX range, index level visible) —
+   regenerate per the wave-1 recipe (serve `docs/` locally, Playwright
+   at 1100px, click MAX). This IS the "that's cool" moment; it must be
+   the first thing seen.
+2. Optional second image: the top-10 table (the $4,000 Charizard Star
+   row makes the "not Base Set Zard" bullet land).
 
 ## Measuring
 
-Same scoreboard: https://poke500.goatcounter.com. Expect a different
-shape than wave 1: this sub clicks the *repo* more than the site — watch
-GitHub traffic (Insights → Traffic) too. Success = the thread itself
-(comments/saves); site CTR is a bonus, not the goal.
+Same scoreboard: https://poke500.goatcounter.com (reddit referrer), plus
+GitHub Insights → Traffic for repo clicks. Success = site visits and
+thread engagement; wave-1 bar was ~300 visits from 18k views.
 
 ═══════════════════════════════════════════════════════════════════
 
