@@ -30,25 +30,24 @@ at #53 — true) and "managed from my phone" (true per your workflow). It
 deliberately does NOT claim "never opened a laptop" — only claim that if
 it's actually true. All other facts are documented in the repo.
 
-## Title (pick one; A recommended)
+## Title (pick one; A recommended — short, punchy, human)
 
-**A (autonomy + candor, recommended):**
-My whole dev team is Claude Code sessions that coordinate through a
-CLAUDE.md handoff file. I approve from my phone. They built and launched
-a live Pokémon-card stock index, ran its Reddit launch (18k views), and
-write the weekly newsletter. One of them once took the site offline.
+**A (the mechanic, recommended):**
+My dev team is a bunch of Claude sessions that leave each other notes.
+I just hit approve from my phone
 
-**B (failure-first hook):**
-A Claude Code session "tidied up" my repo and took my site off the
-internet. Another session fixed it and wrote the lesson into CLAUDE.md so
-it never happens again. This is how my fully-Claude-run Pokémon index
-works — and it's weirdly effective. Public repo inside.
+**B (failure-first):**
+One Claude session took my site offline. The next one fixed it and left
+a warning note for the rest
 
-**C (product-first, shortest):**
-I run a live "S&P 500 for Pokémon cards" from my phone. Claude Code does
-the code, deploys, marketing, and newsletter — and coordinates its own
-parallel sessions through a CLAUDE.md file. The whole repo, CLAUDE.md
-included, is public.
+**C (outcome-first):**
+Claude built, launched, and markets my Pokémon card index. I run the
+whole thing from my phone
+
+Title rules learned drafting these: one idea, under ~20 words, no
+colons/dashes/lists, sounds like a person talking. The details (18k
+views, newsletter, CLAUDE.md) belong in the body — a title that tries
+to carry them reads like ad copy and dies.
 
 ## Body (flair: "Built with Claude"; screenshots at top — see Assets)
 
