@@ -48,92 +48,90 @@ back-to-back days are acceptable; same-morning is not.
 4. Standing rules apply: never claim "first/only index" (PokéViews exists);
    disclose you built it; no newsletter plug.
 
+## Voice rule (why this draft looks the way it does)
+
+r/ClaudeAI instantly clocks and mocks AI-written showcase posts: bolded
+section labels, tidy parallel structure, "here's the evidence" framing.
+The post below is deliberately loose — first person, story order, no
+headers, sentences of uneven length. When refreshing numbers or editing,
+keep it that way; if a paragraph starts sounding like a landing page,
+cut it.
+
 ## Title (pick one; A recommended)
 
-**A (workflow wow + traction + candor hook):**
-I built a live "S&P 500 for Pokémon cards" with Claude Code — entirely from
-my phone, never opened an editor. It launched last week, its first Reddit
-post hit 18k views, and it runs itself for $0/month (poké500.com)
+**A:**
+I built a stock market index for Pokémon cards entirely from my phone.
+Never opened an editor. A week after launch, actual collectors are using
+it (poké500.com)
 
-**B (Fable 5 + failure hook):**
-Claude Code on Fable 5 built, launched, and now runs my Pokémon card market
-index — pipeline, site, daily automation, even the launch strategy. It also
-took the site down once. Honest report (poké500.com)
+**B (failure hook):**
+One of my Claude Code sessions deleted my site's domain and called it
+"redundant." Anyway the site's been live a week, runs itself, and
+collectors are using it (poké500.com)
 
 ## Body (hero screenshot at top)
 
-> **What it is:** the S&Poké 500 — a live, price-weighted index of the 500
-> most valuable English raw Pokémon cards, computed like a real market index
-> (S&P-style divisor chaining, daily membership rebalancing) from TCGplayer
-> market prices, with daily history back to Feb 2024. It looks like Google
-> Finance, except the tickers are Charizards. Free, no signup, no ads:
-> poké500.com. It launched Wednesday and real collectors are using it — the
-> launch post on a collector sub did 18k views and 43 shares on day one.
+> I collect Pokémon cards and I always wanted one number for "is the
+> market up or down today," the way you'd check the S&P. Couldn't find
+> one I trusted, so I built it. Well — Claude built it. I supervised from
+> my phone.
 >
-> **The part that belongs on this sub:** I built and run this entirely from
-> my phone with Claude Code (on Fable 5), using remote sessions. I never
-> opened an editor. Sessions did the data engineering (reconstructing 2.5
-> years of daily index history from a price archive), the frontend, the
-> GitHub Action that updates it every day, the unit tests, the launch
-> research, and the copy for the launch posts — including drafting replies
-> when comments came in faster than I could think. The repo's CLAUDE.md is
-> the institutional memory: sessions sometimes run in parallel, and each one
-> reads the current state, does its job, and writes back what the next one
-> needs to know. My actual job has mostly been screenshots, approvals, and
-> the handful of things an agent can't do (buy the domain, click "enable
-> Pages").
+> The whole thing was done through Claude Code remote sessions (running
+> Fable 5). I never opened an editor or a terminal once. I'd describe
+> what I wanted, a session would go build it, open a PR, merge it. The
+> repo has a CLAUDE.md that works like a handoff doc — every session
+> reads it first, does its job, writes back what the next session needs
+> to know. Sometimes I had two running on different problems at the same
+> time. My actual contributions were screenshots, "yes do that," and the
+> stuff an AI literally can't do, like buying the domain.
 >
-> **Professional-grade is a real bar, so evidence:** the index survived
-> contact with the pickiest audience there is — collectors who know their
-> card prices to the cent. That's because the sessions didn't just wire up
-> an API: they caught that TCGplayer's "market price" is broken for 1st
-> Edition trophy cards (a ~$20k Shadowless 1st Ed Charizard shows $250) and
-> excluded them; built a rolling-median glitch guard because the source
-> occasionally prints a $500 price for a $2,200 card; and figured out that
-> without forward-filling thin trading days, the index fakes a crash every
-> quiet week. That's the unglamorous data-quality work that separates a demo
-> from a product, and the model did it — and explained why — before I knew
-> to ask.
+> It's live at poké500.com. 500 most valuable English raw cards,
+> price-weighted with real divisor chaining like an actual index, 2.5
+> years of daily history, updates itself every day around 4pm ET through
+> a GitHub Action. GitHub Pages, no server, no database. Costs me $0 a
+> month.
 >
-> **What went wrong, because nothing about this was hands-free:** one
-> session deleted a "redundant" CNAME file and deregistered the domain from
-> GitHub's edge — site down until a later session diagnosed it. The fix and
-> the lesson are now in CLAUDE.md, and no session has repeated it. Mobile
-> CSS bugs shipped twice and were only caught because I use the site on my
-> phone and sent screenshots. The workflow works, but it works because
-> mistakes get written down where the next session will read them.
+> The thing that actually sold me on this workflow was the data quality
+> stuff I would never have caught myself. TCGplayer's market price for
+> 1st Edition trophy cards is just broken — a Shadowless 1st Ed Charizard
+> that's worth ~$20k shows $250 — and Claude noticed, explained why, and
+> excluded them before I knew there was a problem. It also built a filter
+> for days when the source prints an obviously wrong price, because
+> apparently that happens. I posted the site to a collector sub last week
+> and it did 18k views. Those people check card prices to the cent. The
+> numbers held up.
 >
-> **A prompt I actually used** (flair rule — this one produced the mobile
-> fix): [OWNER: paste a verbatim prompt from your history here; drafted
-> stand-in below]
+> It was not hands-free though. One session decided the CNAME file was
+> "redundant," deleted it, and knocked the whole domain offline. A later
+> session figured out what happened, fixed it, and wrote a warning into
+> CLAUDE.md so it never happens again — which is honestly the part that
+> impressed me most. And the mobile layout broke twice, caught only
+> because I use the site on my phone and sent screenshots. You are still
+> the QA department.
+>
+> A prompt I actually used, since the flair asks for one:
+> [OWNER: paste a real prompt from your history; stand-in below]
 >
 > > "movers list is clipping on my phone again, price and % pushed off
 > > screen — screenshot attached. fix it and figure out why this keeps
 > > happening on mobile so it stops"
 >
-> **Stack:** GitHub Pages + one GitHub Action, ~stdlib Python, vanilla JS,
-> no server, no database, no API keys. $0/month.
->
-> If you collected as a kid: **look up your childhood card and tell me its
-> rank.** Card #500 costs about $219 right now, and #1 isn't the card you
-> think it is.
+> If you collected as a kid, go look up your card. #1 is not the card
+> you think it is, and it takes about $219 just to crack the top 500.
 
-## First comment (owner posts immediately — workflow deep-dive, Show-HN style)
+## First comment (owner posts immediately — casual, not a spec sheet)
 
-> How the automation actually works, for anyone who wants details: a GitHub
-> Action runs hourly but exits in seconds unless the upstream price mirror's
-> daily stamp changed, so the real build happens once a day (~4:23pm ET) —
-> fetches prices, applies the glitch guard, continues the divisor chain,
-> commits two JSON files the static frontend reads. The index math is
-> S&P-style divisor chaining so the level stays continuous as cards enter
-> and leave the top 500. All of it is open — methodology on the site,
-> including the ugly parts — and every card links to
-> TCGplayer/PriceCharting/eBay so you can check the prices yourself.
+> since someone will ask how the automation works: a github action runs
+> hourly but bails in seconds unless the price source actually updated,
+> so the real build happens once a day. fetches prices, filters
+> glitches, does the divisor math, commits two json files, and the
+> static site just reads those. methodology is public on the site
+> including the ugly parts, and every card links out to
+> tcgplayer/pricecharting/ebay so you can check me.
 >
-> On the Claude Code side: remote sessions from the phone app, CLAUDE.md as
-> shared state between sessions, PRs opened and merged by the sessions
-> themselves. Happy to answer anything about the workflow, the index math,
-> or what Fable 5 handled well vs where it needed adult supervision.
+> happy to answer anything — honestly the most interesting conversation
+> is what Fable 5 handled completely on its own vs where it needed
+> babysitting, ask away.
 
 ## Prepared answers (these WILL come)
 
