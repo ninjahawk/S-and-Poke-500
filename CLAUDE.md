@@ -131,10 +131,12 @@ one — do NOT merge that branch.
   Action log / owner inbox; per the retention directive, never force or
   re-run the send manually.
 - Continue `LAUNCH.md` / `OUTREACH.md` execution as the owner unblocks items.
-- **Wave 3 drafted (2026-07-19): r/ClaudeAI "Built with Claude" post** —
-  full runbook (title options, body, first comment, assets, rules check)
-  at the top of `REDDIT_POST.md`. Owner picks a title, grabs screenshots,
-  posts 8–11am ET on a weekday that doesn't collide with Show HN.
+- **Wave 3 is LIVE: r/ClaudeAI "Built with Claude" post, posted
+  2026-07-19 ~22:00 UTC** (project-first framing, owner's title pick).
+  Runbook + live-status playbook at the top of `REDDIT_POST.md`: first
+  comment immediately, fast replies for ~2h (owner pastes comments in),
+  GoatCounter + GitHub traffic as scoreboard; if it stalls overnight,
+  delete + repost in the 8–11am ET window per the wave-1 rule.
 
 ## Data pipeline (`scripts/`)
 

@@ -2,7 +2,16 @@
 
 ═══════════════════════════════════════════════════════════════════
 
-# WAVE 3 — r/ClaudeAI "Built with Claude" (drafted 2026-07-19, READY)
+# WAVE 3 — r/ClaudeAI "Built with Claude": 🟢 LIVE (posted 2026-07-19 ~22:00 UTC)
+
+**Status:** owner posted 2026-07-19 evening (UTC). Immediate playbook:
+first comment goes up right away (below), reply to everything for the
+first ~2 hours (owner pastes comments into the session for drafted
+replies — reddit.com is not fetchable from the dev env), metrics via
+GoatCounter + GitHub Insights → Traffic. Note the post went up outside
+the researched 8–11am ET window — if it stalls with near-zero traction
+overnight, the wave-1 decision rule applies: delete + repost fresh in
+the morning window beats leaving a buried post up.
 
 **The project is the star; Claude is just how it got built** (owner
 decision 2026-07-19 — the post's only job is "that's cool"). r/ClaudeAI
