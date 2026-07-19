@@ -46,7 +46,10 @@ you (see `archive/BRANCHES.md`).
   daily-change column on phones (fit verified at 390/360px; 77% of traffic
   is mobile). Day-1: card/subscribe modals use an iOS-safe scroll lock
   (body pinned at offset; owner-reported "black bars" bug fixed) and
-  `html` carries the theme background.
+  `html` carries the theme background. Day-3 (owner screenshot 07-19): the
+  movers list had the same phone clipping — grid items default to
+  `min-width: auto`, so one long nowrap card name pushed the price/% off
+  screen; fixed with `.mover-col { min-width: 0; }` (names now ellipsize).
 
 ## ⚠️ SUBSCRIBER RETENTION — INCREDIBLY HIGH PRIORITY (owner directive 2026-07-16)
 
