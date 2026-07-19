@@ -12,11 +12,12 @@ manage end to end). **Multiple Claude sessions sometimes run in parallel**;
 before assuming a fact is current, check whether another branch is ahead of
 you (see `archive/BRANCHES.md`).
 
-## Current state (as of 2026-07-16 ~18:00 UTC)
+## Current state (as of 2026-07-19 ~21:00 UTC)
 
 - **LIVE** at https://xn--pok500-dva.com/ since 2026-07-16 ~00:00 UTC. Pages
-  `/docs`, DNS, Enforce-HTTPS all verified. Index **1,251.65** (−0.07%),
-  286 history points (weekly to 2026-01-08, daily after).
+  `/docs`, DNS, Enforce-HTTPS all verified. Index **1,258.89** as of
+  2026-07-19, 289 history points (weekly to 2026-01-08, daily after).
+  Daily builds are running healthily on their own.
 - **Reddit soft launch is LIVE**: r/PokeInvesting, rev-3 "horse race" framing,
   approved after mod delay. Latest (owner-reported ~19:00 UTC): **18k views,
   43 shares, 13 upvotes, 33 comments; 293 GoatCounter visits** (~1.6% CTR,
@@ -28,10 +29,12 @@ you (see `archive/BRANCHES.md`).
   double-opt-in flow works). **First organic subscriber confirmed
   2026-07-16 ~23:30 UTC** (launch day; on-model at ~1 sub/60–100 visits).
   Site now has a promo banner + animated subscribe dialog (shipped PRs
-  #23–#27, conversion-researched copy). Pipeline fully built, merged, live;
-  still DORMANT until the owner adds the `BUTTONDOWN_API_KEY` Actions secret
-  — the next hourly build after that sends issue #1 (today's close already
-  ingested). Details below.
+  #23–#27, conversion-researched copy). **Pipeline is LIVE end to end: the
+  owner added `BUTTONDOWN_API_KEY` and issue #1 sent 2026-07-17** (chart
+  `docs/email/chart-2026-07-17.png` + `docs/data/newsletter_state.json`
+  baseline committed by the workflow, `lastSentAsOf: 2026-07-17`). Issue #2
+  — the first with week-over-week movers — goes out Friday 2026-07-24 on
+  the ~20:23 UTC build. Details below.
 - **poke500.com (ASCII) is LIVE** (purchased on Spaceship 2026-07-16 ~15:00
   UTC; redirect verified ~18:45 UTC): all four combinations (http/https ×
   apex/www) 301 → `https://xn--pok500-dva.com/` and land 200. Spaceship URL
@@ -49,7 +52,10 @@ you (see `archive/BRANCHES.md`).
   `html` carries the theme background. Day-3 (owner screenshot 07-19): the
   movers list had the same phone clipping — grid items default to
   `min-width: auto`, so one long nowrap card name pushed the price/% off
-  screen; fixed with `.mover-col { min-width: 0; }` (names now ellipsize).
+  screen; fixed with `.mover-col { min-width: 0; }` (names now ellipsize,
+  merged PRs #50–#52). Also merged (PRs #47–#49): table "New" marker is a
+  quiet muted label (not a filled pill) and unchanged prices render as
+  neutral 0.00% — no arrow, no color.
 
 ## ⚠️ SUBSCRIBER RETENTION — INCREDIBLY HIGH PRIORITY (owner directive 2026-07-16)
 
@@ -110,21 +116,21 @@ one — do NOT merge that branch.
 
 ## Owner to-do (the only human steps outstanding)
 
-1. **Add the Buttondown API key** (approval came through 2026-07-16): copy the
-   key (Buttondown Settings → API) and add repo Actions secret
-   **`BUTTONDOWN_API_KEY`**. The next ~20:23 UTC build sends issue #1
-   automatically (baseline issue, no movers; then locks to Fridays).
-2. Ongoing launch execution per `LAUNCH.md` (next Reddit waves, Show HN).
+1. Ongoing launch execution per `LAUNCH.md` (next Reddit waves, Show HN).
    Blocked-on-owner: X/Bluesky/Discord accounts (social auto-post), Google
    account (Search Console), affiliate accounts (MONETIZE.md step 1).
 
+(Done: `BUTTONDOWN_API_KEY` was added and newsletter issue #1 sent
+2026-07-17 — see Newsletter section.)
+
 ## Session next steps
 
-- Spot-check tonight's ~20:23 UTC build (first with genuinely fresh prices
-  post-densify): same-day refresh of the 07-16 point, sane movers/breadth.
-- When the owner adds `BUTTONDOWN_API_KEY`: watch the first newsletter send in
-  the Action log (subject `week ending <asOfDate>`; owner is subscriber #1 and
-  should receive it).
+- Friday 2026-07-24 ~20:23 UTC: issue #2 sends — the first with
+  week-over-week movers (baseline is the committed
+  `docs/data/newsletter_state.json` from 07-17). Worth a spot-check in the
+  Action log / owner inbox; per the retention directive, never force or
+  re-run the send manually.
+- Continue `LAUNCH.md` / `OUTREACH.md` execution as the owner unblocks items.
 
 ## Data pipeline (`scripts/`)
 
@@ -194,14 +200,14 @@ buttondown.com; account is the owner's Gmail). Buttondown's human review
 **APPROVED the account same day (~19:00 UTC)** — the account is enabled. The
 owner subscribed their own email and confirmed the full double-opt-in signup
 flow works end to end (multi-step = intent filter + deliverability protection;
-owner is subscriber #1). Remaining step: add the `BUTTONDOWN_API_KEY` Actions
-secret (see Owner to-do). Historical note kept for future accounts: new
+owner is subscriber #1). The `BUTTONDOWN_API_KEY` Actions secret is in place
+and **issue #1 sent 2026-07-17**. Historical note kept for future accounts: new
 Buttondown accounts get flagged for human vetting and show "disabled" until
 approved; their form says "don't use an LLM" for the vetting answers — never
 draft those.
 
-**Pipeline is BUILT and merged, dormant until the key exists. Cadence is
-WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
+**Pipeline is LIVE (issue #1 sent 2026-07-17; issues lock to Fridays).
+Cadence is WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
 - **Subscribe form** on the homepage (`#subscribe`, above the footer; linked
   from the footer row; heading "Weekly market updates to your inbox") posts to
   Buttondown's embed endpoint for `poke500` (hidden `embed=1` input required).
@@ -226,19 +232,19 @@ WEEKLY (owner decision — daily risks unsubscribes/spam flags):**
   design iterations go to the owner ONLY, via Buttondown draft +
   `/send-draft` with `recipients: [owner email]` — drafts can't reach the
   list; preview subjects must NEVER contain "week ending".
-  Post-issue-#1 polish (2026-07-17, owner feedback, on session branch
-  until merged): the POST now sets `description` = `issue_preview()` —
+  Post-issue-#1 polish (2026-07-17, owner feedback, MERGED to main via
+  PRs #47–#49): the POST now sets `description` = `issue_preview()` —
   Buttondown uses it as the preheader, otherwise the inbox snippet
   duplicates the subject; and the CTA button uses darker `BTN_BLUE`
   #185abc + weight 700 because Gmail dark mode washed out the label.
   Weekly movers baseline: after each send the script writes
   `docs/data/newsletter_state.json` (per-card price+trusted snapshot) and the
-  workflow commits it. The FIRST issue has no movers (reader-facing copy
-  teases "Starting next Friday: the week's biggest gainers and losers,
-  card by card" — never say "baseline"/"per-card" to readers, owner called
-  that cringe) and goes out on the first fresh build after the key is
-  added, whatever weekday; issues then lock to Fridays (catch-up if ≥8
-  days pass). Gates, each exit-0: (a) no `BUTTONDOWN_API_KEY` secret,
+  workflow commits it. Issue #1 (sent 2026-07-17) had no movers
+  (reader-facing copy teased "Starting next Friday: the week's biggest
+  gainers and losers, card by card" — never say "baseline"/"per-card" to
+  readers, owner called that cringe); issues now lock to Fridays
+  (catch-up if ≥8 days pass), so issue #2 with movers lands 2026-07-24.
+  Gates, each exit-0: (a) no `BUTTONDOWN_API_KEY` secret,
   (b) `latest.json` `sourceStamp` date != today UTC (only the ~20:23 UTC
   build after TCGCSV's drop is "the close"), (c) not an issue day,
   (d) subject with this issue's anchor (or legacy `week ending
