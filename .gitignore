@@ -6,3 +6,7 @@ __pycache__/
 # the App Store Connect issuer id, key id, team id and the Apple ID. They live
 # in the working copy only.
 archive/IOS_*.md
+
+# Local cache handed from build_index.py to publish_catalog.py within a
+# single workflow run (a few MB of raw TCGCSV data). Never committed.
+.cache/

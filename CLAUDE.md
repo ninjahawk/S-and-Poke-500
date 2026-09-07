@@ -54,6 +54,17 @@ you (see `archive/BRANCHES.md`).
   affect the index or the email path. Backfilled 51 dates (2026-07-15 →
   2026-09-06, 487 cards) from git history of `latest.json`; ~1.16 MB
   projected at one year. Details + the compact-format fallback: ROADMAP item 4.
+- **Full "any card" catalog is published** (2026-09-07):
+  `docs/data/catalog/` — `sets.json`, `sets/<setId>.json`, `search.json`,
+  public at https://xn--pok500-dva.com/data/catalog/ — so the iOS app can let
+  a user add ANY raw English single, not just the index's 500. 211 sets,
+  26,633 cards, 7.17 MB. Written by `scripts/publish_catalog.py` in its own
+  `continue-on-error: true` step AFTER the index commit; it re-fetches
+  nothing, consuming instead a `.cache/tcg_snapshot.json` side-write that
+  `build_index.py` makes from the universe it already downloads (gitignored,
+  never committed). Same universe filters and price rule as the index, but
+  these prices are **RAW — the glitch guard is not applied**, which each set
+  file states in a `note` field. Details: ROADMAP item 4.
 - **An iOS app is being built** in a local working copy at
   `Desktop\Poke500-iOS` (AppSlots slot04, app name "Poké 500") — not in this
   repo. It consumes the public JSON files read-only; the per-card history

@@ -79,6 +79,38 @@ jobs:
           fi
           git reset -q -- docs/data/cards_history.json || true
 
+      # Full "any card" catalog (docs/data/catalog/) so the iOS app can let a
+      # user add any raw English single, not just the index's top 500. Same
+      # isolation contract as the step above: runs AFTER the index commit,
+      # reads the snapshot build_index.py already downloaded (.cache/, never
+      # committed) instead of re-fetching, wraps everything in try/except and
+      # always exits 0. On an hourly no-op run there is no cache, so it does
+      # nothing and makes zero requests.
+      - name: Publish any-card catalog
+        continue-on-error: true
+        run: python3 scripts/publish_catalog.py
+
+      # Same guarded commit pattern as the two above. The index is reset at
+      # the end so a failure here can't leave staged changes behind for the
+      # newsletter's own chart commit to pick up.
+      - name: Commit any-card catalog
+        continue-on-error: true
+        run: |
+          if [ ! -f docs/data/catalog/sets.json ]; then
+            echo "No catalog published this run."
+            exit 0
+          fi
+          git config user.name "spoke-500-bot"
+          git config user.email "actions@github.com"
+          git add docs/data/catalog
+          if git diff --cached --quiet; then
+            echo "No catalog change."
+          else
+            git commit -m "chore: publish card catalog ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+          git reset -q -- docs/data/catalog || true
+
       # No-op until the BUTTONDOWN_API_KEY repo secret exists. The script
       # itself enforces the weekly cadence (Fridays, first issue immediately)
       # and only sends from the build that ingested TODAY's TCGCSV snapshot.

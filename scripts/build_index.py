@@ -76,6 +76,19 @@ def build():
     if len(raw_prices) < tc.TARGET_SIZE:
         raise RuntimeError(f"Only {len(raw_prices)} priced cards from TCGCSV")
 
+    # Side-write (purely additive, cannot affect anything below it): hand the
+    # universe we just downloaded to publish_catalog.py, which runs as its own
+    # continue-on-error step after the index commit and publishes the "any
+    # card" catalog the iOS app needs. Without this it would have to repeat
+    # the same ~220-group walk an hour later. Any failure here is printed and
+    # ignored -- the index build does not depend on the cache existing.
+    try:
+        import publish_catalog  # noqa: PLC0415 - optional, load only on the real build path
+
+        publish_catalog.write_cache(catalog, raw_prices, subtypes, stamp)
+    except Exception as err:  # noqa: BLE001 - never let the catalog break the index
+        print(f"catalog snapshot cache skipped ({type(err).__name__}: {err})", flush=True)
+
     # Previous state -- ignored if it was sample/preview data.
     prev = load_json(LATEST_PATH, {})
     if prev.get("sample"):

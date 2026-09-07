@@ -91,8 +91,73 @@ per-card sparkline) ships.
   test proving the entrypoint exits 0 with no data and outside a git repo.
   Run `python3 -m unittest discover tests`.
 
+### Any-card catalog — PUBLISHED SINCE 2026-09-07
+
+The other data half: a portfolio is useless if you can only add cards that
+happen to sit in the top 500. `scripts/publish_catalog.py` publishes the
+**whole English singles universe** — every set, every card, today's price —
+as static JSON under `docs/data/catalog/`, live at
+`https://xn--pok500-dva.com/data/catalog/…`.
+
+- **Costs nothing extra to produce.** `build_index.py` already downloads all
+  ~220 TCGplayer category-3 groups' products and prices every day and throws
+  ~26,000 of them away. It now side-writes that fetched universe to
+  `.cache/tcg_snapshot.json` (gitignored, never committed) as a pure
+  additive write inside its own `try/except`; `publish_catalog.py` consumes
+  the cache. Zero extra requests, and if the side-write ever fails the index
+  build does not notice.
+- **Same isolation contract as the per-card history**: its own
+  `continue-on-error: true` workflow step AFTER the index commit, whole body
+  in `try/except`, always exits 0. On an hourly no-op run there is no cache,
+  so it publishes nothing and fetches nothing. `--fetch` re-downloads with
+  the normal throttling (used for the first publish and as a manual repair);
+  `--size` reports the published bytes.
+- **Same universe and price rule as the index**, because both come from
+  `tcg_common`: singles only, no sealed/jumbo/oversized/box-topper, no
+  "miscellaneous", no `[staff]`/`(staff)`, no miscut/misprint/error, no
+  JP-only `-P` promos; price = highest TCGplayer **market** price across a
+  product's regular printings with 1st Edition rows excluded, `null` when
+  there is no market price that day.
+- **Prices here are RAW.** The index's glitch guard (rolling-median hold)
+  needs a per-card history this catalog does not keep, so it is not applied.
+  Every set file says so in a `note` field at the top — do not quietly drop
+  that note, an unguarded price can print a wild outlier on a thin card.
+- **Files** (`docs/data/catalog/`):
+  - `sets.json` — `{generated, asOfDate, sets:[{id, name, abbr, count,
+    priced, published}]}`, newest set first (undated sets last). `abbr` and
+    `published` come from TCGCSV's group `abbreviation`/`publishedOn`.
+  - `sets/<setId>.json` — `{note, setId, setName, asOfDate, cards:[{id, name,
+    number, rarity, printing, image, price, prevPrice, pricedAsOf}]}`, cards
+    sorted by collector number (numerically — "9/181" before "170/181") then
+    name.
+  - `search.json` — `{asOfDate, cards:[[id, name, setId, number], …]}`.
+    Array-of-arrays on purpose: the app downloads this whole file once at
+    launch, and objects would roughly double it. Budget is 2 MB; if it is
+    ever exceeded the script drops cards with no market price and records
+    that in a `note` field.
+- **`prevPrice`** is read from the previously *committed* copy of the same
+  set file before it is overwritten: yesterday's `price` when that file's
+  `asOfDate` is older than today's, `null` on the first run or when the card
+  was absent. A same-day republish (workflow retry, manual re-run) keeps the
+  existing `prevPrice` rather than collapsing every change to zero — the same
+  baseline rule `build_index.py` uses for the index's daily change.
+- **Size at first publish (2026-09-07)**: **211 sets, 26,633 cards, 26,248
+  priced**; 213 files, **7.17 MB** total; largest single file 411 KB
+  (`sets/2282.json`); `search.json` **1.25 MB**, under budget, so no cards
+  were dropped. GitHub Pages' limits are 1 GB per site and a 100 MB soft cap
+  per file — the whole catalog is under 1% of the site budget. It is
+  republished in full each day, which does grow repo history; if that ever
+  becomes a problem the fix is to commit only changed set files.
+- **Tests**: `tests/test_publish_catalog.py` (40) — the universe filters, the
+  price rule (including 1st-Edition-only fallback), `prevPrice` carry-over
+  and the same-day rule, the cache handshake, file shapes, number sorting,
+  the over-budget `search.json` trim, and subprocess tests proving the
+  entrypoint exits 0 with nothing available. All fetches mocked.
+
 Still to build: card search UX, holdings entry/storage, and the
-portfolio-vs-index comparison itself.
+portfolio-vs-index comparison itself (the catalog above supplies the data
+for search; graded holdings need a separate price source — research lives
+outside this repo).
 
 ## 5. Social auto-post ("market close" bot)
 
