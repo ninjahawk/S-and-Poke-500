@@ -43,6 +43,21 @@ you (see `archive/BRANCHES.md`).
   until parking was disabled; www worked first. poké500.com stays canonical;
   use the ASCII form in typed/spoken links.
 - **Monetization plan**: `MONETIZE.md` (affiliates first — owner liked it).
+- **Per-card daily price history is now recording** (2026-09-06):
+  `docs/data/cards_history.json`, public at
+  https://xn--pok500-dva.com/data/cards_history.json — `{generated, dates[],
+  cards{productId: [price_or_null aligned to dates]}}`, price written only
+  when that day's print was `trusted` (otherwise null; never interpolate).
+  Written by a new `scripts/record_card_history.py` in its own
+  `continue-on-error: true` workflow step placed AFTER the index commit and
+  BEFORE the newsletter step — it fetches nothing, always exits 0, and cannot
+  affect the index or the email path. Backfilled 51 dates (2026-07-15 →
+  2026-09-06, 487 cards) from git history of `latest.json`; ~1.16 MB
+  projected at one year. Details + the compact-format fallback: ROADMAP item 4.
+- **An iOS app is being built** in a local working copy at
+  `Desktop\Poke500-iOS` (AppSlots slot04, app name "Poké 500") — not in this
+  repo. It consumes the public JSON files read-only; the per-card history
+  above exists to feed its per-card sparklines + the portfolio feature.
 - **Day-0 mobile polish shipped** (from Reddit feedback, both live): empty
   movers section collapses to one state-aware line (says "snapshot lands
   ~4pm ET" before the daily drop), and the Top-500 table no longer clips the

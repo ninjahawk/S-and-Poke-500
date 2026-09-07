@@ -46,6 +46,39 @@ jobs:
             git push
           fi
 
+      # Per-card daily price series (docs/data/cards_history.json) for ROADMAP
+      # item 4 (portfolio vs. the index) and the app's per-card sparklines.
+      # Deliberately isolated from everything around it: it runs AFTER the
+      # index is committed, reads only the already-built latest.json, fetches
+      # nothing, wraps its whole body in try/except and always exits 0.
+      # continue-on-error on top of that so this can never turn the build red
+      # or stop the newsletter step below from running.
+      - name: Record per-card price history
+        continue-on-error: true
+        run: python3 scripts/record_card_history.py
+
+      # Same guarded commit pattern as latest.json/history.json above; the
+      # file only exists once the script has run at least once, and the index
+      # is reset at the end so a failure here can't leave staged changes for
+      # the newsletter's own chart commit to pick up.
+      - name: Commit per-card price history
+        continue-on-error: true
+        run: |
+          if [ ! -f docs/data/cards_history.json ]; then
+            echo "No per-card history file yet."
+            exit 0
+          fi
+          git config user.name "spoke-500-bot"
+          git config user.email "actions@github.com"
+          git add docs/data/cards_history.json
+          if git diff --cached --quiet; then
+            echo "No per-card history change."
+          else
+            git commit -m "chore: record per-card prices ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+          git reset -q -- docs/data/cards_history.json || true
+
       # No-op until the BUTTONDOWN_API_KEY repo secret exists. The script
       # itself enforces the weekly cadence (Fridays, first issue immediately)
       # and only sends from the build that ingested TODAY's TCGCSV snapshot.
