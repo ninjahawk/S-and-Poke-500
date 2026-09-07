@@ -718,17 +718,42 @@
       short: "<strong>Track the market</strong> &mdash; the Friday close, by email.",
       cta: "Join free" },
   ];
+  // Second banner variant: the iOS app. APP_PROMO_SHARE is the probability,
+  // per page view, that an iOS/iPadOS visitor sees this instead of the
+  // newsletter copy — 0 means OFF, which is how it ships. Flip it to 0.5 once
+  // the TestFlight build has been tested on a real phone. Everything else about
+  // the bar is unchanged, including the week-scoped dismissal, so a visitor who
+  // dismisses it does not see either variant again until Friday.
+  const APP_LINK = "https://testflight.apple.com/join/9JHxzAmD";
+  const APP_PROMO_SHARE = 0;
+  const APP_PROMO = {
+    long: "<strong>Poké 500 is on iPhone</strong> &mdash; the index, movers and your watchlist in your pocket.",
+    short: "<strong>Poké 500 is on iPhone</strong> &mdash; the index in your pocket.",
+    cta: "Get the app",
+  };
+  // iPadOS 13+ reports itself as MacIntel, hence the touch-point check.
+  const isApplePortable = () =>
+    /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
   function initPromo() {
     const promo = $("#promo-banner");
     if (!promo) return;
     // Weeks since epoch with the boundary on Friday 00:00 UTC. Anchored so
     // the rotation starts at PROMOS[0] in launch week (week 2950).
     const week = Math.floor((Math.floor(Date.now() / 864e5) - 1) / 7);
-    const p = PROMOS[(week - 2950 + 4 * 1000) % PROMOS.length];
+    const useApp =
+      APP_PROMO_SHARE > 0 && isApplePortable() && Math.random() < APP_PROMO_SHARE;
+    const p = useApp ? APP_PROMO : PROMOS[(week - 2950 + 4 * 1000) % PROMOS.length];
     promo.querySelector(".promo-long").innerHTML = p.long;
     promo.querySelector(".promo-short").innerHTML = p.short;
     const cta = promo.querySelector(".promo-cta");
     cta.textContent = p.cta;
+    if (useApp) {
+      cta.href = APP_LINK;
+      cta.target = "_blank";
+      cta.rel = "noopener";
+    }
     const key = "spk-promo-w" + week;
     if (localStorage.getItem(key) === "dismissed") return;
     promo.hidden = false;
@@ -737,6 +762,8 @@
       localStorage.setItem(key, "dismissed");
     });
     cta.addEventListener("click", (e) => {
+      // The app variant is a real link; let the browser open it.
+      if (useApp) return;
       e.preventDefault();
       openSubModal();
     });

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy — S&amp;Poké 500</title>
+  <meta name="description" content="The S&Poké 500 privacy policy: no accounts, no tracking in the iPhone app, your data stays on your device, cookieless analytics on the web." />
+  <link rel="canonical" href="https://xn--pok500-dva.com/privacy" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#131314" media="(prefers-color-scheme: dark)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="S&amp;Poké 500" />
+  <meta property="og:title" content="Privacy — S&amp;Poké 500" />
+  <meta property="og:description" content="No accounts, no tracking in the app, your data stays on your device." />
+  <meta property="og:url" content="https://xn--pok500-dva.com/privacy" />
+  <meta property="og:image" content="https://xn--pok500-dva.com/og-image.png" />
+  <link rel="icon" type="image/png" href="logo.png?v=2" />
+  <link rel="apple-touch-icon" href="logo.png?v=2" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Apply the theme the visitor chose on the index page before first paint. -->
+  <script>try{var t=localStorage.getItem("spk-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <style>
+    .about-prose { max-width: 760px; }
+    .about-prose h2 { margin-top: 34px; }
+    .about-prose p { color: var(--ink); font-size: 14.5px; line-height: 1.65; margin: 10px 0 0; }
+    .about-prose ul { color: var(--ink); font-size: 14.5px; line-height: 1.65; margin: 10px 0 0; padding-left: 22px; }
+    .about-prose li { margin-top: 4px; }
+    .back-link { color: var(--muted); font-size: 13.5px; text-decoration: none; }
+    .back-link:hover { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="./" aria-label="S&Poké 500 home">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="logo.png" alt="" width="28" height="28" />
+        </span>
+        <span class="brand-name">S&amp;Poké</span>
+        <span class="brand-sub">500</span>
+      </a>
+      <div class="header-meta">
+        <a class="back-link" href="./">&larr; Back to the index</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap about-prose">
+    <h1 class="section-title" style="font-size:1.5rem; margin-top: 10px;">Privacy</h1>
+    <p>The short version: <strong>there are no accounts, and nothing you do here is tied to
+    you.</strong> The S&amp;Poké 500 is a free, independent, non-commercial fan project — a static
+    web page and an iPhone app that both read the same public price files. There is no user
+    database, because there are no users to put in one.</p>
+
+    <h2 class="section-title">The iPhone app</h2>
+    <ul>
+      <li><strong>No accounts, no sign-in, no tracking.</strong> The app contains no analytics
+      SDK, no advertising identifier and no crash-reporting service. Its App Store privacy label
+      is &ldquo;Data Not Collected.&rdquo;</li>
+      <li><strong>Your watchlist and the quantities you own stay on your device</strong>, in one
+      small file inside the app's own storage. They are never uploaded anywhere, and deleting the
+      app deletes them.</li>
+      <li><strong>What the app asks the network for</strong> is the same public data this site
+      serves — the daily index files under <code>poke500.com/data/</code> — plus card thumbnails
+      from TCGplayer's image CDN. TCGplayer, as the host of those images, sees the ordinary
+      request information any web server sees. Settings &rarr; <em>Card images</em> turns image
+      requests off entirely, after which the app requests nothing but the price files.</li>
+      <li><strong>Outbound links</strong> (TCGplayer, PriceCharting, eBay, the newsletter, this
+      site) open in Safari. Once you are on someone else's site, their privacy policy applies,
+      not this one.</li>
+    </ul>
+
+    <h2 class="section-title">This website</h2>
+    <ul>
+      <li><strong>No cookies and no consent banner.</strong> Anonymous, aggregate visit counts are
+      measured with <a href="https://www.goatcounter.com" rel="noopener">GoatCounter</a>, which is
+      cookieless and stores no personal data.</li>
+      <li><strong>Your settings stay in your browser.</strong> The theme, the card-images toggle
+      and whether you dismissed the banner live in <code>localStorage</code> on your own machine
+      and are never sent anywhere.</li>
+      <li>The site is a static page hosted on <strong>GitHub Pages</strong>; like any web host,
+      GitHub processes request data in order to serve it.</li>
+    </ul>
+
+    <h2 class="section-title">The email newsletter</h2>
+    <p>If — and only if — you subscribe, your email address is stored by
+    <a href="https://buttondown.com" rel="noopener">Buttondown</a>, the service that sends the
+    weekly recap. It is used for that one thing: sending you the recap. It is never sold, rented
+    or shared, and every email carries a one-click unsubscribe that takes effect immediately.
+    Subscribing is double opt-in, so nobody can add your address but you.</p>
+
+    <h2 class="section-title">Children</h2>
+    <p>This is a price reference, not a service that collects anything. It asks for no personal
+    information from anyone, including children.</p>
+
+    <h2 class="section-title">Changes and contact</h2>
+    <p>If this policy changes, the new version replaces this page and the date below moves.
+    Questions, or something here that looks wrong? Open an issue on
+    <a href="https://github.com/ninjahawk/s-and-poke-500" rel="noopener">the GitHub repository</a>
+    — that is the project's only contact channel, and it is public.</p>
+    <p class="muted" style="margin-top:18px;">Last updated September 7, 2026.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="muted"><a href="./">S&amp;Poké 500 home</a> ·
+      <a href="about">About &amp; legal</a> ·
+      <a href="./#methodology">How these prices work</a> ·
+      <a href="https://github.com/ninjahawk/s-and-poke-500" rel="noopener">Source on GitHub</a></p>
+    </div>
+  </footer>
+</body>
+</html>
