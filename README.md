@@ -98,11 +98,18 @@ docs/                     # the website (served by GitHub Pages)
   data/
     latest.json           # today's snapshot: index, movers, all 500 cards
     history.json          # the index time series (the chart)
+    cards_history.json    # per-card daily price series (index constituents)
     newsletter_state.json # per-card baseline from the last issue (after 1st send)
+    catalog/              # every English single, not just the 500
+      sets.json           #   set list: id, name, abbr, card count, publish date
+      sets/<setId>.json   #   one file per set: cards + today's raw market price
+      search.json         #   compact [id, name, setId, number] for card search
 scripts/
   tcg_common.py           # shared: TCGCSV catalog/prices + index math
   build_index.py          # daily pipeline (stdlib only): live prices -> index -> JSON
   backfill_history.py     # one-time: rebuild history from the TCGCSV price archive
+  record_card_history.py  # appends today's column to cards_history.json
+  publish_catalog.py      # publishes data/catalog/ from the same daily fetch
   send_newsletter.py      # weekly recap email via Buttondown (stdlib only)
   make_sample.py          # regenerate offline sample preview data (legacy)
 .github/workflows/
