@@ -145,9 +145,14 @@ as static JSON under `docs/data/catalog/`, live at
   priced**; 213 files, **7.17 MB** total; largest single file 411 KB
   (`sets/2282.json`); `search.json` **1.25 MB**, under budget, so no cards
   were dropped. GitHub Pages' limits are 1 GB per site and a 100 MB soft cap
-  per file — the whole catalog is under 1% of the site budget. It is
-  republished in full each day, which does grow repo history; if that ever
-  becomes a problem the fix is to commit only changed set files.
+  per file — the whole catalog is under 1% of the site budget. Note on repo
+  growth: every set file carries `asOfDate`, so all 211 are a new blob every
+  day even when no price moved (git cannot dedupe them the way it does
+  `cards_history.json`). Packfile delta compression makes the incremental
+  cost small — consecutive days differ by one date string plus the handful of
+  cards that actually moved — but keep an eye on `.git` size. If it ever
+  bites, the fix is to drop `asOfDate` from the per-set files and let
+  `sets.json` carry the date for all of them.
 - **Tests**: `tests/test_publish_catalog.py` (40) — the universe filters, the
   price rule (including 1st-Edition-only fallback), `prevPrice` carry-over
   and the same-day rule, the cache handshake, file shapes, number sorting,
