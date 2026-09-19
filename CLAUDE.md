@@ -303,6 +303,12 @@ credentials into it. Owner has confirmed working login (2026-07-16). Snippet
 is the last script tag in `docs/index.html`. Day-0 baseline: 5k Reddit post
 views → 87 visits (~1.7% CTR); ~78% of referrers show "(unknown)" = Reddit
 iOS in-app browser.
+**Signup-funnel events (added 2026-09-19)**: `app.js` `track()` sends
+GoatCounter events `subscribe/banner-shown`, `banner-cta`, `banner-dismiss`,
+`submit-dialog`, `submit-footer` (+ `banner-shown-app` for the iOS variant).
+Filter the dashboard's Pages list by `subscribe/`. Calls queue until
+count.js loads and fall back to the raw pixel endpoint if it never does.
+Verified headlessly: each request replayed to GoatCounter returned 200.
 
 ## Frontend (`docs/`)
 

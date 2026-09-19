@@ -698,6 +698,34 @@
     sync();
   }
 
+  // Signup-funnel events → GoatCounter (dashboard: poke500.goatcounter.com;
+  // filter the Pages list by "subscribe/"). count.js loads async after this
+  // file, so a call made before it arrives (banner-shown fires at load) is
+  // retried until it does; if it never does (blocked), the same pixel
+  // endpoint count.js uses is hit directly, so the event still lands. The
+  // endpoint is read from the count.js tag, which sits BELOW app.js in the
+  // DOM, hence the lookup happens at fallback time, not at parse time.
+  function track(name) {
+    const path = "subscribe/" + name;
+    let tries = 0;
+    (function attempt() {
+      if (window.goatcounter && typeof window.goatcounter.count === "function") {
+        window.goatcounter.count({ path, title: path, event: true });
+        return;
+      }
+      if (++tries < 40) {
+        setTimeout(attempt, 250);
+        return;
+      }
+      const tag = document.querySelector("script[data-goatcounter]");
+      const endpoint = tag && tag.dataset.goatcounter;
+      if (endpoint) {
+        new Image().src =
+          endpoint + "?p=" + encodeURIComponent(path) + "&e=true&rnd=" + Math.random();
+      }
+    })();
+  }
+
   // Promo banner: rotates weekly (research: banner blindness sets in after
   // ~2 weeks; fresh copy re-earns attention). The rotation index flips every
   // FRIDAY 00:00 UTC — the day a new issue exists to promote — and the
@@ -757,14 +785,17 @@
     const key = "spk-promo-w" + week;
     if (localStorage.getItem(key) === "dismissed") return;
     promo.hidden = false;
+    track(useApp ? "banner-shown-app" : "banner-shown");
     $("#promo-dismiss").addEventListener("click", () => {
       promo.hidden = true;
       localStorage.setItem(key, "dismissed");
+      track("banner-dismiss");
     });
     cta.addEventListener("click", (e) => {
       // The app variant is a real link; let the browser open it.
       if (useApp) return;
       e.preventDefault();
+      track("banner-cta");
       openSubModal();
     });
   }
@@ -813,6 +844,7 @@
       // The POST proceeds in its new tab (double opt-in lands by email);
       // swap the dialog to its success state, echoing the address.
       const email = $("#sm-email").value;
+      track("submit-dialog");
       setTimeout(() => {
         $("#sm-sent-to").textContent = email;
         $("#sm-main").hidden = true;
@@ -820,6 +852,8 @@
       }, 150);
     });
     $("#sm-ok").addEventListener("click", closeSubModal);
+    const footer = $("#subscribe form");
+    if (footer) footer.addEventListener("submit", () => track("submit-footer"));
   }
 
   initSettings();
